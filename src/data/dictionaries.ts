@@ -518,7 +518,7 @@ export const dictionaries = {
       pluralize: false
     },
     mug: {
-      info: 'avec une boulloire électrique de 1200W',
+      info: 'avec une bouilloire électrique de 1200W',
       label: "Mug d'eau bouillante",
       divisor: 40,
       pluralize: true
