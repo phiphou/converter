@@ -4,9 +4,9 @@ import { Unit } from '../types'
 function UnitForm({ label, dictionary }: { label: string; dictionary: Record<string, Unit> }) {
   const [unitFrom, setUnitFrom] = useState<string>('')
   const [unitTo, setUnitTo] = useState<string>('')
-  const [rawValue, setRawValue] = useState<string>('1') // Gère la valeur brute saisie par l'utilisateur
-  const [value, setValue] = useState<number>(1) // Gère la valeur numérique pour les calculs
-  const [result, setResult] = useState<number | null>(1) // Utilisez `null` pour indiquer un état non calculé
+  const [rawValue, setRawValue] = useState<string>('1')
+  const [value, setValue] = useState<number>(1)
+  const [result, setResult] = useState<number | null>(1)
 
   useEffect(() => {
     const firstFromUnit = Object.keys(dictionary).find((key) => key !== 'infos' && dictionary[key]) || ''
@@ -36,19 +36,22 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
       return result !== null && result >= 2
         ? label
             .split(' ')
-            .map((v) => (v.endsWith('s') ? v : v + 's')) // Ajoute "s" uniquement si absent
+            .map((v) => (!v.endsWith('s') ? v + 's' : v))
             .join(' ')
         : label
+            .split(' ')
+            .map((v) => (v.endsWith('s') ? v.slice(0, -1) : v))
+            .join(' ')
     } else {
       if (unit && unit.pluralize) {
-        return result !== null && parseFloat(rawValue) >= 2
+        return result !== null && result >= 2
           ? label
               .split(' ')
-              .map((v, i) => (i === 0 && !v.endsWith('s') ? v + 's' : v)) // Ajoute "s" au premier mot uniquement si absent
+              .map((v, i) => (i === 0 && !v.endsWith('s') ? v + 's' : v))
               .join(' ')
           : label
               .split(' ')
-              .map((v, i) => (i === 0 && v.endsWith('s') ? v.slice(0, -1) : v)) // Retire "s" du premier mot si présent
+              .map((v, i) => (i === 0 && v.endsWith('s') ? v.slice(0, -1) : v))
               .join(' ')
       } else {
         return label
@@ -65,14 +68,14 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
             type="text"
             className="w-40 mr-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus-within:ring-blue-500 dark:focus-within:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder={label}
-            value={rawValue} // Affiche la valeur brute
+            value={rawValue}
             onChange={(e) => {
-              const inputValue = e.target.value.replace(',', '.') // Remplace les virgules par des points
-              setRawValue(inputValue) // Met à jour la valeur brute
+              const inputValue = e.target.value.replace(',', '.')
+              setRawValue(inputValue)
 
-              const numericValue = parseFloat(inputValue) // Convertit en nombre
+              const numericValue = parseFloat(inputValue)
               if (!isNaN(numericValue)) {
-                setValue(numericValue) // Met à jour la valeur numérique si valide
+                setValue(numericValue)
               }
             }}
           />
@@ -115,13 +118,15 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
       </div>
       <div className="mb-3 text-lg font-medium text-gray-text-white dark:text-white ">
         {value.toLocaleString('fr-FR', { minimumFractionDigits: 0 }).replace(',', '.')}{' '}
-        {pluralize(result, dictionary[unitFrom]?.label, dictionary[unitFrom]) || ''} ={' '}
+        {pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ''} ={' '}
         {result !== null
           ? dictionary[unitTo]?.formater
             ? dictionary[unitTo].formater(result)
-            : result.toLocaleString('fr-FR', { maximumFractionDigits: 2 }).replace(',', '.')
+            : result.toLocaleString('fr-FR', { maximumFractionDigits: 3 }).replace(',', '.')
           : ''}{' '}
-        {(!dictionary[unitTo]?.formater && pluralize(result, dictionary[unitTo]?.label, dictionary[unitTo])) || ''}
+        {(!dictionary[unitTo]?.formater &&
+          pluralize(parseFloat('' + result), dictionary[unitTo]?.label, dictionary[unitTo])) ||
+          ''}
       </div>
 
       {dictionary[unitFrom]?.info && (

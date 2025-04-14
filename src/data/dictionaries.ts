@@ -299,14 +299,39 @@ export const dictionaries = {
     }
   },
   surface: {
+    mm2: {
+      label: 'milimètre carré',
+      divisor: 0.000000001,
+      pluralize_all: true
+    },
+    cm2: {
+      label: 'centimètre carré',
+      divisor: 0.0000001,
+      pluralize_all: true
+    },
+    sqft: {
+      label: 'pied carré',
+      divisor: 0.00009290304,
+      pluralize_all: true
+    },
     m2: {
       label: 'mètre carré',
       divisor: 0.001,
       pluralize_all: true
     },
+    a: {
+      label: 'are',
+      divisor: 0.1,
+      pluralize: true
+    },
     ha: {
       label: 'hectare',
       divisor: 10,
+      pluralize: true
+    },
+    acre: {
+      label: 'acre',
+      divisor: 4.04686,
       pluralize: true
     },
     km2: {
@@ -314,9 +339,19 @@ export const dictionaries = {
       divisor: 1000,
       pluralize_all: true
     },
+    a5: {
+      label: 'feuille A5',
+      divisor: 0.00003108,
+      pluralize: true
+    },
     a4: {
       label: 'feuille A4',
-      divisor: 0.00006237,
+      divisor: 0.0006237,
+      pluralize: true
+    },
+    a3: {
+      label: 'feuille A3',
+      divisor: 0.00012474,
       pluralize: true
     },
     tennis_field: {
@@ -334,11 +369,17 @@ export const dictionaries = {
       divisor: 0.8,
       pluralize: true
     },
+    rugby_field: {
+      label: 'terrain de rugby',
+      divisor: 6.7275,
+      pluralize: true
+    },
     football_field: {
       label: 'terrain de football',
       divisor: 7.14,
       pluralize: true
     },
+
     paris: {
       label: 'Paris',
       divisor: 105400,
