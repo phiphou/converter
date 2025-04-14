@@ -1,0 +1,40 @@
+@import 'tailwindcss';
+
+/* #root {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+} */
+
+#root {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 1920px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.mxh {
+  min-height: calc(100vh - 220px);
+}
+
+footer {
+  margin-top: auto;
+}
+.card {
+  padding: 2em;
+}
+
+.logo {
+  max-width: 110px;
+  position: absolute;
+  margin-top: -41px;
+  margin-left: -35px;
+}
