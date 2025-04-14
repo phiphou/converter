@@ -1,6 +1,6 @@
 import React from "react";
 
-const CharteMunich: React.FC = () => {
+const UsefulLinks: React.FC = () => {
   return (
     <div className="mxh">
       <a target="_blank" href="https://fr.wikipedia.org/wiki/Charte_de_Munich">
@@ -10,4 +10,4 @@ const CharteMunich: React.FC = () => {
   );
 };
 
-export default CharteMunich;
+export default UsefulLinks;
