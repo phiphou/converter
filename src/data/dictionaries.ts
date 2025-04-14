@@ -411,9 +411,24 @@ export const dictionaries = {
       divisor: 0.00001,
       pluralize: true
     },
+    inch: {
+      label: 'pouce',
+      divisor: 0.0000254,
+      pluralize: true
+    },
     dm: {
       label: 'décimètre',
       divisor: 0.0001,
+      pluralize: true
+    },
+    foot: {
+      label: 'pied',
+      divisor: 0.0003048,
+      pluralize: true
+    },
+    footardt: {
+      label: 'yard',
+      divisor: 0.0009144,
       pluralize: true
     },
     m: {
@@ -425,6 +440,16 @@ export const dictionaries = {
       label: 'kilomètre',
       divisor: 1,
       pluralize: true
+    },
+    mile: {
+      label: 'mile',
+      divisor: 1.609,
+      pluralize: true
+    },
+    nm: {
+      label: 'mile nautique',
+      divisor: 1.852,
+      pluralize_all: true
     },
     ly: {
       label: 'année lumière',
