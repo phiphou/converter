@@ -401,6 +401,51 @@ export const dictionaries = {
       label: 'aa:mm:jj',
       divisor: 1,
       formater: ymd_formater
+    },
+    H100m: {
+      label: 'record du 100m H',
+      divisor: 9.58,
+      pluralize: false
+    },
+    H200m: {
+      label: 'record du 200m H',
+      divisor: 19.19,
+      pluralize: false
+    },
+    H400m: {
+      label: 'record du 400m H',
+      divisor: 43.03,
+      pluralize: false
+    },
+    H800m: {
+      label: 'record du 800m H',
+      divisor: 100.91,
+      pluralize: false
+    },
+    H1500m: {
+      label: 'record du 1500m H',
+      divisor: 206,
+      pluralize: false
+    },
+    H3000m: {
+      label: 'record du 3000m steeple H',
+      divisor: 472.11,
+      pluralize: false
+    },
+    H5000m: {
+      label: 'record du 5000m H',
+      divisor: 755.36,
+      pluralize: false
+    },
+    H10000m: {
+      label: 'record du 10000m H',
+      divisor: 1571,
+      pluralize: false
+    },
+    Hmarathon: {
+      label: 'record du Marathon H',
+      divisor: 7235,
+      pluralize: false
     }
   },
   radioactivité: {
