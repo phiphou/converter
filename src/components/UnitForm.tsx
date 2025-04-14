@@ -93,7 +93,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           </select>
         </div>
       </div>
-      <label className="mb-2 text-lg font-medium text-gray-900 dark:text-white">
+      <label className="mb-2 text-lg font-medium text-gray-text-white dark:text-white ">
         {value.toLocaleString('fr-FR', { minimumFractionDigits: 0 }).replace(',', '.')}{' '}
         {pluralize(result, dictionary[unitFrom]?.label, dictionary[unitFrom]) || ''} ={' '}
         {result !== null
