@@ -437,6 +437,12 @@ export const dictionaries = {
     }
   },
   radioactivité_2: {
+    infos: {
+      label:
+        "Pour un calcul plus prévis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr/' target='_blank'>https://expop.irsn.fr/</a>",
+      divisor: 999999999,
+      pluralize: false
+    },
     banana: {
       label: 'banane par jour',
       divisor: (6.2 / 1000000000) * 365 * 19.2 * 1000,
