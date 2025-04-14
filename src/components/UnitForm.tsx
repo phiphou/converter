@@ -20,12 +20,8 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
       const toDivisor = dictionary[unitTo].divisor
       if (unitFrom === unitTo) {
         setResult(value)
-      } else if (dictionary[unitFrom].converter === dictionary[unitTo].converter) {
-        setResult(
-          dictionary[unitTo].converter
-            ? dictionary[unitTo].converter(value, dictionary[unitFrom], dictionary[unitTo])
-            : null
-        )
+      } else if (dictionary[unitFrom].converter && dictionary[unitFrom].converter === dictionary[unitTo].converter) {
+        setResult(dictionary[unitTo].converter(value, dictionary[unitFrom], dictionary[unitTo]))
       } else {
         setResult((value * fromDivisor) / toDivisor)
       }

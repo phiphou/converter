@@ -206,6 +206,16 @@ export const dictionaries = {
       divisor: 0.7,
       pluralize: true
     },
+    twingo: {
+      label: 'Renault Twingo 3',
+      divisor: 0.864,
+      pluralize: true
+    },
+    african_elephant: {
+      label: "éléphant d'Afrique mâle",
+      divisor: 6,
+      pluralize: true
+    },
     titanic: {
       label: 'Titanic',
       divisor: 52310,
