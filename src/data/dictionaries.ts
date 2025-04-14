@@ -228,13 +228,13 @@ export const dictionaries = {
       pluralize: true
     },
     twingo: {
-      info: 'à vide',
+      info: 'masse à vide',
       label: 'Renault Twingo 3',
       divisor: 0.864,
       pluralize: false
     },
     tesla_s: {
-      info: 'à vide',
+      info: 'masse à vide',
       label: 'Tesla model S',
       divisor: 2.1155,
       pluralize: false
@@ -270,13 +270,13 @@ export const dictionaries = {
       pluralize: false
     },
     a380: {
-      info: 'à vide',
+      info: 'masse à vide',
       label: 'Airbus A380',
       divisor: 276.8,
       pluralize: false
     },
     leclerc_tank: {
-      info: 'à vide',
+      info: 'masse à vide',
       label: 'char Leclerc',
       divisor: 56,
       pluralize: true
