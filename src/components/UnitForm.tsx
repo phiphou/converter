@@ -4,7 +4,8 @@ import { Unit } from '../types'
 function UnitForm({ label, dictionary }: { label: string; dictionary: Record<string, Unit> }) {
   const [unitFrom, setUnitFrom] = useState<string>('')
   const [unitTo, setUnitTo] = useState<string>('')
-  const [value, setValue] = useState<number>(1)
+  const [rawValue, setRawValue] = useState<string>('1') // Gère la valeur brute saisie par l'utilisateur
+  const [value, setValue] = useState<number>(1) // Gère la valeur numérique pour les calculs
   const [result, setResult] = useState<number | null>(null) // Utilisez `null` pour indiquer un état non calculé
 
   useEffect(() => {
@@ -35,7 +36,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
       return result !== null && result >= 2
         ? label
             .split(' ')
-            .map((v) => v + 's')
+            .map((v) => (v.endsWith('s') ? v : v + 's')) // Ajoute "s" uniquement si absent
             .join(' ')
         : label
     } else {
@@ -43,9 +44,12 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
         return result !== null && result >= 2
           ? label
               .split(' ')
-              .map((v, i) => (i === 0 ? v + 's' : v)) // Pluralise uniquement le premier mot
+              .map((v, i) => (i === 0 && !v.endsWith('s') ? v + 's' : v)) // Ajoute "s" au premier mot uniquement si absent
               .join(' ')
           : label
+              .split(' ')
+              .map((v, i) => (i === 0 && v.endsWith('s') ? v.slice(0, -1) : v)) // Retire "s" du premier mot si présent
+              .join(' ')
       } else {
         return label
       }
@@ -58,11 +62,19 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
       <div className="mt-5 flex flex-col min-w-full items-baseline mb-5">
         <div className="mt-5 flex min-w-full justify-items-center items-baseline mb-5">
           <input
-            type="number"
+            type="text"
             className="w-40 mr-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus-within:ring-blue-500 dark:focus-within:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder={label}
-            value={value}
-            onChange={(e) => setValue(Number(e.target.value))}
+            value={rawValue} // Affiche la valeur brute
+            onChange={(e) => {
+              const inputValue = e.target.value.replace(',', '.') // Remplace les virgules par des points
+              setRawValue(inputValue) // Met à jour la valeur brute
+
+              const numericValue = parseFloat(inputValue) // Convertit en nombre
+              if (!isNaN(numericValue)) {
+                setValue(numericValue) // Met à jour la valeur numérique si valide
+              }
+            }}
           />
           <select
             value={unitFrom}
