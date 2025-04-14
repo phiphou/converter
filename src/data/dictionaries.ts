@@ -279,7 +279,7 @@ export const dictionaries = {
       pluralize: false
     }
   },
-  distance: {
+  longueur: {
     nanom: {
       label: 'nanomètre',
       divisor: 0.000000000001,
@@ -318,6 +318,21 @@ export const dictionaries = {
     ly: {
       label: 'année lumière',
       divisor: 9453939595488,
+      pluralize: true
+    },
+    white_cell: {
+      label: 'globule rouge (diamètre)',
+      divisor: 0.0000000072,
+      pluralize: true
+    },
+    red_cell: {
+      label: 'globule blanc (diamètre)',
+      divisor: 0.000000012,
+      pluralize: true
+    },
+    fine_sand: {
+      label: 'grain de sable fin (diamètre)',
+      divisor: 0.000000188,
       pluralize: true
     },
     stadium: {
