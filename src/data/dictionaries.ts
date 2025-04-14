@@ -1,3 +1,4 @@
+import { temp_converter } from '../converters/temp_converter'
 import { hms_formater } from '../formaters/hms_formater'
 import { ymd_formater } from '../formaters/ymd_formater'
 
@@ -459,6 +460,32 @@ export const dictionaries = {
       label: 'mSv/an',
       divisor: 1,
       pluralize: false
+    }
+  },
+  température: {
+    celsius: {
+      label: 'degré Celsius',
+      divisor: 1,
+      converter: temp_converter,
+      pluralize: true
+    },
+    fahrenheit: {
+      label: 'degré Fahrenheit',
+      divisor: 1,
+      converter: temp_converter,
+      pluralize: true
+    },
+    kelvin: {
+      label: 'Kelvin',
+      divisor: 1,
+      converter: temp_converter,
+      pluralize: false
+    },
+    réaumur: {
+      label: 'degré Réaumur',
+      divisor: 1,
+      converter: temp_converter,
+      pluralize: true
     }
   }
 }

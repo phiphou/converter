@@ -18,7 +18,17 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
     if (unitFrom && unitTo && dictionary[unitFrom] && dictionary[unitTo]) {
       const fromDivisor = dictionary[unitFrom].divisor
       const toDivisor = dictionary[unitTo].divisor
-      setResult((value * fromDivisor) / toDivisor)
+      if (unitFrom === unitTo) {
+        setResult(value)
+      } else if (dictionary[unitFrom].converter === dictionary[unitTo].converter) {
+        setResult(
+          dictionary[unitTo].converter
+            ? dictionary[unitTo].converter(value, dictionary[unitFrom], dictionary[unitTo])
+            : null
+        )
+      } else {
+        setResult((value * fromDivisor) / toDivisor)
+      }
     } else {
       setResult(null)
     }
