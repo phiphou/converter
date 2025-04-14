@@ -6,7 +6,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
   const [unitTo, setUnitTo] = useState<string>('')
   const [rawValue, setRawValue] = useState<string>('1') // Gère la valeur brute saisie par l'utilisateur
   const [value, setValue] = useState<number>(1) // Gère la valeur numérique pour les calculs
-  const [result, setResult] = useState<number | null>(null) // Utilisez `null` pour indiquer un état non calculé
+  const [result, setResult] = useState<number | null>(1) // Utilisez `null` pour indiquer un état non calculé
 
   useEffect(() => {
     const firstFromUnit = Object.keys(dictionary).find((key) => key !== 'infos' && dictionary[key]) || ''
@@ -41,7 +41,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
         : label
     } else {
       if (unit && unit.pluralize) {
-        return result !== null && result >= 2
+        return result !== null && parseFloat(rawValue) >= 2
           ? label
               .split(' ')
               .map((v, i) => (i === 0 && !v.endsWith('s') ? v + 's' : v)) // Ajoute "s" au premier mot uniquement si absent

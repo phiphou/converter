@@ -39,6 +39,11 @@ export const dictionaries = {
       divisor: 0.00075,
       pluralize: true
     },
+    gallon: {
+      label: 'gallon',
+      divisor: 0.003785,
+      pluralize: false
+    },
     bathtub: {
       label: 'baignoire',
       divisor: 0.155,
@@ -77,8 +82,14 @@ export const dictionaries = {
     anecy_lake: {
       label: "lac d'Annecy",
       divisor: 1124000000,
-      pluralize: true
+      pluralize: false
     },
+    leman_lake: {
+      label: 'lac Léman',
+      divisor: 89000000000,
+      pluralize: false
+    },
+
     france_water: {
       label: 'Pluie par an en France',
       divisor: 510000000000,
@@ -106,6 +117,16 @@ export const dictionaries = {
       divisor: 0.000001,
       pluralize: true
     },
+    kilogram: {
+      label: 'kilogramme',
+      divisor: 0.001,
+      pluralize: true
+    },
+    tons: {
+      label: 'tonne',
+      divisor: 1,
+      pluralize: true
+    },
     oz: {
       label: 'once anglo-saxone',
       divisor: 0.00002835,
@@ -116,14 +137,9 @@ export const dictionaries = {
       divisor: 0.0000311034768,
       pluralize: true
     },
-    kilogram: {
-      label: 'kilogramme',
-      divisor: 0.001,
-      pluralize: true
-    },
-    tons: {
-      label: 'tonne',
-      divisor: 1,
+    lb: {
+      label: 'livre',
+      divisor: 0.00045359237,
       pluralize: true
     },
     one_euro_cent: {
@@ -164,6 +180,11 @@ export const dictionaries = {
     two_euro: {
       label: 'pièce de deux euros',
       divisor: 0.0000085,
+      pluralize: true
+    },
+    rice_grain: {
+      label: 'grain de riz',
+      divisor: 0.0000003014,
       pluralize: true
     },
     ping_pong_ball: {
@@ -207,8 +228,30 @@ export const dictionaries = {
       pluralize: true
     },
     twingo: {
+      info: 'à vide',
       label: 'Renault Twingo 3',
       divisor: 0.864,
+      pluralize: false
+    },
+    tesla_s: {
+      info: 'à vide',
+      label: 'Tesla model S',
+      divisor: 2.1155,
+      pluralize: false
+    },
+    grizzli_bear: {
+      label: 'ours Grizzli',
+      divisor: 0.27,
+      pluralize: false
+    },
+    polar_bear: {
+      label: 'ours polaire',
+      divisor: 0.45,
+      pluralize: false
+    },
+    white_shark: {
+      label: 'requin blanc femelle',
+      divisor: 1.325,
       pluralize: true
     },
     african_elephant: {
@@ -225,6 +268,34 @@ export const dictionaries = {
       label: 'USS Gerald R. Ford',
       divisor: 112000,
       pluralize: false
+    },
+    a380: {
+      info: 'à vide',
+      label: 'Airbus A380',
+      divisor: 276.8,
+      pluralize: false
+    },
+    leclerc_tank: {
+      info: 'à vide',
+      label: 'char Leclerc',
+      divisor: 56,
+      pluralize: true
+    },
+    eiffel_tower: {
+      info: 'avec fondations',
+      label: 'Tour Eiffel',
+      divisor: 10100,
+      pluralize: false
+    },
+    triumph_arch: {
+      label: 'Arc de triomphe',
+      divisor: 50000,
+      pluralize: false
+    },
+    gizeh_pyramid: {
+      label: 'pyramide de Gizeh',
+      divisor: 5750000,
+      pluralize: true
     }
   },
   surface: {
