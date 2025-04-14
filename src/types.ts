@@ -5,4 +5,5 @@ export interface Unit {
   pluralize?: boolean
   pluralize_all?: boolean
   converter?: (value: number, from: Unit, to: Unit) => number
+  info?: string
 }

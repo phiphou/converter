@@ -113,7 +113,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           </select>
         </div>
       </div>
-      <label className="mb-2 text-lg font-medium text-gray-text-white dark:text-white ">
+      <div className="mb-3 text-lg font-medium text-gray-text-white dark:text-white ">
         {value.toLocaleString('fr-FR', { minimumFractionDigits: 0 }).replace(',', '.')}{' '}
         {pluralize(result, dictionary[unitFrom]?.label, dictionary[unitFrom]) || ''} ={' '}
         {result !== null
@@ -122,15 +122,36 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
             : result.toLocaleString('fr-FR', { maximumFractionDigits: 2 }).replace(',', '.')
           : ''}{' '}
         {(!dictionary[unitTo]?.formater && pluralize(result, dictionary[unitTo]?.label, dictionary[unitTo])) || ''}
-      </label>
+      </div>
+
+      {dictionary[unitFrom]?.info && (
+        <>
+          <br />
+          <div className="max-w-150 min-w-150 text-left">
+            <span>* </span>
+            <span dangerouslySetInnerHTML={{ __html: dictionary[unitFrom].info }} />
+          </div>
+        </>
+      )}
+
+      {dictionary[unitTo]?.info && (
+        <>
+          <br />
+          <div className="max-w-150 min-w-150 text-left">
+            <span>* </span>
+            <span dangerouslySetInnerHTML={{ __html: dictionary[unitTo].info }} />
+          </div>
+        </>
+      )}
+
       {dictionary['infos'] && (
         <>
           <br />
           <br />
-          <div
-            className="max-w-150 min-w-150 text-left"
-            dangerouslySetInnerHTML={{ __html: dictionary['infos'].label }}
-          />
+          <div className="max-w-150 min-w-150 text-left">
+            <span>* </span>
+            <span dangerouslySetInnerHTML={{ __html: dictionary['infos'].label }} />
+          </div>
         </>
       )}
     </div>

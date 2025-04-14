@@ -361,6 +361,55 @@ export const dictionaries = {
       pluralize: false
     }
   },
+  énergie: {
+    wh: {
+      label: 'Wh',
+      divisor: 1,
+      pluralize: false
+    },
+    kwh: {
+      label: 'kWh',
+      divisor: 1000,
+      pluralize: false
+    },
+    mug: {
+      info: 'avec une boulloire électrique de 1200W',
+      label: "Mug d'eau bouillante",
+      divisor: 40,
+      pluralize: true
+    },
+    m3: {
+      label: 'heure de vidéo sur un MacBook Air m4',
+      divisor: 3.59,
+      pluralize: true
+    },
+    s25: {
+      label: 'recharge Samsung Galaxy S25',
+      divisor: 25,
+      pluralize: true
+    },
+    micro_wave: {
+      label: "3 minutes d'un micro-ondes de 900W",
+      divisor: 45,
+      pluralize: false
+    },
+    dishwasher: {
+      label: 'cycle de lave-vaisselle',
+      divisor: 1150,
+      pluralize: true
+    },
+    lwashing_machine: {
+      label: 'cycle de lave-linge classe B',
+      divisor: 520,
+      pluralize: true
+    },
+    bifsteak: {
+      info: 'avec un four de 2500W, hors préchaufage',
+      label: 'Roti de 1kg 30min au four à 220°',
+      divisor: 850,
+      pluralize: false
+    }
+  },
   durée: {
     s: {
       label: 'seconde',
