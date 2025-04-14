@@ -8,8 +8,8 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
   const [result, setResult] = useState<number | null>(null) // Utilisez `null` pour indiquer un état non calculé
 
   useEffect(() => {
-    const firstFromUnit = Object.keys(dictionary).find((key) => dictionary[key]) || ''
-    const firstToUnit = Object.keys(dictionary).find((key) => dictionary[key]) || ''
+    const firstFromUnit = Object.keys(dictionary).find((key) => key !== 'infos' && dictionary[key]) || ''
+    const firstToUnit = Object.keys(dictionary).find((key) => key !== 'infos' && dictionary[key]) || ''
     setUnitFrom(firstFromUnit)
     setUnitTo(firstToUnit)
   }, [dictionary])
@@ -69,11 +69,15 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
             onChange={(e) => setUnitFrom(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            {Object.keys(dictionary).map((key) => (
-              <option key={key} value={key}>
-                {dictionary[key].label}
-              </option>
-            ))}
+            {Object.keys(dictionary).map((key) => {
+              if (key !== 'infos') {
+                return (
+                  <option key={key} value={key}>
+                    {dictionary[key].label}
+                  </option>
+                )
+              }
+            })}
           </select>
         </div>
         <div className="mt-5 flex min-w-full justify-items-center items-baseline mb-5">
@@ -85,11 +89,15 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
             onChange={(e) => setUnitTo(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            {Object.keys(dictionary).map((key) => (
-              <option key={key} value={key}>
-                {dictionary[key].label}
-              </option>
-            ))}
+            {Object.keys(dictionary).map((key) => {
+              if (key !== 'infos') {
+                return (
+                  <option key={key} value={key}>
+                    {dictionary[key].label}
+                  </option>
+                )
+              }
+            })}
           </select>
         </div>
       </div>
@@ -103,6 +111,13 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           : ''}{' '}
         {(!dictionary[unitTo]?.formater && pluralize(result, dictionary[unitTo]?.label, dictionary[unitTo])) || ''}
       </label>
+      {dictionary['infos'] && (
+        <>
+          <br />
+          <br />
+          <label dangerouslySetInnerHTML={{ __html: dictionary['infos'].label }} />
+        </>
+      )}
     </div>
   )
 }

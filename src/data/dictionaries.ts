@@ -404,6 +404,12 @@ export const dictionaries = {
     }
   },
   radioactivité: {
+    infos: {
+      label:
+        "Pour un calcul plus prévis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr/' target='_blank'>https://expop.irsn.fr/</a>",
+      divisor: 999999999,
+      pluralize: false
+    },
     bq: {
       label: 'Bequerel',
       divisor: 1,
