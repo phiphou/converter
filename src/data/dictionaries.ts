@@ -446,6 +446,11 @@ export const dictionaries = {
       label: 'record du Marathon H',
       divisor: 7235,
       pluralize: false
+    },
+    H100km: {
+      label: 'record du 100km H',
+      divisor: 21935,
+      pluralize: false
     }
   },
   radioactivité: {
