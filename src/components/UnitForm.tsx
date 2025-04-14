@@ -132,7 +132,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
       {dictionary[unitFrom]?.info && (
         <>
           <br />
-          <div className="max-w-150 min-w-150 text-left">
+          <div className="max-w-150 min-w-60 text-left">
             <span>* </span>
             <span dangerouslySetInnerHTML={{ __html: dictionary[unitFrom].info }} />
           </div>
@@ -142,7 +142,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
       {dictionary[unitTo]?.info && (
         <>
           <br />
-          <div className="max-w-150 min-w-150 text-left">
+          <div className="max-w-150 min-w-60 text-left">
             <span>* </span>
             <span dangerouslySetInnerHTML={{ __html: dictionary[unitTo].info }} />
           </div>

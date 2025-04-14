@@ -89,7 +89,6 @@ export const dictionaries = {
       divisor: 89000000000,
       pluralize: false
     },
-
     france_water: {
       label: 'Pluie par an en France',
       divisor: 510000000000,
@@ -448,7 +447,7 @@ export const dictionaries = {
       pluralize: true
     },
     stadium: {
-      label: 'piste de stade',
+      label: 'piste olympique',
       divisor: 0.4,
       pluralize: true
     },
@@ -457,18 +456,37 @@ export const dictionaries = {
       divisor: 1.63,
       pluralize: false
     },
+    nation_republic: {
+      label: 'Nation - République',
+      divisor: 3.22,
+      pluralize: false
+    },
+    marathon: {
+      label: 'marathon',
+      divisor: 42.195,
+      pluralize: true
+    },
     paris_marseille: {
-      label: 'Paris - Marseille autoroute',
+      info: 'trajet le plus court par la route',
+      label: 'Paris - Marseille',
       divisor: 800,
       pluralize: false
     },
+    perpignan_dunkerque: {
+      info: 'trajet le plus court par la route',
+      label: 'Perpignan - Dunkerque',
+      divisor: 1138,
+      pluralize: false
+    },
     paris_nyc: {
-      label: "Paris - New-York vol d'oiseau",
+      info: "trajet le plus court à vol d'oiseau",
+      label: 'Paris - New-York',
       divisor: 5837.07,
       pluralize: false
     },
     paris_sydney: {
-      label: "Paris - Sydney vol d'oiseau",
+      info: "trajet le plus court à vol d'oiseau",
+      label: 'Paris - Sydney',
       divisor: 16960.33,
       pluralize: false
     },
