@@ -66,7 +66,6 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
 
   return (
     <div>
-      {/* <h4>{label}</h4> */}
       <div className="mt-5 flex flex-col min-w-full items-baseline mb-5">
         <div className="mt-5 flex min-w-full justify-items-center  mb-5">
           <input
