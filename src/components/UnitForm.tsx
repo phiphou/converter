@@ -159,7 +159,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
         )}
       </div>
 
-      <div className="mb-3 text-lg font-medium text-gray-text-white dark:text-white text-black ">
+      <div className="mb-10 text-lg font-medium text-gray-text-white dark:text-white text-black ">
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
             {value} {dictionary[unitFrom].label} vaut{' '}
@@ -171,25 +171,24 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
 
       {dictionary[unitFrom]?.info && (
         <>
-          <br />
-          <div className=" min-w-60 text-left flex align-middle dark:text-white text-black">
+          <div className="mt-3 min-w-60 text-left flex align-middle dark:text-white text-black">
             <span>
-              <img src={infoIcon} className="w-6 h-6 mr-3" />
+              <img src={infoIcon} className="w-6 h-6 mr-2" />
             </span>
-            <span dangerouslySetInnerHTML={{ __html: dictionary[unitFrom].info }} />
-            <span>&nbsp;({dictionary[unitFrom].label})</span>
+            <span
+              dangerouslySetInnerHTML={{ __html: `${dictionary[unitFrom].label} : ${dictionary[unitFrom].info}` }}
+            />
           </div>
         </>
       )}
 
       {dictionary[unitTo]?.info && dictionary[unitTo]?.info != dictionary[unitFrom]?.info && (
         <>
-          <br />
-          <div className="min-w-60 text-left flex align-middle dark:text-white text-black leading-[1.6]">
+          <div className="mt-3 min-w-60 text-left flex align-middle dark:text-white text-black leading-[1.6]">
             <span>
-              <img src={infoIcon} className="w-6 h-6 mr-3" />
+              <img src={infoIcon} className="w-6 h-6 mr-2" />
             </span>
-            <span dangerouslySetInnerHTML={{ __html: dictionary[unitTo].info + ' ' + dictionary[unitTo].label }} />
+            <span dangerouslySetInnerHTML={{ __html: `${dictionary[unitTo].label} : ${dictionary[unitTo].info}` }} />
           </div>
         </>
       )}
