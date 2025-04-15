@@ -16,8 +16,8 @@
 }
 
 .logo {
-  max-width: 110px;
-  position: absolute;
-  margin-top: -41px;
-  margin-left: -35px;
+  max-height: 108px;
+  position: relative;
+  margin-top: -69px;
+  margin-right: -65px;
 }

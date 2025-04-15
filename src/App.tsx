@@ -6,7 +6,7 @@ import Dark_mode_button from './components/dark_mode_button'
 function App() {
   return (
     <div className="pb-3 container">
-      <div className="flex gap-2 mt-10">
+      <div className="mx-auto flex items-center justify-center mt-10">
         <img src={mainLogo} className="logo" />
         <h2 className=" text-black dark:text-white">Convertisseur pour journaliste</h2>
       </div>
