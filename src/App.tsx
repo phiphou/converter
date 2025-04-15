@@ -61,6 +61,9 @@ function App() {
         setDark(true)
         document.documentElement.setAttribute('data-theme', 'dark')
       }
+    } else {
+      setDark(true)
+      document.documentElement.setAttribute('data-theme', 'dark')
     }
   }, [])
 
