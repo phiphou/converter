@@ -711,7 +711,7 @@ export const dictionaries = {
   radioactivité: {
     infos: {
       label:
-        "Pour un calcul plus prévis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr/' target='_blank'>https://expop.irsn.fr/</a>",
+        "Pour un calcul plus précis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr/' target='_blank'>https://expop.irsn.fr/</a>",
       divisor: 999999999,
       pluralize: false
     },
@@ -744,7 +744,7 @@ export const dictionaries = {
   radioactivité_2: {
     infos: {
       label:
-        "Pour un calcul plus prévis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr/' target='_blank'>https://expop.irsn.fr/</a>",
+        "Pour un calcul plus précis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr/' target='_blank'>https://expop.irsn.fr/</a>",
       divisor: 999999999,
       pluralize: false
     },
