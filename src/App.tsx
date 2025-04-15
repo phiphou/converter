@@ -14,7 +14,7 @@ function App() {
       <div className="min-w-[600px] max-w-[800px]">
         <Form />
       </div>
-      <footer className="text-center mt-1 mb-2 text-sm text-gray-500 dark:text-gray-400">
+      <footer className="text-center mt-auto mb-2 text-sm text-gray-500 dark:text-gray-400">
         <Dark_mode_button />© {new Date().getFullYear()} @Phiphou Tous droits réservés. Contribuez sur{' '}
         <a href="http://github.com/phiphou/converter" target="_blank">
           Github

@@ -2,24 +2,12 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-/* #root {
-  max-width: 1920px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-} */
-
 #root {
   display: flex;
   flex-direction: column;
-  /* max-height: 100vh; */
   max-width: 1920px;
-  margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 2rem;
-  padding-bottom: 0rem;
-  margin-bottom: 0;
+  margin: 0 auto 0 auto;
+  padding: 2rem 2rem 0 2rem;
   text-align: center;
 }
 
@@ -27,28 +15,9 @@
   min-height: calc(100vh - 240px);
 }
 
-footer {
-  margin-top: auto;
-}
-.card {
-  padding: 2em;
-}
-
 .logo {
   max-width: 110px;
   position: absolute;
   margin-top: -41px;
   margin-left: -35px;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  html {
-    color-scheme: light;
-  }
 }
