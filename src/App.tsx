@@ -62,7 +62,7 @@ function App() {
   }, [])
 
   return (
-    <div className="m-0 container">
+    <div className="pb-3 container">
       <div className="flex gap-2 mt-10">
         <img src={mainLogo} className="logo" />
         <h2 className=" text-black dark:text-white">Convertisseur pour journaliste</h2>
@@ -71,7 +71,7 @@ function App() {
       <div className="min-w-[600px] max-w-[800px]">
         <Form />
       </div>
-      <footer className="text-center mt-1 mb-1 text-sm text-gray-500 dark:text-gray-400">
+      <footer className="text-center mt-1 mb-2 text-sm text-gray-500 dark:text-gray-400">
         <Dark_mode_button dark={dark} darkModeHandler={darkModeHandler} />© {new Date().getFullYear()} @Phiphou Tous
         droits réservés. Contribuez sur{' '}
         <a href="http://github.com/phiphou/converter" target="_blank">

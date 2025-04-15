@@ -174,7 +174,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           <br />
           <div className=" min-w-60 text-left flex align-middle dark:text-white text-black">
             <span>
-              <img src={infoIcon} className="w-6 h-6 mr-2" />
+              <img src={infoIcon} className="w-6 h-6 mr-3" />
             </span>
             <span dangerouslySetInnerHTML={{ __html: dictionary[unitFrom].info }} />
             <span>&nbsp;({dictionary[unitFrom].label})</span>
@@ -187,7 +187,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           <br />
           <div className="min-w-60 text-left flex align-middle dark:text-white text-black leading-[1.6]">
             <span>
-              <img src={infoIcon} className="w-6 h-6 mr-2" />
+              <img src={infoIcon} className="w-6 h-6 mr-3" />
             </span>
             <span dangerouslySetInnerHTML={{ __html: dictionary[unitTo].info + ' ' + dictionary[unitTo].label }} />
           </div>
@@ -200,7 +200,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           <br />
           <div className=" min-w-60 text-left flex align-middle  dark:text-white text-black">
             <span>
-              <img src={infoIcon} className="w-6 h-6 mr-2" />
+              <img src={infoIcon} className="w-6 h-6 mr-4" />
             </span>
             <span dangerouslySetInnerHTML={{ __html: dictionary['infos'].label }} />
           </div>
