@@ -45,18 +45,21 @@ export const dictionaries = {
       pluralize: false
     },
     bathtub: {
+      info: 'volume moyen selon <a href="https://isi-sanitaire.fr/blog/astuces_conseils_tutos/litres-eau-pour-remplir-une-baignoire/" target="_blank">isi-sanitaire</a>',
       label: 'baignoire',
       divisor: 0.155,
       pluralize: true
     },
     shower: {
+      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/"  target="_blank">ekwateur</a>',
       label: 'douche de 5 minutes',
-      divisor: 0.06,
+      divisor: 0.12,
       pluralize: true
     },
     shower2: {
+      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/"  target="_blank">ekwateur</a>',
       label: 'douche de 10 minutes',
-      divisor: 0.12,
+      divisor: 0.2,
       pluralize: true
     },
     oil_barrel: {
@@ -64,12 +67,14 @@ export const dictionaries = {
       divisor: 0.159,
       pluralize: true
     },
-    c15: {
-      label: 'Citroën C15 fourgon',
-      divisor: 2.67,
+    berlingo: {
+      info: 'volume utile selon le <a href="https://www.citroen.fr/vehicules/utility/Nouveau-Berlingo-Van.html"  target="_blank">constructeur</a>',
+      label: 'Citroën Berlingo Van M',
+      divisor: 3.3,
       pluralize: false
     },
     olympic_swimming_pool: {
+      info: 'pour une piscine de 50x25x2m',
       label: 'piscine olympique',
       divisor: 2500,
       pluralize_all: true
@@ -187,55 +192,63 @@ export const dictionaries = {
       pluralize: true
     },
     ping_pong_ball: {
+      info: 'moyenne des limites réglementaires',
       label: 'balle de ping-pong',
       divisor: 0.0000027,
       pluralize: true
     },
     tennis_ball: {
+      info: 'moyenne des limites réglementaires',
       label: 'balle de tennis',
       divisor: 0.0000577,
       pluralize: true
     },
     volley_ball: {
+      info: 'moyenne des limites réglementaires',
       label: 'ballon de volleyball',
       divisor: 0.00027,
       pluralize: true
     },
     hand_ball: {
+      info: 'moyenne des limites réglementaires',
       label: 'ballon de handball',
       divisor: 0.00045,
       pluralize: true
     },
     foot_ball: {
+      info: 'moyenne des limites réglementaires',
       label: 'ballon de foot',
       divisor: 0.00043,
       pluralize: true
     },
     basket_ball: {
+      info: 'moyenne des limites réglementaires',
       label: 'ballon de basket',
       divisor: 0.00065,
       pluralize: true
     },
     petanque_ball: {
+      info: 'moyenne des limites réglementaires',
       label: 'boule de pétanque',
       divisor: 0.0008,
       pluralize: true
     },
     oak_stere: {
+      info: "pour un bois de chauffage sec (20% d'humidité)",
       label: 'stère de chêne',
-      divisor: 0.7,
+      divisor: 0.44,
       pluralize: true
     },
     twingo: {
-      info: 'masse à vide',
+      info: 'masse à vide, selon les données de<a href="https://fr.wikipedia.org/wiki/Renault_Twingo_III"  target="_blank">Wikipédia</a>',
       label: 'Renault Twingo 3',
       divisor: 0.864,
       pluralize: false
     },
     tesla_s: {
-      info: 'masse à vide',
+      info: 'masse à vide, selon les données du <a href="https://www.tesla.com/fr_fr/models"  target="_blank">constructeur</a>',
       label: 'Tesla model S',
-      divisor: 2.1155,
+      divisor: 2.068,
       pluralize: false
     },
     grizzli_bear: {
