@@ -172,7 +172,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
       {dictionary[unitFrom]?.info && (
         <>
           <br />
-          <div className="max-w-150 min-w-60 text-left flex align-middle">
+          <div className="max-w-150 min-w-60 text-left flex align-middle dark:text-white text-black">
             <span>
               <img src={infoIcon} className="w-6 h-6 mr-2" />
             </span>
@@ -185,7 +185,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
       {dictionary[unitTo]?.info && dictionary[unitTo]?.info != dictionary[unitFrom]?.info && (
         <>
           <br />
-          <div className="max-w-150 min-w-60 text-left flex align-middle">
+          <div className="max-w-150 min-w-60 text-left flex align-middle dark:text-white text-black">
             <span>
               <img src={infoIcon} className="w-6 h-6 mr-2" />
             </span>
@@ -199,7 +199,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
         <>
           <br />
           <br />
-          <div className="max-w-150 min-w-60 text-left flex align-middle">
+          <div className="max-w-150 min-w-60 text-left flex align-middle  dark:text-white text-black">
             <span className="mr-2">
               <img src={infoIcon} className="w-6 h-6 mr-4" />
             </span>
