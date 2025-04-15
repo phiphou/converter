@@ -507,6 +507,12 @@ export const dictionaries = {
       divisor: 0.000000188,
       pluralize: true
     },
+    london_bus: {
+      info: 'taille des nouveaux Wrightbus New Routemaster en service depuis 2012, selon les données de <a href="https://fr.wikipedia.org/wiki/Wrightbus_New_Routemaster"  target="_blank">Wikipédia</a>',
+      label: 'bus londonien',
+      divisor: 0.01123,
+      pluralize: false
+    },
     stadium: {
       label: 'piste olympique',
       divisor: 0.4,
