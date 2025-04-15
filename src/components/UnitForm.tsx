@@ -177,6 +177,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
               <img src={infoIcon} className="w-6 h-6 mr-2" />
             </span>
             <span dangerouslySetInnerHTML={{ __html: dictionary[unitFrom].info }} />
+            <span>&nbsp;({dictionary[unitFrom].label})</span>
           </div>
         </>
       )}
@@ -189,6 +190,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
               <img src={infoIcon} className="w-6 h-6 mr-2" />
             </span>
             <span dangerouslySetInnerHTML={{ __html: dictionary[unitTo].info }} />
+            <span>&nbsp;({dictionary[unitTo].label})</span>
           </div>
         </>
       )}

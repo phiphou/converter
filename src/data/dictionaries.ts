@@ -391,7 +391,30 @@ export const dictionaries = {
       divisor: 7.14,
       pluralize: true
     },
-
+    wind_turbine: {
+      info: 'emprise totale pour une éolienne terrestre de 2MW',
+      label: 'Eéolienne',
+      divisor: 2,
+      pluralize: false
+    },
+    notre_dame_de_paris: {
+      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame_de_Paris"  target="_blank">Wikipédia</a>',
+      label: 'Notre-Dame de Paris',
+      divisor: 5.5,
+      pluralize: false
+    },
+    kheops_pyramid: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops"  target="_blank">Wikipédia</a>',
+      label: 'pyramide de Khéops',
+      divisor: 53.03809,
+      pluralize: false
+    },
+    versailles: {
+      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Parc_de_Versailles"  target="_blank">Wikipédia</a>',
+      label: 'Château de Versailles',
+      divisor: 10700,
+      pluralize: false
+    },
     paris: {
       label: 'Paris',
       divisor: 105400,
