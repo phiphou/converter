@@ -10,9 +10,12 @@ function App() {
       <div className="min-w-full">
         <Form />
       </div>
-      <span className="block text-base mt-3 mb-0  font-semibold  text-gray-300 text-center dark:text-gray-300">
-        © 2025 Phiphou
-      </span>
+      <footer className="text-center mt-1 mb-1 text-sm text-gray-500 dark:text-gray-400">
+        © {new Date().getFullYear()} @Phiphou Tous droits réservés. Contribuez sur{' '}
+        <a href="http://github.com/phiphou/converter" target="_blank">
+          Github
+        </a>
+      </footer>
     </div>
   )
 }

@@ -33,12 +33,6 @@ function Form() {
           )}
         </div>
       </div>
-      {/* <footer className="text-center mt-1 mb-1 text-sm text-gray-500 dark:text-gray-400">
-        © {new Date().getFullYear()} @Phiphou Tous droits réservés. Contribuez sur{' '}
-        <a href="http://github.com/phiphou/converter" target="_blank">
-          Github
-        </a>
-      </footer> */}
     </div>
   )
 }
