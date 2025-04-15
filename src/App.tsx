@@ -62,10 +62,13 @@ function App() {
   }, [])
 
   return (
-    <div className="m-0">
-      <img src={mainLogo} className="logo" />
-      <h2 className=" text-black dark:text-white">Convertisseur pour journaliste</h2>
-      <div className="min-w-full">
+    <div className="m-0 container">
+      <div className="flex gap-2 mt-10">
+        <img src={mainLogo} className="logo" />
+        <h2 className=" text-black dark:text-white">Convertisseur pour journaliste</h2>
+      </div>
+
+      <div className="min-w-[600px] max-w-[800px]">
         <Form />
       </div>
       <footer className="text-center mt-1 mb-1 text-sm text-gray-500 dark:text-gray-400">
