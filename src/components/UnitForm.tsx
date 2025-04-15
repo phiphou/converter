@@ -199,9 +199,9 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
         <>
           <br />
           <br />
-          <div className="max-w-150 min-w-150 text-left flex align-middle">
-            <span>
-              <img src={infoIcon} className="w-6 h-6 mr-2" />
+          <div className="max-w-150 min-w-60 text-left flex align-middle">
+            <span className="mr-2">
+              <img src={infoIcon} className="w-6 h-6 mr-4" />
             </span>
             <span dangerouslySetInnerHTML={{ __html: dictionary['infos'].label }} />
           </div>
