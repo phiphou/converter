@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 /* #root {
   max-width: 1920px;
   margin: 0 auto;
@@ -47,6 +49,6 @@ footer {
 
 @media (prefers-color-scheme: light) {
   html {
-    color-scheme: dark;
+    color-scheme: light;
   }
 }

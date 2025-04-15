@@ -136,7 +136,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           </select>
         </div>
       </div>
-      <div className="mb-3 text-lg font-medium text-gray-text-white dark:text-white ">
+      <div className="mb-3 text-lg font-medium text-gray-text-white dark:text-white  text-black ">
         {value.toLocaleString('fr-FR', { minimumFractionDigits: 0 }).replace(',', '.')}{' '}
         {pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ''} ={' '}
         {result !== null
@@ -149,7 +149,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           ''}
       </div>
 
-      <div className="mb-3 text-lg font-medium text-gray-text-white dark:text-white ">
+      <div className="mb-3 text-lg font-medium text-gray-text-white dark:text-white  text-black ">
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
             {value} {dictionary[unitTo].label} vaut{' 1/'}
@@ -159,7 +159,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
         )}
       </div>
 
-      <div className="mb-3 text-lg font-medium text-gray-text-white dark:text-white ">
+      <div className="mb-3 text-lg font-medium text-gray-text-white dark:text-white text-black ">
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
             {value} {dictionary[unitFrom].label} vaut{' '}
