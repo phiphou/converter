@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Unit } from '../types'
+import infoIcon from '../assets/icons/info.svg'
 
 function UnitForm({ label, dictionary }: { label: string; dictionary: Record<string, Unit> }) {
   const [unitFrom, setUnitFrom] = useState<string>('')
@@ -173,14 +174,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           <br />
           <div className="max-w-150 min-w-60 text-left flex align-middle">
             <span>
-              <svg viewBox="0 0 24.00 24.00" className="w-6 h-6 mr-2" fill="none">
-                <g>
-                  <g stroke="#ffc800" stroke-width="2.4" stroke-linejoin="round">
-                    <circle cx="12" cy="11.9999" r="9"></circle> <rect x="12" y="8" width="0.01" height="0.01"></rect>
-                    <path d="M12 12V16"></path>
-                  </g>
-                </g>
-              </svg>
+              <img src={infoIcon} className="w-6 h-6 mr-2" />
             </span>
             <span dangerouslySetInnerHTML={{ __html: dictionary[unitFrom].info }} />
           </div>
@@ -192,14 +186,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           <br />
           <div className="max-w-150 min-w-60 text-left flex align-middle">
             <span>
-              <svg viewBox="0 0 24.00 24.00" className="w-6 h-6 mr-2" fill="none">
-                <g>
-                  <g stroke="#ffc800" stroke-width="2.4" stroke-linejoin="round">
-                    <circle cx="12" cy="11.9999" r="9"></circle> <rect x="12" y="8" width="0.01" height="0.01"></rect>
-                    <path d="M12 12V16"></path>
-                  </g>
-                </g>
-              </svg>
+              <img src={infoIcon} className="w-6 h-6 mr-2" />
             </span>
             <span dangerouslySetInnerHTML={{ __html: dictionary[unitTo].info }} />
           </div>
@@ -212,14 +199,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           <br />
           <div className="max-w-150 min-w-150 text-left flex align-middle">
             <span>
-              <svg viewBox="0 0 24.00 24.00" className="w-6 h-6 mr-2" fill="none">
-                <g>
-                  <g stroke="#ffc800" stroke-width="2.4" stroke-linejoin="round">
-                    <circle cx="12" cy="11.9999" r="9"></circle> <rect x="12" y="8" width="0.01" height="0.01"></rect>
-                    <path d="M12 12V16"></path>
-                  </g>
-                </g>
-              </svg>
+              <img src={infoIcon} className="w-6 h-6 mr-2" />
             </span>
             <span dangerouslySetInnerHTML={{ __html: dictionary['infos'].label }} />
           </div>
