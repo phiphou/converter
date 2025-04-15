@@ -52,15 +52,14 @@ function App() {
   }
 
   useEffect(() => {
-    const darkIcon = document.getElementById('theme-toggle-dark-icon')
-    const lightIcon = document.getElementById('theme-toggle-light-icon')
-    if (darkIcon && lightIcon) {
-      if (document.documentElement.getAttribute('data-theme') === 'light') {
-        //setDark(false)
-        darkIcon.classList.add('hidden')
+    // if set via local storage previously
+    if (localStorage.getItem('color-theme')) {
+      if (localStorage.getItem('color-theme') === 'light') {
+        setDark(false)
+        document.documentElement.setAttribute('data-theme', 'light')
       } else {
-        //setDark(true)
-        lightIcon.classList.add('hidden')
+        setDark(true)
+        document.documentElement.setAttribute('data-theme', 'dark')
       }
     }
   }, [])
