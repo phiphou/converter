@@ -240,7 +240,7 @@ export const dictionaries = {
       pluralize: true
     },
     twingo: {
-      info: 'masse à vide, selon les données de<a href="https://fr.wikipedia.org/wiki/Renault_Twingo_III"  target="_blank">Wikipédia</a>',
+      info: 'masse à vide, selon les données de <a href="https://fr.wikipedia.org/wiki/Renault_Twingo_III"  target="_blank">Wikipédia</a>',
       label: 'Renault Twingo 3',
       divisor: 0.864,
       pluralize: false
