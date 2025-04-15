@@ -149,6 +149,26 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           ''}
       </div>
 
+      <div className="mb-3 text-lg font-medium text-gray-text-white dark:text-white ">
+        {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
+          <>
+            {value} {dictionary[unitTo].label} vaut{' 1/'}
+            {result.toLocaleString('fr-FR', { maximumFractionDigits: 3 }).replace(',', '.')}ème de{' '}
+            {dictionary[unitFrom].label}
+          </>
+        )}
+      </div>
+
+      <div className="mb-3 text-lg font-medium text-gray-text-white dark:text-white ">
+        {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
+          <>
+            {value} {dictionary[unitFrom].label} vaut{' '}
+            {(result * 100).toLocaleString('fr-FR', { maximumFractionDigits: 2 }).replace(',', '.')}% de{' '}
+            {dictionary[unitTo].label}
+          </>
+        )}
+      </div>
+
       {dictionary[unitFrom]?.info && (
         <>
           <br />
