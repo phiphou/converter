@@ -40,8 +40,28 @@ h1 {
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.26rem;
   margin-bottom: 5rem;
+}
+
+.vvv {
+  max-height: calc(100vh - 110px);
+}
+
+footer {
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+@media (min-width: 800px) {
+  footer {
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+  .vvv {
+    max-height: calc(100vh - 0px);
+  }
 }
 
 h4 {
