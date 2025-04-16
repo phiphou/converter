@@ -1,3 +1,13 @@
+name: lint
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+on:
+  push:
+    branches: ['main']
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -40,3 +50,4 @@ jobs:
           echo "Running lint..."
           cd $GITHUB_WORKSPACE
           pnpm run lint
+
