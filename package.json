@@ -26,7 +26,7 @@
     "build": "vite build",
     "lint": "eslint --cache --fix --ignore-pattern .gitignore --ext .ts,.tsx .",
     "preview": "vite preview",
-    "format": "prettier --log-level error -uw --cache --ignore-path ../.prettierignore .",
+    "format": "prettier --log-level error -uw --cache --ignore-path /.prettierignore .",
     "validate": "run-s typecheck format lint",
     "typecheck": "tsc"
   },
@@ -49,6 +49,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.5.1",
     "prettier": "^3.5.3",
+    "prettier-plugin-multiline-arrays": "^4.0.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.1.3",
     "typescript": "5.8.3",

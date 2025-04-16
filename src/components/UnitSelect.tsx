@@ -1,4 +1,4 @@
-import { Unit } from "../types"
+import {Unit} from "../types"
 
 interface UnitSelectProps {
   unit: string
@@ -6,7 +6,7 @@ interface UnitSelectProps {
   dictionary: Record<string, Unit>
 }
 
-function UnitSelect({ unit, setUnit, dictionary }: UnitSelectProps) {
+function UnitSelect({unit, setUnit, dictionary}: UnitSelectProps) {
   return (
     <select
       value={unit}

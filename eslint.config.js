@@ -7,9 +7,12 @@ import stylistic from "@stylistic/eslint-plugin"
 import localPlugin from "./eslint-plugin-local/index.js"
 
 export default tseslint.config(
-  { ignores: ["dist"] },
+  {ignores: ["dist"]},
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+    ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
@@ -25,7 +28,7 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": [
         "warn",
-        { allowConstantExport: true },
+        {allowConstantExport: true},
       ],
       "local/no-double-space-in-strings": "error",
     },

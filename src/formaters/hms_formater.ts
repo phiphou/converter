@@ -1,6 +1,7 @@
 export const hms_formater = (v: number): string => {
+  const pad = (n: number): string => n.toString().padStart(2, "0")
   const h = Math.floor(v / 3600)
-  const m = Math.floor((v / 3600 - h) * 60)
-  const s = Math.floor(((v / 3600 - h) * 60 - m) * 60)
-  return `${h < 10 ? "0" + h : h}h${m < 10 ? "0" + m : m}m${s < 10 ? "0" + s : s}s`
+  const m = Math.floor((v % 3600) / 60)
+  const s = Math.floor(v % 60)
+  return `${pad(h)}h${pad(m)}m${pad(s)}s`
 }

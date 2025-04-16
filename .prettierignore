@@ -2,6 +2,8 @@
 
 .prettierignore
 pnpm-lock.yaml
+pnpm-workspace.yaml
+
 
 dist/
 .husky/_

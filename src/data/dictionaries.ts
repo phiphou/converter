@@ -1,6 +1,6 @@
-import { temp_converter } from "../converters/temp_converter"
-import { hms_formater } from "../formaters/hms_formater"
-import { ymd_formater } from "../formaters/ymd_formater"
+import {temp_converter} from "../converters/temp_converter"
+import {hms_formater} from "../formaters/hms_formater"
+import {ymd_formater} from "../formaters/ymd_formater"
 
 export const dictionaries = {
   volume: {

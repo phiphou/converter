@@ -8,8 +8,7 @@
     <script>
       if (
         localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
+        (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
         document.documentElement.classList.add("dark")
       } else {
@@ -18,9 +17,7 @@
     </script>
   </head>
 
-  <body
-    class="md:text-md bg-white px-2 pb-0 text-[17] lg:px-6 dark:bg-zinc-900"
-  >
+  <body class="md:text-md bg-white px-2 pb-0 text-[17] lg:px-6 dark:bg-zinc-900">
     <div id="root" class="vvv container mx-auto p-2 md:px-0 lg:px-6"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
