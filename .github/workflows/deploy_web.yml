@@ -31,7 +31,10 @@ jobs:
           version: 10.4.1
 
       - name: Change to correct directory
-        run: cd $GITHUB_WORKSPACE && ls -la
+        run: cd $GITHUB_WORKSPACE
+      
+      - name: Ensure pnpm store path exists
+        run: mkdir -p ~/.pnpm-store
 
       - name: Cache pnpm modules
         uses: actions/cache@v3
@@ -44,7 +47,7 @@ jobs:
       - name: Install dependencies
         run: |
           echo "Installing dependencies..."
-          cd $GITHUB_WORKSPACE && ls -la
+          cd $GITHUB_WORKSPACE
           pnpm install
 
       - name: Run lint
