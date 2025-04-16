@@ -492,12 +492,15 @@ export const dictionaries = {
       divisor: 9453939595488,
       pluralize: true
     },
-    white_cell: {
+    red_cell: {
+      info: 'taille moyenne selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89rythrocyte"  target="_blank">Wikipédia</a>',
       label: 'globule rouge (diamètre)',
       divisor: 0.0000000072,
       pluralize: true
     },
-    red_cell: {
+
+    white_cell: {
+      info: 'taille moyenne selon les données de <a href="https://fr.wikipedia.org/wiki/Leucocyte"  target="_blank">Wikipédia</a>',
       label: 'globule blanc (diamètre)',
       divisor: 0.000000012,
       pluralize: true
@@ -508,7 +511,7 @@ export const dictionaries = {
       pluralize: true
     },
     london_bus: {
-      info: 'taille des nouveaux Wrightbus New Routemaster en service depuis 2012, selon les données de <a href="https://fr.wikipedia.org/wiki/Wrightbus_New_Routemaster"  target="_blank">Wikipédia</a>',
+      info: 'taille des nouveaux Wrightbus New Routemaster en service depuis 2012, selon les données de <a href="https://fr.wikipedia.org/wiki/Wrightbus_New_Routemaster" target="_blank">Wikipédia</a>',
       label: 'bus londonien',
       divisor: 0.01123,
       pluralize: false
@@ -519,13 +522,15 @@ export const dictionaries = {
       pluralize: true
     },
     bastille_republic: {
+      info: 'trajet à pieds, selon les données de <a href="https://maps.app.goo.gl/3wmcZh84Ph3g4MbG8" target="_blank">Google Maps</a>',
       label: 'Bastille - République',
       divisor: 1.63,
       pluralize: false
     },
     nation_republic: {
+      info: 'trajet à pieds, selon les données de <a href="https://maps.app.goo.gl/ecKyGVoB4MeR13g78" target="_blank">Google Maps</a>',
       label: 'Nation - République',
-      divisor: 3.22,
+      divisor: 3.03,
       pluralize: false
     },
     marathon: {
@@ -534,27 +539,27 @@ export const dictionaries = {
       pluralize: true
     },
     paris_marseille: {
-      info: 'trajet le plus court par la route',
+      info: 'trajet le plus court par la route, selon les données de <a href="https://maps.app.goo.gl/Ei4d2gyrXUojyBYM7" target="_blank">Google Maps</a>',
       label: 'Paris - Marseille',
       divisor: 800,
       pluralize: false
     },
     perpignan_dunkerque: {
-      info: 'trajet le plus court par la route',
+      info: 'trajet le plus court par la route, selon les données de <a href="https://maps.app.goo.gl/xno6P4iJf4fRDxoa7" target="_blank">Google Maps</a>',
       label: 'Perpignan - Dunkerque',
       divisor: 1138,
       pluralize: false
     },
     paris_nyc: {
-      info: "trajet le plus court à vol d'oiseau",
+      info: 'trajet le plus court à vol d\'oiseau, selon les données de <a href="https://fr.distance.to/Paris,%C3%8Ele-de-France,FRA/New-York,NY,USA-(New-York-County)" target="_blank">fr.distance.to</a>',
       label: 'Paris - New-York',
-      divisor: 5837.07,
+      divisor: 5828.96,
       pluralize: false
     },
     paris_sydney: {
-      info: "trajet le plus court à vol d'oiseau",
+      info: 'trajet le plus court à vol d\'oiseau, selon les données de <a href="https://fr.distance.to/Paris,%C3%8Ele-de-France,FRA/Sydney,New-South-Wales,AUS" target="_blank">fr.distance.to</a>',
       label: 'Paris - Sydney',
-      divisor: 16960.33,
+      divisor: 16960.01,
       pluralize: false
     },
     moon: {
