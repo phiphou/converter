@@ -22,9 +22,7 @@ jobs:
           version: 10.4.1
       - name: Install dependencies
         run: |
-          echo "Checking if node_modules exists..."
-          if [ -d "node_modules" ]; then rm -rf node_modules; fi
-          if [ -f "pnpm-lock.yaml" ]; then rm -f pnpm-lock.yaml; fi
+          echo "Installing dependencies..."
           pnpm install
 
       - name: Run lint
