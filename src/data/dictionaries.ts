@@ -727,7 +727,7 @@ export const dictionaries = {
   radioactivité: {
     infos: {
       label:
-        "Pour un calcul plus précis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr/' target='_blank'>https://expop.irsn.fr/</a>",
+        "Pour un calcul plus précis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr' target='_blank'>https://expop.irsn.fr</a>",
       divisor: 999999999,
       pluralize: false,
     },
@@ -760,7 +760,7 @@ export const dictionaries = {
   radioactivité_2: {
     infos: {
       label:
-        "Pour un calcul plus précis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr/' target='_blank'>https://expop.irsn.fr/</a>",
+        "Pour un calcul plus précis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr' target='_blank'>https://expop.irsn.fr</a>",
       divisor: 999999999,
       pluralize: false,
     },
@@ -832,6 +832,12 @@ export const dictionaries = {
     },
   },
   informatique: {
+    infos: {
+      label:
+        "Bien qu'il existe des <a href='https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire' target='_blank'>préfixes binaires</a>, spécialement conçus pour l'informatique, ceux-ci ne sont presque pas utilisés, c'est pourquoi les préfixes montrés ici sont les préfixes usuels (industrie, informaticiens, presse spécialisée, etc)",
+      divisor: 999999999,
+      pluralize: false,
+    },
     bit: {
       label: "bit",
       divisor: 1,
