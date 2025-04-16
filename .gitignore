@@ -7,14 +7,21 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+
 node_modules
+.DS_Store
+Thumbs.db
 dist
 dist-ssr
 *.local
+.eslintcache
+tsconfig.node.tsbuildinfo
+
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+/.vs/config
 .idea
 .DS_Store
 *.suo
@@ -22,5 +29,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
+*.env
+.vscode/launch.json
 Makefile
+
+
+
+
+
