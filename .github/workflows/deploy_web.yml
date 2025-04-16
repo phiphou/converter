@@ -33,13 +33,17 @@ jobs:
       - name: Change to correct directory
         run: cd $GITHUB_WORKSPACE
       
+      - name: Get pnpm store path
+        id: pnpm-cache
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_ENV
+
       - name: Ensure pnpm store path exists
-        run: mkdir -p ~/.pnpm-store
+        run: mkdir -p $STORE_PATH
 
       - name: Cache pnpm modules
         uses: actions/cache@v3
         with:
-          path: ~/.pnpm-store
+          path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
