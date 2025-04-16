@@ -67,13 +67,14 @@ function UnitForm({
             className="mr-3 block w-40 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={label}
             value={rawValue}
+            onKeyDown={(e) => {
+              if (e.key === "-") e.preventDefault()
+            }}
             onChange={(e) => {
               const inputValue = e.target.value.replace(",", ".")
               setRawValue(inputValue)
               const numericValue = parseFloat(inputValue)
-              if (!isNaN(numericValue)) {
-                setValue(numericValue)
-              }
+              if (!isNaN(numericValue)) setValue(numericValue)
             }}
           />
           <div className="flex gap-2">
