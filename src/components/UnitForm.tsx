@@ -93,7 +93,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
         )}
       </div>
 
-      <div className="mb-3 mx-auto text-lg text-center font-medium text-gray-text-white dark:text-white text-black ">
+      <div className="mb-20 mx-auto text-lg text-center font-medium text-gray-text-white dark:text-white text-black ">
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
             {value} {dictionary[unitFrom].label} vaut{' '}
