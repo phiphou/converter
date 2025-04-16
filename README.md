@@ -27,9 +27,9 @@ Si votre contribution est acceptée, et si vous le souhaitez, vous serez mention
 
 ## Licence
 
-Cette œuvre est mise à disposition selon les termes de la [licence Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0 International][cc-by-sa].
+Cette œuvre est mise à disposition selon les termes de la [licence Creative Commons Attribution - Utilisation non commerciale - Partage dans les mêmes conditions 4.0 International][cc-by-nc-sa].
 
-[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 
-[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/deed.fr
-[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+[cc-by-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
