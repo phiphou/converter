@@ -127,7 +127,13 @@ function UnitForm({
       <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
-            {value} {dictionary[unitTo].label} vaut{" 1/"}
+            {value}{" "}
+            {pluralize(
+              parseFloat(rawValue),
+              dictionary[unitTo]?.label,
+              dictionary[unitTo]
+            ) || ""}{" "}
+            {parseFloat(rawValue) >= 2 ? "valent 1/" : "vaut 1/"}
             {result
               .toLocaleString("fr-FR", { maximumFractionDigits: 3 })
               .replace(",", ".")}
@@ -139,7 +145,13 @@ function UnitForm({
       <div className="text-gray-text-white mx-auto mb-20 text-center text-lg font-medium text-black dark:text-white">
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
-            {value} {dictionary[unitFrom].label} vaut{" "}
+            {value}{" "}
+            {pluralize(
+              parseFloat(rawValue),
+              dictionary[unitFrom]?.label,
+              dictionary[unitFrom]
+            ) || ""}{" "}
+            {parseFloat(rawValue) >= 2 ? "valent " : "vaut "}
             {(result * 100)
               .toLocaleString("fr-FR", { maximumFractionDigits: 2 })
               .replace(",", ".")}
