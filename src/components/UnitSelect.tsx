@@ -1,4 +1,4 @@
-import { Unit } from '../types'
+import { Unit } from "../types"
 
 interface UnitSelectProps {
   unit: string
@@ -11,10 +11,10 @@ function UnitSelect({ unit, setUnit, dictionary }: UnitSelectProps) {
     <select
       value={unit}
       onChange={(e) => setUnit(e.target.value)}
-      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mr-2"
+      className="mr-2 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
     >
       {Object.keys(dictionary).map((key) => {
-        if (key !== 'infos') {
+        if (key !== "infos") {
           return (
             <option key={key} value={key}>
               {dictionary[key].label}

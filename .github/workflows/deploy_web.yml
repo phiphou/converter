@@ -6,9 +6,9 @@ permissions:
 
 on:
   push:
-    branches: ['**']
+    branches: ["**"]
   pull_request:
-    branches: ['**']
+    branches: ["**"]
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'latest'
+          node-version: "latest"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4.1.0
@@ -32,7 +32,7 @@ jobs:
 
       - name: Change to correct directory
         run: cd $GITHUB_WORKSPACE
-      
+
       - name: Get pnpm store path
         id: pnpm-cache
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_ENV
@@ -54,15 +54,14 @@ jobs:
           cd $GITHUB_WORKSPACE
           pnpm install
 
-      - name: Run lint
+      - name: Run validate
         run: |
-          echo "Running lint..."
+          echo "Running validate..."
           cd $GITHUB_WORKSPACE
-          pnpm run lint
+          pnpm run validate
 
       - name: Run build
         run: |
           echo "Running build..."
           cd $GITHUB_WORKSPACE
           pnpm run build
-

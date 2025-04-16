@@ -1,0 +1,13 @@
+# Files and paths to ignore
+
+.prettierignore
+pnpm-lock.yaml
+
+dist/
+.husky/_
+
+README.md
+
+node_modules
+.DS_Store
+.eslintcache

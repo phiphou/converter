@@ -1,7 +1,7 @@
-import noDoubleSpaceInStrings from '../eslint-rules/no-double-space-in-strings.js'
+import noDoubleSpaceInStrings from "../eslint-rules/no-double-space-in-strings.js"
 
 export default {
   rules: {
-    'no-double-space-in-strings': noDoubleSpaceInStrings
-  }
+    "no-double-space-in-strings": noDoubleSpaceInStrings,
+  },
 }
