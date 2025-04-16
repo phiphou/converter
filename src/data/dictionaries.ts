@@ -404,7 +404,7 @@ export const dictionaries = {
       pluralize: false
     },
     kheops_pyramid: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops"  target="_blank">Wikipédia</a>',
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops" target="_blank">Wikipédia</a>',
       label: 'pyramide de Khéops',
       divisor: 53.03809,
       pluralize: false

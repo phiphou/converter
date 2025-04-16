@@ -21,7 +21,7 @@
     ]
   },
   "scripts": {
-    "prepare": "git config core.hooksPath .husky",
+    "prepare": "husky",
     "dev": "vite",
     "build": "tsc -b && npm run lint && vite build",
     "lint": "eslint .",
