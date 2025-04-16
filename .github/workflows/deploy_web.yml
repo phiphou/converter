@@ -1,29 +1,25 @@
-name: lint
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
-on:
-  push:
-    branches: ['main']
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - uses: actions/setup-node@v3
+      - name: Show current directory contents
+        run: ls -la
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 'latest'
 
-      - uses: pnpm/action-setup@v4.1.0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4.1.0
         with:
           version: 10.4.1
+
+      - name: Change to correct directory
+        run: cd $GITHUB_WORKSPACE && ls -la
 
       - name: Cache pnpm modules
         uses: actions/cache@v3
@@ -36,9 +32,11 @@ jobs:
       - name: Install dependencies
         run: |
           echo "Installing dependencies..."
+          cd $GITHUB_WORKSPACE
           pnpm install
 
       - name: Run lint
         run: |
           echo "Running lint..."
+          cd $GITHUB_WORKSPACE
           pnpm run lint
