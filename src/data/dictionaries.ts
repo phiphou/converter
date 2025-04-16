@@ -939,17 +939,17 @@ export const dictionaries = {
     },
     Zb: {
       label: "zeta-bit",
-      divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+      divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
       pluralize: true,
     },
     Zo: {
       label: "zeta-octet",
-      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
       pluralize: true,
     },
     ZB: {
       label: "zeta-byte",
-      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
       pluralize: true,
     },
   },
