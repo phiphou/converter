@@ -29,7 +29,7 @@ Si votre contribution est acceptée, et si vous le souhaitez, vous serez mention
 
 Cette œuvre est mise à disposition selon les termes de la [licence Creative Commons Attribution - Utilisation non commerciale - Partage dans les mêmes conditions 4.0 International][cc-by-nc-sa].
 
-[![CC BY-NC-SA 4.0][cc-by-sa-image]][cc-by-nc-sa]
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
 [cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
