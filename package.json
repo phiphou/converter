@@ -1,11 +1,22 @@
 {
   "name": "converter",
-  "private": true,
+  "author": "Phiphou",
+  "license": "CC BY-SA",
+  "homepage": "https://github.com/phiphou/converter#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phiphou/converter"
+  },
+  "bugs": {
+    "url": "https://github.com/phiphou/converter/issues"
+  },
+  "description": "Un convertisseur pour journaliste",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && npm run lint && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
