@@ -1,4 +1,4 @@
-name: lint
+name: build
 permissions:
   contents: write
   pages: write
