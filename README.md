@@ -1,6 +1,6 @@
 [![Website perso.crans.org](https://img.shields.io/website-up-down-green-red/http/converter.phiphou.com.svg)](https://converter.phiphou.com)
 [![cc-by-nc-sa-shield](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/deed.fr)
-[![status](https://github.com/phiphou/converter/actions/workflows/build.yml/badge.svg)]
+![status](https://github.com/phiphou/converter/actions/workflows/build.yml/badge.svg)
 
 # Converter
 
