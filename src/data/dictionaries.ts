@@ -874,15 +874,13 @@ export const dictionaries = {
       pluralize: true,
     },
     Mo: {
-      infos:
-        "avec un mega-octet (1Mo), on peut par exemple stocker un document texte (sans image) de près de 7000 pages A4 ou bien une photo de 1 MegaPixel dans une bonne qualité (avec compression).",
+      info: "avec un mega-octet (1Mo), on peut par exemple stocker un document texte (sans image) de près de 7000 pages A4 ou bien une photo de 1 MegaPixel dans une bonne qualité (avec compression).",
       label: "mega-octet",
       divisor: 8 * 1024 * 1024,
       pluralize: true,
     },
     MB: {
-      infos:
-        "avec un mega-byte (1MB), on peut par exemple stocker un document texte (sans image) de près de 7000 pages A4 ou bien une photo de 1 MegaPixel dans une bonne qualité (avec compression).",
+      info: "avec un mega-byte (1MB), on peut par exemple stocker un document texte (sans image) de près de 7000 pages A4 ou bien une photo de 1 MegaPixel dans une bonne qualité (avec compression).",
       label: "mega-byte",
       divisor: 8 * 1024 * 1024,
       pluralize: true,
