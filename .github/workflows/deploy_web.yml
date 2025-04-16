@@ -20,7 +20,14 @@ jobs:
       - uses: pnpm/action-setup@v4.1.0
         with:
           version: 10.4.1
-      - name: Clear node_modules and cache
-        run: rm -rf node_modules pnpm-lock.yaml && pnpm install
-      - name: lint
-        run: pnpm run lint
+      - name: Install dependencies
+        run: |
+          echo "Checking if node_modules exists..."
+          if [ -d "node_modules" ]; then rm -rf node_modules; fi
+          if [ -f "pnpm-lock.yaml" ]; then rm -f pnpm-lock.yaml; fi
+          pnpm install
+
+      - name: Run lint
+        run: |
+          echo "Running lint..."
+          pnpm run lint
