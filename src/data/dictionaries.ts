@@ -831,4 +831,126 @@ export const dictionaries = {
       pluralize: true,
     },
   },
+  informatique: {
+    bit: {
+      label: "bit",
+      divisor: 1,
+      pluralize: true,
+    },
+    octet: {
+      label: "octet",
+      divisor: 8,
+      pluralize: true,
+    },
+    byte: {
+      label: "byte",
+      divisor: 8,
+      pluralize: true,
+    },
+    kb: {
+      label: "kilo-bit",
+      divisor: 1 * 1024,
+      pluralize: true,
+    },
+    ko: {
+      label: "kilo-octet",
+      divisor: 8 * 1024,
+      pluralize: true,
+    },
+    kB: {
+      label: "kilo-byte",
+      divisor: 8 * 1024,
+      pluralize: true,
+    },
+    Mb: {
+      label: "mega-bit",
+      divisor: 1 * 1024 * 1024,
+      pluralize: true,
+    },
+    Mo: {
+      label: "mega-octet",
+      divisor: 8 * 1024 * 1024,
+      pluralize: true,
+    },
+    MB: {
+      label: "mega-byte",
+      divisor: 8 * 1024 * 1024,
+      pluralize: true,
+    },
+    Gb: {
+      label: "giga-bit",
+      divisor: 1 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    Go: {
+      label: "giga-octet",
+      divisor: 8 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    GB: {
+      label: "giga-byte",
+      divisor: 8 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    Tb: {
+      label: "tera-bit",
+      divisor: 1 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    To: {
+      label: "tera-octet",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    TB: {
+      label: "tera-byte",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    Pb: {
+      label: "peta-bit",
+      divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    Po: {
+      label: "peta-octet",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    PB: {
+      label: "peta-byte",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    Eb: {
+      label: "exa-bit",
+      divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    Eo: {
+      label: "exa-octet",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    EB: {
+      label: "exa-byte",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    Zb: {
+      label: "zeta-bit",
+      divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    Zo: {
+      label: "zeta-octet",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+    ZB: {
+      label: "zeta-byte",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+      pluralize: true,
+    },
+  },
 }

@@ -70,7 +70,6 @@ function UnitForm({
             onChange={(e) => {
               const inputValue = e.target.value.replace(",", ".")
               setRawValue(inputValue)
-
               const numericValue = parseFloat(inputValue)
               if (!isNaN(numericValue)) {
                 setValue(numericValue)
@@ -86,7 +85,7 @@ function UnitForm({
             <SwitchUnitButton switchUnits={switchUnits} />
           </div>
         </div>
-        <div className="mt-3 mb-5 flex items-baseline justify-items-center md:ml-36">
+        <div className="mt-3 mb-5 flex items-baseline justify-items-center md:ml-36 lg:mx-auto">
           <label className="mr-3 mb-2 ml-3 block text-sm font-medium text-gray-900 dark:text-white">
             en
           </label>
