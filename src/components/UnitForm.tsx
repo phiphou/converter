@@ -64,7 +64,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
             <SwitchUnitButton switchUnits={switchUnits} />
           </div>
         </div>
-        <div className="mt-3 flex justify-items-center items-baseline mb-5  md:ml-36">
+        <div className="mt-3 flex justify-items-center items-baseline mb-5 md:ml-36">
           <label className="mr-3 ml-3 block mb-2 text-sm font-medium text-gray-900 dark:text-white">en</label>
           <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
         </div>
@@ -83,7 +83,7 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
           ''}
       </div>
 
-      <div className="mb-3 mx-auto text-lg text-center font-medium text-gray-text-white dark:text-white  text-black ">
+      <div className="mb-3 mx-auto text-lg text-center font-medium text-gray-text-white dark:text-white text-black ">
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
             {value} {dictionary[unitTo].label} vaut{' 1/'}

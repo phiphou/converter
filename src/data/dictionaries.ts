@@ -51,13 +51,13 @@ export const dictionaries = {
       pluralize: true
     },
     shower: {
-      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/"  target="_blank">ekwateur</a>',
+      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>',
       label: 'douche de 5 minutes',
       divisor: 0.12,
       pluralize: true
     },
     shower2: {
-      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/"  target="_blank">ekwateur</a>',
+      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>',
       label: 'douche de 10 minutes',
       divisor: 0.2,
       pluralize: true
@@ -68,7 +68,7 @@ export const dictionaries = {
       pluralize: true
     },
     berlingo: {
-      info: 'volume utile selon le <a href="https://www.citroen.fr/vehicules/utility/Nouveau-Berlingo-Van.html"  target="_blank">constructeur</a>',
+      info: 'volume utile selon le <a href="https://www.citroen.fr/vehicules/utility/Nouveau-Berlingo-Van.html" target="_blank">constructeur</a>',
       label: 'Citroën Berlingo Van M',
       divisor: 3.3,
       pluralize: false
@@ -240,13 +240,13 @@ export const dictionaries = {
       pluralize: true
     },
     twingo: {
-      info: 'masse à vide, selon les données de <a href="https://fr.wikipedia.org/wiki/Renault_Twingo_III"  target="_blank">Wikipédia</a>',
+      info: 'masse à vide, selon les données de <a href="https://fr.wikipedia.org/wiki/Renault_Twingo_III" target="_blank">Wikipédia</a>',
       label: 'Renault Twingo 3',
       divisor: 0.864,
       pluralize: false
     },
     tesla_s: {
-      info: 'masse à vide, selon les données du <a href="https://www.tesla.com/fr_fr/models"  target="_blank">constructeur</a>',
+      info: 'masse à vide, selon les données du <a href="https://www.tesla.com/fr_fr/models" target="_blank">constructeur</a>',
       label: 'Tesla model S',
       divisor: 2.068,
       pluralize: false
@@ -398,7 +398,7 @@ export const dictionaries = {
       pluralize: false
     },
     notre_dame_de_paris: {
-      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame_de_Paris"  target="_blank">Wikipédia</a>',
+      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame_de_Paris" target="_blank">Wikipédia</a>',
       label: 'Notre-Dame de Paris',
       divisor: 5.5,
       pluralize: false
@@ -410,7 +410,7 @@ export const dictionaries = {
       pluralize: false
     },
     versailles: {
-      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Parc_de_Versailles"  target="_blank">Wikipédia</a>',
+      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Parc_de_Versailles" target="_blank">Wikipédia</a>',
       label: 'Château de Versailles',
       divisor: 10700,
       pluralize: false
@@ -493,17 +493,16 @@ export const dictionaries = {
       pluralize: true
     },
     red_cell: {
-      info: 'taille moyenne selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89rythrocyte"  target="_blank">Wikipédia</a>',
-      label: 'globule rouge (diamètre)',
+      info: 'diamètre moyen selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89rythrocyte" target="_blank">Wikipédia</a>',
+      label: 'globule rouge',
       divisor: 0.0000000072,
-      pluralize: true
+      pluralize_all: true
     },
-
     white_cell: {
-      info: 'taille moyenne selon les données de <a href="https://fr.wikipedia.org/wiki/Leucocyte"  target="_blank">Wikipédia</a>',
-      label: 'globule blanc (diamètre)',
+      info: 'diamètre moyenne selon les données de <a href="https://fr.wikipedia.org/wiki/Leucocyte" target="_blank">Wikipédia</a>',
+      label: 'globule blanc',
       divisor: 0.000000012,
-      pluralize: true
+      pluralize_all: true
     },
     fine_sand: {
       label: 'grain de sable fin (diamètre)',
@@ -515,6 +514,12 @@ export const dictionaries = {
       label: 'bus londonien',
       divisor: 0.01123,
       pluralize: false
+    },
+    eiffel_tower: {
+      info: 'hauteur totale, avec l\'antenne, selon les données de <a href="https://fr.wikipedia.org/wiki/Tour_Eiffel" target="_blank">Wikipédia</a>',
+      label: 'tour Eiffel',
+      divisor: 0.33,
+      pluralize: true
     },
     stadium: {
       label: 'piste olympique',
