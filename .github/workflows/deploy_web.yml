@@ -42,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: |
           echo "Installing dependencies..."
-          cd $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE && ls -la
           pnpm install
 
       - name: Run lint
