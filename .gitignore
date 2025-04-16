@@ -14,7 +14,7 @@ Thumbs.db
 dist
 dist-ssr
 *.local
-.eslintcache
+
 tsconfig.node.tsbuildinfo
 
 
@@ -33,7 +33,13 @@ tsconfig.node.tsbuildinfo
 .vscode/launch.json
 Makefile
 
+# Cache files
+.eslintcache
 
 
 
 
+
+.eslintcache
+.eslintcache
+.eslintcache
