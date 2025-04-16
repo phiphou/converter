@@ -6,7 +6,9 @@ permissions:
 
 on:
   push:
-    branches: ['main']
+    branches: ['**']
+  pull_request:
+    branches: ['**']
 
 jobs:
   build:
@@ -50,4 +52,10 @@ jobs:
           echo "Running lint..."
           cd $GITHUB_WORKSPACE
           pnpm run lint
+
+      - name: build
+        run: |
+          echo "Running build..."
+          cd $GITHUB_WORKSPACE
+          pnpm run build
 
