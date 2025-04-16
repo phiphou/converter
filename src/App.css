@@ -2,15 +2,6 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-/* #root {
-  display: flex;
-  flex-direction: column;
-  max-width: 1920px;
-  margin: 0 auto 0 auto;
-  padding: 2rem 2rem 0 2rem;
-  text-align: center;
-} */
-
 .mxh {
   min-height: calc(100vh - 240px);
 }

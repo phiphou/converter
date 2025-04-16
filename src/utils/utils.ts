@@ -1,27 +1,15 @@
 import { Unit } from '../types'
 
 export const pluralize = (result: number | null, label: string, unit: Unit): string => {
-  if (unit?.pluralize_all) {
-    return result !== null && result >= 2
-      ? label
-          .split(' ')
-          .map((v) => (!v.endsWith('s') ? v + 's' : v))
-          .join(' ')
-      : label
-          .split(' ')
-          .map((v) => (v.endsWith('s') ? v.slice(0, -1) : v))
-          .join(' ')
+  if (!unit) return label
+
+  const shouldPluralize = result !== null && result >= 2
+  const processWord = (word: string, index: number): string => {
+    if (unit.pluralize_all || (unit.pluralize && index === 0)) {
+      return shouldPluralize ? (word.endsWith('s') ? word : word + 's') : word.endsWith('s') ? word.slice(0, -1) : word
+    }
+    return word
   }
-  if (unit?.pluralize) {
-    return result !== null && result >= 2
-      ? label
-          .split(' ')
-          .map((v, i) => (i === 0 && !v.endsWith('s') ? v + 's' : v))
-          .join(' ')
-      : label
-          .split(' ')
-          .map((v, i) => (i === 0 && v.endsWith('s') ? v.slice(0, -1) : v))
-          .join(' ')
-  }
-  return label
+
+  return label.split(' ').map(processWord).join(' ')
 }

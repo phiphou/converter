@@ -8,20 +8,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --text-sm: 0.99rem;
+  --color-link: #646cff;
+  --color-link-hover: #535bf2;
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--color-link);
   text-decoration: none;
+}
 
-  &:hover {
-    color: #535bf2;
-  }
+a:hover {
+  color: var(--color-link-hover);
 }
 
 body {
-  margin: 0rem;
+  margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -36,7 +38,7 @@ h4 {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3.2rem;
 }
 
 h2 {
@@ -44,26 +46,25 @@ h2 {
   margin-bottom: 5rem;
 }
 
+h4 {
+  font-size: 1.15rem;
+}
+
 .vvv {
   max-height: calc(100vh - 110px);
 }
 
 footer {
-  margin-top: 10px;
-  margin-bottom: 0;
+  margin: 10px 0 0;
   padding: 0;
 }
 
 @media (min-width: 800px) {
   footer {
     margin-top: 4px;
-    margin-bottom: 0;
   }
-  .vvv {
-    max-height: calc(100vh - 0px);
-  }
-}
 
-h4 {
-  font-size: 1.15rem;
+  .vvv {
+    max-height: 100vh;
+  }
 }

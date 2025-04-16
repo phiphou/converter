@@ -42,9 +42,10 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
   return (
     <div>
       <div className="mt-5 flex flex-col min-w-full items-baseline justify-items-center mx-auto mb-5">
-        <div className=" flex gap-6 flex-col md:flex-row  justify-items-center mx-auto mb-5">
+        <div className="flex gap-6 flex-col md:flex-row justify-items-center mx-auto mb-5">
           <input
-            type="text"
+            type="number"
+            min={0}
             className="w-40 mr-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus-within:ring-blue-500 dark:focus-within:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder={label}
             value={rawValue}
@@ -63,13 +64,13 @@ function UnitForm({ label, dictionary }: { label: string; dictionary: Record<str
             <SwitchUnitButton switchUnits={switchUnits} />
           </div>
         </div>
-        <div className="mt-5 flex  justify-items-center items-baseline mb-5  md:ml-36">
+        <div className="mt-3 flex justify-items-center items-baseline mb-5  md:ml-36">
           <label className="mr-3 ml-3 block mb-2 text-sm font-medium text-gray-900 dark:text-white">en</label>
           <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
         </div>
       </div>
 
-      <div className="mb-3  mx-auto text-lg text-center font-medium text-gray-text-white dark:text-white text-black">
+      <div className="mb-3 mx-auto text-lg text-center font-medium text-gray-text-white dark:text-white text-black">
         {value.toLocaleString('fr-FR', { minimumFractionDigits: 0 }).replace(',', '.')}{' '}
         {pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ''} ={' '}
         {result !== null

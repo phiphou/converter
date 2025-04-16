@@ -11,7 +11,7 @@ function Form() {
     <div className="flex flex-col mxh">
       <div className="flex-grow">
         <div className="min-w-full mt-5">
-          <form className="max-w-sm mx-auto mb-5">
+          <form className="max-w-sm mx-auto mb-8">
             <select
               onChange={(e) => setCategory(e.target.value as keyof typeof dictionaries)}
               id="category"
