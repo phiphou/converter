@@ -363,7 +363,7 @@ export const dictionaries = {
     },
     a3: {
       label: "feuille A3",
-      divisor: 0.00012474,
+      divisor: 0.0012474,
       pluralize: true,
     },
     ping_pong_table: {
