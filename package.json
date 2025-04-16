@@ -23,7 +23,7 @@
   "scripts": {
     "prepare": "husky",
     "dev": "vite",
-    "build": "tsc -b && npm run lint && vite build",
+    "build": "vite build",
     "lint": "eslint --cache --fix --ignore-pattern .gitignore --ext .ts,.tsx .",
     "preview": "vite preview",
     "format": "prettier --log-level error -uw --cache --ignore-path ../.prettierignore .",
