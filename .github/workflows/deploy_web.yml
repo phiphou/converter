@@ -28,7 +28,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4.1.0
         with:
-          version: 10.4.1
+          version: 10.6.2
 
       - name: Change to correct directory
         run: cd $GITHUB_WORKSPACE
@@ -60,7 +60,7 @@ jobs:
           cd $GITHUB_WORKSPACE
           pnpm run lint
 
-      - name: build
+      - name: Run build
         run: |
           echo "Running build..."
           cd $GITHUB_WORKSPACE
