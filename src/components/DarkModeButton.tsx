@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import moonIcon from '../assets/icons/moon.svg'
 import sunIcon from '../assets/icons/sun.svg'
 
-function Dark_mode_button() {
+function DarkModeButton() {
   const [dark, setDark] = useState(true)
 
   const darkModeHandler = () => {
@@ -70,4 +70,4 @@ function Dark_mode_button() {
   )
 }
 
-export default Dark_mode_button
+export default DarkModeButton

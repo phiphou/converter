@@ -1,7 +1,7 @@
 import './App.css'
 import Form from './components/Form'
 import mainLogo from './assets/logo.png'
-import Dark_mode_button from './components/dark_mode_button'
+import DarkModebutton from './components/DarkModeButton'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Form />
       </div>
       <footer className="text-center mt-auto mb-2 text-sm text-gray-500 dark:text-gray-400">
-        <Dark_mode_button />© {new Date().getFullYear()} @Phiphou Tous droits réservés. Contribuez sur{' '}
+        <DarkModebutton />© {new Date().getFullYear()} @Phiphou Tous droits réservés. Contribuez sur{' '}
         <a href="http://github.com/phiphou/converter" target="_blank">
           Github
         </a>
