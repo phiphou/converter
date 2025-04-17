@@ -1,7 +1,6 @@
 module.exports = {
   plugins: [
     "prettier-plugin-tailwindcss",
-    "prettier-plugin-multiline-arrays",
   ],
   tailwindConfig: "./tailwind.config.js",
   semi: false,
@@ -11,5 +10,5 @@ module.exports = {
   bracketSameLine: false,
   bracketSpacing: false,
   jsonRecursiveSort: true,
-  multilineArraysWrapThreshold: 1,
+  multilineArraysWrapThreshold: 2,
 }

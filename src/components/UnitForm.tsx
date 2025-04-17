@@ -6,26 +6,12 @@ import InfosBlock from "./InfosBlock"
 import SwitchUnitButton from "./SwitchUnitButton"
 
 function UnitForm({label, dictionary}: {label: string; dictionary: Record<string, Unit>}) {
-  const [
-    unitFrom,
-    setUnitFrom,
-  ] = useState<string>("")
-  const [
-    unitTo,
-    setUnitTo,
-  ] = useState<string>("")
-  const [
-    rawValue,
-    setRawValue,
-  ] = useState<string>("1")
-  const [
-    value,
-    setValue,
-  ] = useState<number>(1)
-  const [
-    result,
-    setResult,
-  ] = useState<number | null>(1)
+  const [unitFrom, setUnitFrom] = useState<string>("")
+  const [unitTo, setUnitTo] = useState<string>("")
+  const [rawValue, setRawValue] = useState<string>("1")
+  const [value, setValue] = useState<number>(1)
+  const [result, setResult] = useState<number | null>(1)
+  const [precision, setPrecision] = useState<number>(1)
 
   useEffect(() => {
     const firstUnit = Object.keys(dictionary).find((key) => key !== "infos" && dictionary[key]) || ""
@@ -47,12 +33,7 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
     } else {
       setResult(null)
     }
-  }, [
-    value,
-    unitFrom,
-    unitTo,
-    dictionary,
-  ])
+  }, [value, unitFrom, unitTo, dictionary])
 
   const switchUnits = () => {
     setUnitFrom(unitTo)
@@ -87,6 +68,23 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
         <div className="mt-3 mb-5 flex items-baseline justify-items-center md:ml-36 lg:mx-auto">
           <label className="mr-3 mb-2 ml-3 block text-sm font-medium text-gray-900 dark:text-white">en</label>
           <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
+          <label className="ml-3">Précision&nbsp;:&nbsp;</label>
+          <input
+            type="number"
+            min={0}
+            max={15}
+            className="mr-3 block w-20 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            placeholder={precision.toString()}
+            value={precision}
+            onKeyDown={(e) => {
+              if (e.key === "-") e.preventDefault()
+            }}
+            onChange={(e) => {
+              const inputValue = e.target.value.replace(",", "").replace(".", "")
+              const numericValue = parseFloat(inputValue)
+              if (!isNaN(numericValue)) setPrecision(numericValue)
+            }}
+          />
         </div>
       </div>
 
@@ -96,7 +94,7 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
         {result !== null
           ? dictionary[unitTo]?.formater
             ? dictionary[unitTo].formater(result)
-            : result.toLocaleString("fr-FR", {maximumFractionDigits: 3}).replace(",", ".")
+            : result.toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")
           : ""}{" "}
         {(!dictionary[unitTo]?.formater &&
           pluralize(parseFloat("" + result), dictionary[unitTo]?.label, dictionary[unitTo])) ||
@@ -108,7 +106,7 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
           <>
             {value} {pluralize(parseFloat(rawValue), dictionary[unitTo]?.label, dictionary[unitTo]) || ""}{" "}
             {parseFloat(rawValue) >= 2 ? "valent 1/" : "vaut 1/"}
-            {result.toLocaleString("fr-FR", {maximumFractionDigits: 3}).replace(",", ".")}
+            {result.toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")}
             ème de {dictionary[unitFrom].label}
           </>
         )}
@@ -119,7 +117,7 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
           <>
             {value} {pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""}{" "}
             {parseFloat(rawValue) >= 2 ? "valent " : "vaut "}
-            {(result * 100).toLocaleString("fr-FR", {maximumFractionDigits: 2}).replace(",", ".")}% de{" "}
+            {(result * 100).toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")}% de{" "}
             {dictionary[unitTo].label}
           </>
         )}
