@@ -777,6 +777,7 @@ export const dictionaries = {
       pluralize: false,
     },
     mbar: {
+      info: 'seuil de la douleur auditive (<a href="https://www.laphysique.net/phf/hydrostpr_f.htm" target="_blank">source</a>).',
       label: "millibar",
       divisor: 100,
       pluralize: false,
@@ -814,6 +815,24 @@ export const dictionaries = {
     Torr: {
       label: "Torr",
       divisor: (1 / 760) * 101325,
+      pluralize: false,
+    },
+    hundred_meters_underwater: {
+      info: 'pression à 100m sous l\'eau (<a href="https://www.laphysique.net/phf/hydrostpr_f.htm" target="_blank">source</a>).',
+      label: "100m sous l'eau",
+      divisor: 380000000000,
+      pluralize: false,
+    },
+    earth: {
+      info: 'pression à l\'intérieur au de la Terre (<a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_de_pression" target="_blank">source</a>).',
+      label: "centre de la Terre",
+      divisor: 380000000000,
+      pluralize: false,
+    },
+    sun: {
+      info: 'pression à l\'intérieur du noyeau du Soleil (<a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_de_pression" target="_blank">source</a>).',
+      label: "cœur du Soleil",
+      divisor: 35000000000000000,
       pluralize: false,
     },
   },

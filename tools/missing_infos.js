@@ -10,7 +10,7 @@ const filePath = path.resolve(__dirname, "../src/data/dictionaries.ts")
 try {
   const fileContent = fs.readFileSync(filePath, "utf-8")
 
-  const match = fileContent.match(/{\n[.\s\w:{}"',éèà<=/\->êë'(%\\âîï)°\*\+)ç]*/gim)
+  const match = fileContent.match(/{\n[.\s\w:{}"',éèà<=/\->êë'(%\\âîï)°œ\*\+)ç]*/gim)
 
   if (!match) {
     throw new Error('Impossible de trouver "dictionaries" dans le fichier.')
