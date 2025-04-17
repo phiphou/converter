@@ -995,9 +995,9 @@ export const dictionaries = {
       divisor: 1.852,
       pluralize: true,
     },
-    ussain_bolt: {
-      info: "vitesse maximale d'Ussain Bolt lors de son record du 100m le 16/08/2009 à Berlin (<a href='https://www.leparisien.fr/sports/usain-bolt-l-homme-qui-court-jusqu-a-44-72-km-h-17-08-2009-609024.php' target='blank'>source</a>)",
-      label: "Ussain Bolt",
+    usain_bolt: {
+      info: "vitesse maximale d'Usain Bolt lors de son record du 100m le 16/08/2009 à Berlin (<a href='https://www.leparisien.fr/sports/usain-bolt-l-homme-qui-court-jusqu-a-44-72-km-h-17-08-2009-609024.php' target='blank'>source</a>)",
+      label: "Usain Bolt",
       divisor: 44.72,
       pluralize: false,
       not_unit: true,
