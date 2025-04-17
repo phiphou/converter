@@ -756,6 +756,11 @@ export const dictionaries = {
     },
   },
   pression: {
+    mpa: {
+      label: "milliPascal",
+      divisor: 0.001,
+      pluralize: false,
+    },
     pa: {
       label: "Pascal",
       divisor: 1,
@@ -769,6 +774,11 @@ export const dictionaries = {
     kpa: {
       label: "kiloPascal",
       divisor: 1000,
+      pluralize: false,
+    },
+    mbar: {
+      label: "millibar",
+      divisor: 100,
       pluralize: false,
     },
     bar: {
