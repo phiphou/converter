@@ -1,6 +1,7 @@
 import {useState} from "react"
 import {dictionaries} from "../data/dictionaries"
 import UnitForm from "./UnitForm"
+import {Unit} from "../types"
 
 function Form() {
   const [category, setCategory] = useState<keyof typeof dictionaries | "">("")
@@ -28,7 +29,7 @@ function Form() {
           {selectedDictionary && (
             <UnitForm
               label={category.charAt(0).toUpperCase() + category.slice(1).replace("_2", " ")}
-              dictionary={selectedDictionary}
+              dictionary={selectedDictionary as Record<string, Unit>}
             />
           )}
         </div>
