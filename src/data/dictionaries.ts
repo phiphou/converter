@@ -261,9 +261,15 @@ export const dictionaries = {
       divisor: 0.45,
       pluralize: false,
     },
-    white_shark: {
+    male_white_shark: {
       label: "requin blanc femelle",
       divisor: 1.325,
+      pluralize: true,
+    },
+    male_hippopotamus: {
+      info: 'poids moyen d\'un hippopotame mâle selon les données de <a href="https://fr.wikipedia.org/wiki/Hippopotamus_amphibius" target="_blank">Wikipédia</a>',
+      label: "hippopotame",
+      divisor: 1.5,
       pluralize: true,
     },
     african_elephant: {
