@@ -755,6 +755,48 @@ export const dictionaries = {
       not_unit: true,
     },
   },
+  pression: {
+    pa: {
+      label: "Pascal",
+      divisor: 1,
+      pluralize: false,
+    },
+    ha: {
+      label: "hectoPascal",
+      divisor: 100,
+      pluralize: false,
+    },
+    kpa: {
+      label: "kiloPascal",
+      divisor: 1000,
+      pluralize: false,
+    },
+    bar: {
+      label: "bar",
+      divisor: 100000,
+      pluralize: false,
+    },
+    atm: {
+      label: "atmosphère normale",
+      divisor: 101325,
+      pluralize: true,
+    },
+    mmHg: {
+      label: "millimètre de mercure",
+      divisor: (1 / 760) * 101325,
+      pluralize: true,
+    },
+    lbfin2: {
+      label: "livre-force par pouce carré",
+      divisor: 6894.76,
+      pluralize: false,
+    },
+    mmH2O: {
+      label: "milimètre d'eau",
+      divisor: 9.80638,
+      pluralize: true,
+    },
+  },
   durée: {
     s: {
       label: "seconde",
