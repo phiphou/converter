@@ -3,10 +3,7 @@ import {dictionaries} from "../data/dictionaries"
 import UnitForm from "./UnitForm"
 
 function Form() {
-  const [
-    category,
-    setCategory,
-  ] = useState<keyof typeof dictionaries | "">("")
+  const [category, setCategory] = useState<keyof typeof dictionaries | "">("")
 
   const selectedDictionary = category ? dictionaries[category] : null
 

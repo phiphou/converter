@@ -9,10 +9,7 @@ import localPlugin from "./eslint-plugin-local/index.js"
 export default tseslint.config(
   {ignores: ["dist"]},
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
@@ -26,10 +23,7 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        {allowConstantExport: true},
-      ],
+      "react-refresh/only-export-components": ["warn", {allowConstantExport: true}],
       "local/no-double-space-in-strings": "error",
     },
   }

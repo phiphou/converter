@@ -517,6 +517,16 @@ export const dictionaries = {
       divisor: 1.852,
       pluralize_all: true,
     },
+    au: {
+      label: "unité astronomique",
+      divisor: 149597870.7,
+      pluralize_all: true,
+    },
+    pc: {
+      label: "parsec",
+      divisor: 30856775810000,
+      pluralize: true,
+    },
     ly: {
       label: "année lumière",
       divisor: 9453939595488,
@@ -937,9 +947,24 @@ export const dictionaries = {
       divisor: 25,
       pluralize: true,
     },
+    sv: {
+      label: "Sv/an",
+      divisor: 1000,
+      pluralize: false,
+    },
     msv: {
       label: "mSv/an",
       divisor: 1,
+      pluralize: false,
+    },
+    rem: {
+      label: "rem/an",
+      divisor: 10,
+      pluralize: false,
+    },
+    mrem: {
+      label: "mrem/an",
+      divisor: 0.01,
       pluralize: false,
     },
   },

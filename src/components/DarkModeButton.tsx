@@ -3,10 +3,7 @@ import moonIcon from "../assets/icons/moon.svg"
 import sunIcon from "../assets/icons/sun.svg"
 
 function DarkModeButton() {
-  const [
-    dark,
-    setDark,
-  ] = useState(true)
+  const [dark, setDark] = useState(true)
 
   const darkModeHandler = () => {
     setDark(!dark)

@@ -68,12 +68,12 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
         <div className="mt-3 mb-5 flex items-baseline justify-items-center md:ml-36 lg:mx-auto">
           <label className="mr-3 mb-2 ml-3 block text-sm font-medium text-gray-900 dark:text-white">en</label>
           <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
-          <label className="ml-3">Précision&nbsp;:&nbsp;</label>
+          <label className="ml-3">Précision&nbsp;:</label>
           <input
             type="number"
             min={0}
             max={15}
-            className="mr-3 block w-20 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            className="mr-3 ml-3 block w-17 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={precision.toString()}
             value={precision}
             onKeyDown={(e) => {
