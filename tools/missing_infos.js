@@ -1,7 +1,11 @@
 import fs from "fs"
+import path from "path"
+import {fileURLToPath} from "url"
 
-// Chemin vers ton fichier .ts
-const filePath = "../src/data/dictionaries.ts"
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+const filePath = path.resolve(__dirname, "../src/data/dictionaries.ts")
 
 try {
   const fileContent = fs.readFileSync(filePath, "utf-8")
