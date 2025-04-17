@@ -1067,6 +1067,11 @@ export const dictionaries = {
       divisor: 1,
       pluralize: false,
     },
+    cu: {
+      label: "Curie",
+      divisor: 37000000000,
+      pluralize: false,
+    },
     banana: {
       label: "banane",
       divisor: 19.5,
