@@ -11,7 +11,7 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
   const [rawValue, setRawValue] = useState<string>("1")
   const [value, setValue] = useState<number>(1)
   const [result, setResult] = useState<number | null>(1)
-  const [precision, setPrecision] = useState<number>(1)
+  const [precision, setPrecision] = useState<number>(2)
 
   useEffect(() => {
     const firstUnit = Object.keys(dictionary).find((key) => key !== "infos" && dictionary[key]) || ""

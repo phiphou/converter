@@ -1187,6 +1187,12 @@ export const dictionaries = {
       converter: temp_converter,
       pluralize: true,
     },
+    rankine: {
+      label: "degré Rankine",
+      divisor: 1,
+      converter: temp_converter,
+      pluralize: true,
+    },
   },
   informatique: {
     infos: {
