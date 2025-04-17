@@ -796,6 +796,16 @@ export const dictionaries = {
       divisor: 9.80638,
       pluralize: true,
     },
+    Nm2: {
+      label: "newton par mètre carré",
+      divisor: 1,
+      pluralize: false,
+    },
+    Torr: {
+      label: "Torr",
+      divisor: (1 / 760) * 101325,
+      pluralize: false,
+    },
   },
   durée: {
     s: {
