@@ -70,7 +70,6 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         } else {
           calculatedResult = (value * fromDivisor) / toDivisor
         }
-        console.log("c", calculatedResult)
         setResult(calculatedResult)
       } else {
         setResult(null)

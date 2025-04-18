@@ -38,14 +38,10 @@ export const scientific_notation = (value: number | null, precision: number): st
   if (value === 0) return "0"
 
   if (value === null) throw new Error("Value cannot be null")
-  console.log(
-    "c2",
+  const scientific = roundNumber(
     value,
-    precision,
-    precision - (parseInt("" + value).toString().length - 1),
-    parseInt("" + value).toString().length
+    value > 1 ? precision - (parseInt("" + value).toString().length - 1) : precision + 2
   )
-  const scientific = roundNumber(value, precision - (parseInt("" + value).toString().length - 1))
     .toExponential()
     .split("e")
   const coefficient = parseFloat(scientific[0])
