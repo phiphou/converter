@@ -19,18 +19,17 @@ export const currency_converter = async (value: number, unitFrom: Unit, unitTo: 
   }
 
   const response = await window.fetch(
-    `https://${date}.currency-api.pages.dev/v1/currencies/${unitFrom.label.toLowerCase()}.json`
+    `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json`
   )
   const jsonResponse = await response.json()
-
   if (response.ok) {
     if (!unitFrom.code || !unitTo.code) {
       throw new Error("unitFrom.code or unitTo.code is undefined")
     }
 
     localStorage.setItem(cacheKey, JSON.stringify(jsonResponse))
-
-    return jsonResponse[unitFrom.code.toLowerCase()][unitTo.code.toLowerCase()] * value
+    if (unitTo === unitFrom) return 1
+    return jsonResponse["eur"][unitTo.code.toLowerCase()] * value
   } else {
     const {errors} = jsonResponse
     const error = new Error(errors?.map((e: {message: string}) => e.message).join("\n") ?? "unknown")

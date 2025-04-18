@@ -51,10 +51,10 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         const toDivisor = dictionary[unitTo].divisor
         let calculatedResult: number | null = null
 
-        if (unitFrom === unitTo) {
+        if (dictionary && dictionary[unitFrom].converter && dictionary[unitTo].converter) {
+          calculatedResult = await dictionary[unitFrom].converter(value, dictionary[unitFrom], dictionary[unitTo])
+        } else if (unitFrom === unitTo) {
           calculatedResult = value
-        } else if (dictionary["monaie"] && dictionary["monaie"].converter) {
-          calculatedResult = await dictionary["monaie"].converter(value, dictionary[unitFrom], dictionary[unitTo])
         } else if (dictionary[unitFrom].converter && dictionary[unitFrom].converter === dictionary[unitTo].converter) {
           calculatedResult = await dictionary[unitTo].converter(value, dictionary[unitFrom], dictionary[unitTo])
         } else {
