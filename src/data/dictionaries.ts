@@ -5,6 +5,12 @@ import {ymd_formater} from "../formaters/ymd_formater"
 
 export const dictionaries = {
   devises: {
+    infos: {
+      label:
+        "données de <a href='https://github.com/fawazahmed0/exchange-api' target='_blank' >exchange-api</a>, actualisées chaque jour.",
+      divisor: 999999999,
+      pluralize: false,
+    },
     list: {
       af: {
         name: "Afghanistan",
@@ -1265,24 +1271,21 @@ export const dictionaries = {
       pluralize: false,
     },
     bathtub: {
-      info: 'volume moyen selon <a href="https://isi-sanitaire.fr/blog/astuces_conseils_tutos/litres-eau-pour-remplir-une-baignoire/" target="_blank">isi-sanitaire</a>',
+      info: 'volume moyen selon <a href="https://isi-sanitaire.fr/blog/astuces_conseils_tutos/litres-eau-pour-remplir-une-baignoire/" target="_blank">isi-sanitaire</a>.',
       label: "baignoire",
       divisor: 0.155,
-
       not_unit: true,
     },
     shower: {
-      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>',
+      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>.',
       label: "douche de 5 minutes",
       divisor: 0.12,
-
       not_unit: true,
     },
     shower2: {
-      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>',
+      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>.',
       label: "douche de 10 minutes",
       divisor: 0.2,
-
       not_unit: true,
     },
     oil_barrel: {
@@ -1308,7 +1311,6 @@ export const dictionaries = {
       info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops" target="_blank">Wikipédia</a>',
       label: "pyramide de Kheops",
       divisor: 2592341,
-
       not_unit: true,
     },
     anecy_lake: {
@@ -1375,111 +1377,94 @@ export const dictionaries = {
     one_euro_cent: {
       label: "pièce de 1 centime d'euro",
       divisor: 0.0000023,
-
       not_unit: true,
     },
     two_euro_cent: {
       label: "pièce de 2 centimes d'euro",
       divisor: 0.00000306,
-
       not_unit: true,
     },
     five_euro_cent: {
       label: "pièce de 5 centimes d'euro",
       divisor: 0.00000392,
-
       not_unit: true,
     },
     ten_euro_cent: {
       label: "pièce de 10 centimes d'euro",
       divisor: 0.0000041,
-
       not_unit: true,
     },
     twenty_euro_cent: {
       label: "pièce de 20 centimes d'euro",
       divisor: 0.00000574,
-
       not_unit: true,
     },
     fifty_euro_cent: {
       label: "pièce de 50 centimes d'euro",
       divisor: 0.0000078,
-
       not_unit: true,
     },
     one_euro: {
       label: "pièce de un euro",
       divisor: 0.0000075,
-
       not_unit: true,
     },
     two_euro: {
       label: "pièce de deux euros",
       divisor: 0.0000085,
-
       not_unit: true,
     },
     rice_grain: {
       label: "grain de riz",
       divisor: 0.0000003014,
-
       not_unit: true,
     },
     ping_pong_ball: {
       info: "moyenne des limites réglementaires",
       label: "balle de ping-pong",
       divisor: 0.0000027,
-
       not_unit: true,
     },
     tennis_ball: {
       info: "moyenne des limites réglementaires",
       label: "balle de tennis",
       divisor: 0.0000577,
-
       not_unit: true,
     },
     volley_ball: {
       info: "moyenne des limites réglementaires",
       label: "ballon de volleyball",
       divisor: 0.00027,
-
       not_unit: true,
     },
     hand_ball: {
       info: "moyenne des limites réglementaires",
       label: "ballon de handball",
       divisor: 0.00045,
-
       not_unit: true,
     },
     foot_ball: {
       info: "moyenne des limites réglementaires",
       label: "ballon de foot",
       divisor: 0.00043,
-
       not_unit: true,
     },
     basket_ball: {
       info: "moyenne des limites réglementaires",
       label: "ballon de basket",
       divisor: 0.00065,
-
       not_unit: true,
     },
     petanque_ball: {
       info: "moyenne des limites réglementaires",
       label: "boule de pétanque",
       divisor: 0.0008,
-
       not_unit: true,
     },
     oak_stere: {
       info: "pour un bois de chauffage sec (20% d'humidité)",
       label: "stère de chêne",
       divisor: 0.44,
-
       not_unit: true,
     },
     twingo: {
@@ -1511,20 +1496,17 @@ export const dictionaries = {
     male_white_shark: {
       label: "requin blanc femelle",
       divisor: 1.325,
-
       not_unit: true,
     },
     male_hippopotamus: {
       info: 'poids moyen d\'un hippopotame mâle selon les données de <a href="https://fr.wikipedia.org/wiki/Hippopotamus_amphibius" target="_blank">Wikipédia</a>',
       label: "hippopotame",
       divisor: 1.5,
-
       not_unit: true,
     },
     african_elephant: {
       label: "éléphant d'Afrique mâle",
       divisor: 6,
-
       not_unit: true,
     },
     titanic: {
@@ -1550,7 +1532,6 @@ export const dictionaries = {
       info: "masse à vide",
       label: "char Leclerc",
       divisor: 56,
-
       not_unit: true,
     },
     eiffel_tower: {
@@ -1569,7 +1550,6 @@ export const dictionaries = {
     gizeh_pyramid: {
       label: "pyramide de Gizeh",
       divisor: 5750000,
-
       not_unit: true,
     },
   },
@@ -1627,37 +1607,31 @@ export const dictionaries = {
       info: 'surface officielle, selon les <a href="https://documents.ittf.sport/sites/default/files/public/2021-04/2020ITTFHandbook.pdf" target="_blank">règles de l\'ITTF</a> (en anglais, page 34 du document)',
       label: "table de ping-pong",
       divisor: 0.041785,
-
       not_unit: true,
     },
     tennis_field: {
       label: "terrain de tennis",
       divisor: 2.607569,
-
       not_unit: true,
     },
     basket_field: {
       label: "terrain de basket",
       divisor: 4.36626,
-
       not_unit: true,
     },
     handball_field: {
       label: "terrain de handball",
       divisor: 8,
-
       not_unit: true,
     },
     rugby_field: {
       label: "terrain de rugby",
       divisor: 67.275,
-
       not_unit: true,
     },
     football_field: {
       label: "terrain de football",
       divisor: 71.4,
-
       not_unit: true,
     },
     wind_turbine: {
@@ -1809,7 +1783,6 @@ export const dictionaries = {
     fine_sand: {
       label: "grain de sable fin",
       divisor: 0.000000188,
-
       not_unit: true,
     },
     london_bus: {
@@ -1823,13 +1796,11 @@ export const dictionaries = {
       info: 'hauteur totale, avec l\'antenne, selon les données de <a href="https://fr.wikipedia.org/wiki/Tour_Eiffel" target="_blank">Wikipédia</a>',
       label: "tour Eiffel",
       divisor: 0.33,
-
       not_unit: true,
     },
     stadium: {
       label: "piste olympique",
       divisor: 0.4,
-
       not_unit: true,
     },
     bastille_republic: {
@@ -1849,7 +1820,6 @@ export const dictionaries = {
     marathon: {
       label: "marathon",
       divisor: 42.195,
-
       not_unit: true,
     },
     paris_marseille: {
@@ -1922,7 +1892,6 @@ export const dictionaries = {
     s25: {
       label: "recharge Samsung Galaxy S25",
       divisor: 25,
-
       not_unit: true,
     },
     micro_wave: {
@@ -1934,13 +1903,11 @@ export const dictionaries = {
     dishwasher: {
       label: "cycle de lave-vaisselle",
       divisor: 1150,
-
       not_unit: true,
     },
     washing_machine: {
       label: "cycle de lave-linge classe B",
       divisor: 520,
-
       not_unit: true,
     },
     bifsteak: {
@@ -2257,7 +2224,6 @@ export const dictionaries = {
     banana: {
       label: "banane",
       divisor: 19.5,
-
       not_unit: true,
     },
     potatoes: {
@@ -2289,7 +2255,6 @@ export const dictionaries = {
     banana: {
       label: "banane par jour",
       divisor: (6.2 / 1000000000) * 365 * 19.2 * 1000,
-
       not_unit: true,
     },
     potatoes: {
@@ -2319,13 +2284,11 @@ export const dictionaries = {
     annual_worker_max_dose: {
       label: "dose max dans le nucléaire",
       divisor: 20,
-
       not_unit: true,
     },
     month__astronaut: {
       label: "astronaute par mois",
       divisor: 25,
-
       not_unit: true,
     },
     sv: {

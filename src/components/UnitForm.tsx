@@ -30,6 +30,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         },
         {} as Record<string, Unit>
       )
+      if (dic["list"]) new_dictionnary["infos"] = dic["infos"]
 
       setDictionary(new_dictionnary)
       const firstUnit = Object.keys(new_dictionnary)[0] || ""
@@ -159,7 +160,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         )}
       </div>
 
-      <div className="text-gray-text-white mx-auto mb-20 text-center text-lg font-medium text-black dark:text-white">
+      <div className="text-gray-text-white mx-auto mb-8 text-center text-lg font-medium text-black dark:text-white">
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
             {value} {pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""}{" "}
