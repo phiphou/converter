@@ -3,6 +3,39 @@ import {hms_formater} from "../formaters/hms_formater"
 import {ymd_formater} from "../formaters/ymd_formater"
 
 export const dictionaries = {
+  angle: {
+    degré: {
+      label: "degré",
+      divisor: 1,
+      pluralize: true,
+    },
+    radian: {
+      label: "radian",
+      divisor: 100 / Math.PI,
+      pluralize: true,
+    },
+    arc_m: {
+      label: "minute d'arc",
+      divisor: 1 / 60,
+      pluralize: true,
+    },
+    arc_s: {
+      label: "seconde d'arc",
+      divisor: 1 / 3600,
+      pluralize: true,
+    },
+    grade: {
+      label: "grade",
+      divisor: 0.9,
+      pluralize: true,
+    },
+    angular_mil_NATO: {
+      label: "mil angulaire",
+      info: 'le mil angulaire est utilisé en artillerie, notamment pas l\'OTAN (<a href="https://fr.wikipedia.org/wiki/Mil_angulaire" target="_blank">source</a>)',
+      divisor: 1 / 6400,
+      pluralize_all: true,
+    },
+  },
   volume: {
     microliter: {
       label: "microlitre",
@@ -34,7 +67,7 @@ export const dictionaries = {
       divisor: 1,
       pluralize: true,
     },
-    vine_bottle: {
+    wine_bottle: {
       info: 'volume moyen selon <a href="https://fr.wikipedia.org/wiki/Bouteille_de_vin" target="_blank">Wikipédia</a>',
       label: "bouteille de vin",
       divisor: 0.00075,
