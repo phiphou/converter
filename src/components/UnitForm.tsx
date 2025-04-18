@@ -24,7 +24,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             code: value.curr_code,
             converter: typeof dic["converter"] === "function" ? dic["converter"] : undefined,
             divisor: 1,
-            pluralize: false,
+            pluralize: true,
           }
           return acc
         },
@@ -52,15 +52,25 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         let calculatedResult: number | null = null
 
         if (dictionary && dictionary[unitFrom].converter && dictionary[unitTo].converter) {
-          calculatedResult = await dictionary[unitFrom].converter(value, dictionary[unitFrom], dictionary[unitTo])
+          calculatedResult = await dictionary[unitFrom].converter(
+            value,
+            dictionary[unitFrom],
+            dictionary[unitTo],
+            precision
+          )
         } else if (unitFrom === unitTo) {
           calculatedResult = value
         } else if (dictionary[unitFrom].converter && dictionary[unitFrom].converter === dictionary[unitTo].converter) {
-          calculatedResult = await dictionary[unitTo].converter(value, dictionary[unitFrom], dictionary[unitTo])
+          calculatedResult = await dictionary[unitTo].converter(
+            value,
+            dictionary[unitFrom],
+            dictionary[unitTo],
+            precision
+          )
         } else {
           calculatedResult = (value * fromDivisor) / toDivisor
         }
-
+        console.log("c", calculatedResult)
         setResult(calculatedResult)
       } else {
         setResult(null)

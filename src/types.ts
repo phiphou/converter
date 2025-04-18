@@ -5,6 +5,6 @@ export interface Unit {
   formater?: (value: number) => string
   pluralize?: boolean
   pluralize_all?: boolean
-  converter?: (value: number, from: Unit, to: Unit) => number
+  converter?: (value: number, from: Unit, to: Unit, precision: number) => number
   info?: string
 }

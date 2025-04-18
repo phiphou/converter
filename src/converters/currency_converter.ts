@@ -1,6 +1,11 @@
 import {Unit} from "../types"
 
-export const currency_converter = async (value: number, unitFrom: Unit, unitTo: Unit): Promise<number> => {
+export const currency_converter = async (
+  value: number,
+  unitFrom: Unit,
+  unitTo: Unit,
+  precision: number
+): Promise<number> => {
   const now: Date = new Date()
   const date: string = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, "0")}-${now.getDate().toString().padStart(2, "0")}`
   const cacheKey = `currency-data-${date}`
@@ -14,8 +19,8 @@ export const currency_converter = async (value: number, unitFrom: Unit, unitTo: 
     }
     const from2Euro = jsonResponse["eur"][unitFrom.code.toLowerCase()]
     const euro2To = jsonResponse["eur"][unitTo.code.toLowerCase()]
-
-    return (euro2To / from2Euro) * value
+    console.log(((euro2To / from2Euro) * value).toFixed(precision))
+    return Number(((euro2To / from2Euro) * value).toFixed(precision))
   }
 
   const response = await window.fetch(
@@ -29,7 +34,10 @@ export const currency_converter = async (value: number, unitFrom: Unit, unitTo: 
 
     localStorage.setItem(cacheKey, JSON.stringify(jsonResponse))
     if (unitTo === unitFrom) return 1
-    return jsonResponse["eur"][unitTo.code.toLowerCase()] * value
+    const from2Euro = jsonResponse["eur"][unitFrom.code.toLowerCase()]
+    const euro2To = jsonResponse["eur"][unitTo.code.toLowerCase()]
+
+    return Number(((euro2To / from2Euro) * value).toFixed(precision))
   } else {
     const {errors} = jsonResponse
     const error = new Error(errors?.map((e: {message: string}) => e.message).join("\n") ?? "unknown")
