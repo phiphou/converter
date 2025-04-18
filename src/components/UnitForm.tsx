@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react"
 import {Unit} from "../types"
-import {pluralize} from "../utils/utils"
+import {pluralize, scientific_notation} from "../utils/utils"
 import UnitSelect from "./UnitSelect"
 import InfosBlock from "./InfosBlock"
 import SwitchUnitButton from "./SwitchUnitButton"
@@ -12,7 +12,7 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
   const [value, setValue] = useState<number>(1)
   const [result, setResult] = useState<number | null>(1)
   const [precision, setPrecision] = useState<number>(2)
-
+  const [scientific, setScientific] = useState<boolean>(false)
   useEffect(() => {
     const firstUnit = Object.keys(dictionary).find((key) => key !== "infos" && dictionary[key]) || ""
     setUnitFrom(firstUnit)
@@ -23,17 +23,23 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
     if (unitFrom && unitTo && dictionary[unitFrom] && dictionary[unitTo]) {
       const fromDivisor = dictionary[unitFrom].divisor
       const toDivisor = dictionary[unitTo].divisor
+      let calculatedResult: number | null = null
+
       if (unitFrom === unitTo) {
-        setResult(value)
+        calculatedResult = value
       } else if (dictionary[unitFrom].converter && dictionary[unitFrom].converter === dictionary[unitTo].converter) {
-        setResult(dictionary[unitTo].converter(value, dictionary[unitFrom], dictionary[unitTo]))
+        calculatedResult = dictionary[unitTo].converter(value, dictionary[unitFrom], dictionary[unitTo])
       } else {
-        setResult((value * fromDivisor) / toDivisor)
+        calculatedResult = (value * fromDivisor) / toDivisor
       }
+
+      setResult(calculatedResult)
+      console.log(scientific_notation(calculatedResult, precision))
     } else {
       setResult(null)
+      console.log(scientific_notation(null, precision))
     }
-  }, [value, unitFrom, unitTo, dictionary])
+  }, [value, unitFrom, unitTo, dictionary, precision])
 
   const switchUnits = () => {
     setUnitFrom(unitTo)
@@ -42,12 +48,12 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
 
   return (
     <div>
-      <div className="mx-auto mt-5 mb-5 flex min-w-full flex-col items-baseline justify-items-center">
-        <div className="mx-auto mb-5 flex flex-col justify-items-center gap-6 md:flex-row">
+      <div className="mx-auto mt-5 mb-0 flex min-w-full flex-col items-baseline justify-items-center">
+        <div className="mx-auto mb-5 flex flex-col justify-items-center gap-3 md:flex-row">
           <input
             type="number"
             min={0}
-            className="mr-3 block w-40 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            className="mr-1 block w-40 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={label}
             value={rawValue}
             onKeyDown={(e) => {
@@ -65,7 +71,7 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
             <SwitchUnitButton switchUnits={switchUnits} />
           </div>
         </div>
-        <div className="mt-3 mb-5 flex items-baseline justify-items-center md:ml-36 lg:mx-auto">
+        <div className="mt-3 mb-5 flex items-baseline justify-items-center gap-0 md:ml-36 lg:mx-auto">
           <label className="mr-3 mb-2 ml-3 block text-sm font-medium text-gray-900 dark:text-white">en</label>
           <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
           <label className="ml-3">Précision&nbsp;:</label>
@@ -80,21 +86,34 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
               if (e.key === "-") e.preventDefault()
             }}
             onChange={(e) => {
-              const inputValue = e.target.value.replace(",", "").replace(".", "")
-              const numericValue = parseFloat(inputValue)
+              let inputValue = e.target.value.replace(",", "").replace(".", "")
+              if (inputValue.startsWith("0")) inputValue = e.target.value.replace("0", "")
+              e.target.value = inputValue
+              const numericValue = inputValue == "" ? 0 : parseFloat(inputValue)
               if (!isNaN(numericValue) && numericValue < 100) setPrecision(numericValue)
             }}
           />
         </div>
       </div>
-
+      <div className="justify-items-left mt-3 mb-5 flex items-baseline gap-0 md:pl-40 lg:mx-auto">
+        <label>Notation scientique : </label>
+        <input
+          className="ml-3"
+          type="checkbox"
+          onChange={(e) => {
+            setScientific(e.currentTarget.checked)
+          }}
+        />
+      </div>
       <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
         {value.toLocaleString("fr-FR", {minimumFractionDigits: 0}).replace(",", ".")}{" "}
         {pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""} ={" "}
         {result !== null
           ? dictionary[unitTo]?.formater
             ? dictionary[unitTo].formater(result)
-            : result.toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")
+            : scientific
+              ? scientific_notation(result, precision)
+              : result.toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")
           : ""}{" "}
         {(!dictionary[unitTo]?.formater &&
           pluralize(parseFloat("" + result), dictionary[unitTo]?.label, dictionary[unitTo])) ||

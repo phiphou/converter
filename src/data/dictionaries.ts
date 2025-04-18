@@ -609,7 +609,7 @@ export const dictionaries = {
       not_unit: true,
     },
     fine_sand: {
-      label: "grain de sable fin (diamètre)",
+      label: "grain de sable fin",
       divisor: 0.000000188,
       pluralize: true,
       not_unit: true,
