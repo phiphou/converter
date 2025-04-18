@@ -9,8 +9,8 @@ export const dictionaries = {
       divisor: 0.000000001,
       pluralize: true,
     },
-    mililiter: {
-      label: "mililitre",
+    milliliter: {
+      label: "millilitre",
       divisor: 0.000001,
       pluralize: true,
     },
@@ -35,6 +35,7 @@ export const dictionaries = {
       pluralize: true,
     },
     vine_bottle: {
+      info: 'volume moyen selon <a href="https://fr.wikipedia.org/wiki/Bouteille_de_vin" target="_blank">Wikipédia</a>',
       label: "bouteille de vin",
       divisor: 0.00075,
       pluralize: true,
@@ -66,8 +67,9 @@ export const dictionaries = {
       not_unit: true,
     },
     oil_barrel: {
+      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Baril" target="_blank">Wikipédia</a>',
       label: "baril de pétrole",
-      divisor: 0.159,
+      divisor: 0.158987294928,
       pluralize: true,
     },
     berlingo: {
@@ -85,18 +87,21 @@ export const dictionaries = {
       not_unit: true,
     },
     kheops_pyramid: {
+      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops" target="_blank">Wikipédia</a>',
       label: "pyramide de Kheops",
       divisor: 2592341,
       pluralize: true,
       not_unit: true,
     },
     anecy_lake: {
+      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Lac_d%27Annecy" target="_blank">Wikipédia</a>',
       label: "lac d'Annecy",
-      divisor: 1124000000,
+      divisor: 1124500000,
       pluralize: false,
       not_unit: true,
     },
     leman_lake: {
+      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/L%C3%A9man" target="_blank">Wikipédia</a>',
       label: "lac Léman",
       divisor: 89000000000,
       pluralize: false,
@@ -106,8 +111,10 @@ export const dictionaries = {
       label: "Pluie par an en France",
       divisor: 510000000000,
       pluralize: false,
+      not_unit: true,
     },
     mediterranean_sea: {
+      info: 'volume selon <a href=" https://fr.wikipedia.org/wiki/Mer_M%C3%A9diterran%C3%A9e" target="_blank">Wikipédia</a>',
       label: "Mer Méditerranée",
       divisor: 3765000000000000,
       pluralize: false,
