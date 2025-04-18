@@ -2,10 +2,10 @@ import {useState, useEffect} from "react"
 import {Unit} from "../types"
 import {pluralize, scientific_notation} from "../utils/utils"
 import UnitSelect from "./UnitSelect"
-import InfosBlock from "./InfosBlock"
 import SwitchUnitButton from "./SwitchUnitButton"
+import InfosBlock from "./InfosBlock"
 
-function UnitForm({label, dictionary}: {label: string; dictionary: Record<string, Unit>}) {
+function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
   const [unitFrom, setUnitFrom] = useState<string>("")
   const [unitTo, setUnitTo] = useState<string>("")
   const [rawValue, setRawValue] = useState<string>("1")
@@ -13,32 +13,60 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
   const [result, setResult] = useState<number | null>(1)
   const [precision, setPrecision] = useState<number>(2)
   const [scientific, setScientific] = useState<boolean>(false)
+  const [dictionary, setDictionary] = useState<Record<string, Unit>>({})
   useEffect(() => {
-    const firstUnit = Object.keys(dictionary).find((key) => key !== "infos" && dictionary[key]) || ""
-    setUnitFrom(firstUnit)
-    setUnitTo(firstUnit)
-  }, [dictionary])
+    if (dic["list"]) {
+      const new_dictionnary = Object.entries(dic["list"]).reduce(
+        (acc, [, value]) => {
+          const label = value.curr_code.toUpperCase()
+          acc[label] = {
+            label,
+            code: value.curr_code,
+            converter: typeof dic["converter"] === "function" ? dic["converter"] : undefined,
+            divisor: 1,
+            pluralize: false,
+          }
+          return acc
+        },
+        {} as Record<string, Unit>
+      )
 
-  useEffect(() => {
-    if (unitFrom && unitTo && dictionary[unitFrom] && dictionary[unitTo]) {
-      const fromDivisor = dictionary[unitFrom].divisor
-      const toDivisor = dictionary[unitTo].divisor
-      let calculatedResult: number | null = null
-
-      if (unitFrom === unitTo) {
-        calculatedResult = value
-      } else if (dictionary[unitFrom].converter && dictionary[unitFrom].converter === dictionary[unitTo].converter) {
-        calculatedResult = dictionary[unitTo].converter(value, dictionary[unitFrom], dictionary[unitTo])
-      } else {
-        calculatedResult = (value * fromDivisor) / toDivisor
-      }
-
-      setResult(calculatedResult)
-      console.log(scientific_notation(calculatedResult, precision))
+      setDictionary(new_dictionnary)
+      const firstUnit = Object.keys(new_dictionnary)[0] || ""
+      setUnitFrom(firstUnit)
+      setUnitTo(firstUnit)
     } else {
-      setResult(null)
-      console.log(scientific_notation(null, precision))
+      setDictionary(dic)
+      const firstUnit = Object.keys(dic).find((key) => key !== "infos" && dic[key]) || ""
+      setUnitFrom(firstUnit)
+      setUnitTo(firstUnit)
     }
+  }, [dic])
+
+  useEffect(() => {
+    async function calculateResult() {
+      if (unitFrom && unitTo) {
+        const fromDivisor = dictionary[unitFrom].divisor
+        const toDivisor = dictionary[unitTo].divisor
+        let calculatedResult: number | null = null
+
+        if (unitFrom === unitTo) {
+          calculatedResult = value
+        } else if (dictionary["monaie"] && dictionary["monaie"].converter) {
+          calculatedResult = await dictionary["monaie"].converter(value, dictionary[unitFrom], dictionary[unitTo])
+        } else if (dictionary[unitFrom].converter && dictionary[unitFrom].converter === dictionary[unitTo].converter) {
+          calculatedResult = await dictionary[unitTo].converter(value, dictionary[unitFrom], dictionary[unitTo])
+        } else {
+          calculatedResult = (value * fromDivisor) / toDivisor
+        }
+
+        setResult(calculatedResult)
+      } else {
+        setResult(null)
+      }
+    }
+
+    calculateResult()
   }, [value, unitFrom, unitTo, dictionary, precision])
 
   const switchUnits = () => {

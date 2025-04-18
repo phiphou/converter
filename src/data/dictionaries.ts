@@ -1,8 +1,1206 @@
+import currency_converter from "../converters/currency_converter"
 import {temp_converter} from "../converters/temp_converter"
 import {hms_formater} from "../formaters/hms_formater"
 import {ymd_formater} from "../formaters/ymd_formater"
 
 export const dictionaries = {
+  devises: {
+    list: {
+      af: {
+        name: "Afghanistan",
+        curr_code: "afn",
+        curr_name_fr: "Afghani afghan",
+      },
+      al: {
+        name: "Albanie",
+        curr_code: "all",
+        curr_name_fr: "Lek albanais",
+      },
+      dz: {
+        name: "Algérie",
+        curr_code: "dzd",
+        curr_name_fr: "Dinar algérien",
+      },
+      as: {
+        name: "Samoa américaines",
+        curr_code: "usd",
+        curr_name_fr: "Dollar américain",
+      },
+      ad: {
+        name: "Andorre",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      ao: {
+        name: "Angola",
+        curr_code: "aoa",
+        curr_name_fr: "Kwanza angolais",
+      },
+      ai: {
+        name: "Anguilla",
+        curr_code: "xcd",
+        curr_name_fr: "Dollar des Caraïbes orientales",
+      },
+      ag: {
+        name: "Antigua-et-Barbuda",
+        curr_code: "xcd",
+        curr_name_fr: "Dollar des Caraïbes orientales",
+      },
+      ar: {
+        name: "Argentine",
+        curr_code: "ars",
+        curr_name_fr: "Peso argentin",
+      },
+      am: {
+        name: "Arménie",
+        curr_code: "amd",
+        curr_name_fr: "Dram arménien",
+      },
+      aw: {
+        name: "Aruba",
+        curr_code: "awg",
+        curr_name_fr: "aruban florin",
+      },
+      au: {
+        name: "Australie",
+        curr_code: "aud",
+        curr_name_fr: "Dollar australien",
+      },
+      at: {
+        name: "Autriche",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      az: {
+        name: "Azerbaïdjan",
+        curr_code: "azn",
+        curr_name_fr: "Manat azerbaïdjanais",
+      },
+      bs: {
+        name: "Bahamas",
+        curr_code: "bsd",
+        curr_name_fr: "Dollar bahaméen",
+      },
+      bh: {
+        name: "Bahreïn",
+        curr_code: "bhd",
+        curr_name_fr: "Dinar bahreïni",
+      },
+      bd: {
+        name: "Bangladesh",
+        curr_code: "bdt",
+        curr_name_fr: "Taka bangladais",
+      },
+      bb: {
+        name: "Barbade",
+        curr_code: "bbd",
+        curr_name_fr: "Dollar barbadien",
+      },
+      by: {
+        name: "Biélorussie",
+        curr_code: "byn",
+        curr_name_fr: "Rouble biélorusse",
+      },
+      be: {
+        name: "Belgique",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      bz: {
+        name: "Belize",
+        curr_code: "bzd",
+        curr_name_fr: "Dollar bélizéen",
+      },
+      bj: {
+        name: "Bénin",
+        curr_code: "xof",
+        curr_name_fr: "Franc CFA (BCEAO)",
+      },
+      bm: {
+        name: "Bermudes",
+        curr_code: "bmd",
+        curr_name_fr: "Dollar bermudien",
+      },
+      bt: {
+        name: "Bhoutan",
+        curr_code: "btn",
+        curr_name_fr: "Ngultrum bhoutanais",
+      },
+      bo: {
+        name: "Bolivie",
+        curr_code: "bob",
+        curr_name_fr: "Boliviano bolivien",
+      },
+      ba: {
+        name: "Bosnie-Herzégovine",
+        curr_code: "bam",
+        curr_name_fr: "Mark convertible bosnien",
+      },
+      bw: {
+        name: "Botswana",
+        curr_code: "bwp",
+        curr_name_fr: "Pula botswanais",
+      },
+      bv: {
+        name: "Île Bouvet",
+        curr_code: "nok",
+        curr_name_fr: "norwegian krone",
+      },
+      br: {
+        name: "Brésil",
+        curr_code: "brl",
+        curr_name_fr: "Réal brésilien",
+      },
+      io: {
+        name: "Territoire britannique de l'océan Indien",
+        curr_code: "usd",
+        curr_name_fr: "us dollar",
+      },
+      bn: {
+        name: "Brunei",
+        curr_code: "bnd",
+        curr_name_fr: "Dollar brunéien",
+      },
+      bg: {
+        name: "Bulgarie",
+        curr_code: "bgn",
+        curr_name_fr: "Lev bulgare",
+      },
+      bf: {
+        name: "Burkina Faso",
+        curr_code: "xof",
+        curr_name_fr: "Franc CFA (BCEAO)",
+      },
+      bi: {
+        name: "Burundi",
+        curr_code: "bif",
+        curr_name_fr: "Franc burundais",
+      },
+      cv: {
+        name: "Cap-Vert",
+        curr_code: "cve",
+        curr_name_fr: "Escudo cap-verdien",
+      },
+      kh: {
+        name: "Cambodge",
+        curr_code: "khr",
+        curr_name_fr: "Riel cambodgien",
+      },
+      cm: {
+        name: "Cameroun",
+        curr_code: "xaf",
+        curr_name_fr: "Franc CFA (BEAC)",
+      },
+      ca: {
+        name: "Canada",
+        curr_code: "cad",
+        curr_name_fr: "Dollar canadien",
+      },
+      ky: {
+        name: "Îles Caïmans",
+        curr_code: "kyd",
+        curr_name_fr: "cayman islands dollar",
+      },
+      cf: {
+        name: "République centrafricaine",
+        curr_code: "xaf",
+        curr_name_fr: "Franc CFA (BEAC)",
+      },
+      td: {
+        name: "Tchad",
+        curr_code: "xaf",
+        curr_name_fr: "Franc CFA (BEAC)",
+      },
+      cl: {
+        name: "Chili",
+        curr_code: "clp",
+        curr_name_fr: "Peso chilien",
+      },
+      cn: {
+        name: "Chine",
+        curr_code: "cny",
+        curr_name_fr: "Yuan renminbi chinois",
+      },
+      cx: {
+        name: "Île Christmas",
+        curr_code: "aud",
+        curr_name_fr: "australian dollar",
+      },
+      cc: {
+        name: "Îles Cocos",
+        curr_code: "aud",
+        curr_name_fr: "australian dollar",
+      },
+      co: {
+        name: "Colombie",
+        curr_code: "cop",
+        curr_name_fr: "Peso colombien",
+      },
+      km: {
+        name: "Comores",
+        curr_code: "kmf",
+        curr_name_fr: "Franc comorien",
+      },
+      cd: {
+        name: "République démocratique du Congo",
+        curr_code: "cdf",
+        curr_name_fr: "Franc congolais",
+      },
+      cg: {
+        name: "République du Congo",
+        curr_code: "xaf",
+        curr_name_fr: "Franc CFA (BEAC)",
+      },
+      ck: {
+        name: "Îles Cook",
+        curr_code: "nzd",
+        curr_name_fr: "new zealand dollar",
+      },
+      cr: {
+        name: "Costa Rica",
+        curr_code: "crc",
+        curr_name_fr: "Colón costaricain",
+      },
+      hr: {
+        name: "Croatie",
+        curr_code: "hrk",
+        curr_name_fr: "Kuna croate",
+      },
+      cu: {
+        name: "Cuba",
+        curr_code: "cup",
+        curr_name_fr: "Peso cubain",
+      },
+      cw: {
+        name: "Curaçao",
+        curr_code: "ang",
+        curr_name_fr: "netherlands antillean guilder",
+      },
+      cy: {
+        name: "Chypre",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      ci: {
+        name: "Côte d'Ivoire",
+        curr_code: "xof",
+        curr_name_fr: "Franc CFA (BCEAO)",
+      },
+      dk: {
+        name: "Danemark",
+        curr_code: "dkk",
+        curr_name_fr: "Couronne danoise",
+      },
+      dj: {
+        name: "Djibouti",
+        curr_code: "djf",
+        curr_name_fr: "Franc djiboutien",
+      },
+      dm: {
+        name: "Dominique",
+        curr_code: "xcd",
+        curr_name_fr: "Dollar des Caraïbes orientales",
+      },
+      do: {
+        name: "République dominicaine",
+        curr_code: "dop",
+        curr_name_fr: "Peso dominicain",
+      },
+      ec: {
+        name: "Équateur",
+        curr_code: "usd",
+        curr_name_fr: "Dollar américain",
+      },
+      eg: {
+        name: "Égypte",
+        curr_code: "egp",
+        curr_name_fr: "Livre égyptienne",
+      },
+      sv: {
+        name: "Salvador",
+        curr_code: "usd",
+        curr_name_fr: "Dollar américain",
+      },
+      gq: {
+        name: "Guinée équatoriale",
+        curr_code: "xaf",
+        curr_name_fr: "Franc CFA (BEAC)",
+      },
+      er: {
+        name: "Érythrée",
+        curr_code: "ern",
+        curr_name_fr: "Nakfa érythréen",
+      },
+      ee: {
+        name: "Estonie",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      et: {
+        name: "Éthiopie",
+        curr_code: "etb",
+        curr_name_fr: "Birr éthiopien",
+      },
+      fk: {
+        name: "Malouines",
+        curr_code: "fkp",
+        curr_name_fr: "falkland islands pound",
+      },
+      fo: {
+        name: "Îles Féroé",
+        curr_code: "dkk",
+        curr_name_fr: "danish krone",
+      },
+      fj: {
+        name: "Fidji",
+        curr_code: "fjd",
+        curr_name_fr: "Dollar fidjien",
+      },
+      fi: {
+        name: "Finlande",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      fr: {
+        name: "France",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      gf: {
+        name: "Guyane",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      pf: {
+        name: "Polynésie française",
+        curr_code: "xpf",
+        curr_name_fr: "Franc CFP",
+      },
+      tf: {
+        name: "Terres australes et antarctiques françaises",
+        curr_code: "eur",
+        curr_name_fr: "euro",
+      },
+      ga: {
+        name: "Gabon",
+        curr_code: "xaf",
+        curr_name_fr: "Franc CFA (BEAC)",
+      },
+      gm: {
+        name: "Gambie",
+        curr_code: "gmd",
+        curr_name_fr: "Dalasi gambien",
+      },
+      ge: {
+        name: "Géorgie",
+        curr_code: "gel",
+        curr_name_fr: "Lari géorgien",
+      },
+      de: {
+        name: "Allemagne",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      gh: {
+        name: "Ghana",
+        curr_code: "ghs",
+        curr_name_fr: "Cedi ghanéen",
+      },
+      gi: {
+        name: "Gibraltar",
+        curr_code: "gip",
+        curr_name_fr: "gibraltar pound",
+      },
+      gr: {
+        name: "Grèce",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      gl: {
+        name: "Groenland",
+        curr_code: "dkk",
+        curr_name_fr: "danish krone",
+      },
+      gd: {
+        name: "Grenade",
+        curr_code: "xcd",
+        curr_name_fr: "Dollar des Caraïbes orientales",
+      },
+      gp: {
+        name: "Guadeloupe",
+        curr_code: "eur",
+        curr_name_fr: "euro",
+      },
+      gu: {
+        name: "Guam",
+        curr_code: "usd",
+        curr_name_fr: "us dollar",
+      },
+      gt: {
+        name: "Guatemala",
+        curr_code: "gtq",
+        curr_name_fr: "Quetzal guatémaltèque",
+      },
+      gg: {
+        name: "Guernesey",
+        curr_code: "gbp",
+        curr_name_fr: "pound sterling",
+      },
+      gn: {
+        name: "Guinée",
+        curr_code: "gnf",
+        curr_name_fr: "Franc guinéen",
+      },
+      gw: {
+        name: "Guinée-Bissau",
+        curr_code: "xof",
+        curr_name_fr: "Franc CFA (BCEAO)",
+      },
+      gy: {
+        name: "Guyana",
+        curr_code: "gyd",
+        curr_name_fr: "Dollar guyanien",
+      },
+      ht: {
+        name: "Haïti",
+        curr_code: "htg",
+        curr_name_fr: "Gourde haïtienne",
+      },
+      hm: {
+        name: "Îles Heard-et-MacDonald",
+        curr_code: "aud",
+        curr_name_fr: "australian dollar",
+      },
+      va: {
+        name: "Saint-Siège (État de la Cité du Vatican)",
+        curr_code: "eur",
+        curr_name_fr: "euro",
+      },
+      hn: {
+        name: "Honduras",
+        curr_code: "hnl",
+        curr_name_fr: "Lempira hondurien",
+      },
+      hk: {
+        name: "Hong Kong",
+        curr_code: "hkd",
+        curr_name_fr: "Dollar de Hong Kong",
+      },
+      hu: {
+        name: "Hongrie",
+        curr_code: "huf",
+        curr_name_fr: "Forint hongrois",
+      },
+      is: {
+        name: "Islande",
+        curr_code: "isk",
+        curr_name_fr: "Couronne islandaise",
+      },
+      in: {
+        name: "Inde",
+        curr_code: "inr",
+        curr_name_fr: "Roupie indienne",
+      },
+      id: {
+        name: "Indonésie",
+        curr_code: "idr",
+        curr_name_fr: "Roupie indonésienne",
+      },
+      ir: {
+        name: "Iran",
+        curr_code: "irr",
+        curr_name_fr: "Rial iranien",
+      },
+      iq: {
+        name: "Irak",
+        curr_code: "iqd",
+        curr_name_fr: "Dinar irakien",
+      },
+      ie: {
+        name: "Irlande",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      im: {
+        name: "Île de Man",
+        curr_code: "gbp",
+        curr_name_fr: "pound sterling",
+      },
+      il: {
+        name: "Israël",
+        curr_code: "ils",
+        curr_name_fr: "Shekel israélien",
+      },
+      it: {
+        name: "Italie",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      jm: {
+        name: "Jamaïque",
+        curr_code: "jmd",
+        curr_name_fr: "Dollar jamaïcain",
+      },
+      jp: {
+        name: "Japon",
+        curr_code: "jpy",
+        curr_name_fr: "Yen japonais",
+      },
+      je: {
+        name: "Jersey",
+        curr_code: "gbp",
+        curr_name_fr: "pound sterling",
+      },
+      jo: {
+        name: "Jordanie",
+        curr_code: "jod",
+        curr_name_fr: "Dinar jordanien",
+      },
+      kz: {
+        name: "Kazakhstan",
+        curr_code: "kzt",
+        curr_name_fr: "Tenge kazakh",
+      },
+      ke: {
+        name: "Kenya",
+        curr_code: "kes",
+        curr_name_fr: "Shilling kényan",
+      },
+      ki: {
+        name: "Kiribati",
+        curr_code: "aud",
+        curr_name_fr: "australian dollar",
+      },
+      kr: {
+        name: "Corée du Sud",
+        curr_code: "krw",
+        curr_name_fr: "Won sud-coréen",
+      },
+      kw: {
+        name: "Koweït",
+        curr_code: "kwd",
+        curr_name_fr: "Dinar koweïtien",
+      },
+      kg: {
+        name: "Kirghizistan",
+        curr_code: "kgs",
+        curr_name_fr: "Som kirghize",
+      },
+      lv: {
+        name: "Lettonie",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      lb: {
+        name: "Liban",
+        curr_code: "lbp",
+        curr_name_fr: "Livre libanaise",
+      },
+      ls: {
+        name: "Lesotho",
+        curr_code: "lsl",
+        curr_name_fr: "Loti lesothan",
+      },
+      lr: {
+        name: "Liberia",
+        curr_code: "lrd",
+        curr_name_fr: "Dollar libérien",
+      },
+      ly: {
+        name: "Libye",
+        curr_code: "lyd",
+        curr_name_fr: "Dinar libyen",
+      },
+      li: {
+        name: "Liechtenstein",
+        curr_code: "chf",
+        curr_name_fr: "Franc suisse",
+      },
+      lt: {
+        name: "Lituanie",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      lu: {
+        name: "Luxembourg",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      mo: {
+        name: "Macao",
+        curr_code: "mop",
+        curr_name_fr: "Pataca macanaise",
+      },
+      mg: {
+        name: "Madagascar",
+        curr_code: "mga",
+        curr_name_fr: "Ariary malgache",
+      },
+      mw: {
+        name: "Malawi",
+        curr_code: "mwk",
+        curr_name_fr: "Kwacha malawite",
+      },
+      my: {
+        name: "Malaisie",
+        curr_code: "myr",
+        curr_name_fr: "Ringgit malaisien",
+      },
+      mv: {
+        name: "Maldives",
+        curr_code: "mvr",
+        curr_name_fr: "Rufiyaa maldivienne",
+      },
+      ml: {
+        name: "Mali",
+        curr_code: "xof",
+        curr_name_fr: "Franc CFA (BCEAO)",
+      },
+      mt: {
+        name: "Malte",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      mh: {
+        name: "Îles Marshall",
+        curr_code: "usd",
+        curr_name_fr: "Dollar américain",
+      },
+      mq: {
+        name: "Martinique",
+        curr_code: "eur",
+        curr_name_fr: "euro",
+      },
+      mr: {
+        name: "Mauritanie",
+        curr_code: "mru",
+        curr_name_fr: "Ouguiya mauritanienne",
+      },
+      mu: {
+        name: "Maurice",
+        curr_code: "mur",
+        curr_name_fr: "Roupie mauricienne",
+      },
+      yt: {
+        name: "Mayotte",
+        curr_code: "eur",
+        curr_name_fr: "euro",
+      },
+      mx: {
+        name: "Mexique",
+        curr_code: "mxn",
+        curr_name_fr: "Peso mexicain",
+      },
+      fm: {
+        name: "États fédérés de Micronésie",
+        curr_code: "usd",
+        curr_name_fr: "Dollar américain",
+      },
+      md: {
+        name: "Moldavie",
+        curr_code: "mdl",
+        curr_name_fr: "Leu moldave",
+      },
+      mc: {
+        name: "Monaco",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      mn: {
+        name: "Mongolie",
+        curr_code: "mnt",
+        curr_name_fr: "Tugrik mongol",
+      },
+      me: {
+        name: "Monténégro",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      ms: {
+        name: "Montserrat",
+        curr_code: "xcd",
+        curr_name_fr: "east caribbean dollar",
+      },
+      ma: {
+        name: "Maroc",
+        curr_code: "mad",
+        curr_name_fr: "Dirham marocain",
+      },
+      mz: {
+        name: "Mozambique",
+        curr_code: "mzn",
+        curr_name_fr: "Metical mozambicain",
+      },
+      mm: {
+        name: "Birmanie",
+        curr_code: "mmk",
+        curr_name_fr: "Kyat birman",
+      },
+      na: {
+        name: "Namibie",
+        curr_code: "nad",
+        curr_name_fr: "Dollar namibien",
+      },
+      nr: {
+        name: "Nauru",
+        curr_code: "aud",
+        curr_name_fr: "Dollar australien",
+      },
+      np: {
+        name: "Népal",
+        curr_code: "npr",
+        curr_name_fr: "Roupie népalaise",
+      },
+      nl: {
+        name: "Pays-Bas",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      nc: {
+        name: "Nouvelle-Calédonie",
+        curr_code: "xpf",
+        curr_name_fr: "Franc CFP",
+      },
+      nz: {
+        name: "Nouvelle-Zélande",
+        curr_code: "nzd",
+        curr_name_fr: "Dollar néo-zélandais",
+      },
+      ni: {
+        name: "Nicaragua",
+        curr_code: "nio",
+        curr_name_fr: "Córdoba nicaraguayen",
+      },
+      ne: {
+        name: "Niger",
+        curr_code: "xof",
+        curr_name_fr: "Franc CFA (BCEAO)",
+      },
+      ng: {
+        name: "Nigeria",
+        curr_code: "ngn",
+        curr_name_fr: "Naira nigérian",
+      },
+      nu: {
+        name: "Niue",
+        curr_code: "nzd",
+        curr_name_fr: "new zealand dollar",
+      },
+      nf: {
+        name: "Île Norfolk",
+        curr_code: "aud",
+        curr_name_fr: "australian dollar",
+      },
+      mp: {
+        name: "Îles Mariannes du Nord",
+        curr_code: "usd",
+        curr_name_fr: "us dollar",
+      },
+      no: {
+        name: "Norvège",
+        curr_code: "nok",
+        curr_name_fr: "Couronne norvégienne",
+      },
+      om: {
+        name: "Oman",
+        curr_code: "omr",
+        curr_name_fr: "Rial omanais",
+      },
+      pk: {
+        name: "Pakistan",
+        curr_code: "pkr",
+        curr_name_fr: "Roupie pakistanaise",
+      },
+      pw: {
+        name: "Palaos",
+        curr_code: "usd",
+        curr_name_fr: "Dollar américain",
+      },
+      pa: {
+        name: "Panama",
+        curr_code: "pab",
+        curr_name_fr: "Balboa panaméen",
+      },
+      pg: {
+        name: "Papouasie-Nouvelle-Guinée",
+        curr_code: "pgk",
+        curr_name_fr: "Kina papou-néo-guinéen",
+      },
+      py: {
+        name: "Paraguay",
+        curr_code: "pyg",
+        curr_name_fr: "Guarani paraguayen",
+      },
+      pe: {
+        name: "Pérou",
+        curr_code: "pen",
+        curr_name_fr: "Sol péruvien",
+      },
+      ph: {
+        name: "Philippines",
+        curr_code: "php",
+        curr_name_fr: "Peso philippin",
+      },
+      pn: {
+        name: "Îles Pitcairn",
+        curr_code: "nzd",
+        curr_name_fr: "new zealand dollar",
+      },
+      pl: {
+        name: "Pologne",
+        curr_code: "pln",
+        curr_name_fr: "Złoty polonais",
+      },
+      pt: {
+        name: "Portugal",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      pr: {
+        name: "Porto Rico",
+        curr_code: "usd",
+        curr_name_fr: "us dollar",
+      },
+      qa: {
+        name: "Qatar",
+        curr_code: "qar",
+        curr_name_fr: "Riyal qatari",
+      },
+      mk: {
+        name: "Macédoine du Nord",
+        curr_code: "mkd",
+        curr_name_fr: "denar",
+      },
+      ro: {
+        name: "Roumanie",
+        curr_code: "ron",
+        curr_name_fr: "Leu roumain",
+      },
+      ru: {
+        name: "Russie",
+        curr_code: "rub",
+        curr_name_fr: "Rouble russe",
+      },
+      rw: {
+        name: "Rwanda",
+        curr_code: "rwf",
+        curr_name_fr: "Franc rwandais",
+      },
+      re: {
+        name: "La Réunion",
+        curr_code: "eur",
+        curr_name_fr: "euro",
+      },
+      bl: {
+        name: "Saint-Barthélemy",
+        curr_code: "eur",
+        curr_name_fr: "euro",
+      },
+      kn: {
+        name: "Saint-Christophe-et-Niévès",
+        curr_code: "xcd",
+        curr_name_fr: "Dollar des Caraïbes orientales",
+      },
+      lc: {
+        name: "Sainte-Lucie",
+        curr_code: "xcd",
+        curr_name_fr: "Dollar des Caraïbes orientales",
+      },
+      mf: {
+        name: "Saint-Martin",
+        curr_code: "eur",
+        curr_name_fr: "euro",
+      },
+      pm: {
+        name: "Saint-Pierre-et-Miquelon",
+        curr_code: "eur",
+        curr_name_fr: "euro",
+      },
+      vc: {
+        name: "Saint-Vincent-et-les-Grenadines",
+        curr_code: "xcd",
+        curr_name_fr: "Dollar des Caraïbes orientales",
+      },
+      ws: {
+        name: "Samoa",
+        curr_code: "wst",
+        curr_name_fr: "Tala samoan",
+      },
+      sm: {
+        name: "Saint-Marin",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      st: {
+        name: "Sao Tomé-et-Principe",
+        curr_code: "stn",
+        curr_name_fr: "Dobra santoméen",
+      },
+      sa: {
+        name: "Arabie saoudite",
+        curr_code: "sar",
+        curr_name_fr: "Riyal saoudien",
+      },
+      sn: {
+        name: "Sénégal",
+        curr_code: "xof",
+        curr_name_fr: "Franc CFA (BCEAO)",
+      },
+      rs: {
+        name: "Serbie",
+        curr_code: "rsd",
+        curr_name_fr: "Dinar serbe",
+      },
+      sc: {
+        name: "Seychelles",
+        curr_code: "scr",
+        curr_name_fr: "Roupie seychelloise",
+      },
+      sl: {
+        name: "Sierra Leone",
+        curr_code: "sll",
+        curr_name_fr: "Leone sierra-léonais",
+      },
+      sg: {
+        name: "Singapour",
+        curr_code: "sgd",
+        curr_name_fr: "Dollar de Singapour",
+      },
+      sx: {
+        name: "Saint-Martin",
+        curr_code: "ang",
+        curr_name_fr: "netherlands antillean guilder",
+      },
+      sk: {
+        name: "Slovaquie",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      si: {
+        name: "Slovénie",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      sb: {
+        name: "Îles Salomon",
+        curr_code: "sbd",
+        curr_name_fr: "solomon islands dollar",
+      },
+      so: {
+        name: "Somalie",
+        curr_code: "sos",
+        curr_name_fr: "Shilling somalien",
+      },
+      za: {
+        name: "Afrique du Sud",
+        curr_code: "zar",
+        curr_name_fr: "Rand sud-africain",
+      },
+      es: {
+        name: "Espagne",
+        curr_code: "eur",
+        curr_name_fr: "Euro",
+      },
+      lk: {
+        name: "Sri Lanka",
+        curr_code: "lkr",
+        curr_name_fr: "Roupie srilankaise",
+      },
+      sd: {
+        name: "Soudan",
+        curr_code: "sdg",
+        curr_name_fr: "Livre soudanaise",
+      },
+      sr: {
+        name: "Suriname",
+        curr_code: "srd",
+        curr_name_fr: "Dollar surinamais",
+      },
+      sj: {
+        name: "Svalbard et île Jan Mayen",
+        curr_code: "nok",
+        curr_name_fr: "norwegian krone",
+      },
+      se: {
+        name: "Suède",
+        curr_code: "sek",
+        curr_name_fr: "Couronne suédoise",
+      },
+      ch: {
+        name: "Suisse",
+        curr_code: "chf",
+        curr_name_fr: "Franc suisse",
+      },
+      sy: {
+        name: "Syrie",
+        curr_code: "syp",
+        curr_name_fr: "Livre syrienne",
+      },
+      tw: {
+        name: "Taïwan (République de Chine)",
+        curr_code: "twd",
+        curr_name_fr: "new taiwan dollar",
+      },
+      tj: {
+        name: "Tadjikistan",
+        curr_code: "tjs",
+        curr_name_fr: "Somoni tadjik",
+      },
+      th: {
+        name: "Thaïlande",
+        curr_code: "thb",
+        curr_name_fr: "Baht thaïlandais",
+      },
+      tl: {
+        name: "Timor oriental",
+        curr_code: "usd",
+        curr_name_fr: "Dollar américain",
+      },
+      tg: {
+        name: "Togo",
+        curr_code: "xof",
+        curr_name_fr: "Franc CFA (BCEAO)",
+      },
+      tk: {
+        name: "Tokelau",
+        curr_code: "nzd",
+        curr_name_fr: "new zealand dollar",
+      },
+      to: {
+        name: "Tonga",
+        curr_code: "top",
+        curr_name_fr: "Paʻanga tongan",
+      },
+      tt: {
+        name: "Trinité-et-Tobago",
+        curr_code: "ttd",
+        curr_name_fr: "Dollar trinidadien",
+      },
+      tn: {
+        name: "Tunisie",
+        curr_code: "tnd",
+        curr_name_fr: "Dinar tunisien",
+      },
+      tr: {
+        name: "Turquie",
+        curr_code: "try",
+        curr_name_fr: "Livre turque",
+      },
+      tm: {
+        name: "Turkménistan",
+        curr_code: "tmt",
+        curr_name_fr: "Manat turkmène",
+      },
+      tc: {
+        name: "Îles Turques-et-Caïques",
+        curr_code: "usd",
+        curr_name_fr: "us dollar",
+      },
+      tv: {
+        name: "Tuvalu",
+        curr_code: "aud",
+        curr_name_fr: "Dollar australien",
+      },
+      ug: {
+        name: "Ouganda",
+        curr_code: "ugx",
+        curr_name_fr: "Shilling ougandais",
+      },
+      ua: {
+        name: "Ukraine",
+        curr_code: "uah",
+        curr_name_fr: "Hryvnia ukrainienne",
+      },
+      ae: {
+        name: "Émirats arabes unis",
+        curr_code: "aed",
+        curr_name_fr: "Dirham des Émirats arabes unis",
+      },
+      gb: {
+        name: "Royaume-Uni",
+        curr_code: "gbp",
+        curr_name_fr: "Livre sterling",
+      },
+      um: {
+        name: "Îles mineures éloignées des États-Unis",
+        curr_code: "usd",
+        curr_name_fr: "us dollar",
+      },
+      us: {
+        name: "États-Unis",
+        curr_code: "usd",
+        curr_name_fr: "Dollar américain",
+      },
+      uy: {
+        name: "Uruguay",
+        curr_code: "uyu",
+        curr_name_fr: "Peso uruguayen",
+      },
+      uz: {
+        name: "Ouzbékistan",
+        curr_code: "uzs",
+        curr_name_fr: "Sum ouzbek",
+      },
+      vu: {
+        name: "Vanuatu",
+        curr_code: "vuv",
+        curr_name_fr: "Vatu vanuatuan",
+      },
+      ve: {
+        name: "Venezuela",
+        curr_code: "vef",
+        curr_name_fr: "Bolivar vénézuélien",
+      },
+      vn: {
+        name: "Viêt Nam",
+        curr_code: "vnd",
+        curr_name_fr: "Dong vietnamien",
+      },
+      vg: {
+        name: "Îles Vierges britanniques",
+        curr_code: "usd",
+        curr_name_fr: "Dollar américain",
+      },
+      vi: {
+        name: "Îles Vierges des États-Unis",
+        curr_code: "usd",
+        curr_name_fr: "us dollar",
+      },
+      wf: {
+        name: "Wallis-et-Futuna",
+        curr_code: "xpf",
+        curr_name_fr: "cfp franc",
+      },
+      eh: {
+        name: "République arabe sahraouie démocratique",
+        curr_code: "mad",
+        curr_name_fr: "moroccan dirham",
+      },
+      ye: {
+        name: "Yémen",
+        curr_code: "yer",
+        curr_name_fr: "Rial yéménite",
+      },
+      zm: {
+        name: "Zambie",
+        curr_code: "zmw",
+        curr_name_fr: "Kwacha zambien",
+      },
+      zw: {
+        name: "Zimbabwe",
+        curr_code: "zwl",
+        curr_name_fr: "Dollar zimbabwéen",
+      },
+      ax: {
+        name: "Îles Åland",
+        curr_code: "eur",
+        curr_name_fr: "euro",
+      },
+    },
+    converter: currency_converter,
+    pluralize: false,
+    divisor: 1,
+  },
   angle: {
     degré: {
       label: "degré",

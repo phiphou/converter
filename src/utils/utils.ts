@@ -14,8 +14,14 @@ export const pluralize = (result: number | null, label: string, unit: Unit): str
   return label.split(" ").map(processWord).join(" ")
 }
 
-const toExponentialString = (value: number): string => {
-  const superscriptMap: Record<string, string> = {
+function roundNumber(number: number, digits: number) {
+  const multiple = Math.pow(10, digits)
+  const rndedNum = Math.round(number * multiple) / multiple
+  return rndedNum
+}
+
+export const scientific_notation = (value: number | null, precision: number): string => {
+  const superscriptMap = {
     "0": "⁰",
     "1": "¹",
     "2": "²",
@@ -29,27 +35,17 @@ const toExponentialString = (value: number): string => {
     "-": "⁻",
   }
 
-  return value !== 0
-    ? value
-        .toString()
-        .split("")
-        .map((char) => superscriptMap[char] || char)
-        .join("")
-    : ""
-}
+  if (value === 0) return "0"
 
-export const scientific_notation = (value: number | null, precision: number): string => {
-  const integer_part: number = parseFloat((value + "").split(".")[0])
-  const decimal_part: string = (value + "").split(".")[1] ? (value + "").split(".")[1] : ""
-  const fixed_decimal_part: string = decimal_part.split("e")[0].slice(0, precision)
-  const toexp = value?.toExponential(15).split("e")
-  const fixed_integer: string = integer_part === 0 ? "1" : toexp?.[0]?.split(".")[0] || "0"
-  const exponentPart = toexp?.[1] || "0"
-  if (value) {
-    const exponent: number = parseInt(exponentPart || "0")
-    const no_decimal: boolean = decimal_part.startsWith("0") || decimal_part === ""
+  if (value === null) throw new Error("Value cannot be null")
+  const scientific = roundNumber(value, precision).toExponential().split("e")
+  const coefficient = parseFloat(scientific[0])
+  const exponent = parseInt(scientific[1], 10).toString()
 
-    return `${fixed_integer}${no_decimal ? "" : "." + fixed_decimal_part}${exponent !== 0 ? "×10" : ""}${toExponentialString(exponent)}`
-  }
-  return ""
+  const unicodeExponent = exponent
+    .split("")
+    .map((char) => superscriptMap[char as keyof typeof superscriptMap] || char)
+    .join("")
+
+  return `${coefficient}×10${unicodeExponent}`
 }

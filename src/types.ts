@@ -1,6 +1,7 @@
 export interface Unit {
   label: string
   divisor: number
+  code?: string
   formater?: (value: number) => string
   pluralize?: boolean
   pluralize_all?: boolean

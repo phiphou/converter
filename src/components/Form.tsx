@@ -29,7 +29,7 @@ function Form() {
           {selectedDictionary && (
             <UnitForm
               label={category.charAt(0).toUpperCase() + category.slice(1).replace("_2", " ")}
-              dictionary={selectedDictionary as Record<string, Unit>}
+              dic={selectedDictionary as Record<string, Unit>}
             />
           )}
         </div>
