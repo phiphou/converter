@@ -7,27 +7,22 @@ export const dictionaries = {
     degré: {
       label: "degré",
       divisor: 1,
-      pluralize: true,
     },
     radian: {
       label: "radian",
       divisor: 180 / Math.PI,
-      pluralize: true,
     },
     arc_m: {
       label: "minute d'arc",
       divisor: 1 / 60,
-      pluralize: true,
     },
     arc_s: {
       label: "seconde d'arc",
       divisor: 1 / 3600,
-      pluralize: true,
     },
     grade: {
       label: "grade",
       divisor: 0.9,
-      pluralize: true,
     },
     angular_mil_NATO: {
       label: "mil angulaire",
@@ -40,38 +35,31 @@ export const dictionaries = {
     microliter: {
       label: "microlitre",
       divisor: 0.000000001,
-      pluralize: true,
     },
     milliliter: {
       label: "millilitre",
       divisor: 0.000001,
-      pluralize: true,
     },
     centiliter: {
       label: "centilitre",
       divisor: 0.00001,
-      pluralize: true,
     },
     deciliter: {
       label: "décilitre",
       divisor: 0.0001,
-      pluralize: true,
     },
     liter: {
       label: "litre",
       divisor: 0.001,
-      pluralize: true,
     },
     cubic_meter: {
       label: "mètre cube",
       divisor: 1,
-      pluralize: true,
     },
     wine_bottle: {
       info: 'volume moyen selon <a href="https://fr.wikipedia.org/wiki/Bouteille_de_vin" target="_blank">Wikipédia</a>',
       label: "bouteille de vin",
       divisor: 0.00075,
-      pluralize: true,
     },
     gallon: {
       label: "gallon",
@@ -82,28 +70,27 @@ export const dictionaries = {
       info: 'volume moyen selon <a href="https://isi-sanitaire.fr/blog/astuces_conseils_tutos/litres-eau-pour-remplir-une-baignoire/" target="_blank">isi-sanitaire</a>',
       label: "baignoire",
       divisor: 0.155,
-      pluralize: true,
+
       not_unit: true,
     },
     shower: {
       info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>',
       label: "douche de 5 minutes",
       divisor: 0.12,
-      pluralize: true,
+
       not_unit: true,
     },
     shower2: {
       info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>',
       label: "douche de 10 minutes",
       divisor: 0.2,
-      pluralize: true,
+
       not_unit: true,
     },
     oil_barrel: {
       info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Baril" target="_blank">Wikipédia</a>',
       label: "baril de pétrole",
       divisor: 0.158987294928,
-      pluralize: true,
     },
     berlingo: {
       info: 'volume utile selon le <a href="https://www.citroen.fr/vehicules/utility/Nouveau-Berlingo-Van.html" target="_blank">constructeur</a>',
@@ -123,7 +110,7 @@ export const dictionaries = {
       info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops" target="_blank">Wikipédia</a>',
       label: "pyramide de Kheops",
       divisor: 2592341,
-      pluralize: true,
+
       not_unit: true,
     },
     anecy_lake: {
@@ -158,151 +145,143 @@ export const dictionaries = {
     microgram: {
       label: "microgramme",
       divisor: 0.000000000001,
-      pluralize: true,
     },
     miligram: {
       label: "miligramme",
       divisor: 0.000000001,
-      pluralize: true,
     },
     gram: {
       label: "gramme",
       divisor: 0.000001,
-      pluralize: true,
     },
     kilogram: {
       label: "kilogramme",
       divisor: 0.001,
-      pluralize: true,
     },
     tons: {
       label: "tonne",
       divisor: 1,
-      pluralize: true,
     },
     oz: {
       label: "once anglo-saxone",
       divisor: 0.00002835,
-      pluralize: true,
     },
     ozt: {
       label: "once troy",
       divisor: 0.0000311034768,
-      pluralize: true,
     },
     lb: {
       label: "livre",
       divisor: 0.00045359237,
-      pluralize: true,
     },
     one_euro_cent: {
       label: "pièce de 1 centime d'euro",
       divisor: 0.0000023,
-      pluralize: true,
+
       not_unit: true,
     },
     two_euro_cent: {
       label: "pièce de 2 centimes d'euro",
       divisor: 0.00000306,
-      pluralize: true,
+
       not_unit: true,
     },
     five_euro_cent: {
       label: "pièce de 5 centimes d'euro",
       divisor: 0.00000392,
-      pluralize: true,
+
       not_unit: true,
     },
     ten_euro_cent: {
       label: "pièce de 10 centimes d'euro",
       divisor: 0.0000041,
-      pluralize: true,
+
       not_unit: true,
     },
     twenty_euro_cent: {
       label: "pièce de 20 centimes d'euro",
       divisor: 0.00000574,
-      pluralize: true,
+
       not_unit: true,
     },
     fifty_euro_cent: {
       label: "pièce de 50 centimes d'euro",
       divisor: 0.0000078,
-      pluralize: true,
+
       not_unit: true,
     },
     one_euro: {
       label: "pièce de un euro",
       divisor: 0.0000075,
-      pluralize: true,
+
       not_unit: true,
     },
     two_euro: {
       label: "pièce de deux euros",
       divisor: 0.0000085,
-      pluralize: true,
+
       not_unit: true,
     },
     rice_grain: {
       label: "grain de riz",
       divisor: 0.0000003014,
-      pluralize: true,
+
       not_unit: true,
     },
     ping_pong_ball: {
       info: "moyenne des limites réglementaires",
       label: "balle de ping-pong",
       divisor: 0.0000027,
-      pluralize: true,
+
       not_unit: true,
     },
     tennis_ball: {
       info: "moyenne des limites réglementaires",
       label: "balle de tennis",
       divisor: 0.0000577,
-      pluralize: true,
+
       not_unit: true,
     },
     volley_ball: {
       info: "moyenne des limites réglementaires",
       label: "ballon de volleyball",
       divisor: 0.00027,
-      pluralize: true,
+
       not_unit: true,
     },
     hand_ball: {
       info: "moyenne des limites réglementaires",
       label: "ballon de handball",
       divisor: 0.00045,
-      pluralize: true,
+
       not_unit: true,
     },
     foot_ball: {
       info: "moyenne des limites réglementaires",
       label: "ballon de foot",
       divisor: 0.00043,
-      pluralize: true,
+
       not_unit: true,
     },
     basket_ball: {
       info: "moyenne des limites réglementaires",
       label: "ballon de basket",
       divisor: 0.00065,
-      pluralize: true,
+
       not_unit: true,
     },
     petanque_ball: {
       info: "moyenne des limites réglementaires",
       label: "boule de pétanque",
       divisor: 0.0008,
-      pluralize: true,
+
       not_unit: true,
     },
     oak_stere: {
       info: "pour un bois de chauffage sec (20% d'humidité)",
       label: "stère de chêne",
       divisor: 0.44,
-      pluralize: true,
+
       not_unit: true,
     },
     twingo: {
@@ -334,20 +313,20 @@ export const dictionaries = {
     male_white_shark: {
       label: "requin blanc femelle",
       divisor: 1.325,
-      pluralize: true,
+
       not_unit: true,
     },
     male_hippopotamus: {
       info: 'poids moyen d\'un hippopotame mâle selon les données de <a href="https://fr.wikipedia.org/wiki/Hippopotamus_amphibius" target="_blank">Wikipédia</a>',
       label: "hippopotame",
       divisor: 1.5,
-      pluralize: true,
+
       not_unit: true,
     },
     african_elephant: {
       label: "éléphant d'Afrique mâle",
       divisor: 6,
-      pluralize: true,
+
       not_unit: true,
     },
     titanic: {
@@ -373,7 +352,7 @@ export const dictionaries = {
       info: "masse à vide",
       label: "char Leclerc",
       divisor: 56,
-      pluralize: true,
+
       not_unit: true,
     },
     eiffel_tower: {
@@ -392,7 +371,7 @@ export const dictionaries = {
     gizeh_pyramid: {
       label: "pyramide de Gizeh",
       divisor: 5750000,
-      pluralize: true,
+
       not_unit: true,
     },
   },
@@ -420,17 +399,14 @@ export const dictionaries = {
     a: {
       label: "are",
       divisor: 1,
-      pluralize: true,
     },
     ha: {
       label: "hectare",
       divisor: 100,
-      pluralize: true,
     },
     acre: {
       label: "acre",
       divisor: 40.4686,
-      pluralize: true,
     },
     km2: {
       label: "kilomètre carré",
@@ -440,53 +416,50 @@ export const dictionaries = {
     a5: {
       label: "feuille A5",
       divisor: 0.00003108,
-      pluralize: true,
     },
     a4: {
       label: "feuille A4",
       divisor: 0.0006237,
-      pluralize: true,
     },
     a3: {
       label: "feuille A3",
       divisor: 0.0012474,
-      pluralize: true,
     },
     ping_pong_table: {
       info: 'surface officielle, selon les <a href="https://documents.ittf.sport/sites/default/files/public/2021-04/2020ITTFHandbook.pdf" target="_blank">règles de l\'ITTF</a> (en anglais, page 34 du document)',
       label: "table de ping-pong",
       divisor: 0.041785,
-      pluralize: true,
+
       not_unit: true,
     },
     tennis_field: {
       label: "terrain de tennis",
       divisor: 2.607569,
-      pluralize: true,
+
       not_unit: true,
     },
     basket_field: {
       label: "terrain de basket",
       divisor: 4.36626,
-      pluralize: true,
+
       not_unit: true,
     },
     handball_field: {
       label: "terrain de handball",
       divisor: 8,
-      pluralize: true,
+
       not_unit: true,
     },
     rugby_field: {
       label: "terrain de rugby",
       divisor: 67.275,
-      pluralize: true,
+
       not_unit: true,
     },
     football_field: {
       label: "terrain de football",
       divisor: 71.4,
-      pluralize: true,
+
       not_unit: true,
     },
     wind_turbine: {
@@ -562,57 +535,46 @@ export const dictionaries = {
     nanom: {
       label: "nanomètre",
       divisor: 0.000000000001,
-      pluralize: true,
     },
     micron: {
       label: "micromètre",
       divisor: 0.000000001,
-      pluralize: true,
     },
     mm: {
       label: "milimètre",
       divisor: 0.000001,
-      pluralize: true,
     },
     cm: {
       label: "centimètre",
       divisor: 0.00001,
-      pluralize: true,
     },
     inch: {
       label: "pouce",
       divisor: 0.0000254,
-      pluralize: true,
     },
     dm: {
       label: "décimètre",
       divisor: 0.0001,
-      pluralize: true,
     },
     foot: {
       label: "pied",
       divisor: 0.0003048,
-      pluralize: true,
     },
     yard: {
       label: "yard",
       divisor: 0.0009144,
-      pluralize: true,
     },
     m: {
       label: "mètre",
       divisor: 0.001,
-      pluralize: true,
     },
     km: {
       label: "kilomètre",
       divisor: 1,
-      pluralize: true,
     },
     mile: {
       label: "mile",
       divisor: 1.609344,
-      pluralize: true,
     },
     nm: {
       label: "mile nautique",
@@ -627,12 +589,10 @@ export const dictionaries = {
     pc: {
       label: "parsec",
       divisor: 30856775810000,
-      pluralize: true,
     },
     ly: {
       label: "année lumière",
       divisor: 9453939595488,
-      pluralize: true,
     },
     red_cell: {
       info: 'diamètre moyen selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89rythrocyte" target="_blank">Wikipédia</a>',
@@ -651,7 +611,7 @@ export const dictionaries = {
     fine_sand: {
       label: "grain de sable fin",
       divisor: 0.000000188,
-      pluralize: true,
+
       not_unit: true,
     },
     london_bus: {
@@ -665,13 +625,13 @@ export const dictionaries = {
       info: 'hauteur totale, avec l\'antenne, selon les données de <a href="https://fr.wikipedia.org/wiki/Tour_Eiffel" target="_blank">Wikipédia</a>',
       label: "tour Eiffel",
       divisor: 0.33,
-      pluralize: true,
+
       not_unit: true,
     },
     stadium: {
       label: "piste olympique",
       divisor: 0.4,
-      pluralize: true,
+
       not_unit: true,
     },
     bastille_republic: {
@@ -691,7 +651,7 @@ export const dictionaries = {
     marathon: {
       label: "marathon",
       divisor: 42.195,
-      pluralize: true,
+
       not_unit: true,
     },
     paris_marseille: {
@@ -756,17 +716,15 @@ export const dictionaries = {
       info: "avec une bouilloire électrique de 1200W",
       label: "Mug d'eau bouillante",
       divisor: 40,
-      pluralize: true,
     },
     m3: {
       label: "heure de vidéo sur un MacBook Air m4",
       divisor: 3.59,
-      pluralize: true,
     },
     s25: {
       label: "recharge Samsung Galaxy S25",
       divisor: 25,
-      pluralize: true,
+
       not_unit: true,
     },
     micro_wave: {
@@ -778,13 +736,13 @@ export const dictionaries = {
     dishwasher: {
       label: "cycle de lave-vaisselle",
       divisor: 1150,
-      pluralize: true,
+
       not_unit: true,
     },
     washing_machine: {
       label: "cycle de lave-linge classe B",
       divisor: 520,
-      pluralize: true,
+
       not_unit: true,
     },
     bifsteak: {
@@ -830,12 +788,10 @@ export const dictionaries = {
     atm: {
       label: "atmosphère normale",
       divisor: 101325,
-      pluralize: true,
     },
     mmHg: {
       label: "millimètre de mercure",
       divisor: (1 / 760) * 101325,
-      pluralize: true,
     },
     lbfin2: {
       label: "livre-force par pouce carré",
@@ -845,7 +801,6 @@ export const dictionaries = {
     mmH2O: {
       label: "milimètre d'eau",
       divisor: 9.80638,
-      pluralize: true,
     },
     Nm2: {
       label: "newton par mètre carré",
@@ -880,32 +835,26 @@ export const dictionaries = {
     s: {
       label: "seconde",
       divisor: 1,
-      pluralize: true,
     },
     m: {
       label: "minute",
       divisor: 60,
-      pluralize: true,
     },
     h: {
       label: "heure",
       divisor: 3600,
-      pluralize: true,
     },
     j: {
       label: "jour",
       divisor: 86400,
-      pluralize: true,
     },
     w: {
       label: "semaine",
       divisor: 604800,
-      pluralize: true,
     },
     y: {
       label: "année",
       divisor: 31557600,
-      pluralize: true,
     },
     hms: {
       label: "hh:mm:ss",
@@ -1012,28 +961,23 @@ export const dictionaries = {
     mih: {
       label: "mile par heure",
       divisor: 1.609344,
-      pluralize: true,
     },
     fs: {
       label: "pied par seconde",
       divisor: 0.0003048 / (1 / 3600),
-      pluralize: true,
     },
     ys: {
       label: "yard par seconde",
       divisor: 0.0009144 / (1 / 3600),
-      pluralize: true,
     },
     yh: {
       label: "yard par heure",
       divisor: 0.0009144,
-      pluralize: true,
     },
     nk: {
       label: "noeud",
       info: "les noeuds, aussi appelés noeuds nautiques, sont utilisés aussi bien dans le domaine maritime qu'aéronautique.",
       divisor: 1.852,
-      pluralize: true,
     },
     usain_bolt: {
       info: "vitesse maximale d'Usain Bolt lors de son record du 100m le 16/08/2009 à Berlin (<a href='https://www.leparisien.fr/sports/usain-bolt-l-homme-qui-court-jusqu-a-44-72-km-h-17-08-2009-609024.php' target='blank'>source</a>)",
@@ -1115,7 +1059,7 @@ export const dictionaries = {
     banana: {
       label: "banane",
       divisor: 19.5,
-      pluralize: true,
+
       not_unit: true,
     },
     potatoes: {
@@ -1147,7 +1091,7 @@ export const dictionaries = {
     banana: {
       label: "banane par jour",
       divisor: (6.2 / 1000000000) * 365 * 19.2 * 1000,
-      pluralize: true,
+
       not_unit: true,
     },
     potatoes: {
@@ -1177,13 +1121,13 @@ export const dictionaries = {
     annual_worker_max_dose: {
       label: "dose max dans le nucléaire",
       divisor: 20,
-      pluralize: true,
+
       not_unit: true,
     },
     month__astronaut: {
       label: "astronaute par mois",
       divisor: 25,
-      pluralize: true,
+
       not_unit: true,
     },
     sv: {
@@ -1212,13 +1156,11 @@ export const dictionaries = {
       label: "degré Celsius",
       divisor: 1,
       converter: temp_converter,
-      pluralize: true,
     },
     fahrenheit: {
       label: "degré Fahrenheit",
       divisor: 1,
       converter: temp_converter,
-      pluralize: true,
     },
     kelvin: {
       label: "Kelvin",
@@ -1230,13 +1172,11 @@ export const dictionaries = {
       label: "degré Réaumur",
       divisor: 1,
       converter: temp_converter,
-      pluralize: true,
     },
     rankine: {
       label: "degré Rankine",
       divisor: 1,
       converter: temp_converter,
-      pluralize: true,
     },
   },
   informatique: {
@@ -1249,124 +1189,100 @@ export const dictionaries = {
     bit: {
       label: "bit",
       divisor: 1,
-      pluralize: true,
     },
     octet: {
       label: "octet",
       divisor: 8,
-      pluralize: true,
     },
     byte: {
       label: "byte",
       divisor: 8,
-      pluralize: true,
     },
     kb: {
       label: "kilo-bit",
       divisor: 1 * 1024,
-      pluralize: true,
     },
     ko: {
       label: "kilo-octet",
       divisor: 8 * 1024,
-      pluralize: true,
     },
     kB: {
       label: "kilo-byte",
       divisor: 8 * 1024,
-      pluralize: true,
     },
     Mb: {
       label: "mega-bit",
       divisor: 1 * 1024 * 1024,
-      pluralize: true,
     },
     Mo: {
       info: "avec un mega-octet (1Mo), on peut par exemple stocker un document texte (sans image) de près de 7000 pages A4 ou bien une photo de 1 MegaPixel dans une bonne qualité (avec compression).",
       label: "mega-octet",
       divisor: 8 * 1024 * 1024,
-      pluralize: true,
     },
     MB: {
       info: "avec un mega-byte (1MB), on peut par exemple stocker un document texte (sans image) de près de 7000 pages A4 ou bien une photo de 1 MegaPixel dans une bonne qualité (avec compression).",
       label: "mega-byte",
       divisor: 8 * 1024 * 1024,
-      pluralize: true,
     },
     Gb: {
       label: "giga-bit",
       divisor: 1 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     Go: {
       label: "giga-octet",
       divisor: 8 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     GB: {
       label: "giga-byte",
       divisor: 8 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     Tb: {
       label: "tera-bit",
       divisor: 1 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     To: {
       label: "tera-octet",
       divisor: 8 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     TB: {
       label: "tera-byte",
       divisor: 8 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     Pb: {
       label: "peta-bit",
       divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     Po: {
       label: "peta-octet",
       divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     PB: {
       label: "peta-byte",
       divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     Eb: {
       label: "exa-bit",
       divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     Eo: {
       label: "exa-octet",
       divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     EB: {
       label: "exa-byte",
       divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     Zb: {
       label: "zeta-bit",
       divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     Zo: {
       label: "zeta-octet",
       divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
     ZB: {
       label: "zeta-byte",
       divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-      pluralize: true,
     },
   },
 }

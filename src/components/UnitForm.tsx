@@ -78,7 +78,7 @@ function UnitForm({label, dictionary}: {label: string; dictionary: Record<string
           <input
             type="number"
             min={0}
-            max={99}
+            max={15}
             className="mr-3 ml-3 block w-17 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={precision.toString()}
             value={precision}
