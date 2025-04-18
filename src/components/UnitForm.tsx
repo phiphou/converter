@@ -136,7 +136,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
 
       <div className="mt-3 mb-5 flex w-max items-center gap-3 md:pl-40">
         <label className="inline-flex cursor-pointer items-center text-black dark:text-white">
-          Notation scientique :{" "}
+          Notation scientifique :{" "}
         </label>
         <div className="relative inline-block h-5 w-11">
           <input
