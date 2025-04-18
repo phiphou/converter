@@ -124,15 +124,26 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
           />
         </div>
       </div>
-      <div className="justify-items-left mt-3 mb-5 flex items-baseline gap-0 md:pl-40 lg:mx-auto">
-        <label>Notation scientique : </label>
-        <input
-          className="ml-3"
-          type="checkbox"
-          onChange={(e) => {
-            setScientific(e.currentTarget.checked)
-          }}
-        />
+
+      <div className="mt-3 mb-5 flex w-max items-center gap-3 md:pl-40">
+        <label className="inline-flex cursor-pointer items-center text-black dark:text-white">
+          Notation scientique :{" "}
+        </label>
+        <div className="relative inline-block h-5 w-11">
+          <input
+            id="switch-component-teal"
+            type="checkbox"
+            className="peer h-5 w-11 cursor-pointer appearance-none rounded-full border border-slate-300 bg-slate-400 transition-colors duration-300 checked:bg-teal-500"
+            checked={scientific}
+            onChange={(e) => {
+              setScientific(e.currentTarget.checked)
+            }}
+          />
+          <label
+            htmlFor="switch-component-teal"
+            className="absolute top-0 left-0 h-5 w-5 cursor-pointer rounded-full border-2 border-slate-500 bg-white shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-teal-600"
+          ></label>
+        </div>
       </div>
       <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
         {value.toLocaleString("fr-FR", {minimumFractionDigits: 0}).replace(",", ".")}{" "}
