@@ -11,7 +11,7 @@ export const dictionaries = {
     },
     radian: {
       label: "radian",
-      divisor: 100 / Math.PI,
+      divisor: 180 / Math.PI,
       pluralize: true,
     },
     arc_m: {
@@ -31,8 +31,8 @@ export const dictionaries = {
     },
     angular_mil_NATO: {
       label: "mil angulaire",
-      info: 'le mil angulaire est utilisé en artillerie, notamment pas l\'OTAN (<a href="https://fr.wikipedia.org/wiki/Mil_angulaire" target="_blank">source</a>)',
-      divisor: 1 / 6400,
+      info: 'le mil angulaire est utilisé en artillerie, notamment par l\'OTAN (<a href="https://fr.wikipedia.org/wiki/Mil_angulaire" target="_blank">source</a>)',
+      divisor: (1 / 3600) * 202.5,
       pluralize_all: true,
     },
   },
