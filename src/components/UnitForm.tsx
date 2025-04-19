@@ -17,6 +17,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
   const [hasList, setHasList] = useState<boolean>(false)
   const [list, setList] = useState<Record<string, Unit>>({})
   const [dictionary, setDictionary] = useState<Record<string, Unit>>({})
+  const [switched, setSwiched] = useState<boolean>(false)
   useEffect(() => {
     if (dic["list"] && !dic["of"]) {
       const new_dictionnary = Object.entries(dic["list"]).reduce(
@@ -69,6 +70,8 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       setList(list_dictionnary)
     } else {
       setDictionary(dic)
+      setSwiched(false)
+      setHasList(false)
       const firstUnit = Object.keys(dic).find((key) => key !== "infos" && dic[key]) || ""
       setUnitFrom(firstUnit)
       setUnitTo(firstUnit)
@@ -99,7 +102,12 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             precision
           )
         } else if (hasList) {
-          calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
+          console.log(value, list[secondaryUnit].divisor, toDivisor, fromDivisor, switched)
+          if (!switched) {
+            calculatedResult = value / list[secondaryUnit].divisor
+          } else {
+            calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
+          }
         } else {
           calculatedResult = (value * fromDivisor) / toDivisor
         }
@@ -110,11 +118,12 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
     }
 
     calculateResult()
-  }, [value, unitFrom, unitTo, dictionary, precision, hasList, list, secondaryUnit])
+  }, [value, unitFrom, unitTo, dictionary, precision, hasList, list, secondaryUnit, switched])
 
   const switchUnits = () => {
     setUnitFrom(unitTo)
     setUnitTo(unitFrom)
+    setSwiched(!switched)
   }
 
   return (
@@ -141,7 +150,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             <UnitSelect unit={unitFrom} setUnit={setUnitFrom} dictionary={dictionary} />
             {hasList && (
               <div className="flex gap-0">
-                <span className="mt-4">{dictionary["of"].label !== "" ? dictionary["of"].label + "\u00A0" : ""}</span>
+                <span className="mt-4">{dictionary["of"] ? dictionary["of"].label + "\u00A0" : ""}</span>
                 <span className="mt-4 whitespace-nowrap">
                   {list[secondaryUnit]?.quote && list[secondaryUnit]?.quote}
                   {list[secondaryUnit]?.quote && list[secondaryUnit].quote.endsWith("'") ? "" : " "}
@@ -200,7 +209,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
         {value.toLocaleString("fr-FR", {minimumFractionDigits: 0}).replace(",", ".")}{" "}
         {pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""}{" "}
-        {hasList && <span className="mt-4">{dictionary["of"].label !== "" ? dictionary["of"].label : ""}</span>}
+        {hasList && <span className="mt-4">{dictionary["of"] ? dictionary["of"].label : ""}</span>}
         {hasList &&
           (list[secondaryUnit]?.quote !== ""
             ? " " + list[secondaryUnit]?.quote + (list[secondaryUnit]?.quote?.endsWith("'") ? "" : " ")
@@ -222,9 +231,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
             {value} {pluralize(parseFloat(rawValue), dictionary[unitTo]?.label, dictionary[unitTo]) || ""}{" "}
-            {hasList && (
-              <span className="mt-4">{dictionary["of"].label !== "" ? dictionary["of"].label + " " : ""}</span>
-            )}
+            {hasList && <span className="mt-4">{dictionary["of"] ? dictionary["of"].label + " " : ""}</span>}
             {hasList &&
               (list[secondaryUnit]?.quote !== ""
                 ? " " + list[secondaryUnit]?.quote + (list[secondaryUnit]?.quote?.endsWith("'") ? "" : " ")
@@ -241,9 +248,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
             {value} {pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""}{" "}
-            {hasList && (
-              <span className="mt-4">{dictionary["of"].label !== "" ? dictionary["of"].label + " " : ""}</span>
-            )}
+            {hasList && <span className="mt-4">{dictionary["of"] ? dictionary["of"].label + " " : ""}</span>}
             {hasList &&
               (list[secondaryUnit]?.quote !== ""
                 ? " " + list[secondaryUnit]?.quote + (list[secondaryUnit]?.quote?.endsWith("'") ? "" : " ")

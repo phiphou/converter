@@ -2104,7 +2104,7 @@ export const dictionaries = {
     hundred_meters_underwater: {
       info: 'pression à 100m sous l\'eau (<a href="https://www.laphysique.net/phf/hydrostpr_f.htm" target="_blank">source</a>).',
       label: "100m sous l'eau",
-      divisor: 380000000000,
+      divisor: 1000000,
       pluralize: false,
     },
     earth: {
