@@ -102,9 +102,12 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             precision
           )
         } else if (hasList) {
-          console.log(value, list[secondaryUnit].divisor, toDivisor, fromDivisor, switched)
-          if (!switched) {
-            calculatedResult = value / list[secondaryUnit].divisor
+          if (toDivisor === fromDivisor) {
+            if (!switched) {
+              calculatedResult = value / list[secondaryUnit].divisor
+            } else {
+              calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
+            }
           } else {
             calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
           }
