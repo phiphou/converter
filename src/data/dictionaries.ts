@@ -2331,6 +2331,42 @@ export const dictionaries = {
       divisor: 25,
       not_unit: true,
     },
+    lungs__radiography: {
+      info: 'selon les données de l\'<a href="https://afcn.fgov.be/fr/dossiers/applications-medicales/comparaison-des-doses-de-rayonnements" target="_blank">AFCN</a>',
+      label: "radiographie pulmonaire",
+      divisor: 0.06,
+      not_unit: true,
+    },
+    mammography: {
+      info: 'selon les données de l\'<a href="https://afcn.fgov.be/fr/dossiers/applications-medicales/comparaison-des-doses-de-rayonnements" target="_blank">AFCN</a>',
+      label: "Mammographie",
+      divisor: 0.3,
+      not_unit: true,
+    },
+    lungs_ct_scan: {
+      info: 'selon les données de l\'<a href="https://afcn.fgov.be/fr/dossiers/applications-medicales/comparaison-des-doses-de-rayonnements" target="_blank">AFCN</a>',
+      label: "scanner pulmonaire",
+      divisor: 3,
+      not_unit: true,
+    },
+    abdomen_ct_scan: {
+      info: 'selon les données de l\'<a href="https://expop.irsn.fr/" target="_blank">IRSN</a>',
+      label: "scanner abdomino-pelvien",
+      divisor: 9.5,
+      not_unit: true,
+    },
+    PET_scan: {
+      info: 'selon les données de l\'<a href="https://afcn.fgov.be/fr/dossiers/applications-medicales/comparaison-des-doses-de-rayonnements" target="_blank">AFCN</a>',
+      label: "PET Scan",
+      divisor: 4.5,
+      not_unit: true,
+    },
+    dental_panoramic: {
+      info: 'selon les données de l\'<a href="https://afcn.fgov.be/fr/dossiers/applications-medicales/comparaison-des-doses-de-rayonnements" target="_blank">AFCN</a>',
+      label: "panoramique dentaire",
+      divisor: 0.01,
+      not_unit: true,
+    },
   },
   température: {
     celsius: {
