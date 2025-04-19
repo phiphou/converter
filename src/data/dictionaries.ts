@@ -1236,6 +1236,12 @@ export const dictionaries = {
     },
   },
   densité: {
+    infos: {
+      label:
+        "données de densité de <a href='https://fr.wikipedia.org/wiki/Masse_volumique#Tables_des_masses_volumiques_de_diverses_substances' target='_blank' >Wikipedia</a>, à 20 °C et sous pression atmosphérique normale (1013hPa).",
+      divisor: 999999999,
+      pluralize: false,
+    },
     materials: {
       water: {label: "eau", divisor: 1, quote: true},
       concrete: {label: "béton", divisor: 2.2},
@@ -1988,22 +1994,22 @@ export const dictionaries = {
     },
   },
   pression: {
-    mpa: {
+    mPa: {
       label: "milliPascal",
       divisor: 0.001,
       pluralize: false,
     },
-    pa: {
+    Pa: {
       label: "Pascal",
       divisor: 1,
       pluralize: false,
     },
-    ha: {
+    hPa: {
       label: "hectoPascal",
       divisor: 100,
       pluralize: false,
     },
-    kpa: {
+    kPa: {
       label: "kiloPascal",
       divisor: 1000,
       pluralize: false,
