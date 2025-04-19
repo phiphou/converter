@@ -2302,23 +2302,20 @@ export const dictionaries = {
       not_unit: true,
     },
     mountain_1500: {
-      label: "en montahe à 1500m",
+      label: "année en montagne à 1500m",
       divisor: 0.8,
-      pluralize: false,
       not_unit: true,
     },
     paris_newyork_AR: {
       info: 'selon les données de l\'<a href="https://www.irsn.fr/savoir-comprendre/sante/compagnies-aeriennes-fini-calcul-doses" target="_blank">IRSN</a>',
       label: "vol Paris - New-York AR",
       divisor: 0.124,
-      pluralize: false,
       not_unit: true,
     },
     paris_tokyo_AR: {
       info: 'selon les données de l\'<a href="https://www.irsn.fr/savoir-comprendre/sante/compagnies-aeriennes-fini-calcul-doses" target="_blank">IRSN</a>',
       label: "vol Paris - Tokyo AR",
       divisor: 0.196,
-      pluralize: false,
       not_unit: true,
     },
     annual_worker_max_dose: {
@@ -2330,6 +2327,7 @@ export const dictionaries = {
       label: "astronaute dans l'ISS par mois",
       divisor: 25,
       not_unit: true,
+      pluralize: false,
     },
     lungs__radiography: {
       info: 'selon les données de l\'<a href="https://afcn.fgov.be/fr/dossiers/applications-medicales/comparaison-des-doses-de-rayonnements" target="_blank">AFCN</a>',
@@ -2339,7 +2337,7 @@ export const dictionaries = {
     },
     mammography: {
       info: 'selon les données de l\'<a href="https://afcn.fgov.be/fr/dossiers/applications-medicales/comparaison-des-doses-de-rayonnements" target="_blank">AFCN</a>',
-      label: "Mammographie",
+      label: "mammographie",
       divisor: 0.3,
       not_unit: true,
     },
@@ -2360,12 +2358,14 @@ export const dictionaries = {
       label: "PET Scan",
       divisor: 4.5,
       not_unit: true,
+      pluralize: false,
     },
     dental_panoramic: {
       info: 'selon les données de l\'<a href="https://afcn.fgov.be/fr/dossiers/applications-medicales/comparaison-des-doses-de-rayonnements" target="_blank">AFCN</a>',
       label: "panoramique dentaire",
       divisor: 0.01,
       not_unit: true,
+      pluralize_all: true,
     },
   },
   température: {
@@ -2500,6 +2500,38 @@ export const dictionaries = {
     ZB: {
       label: "zeta-byte",
       divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+    },
+    war_peace: {
+      label: "Guerre et Paix, ePub",
+      divisor: 1557 * 8 * 1024,
+      pluralize: false,
+    },
+    mp3_minute: {
+      label: "minute de musique en MP3",
+      divisor: 960 * 8 * 1024,
+      pluralize: false,
+    },
+    wikipedia_fr: {
+      label: "Wikipedia en français sans image",
+      divisor: 17.33 * 8 * 1024 * 1024 * 1024,
+      pluralize: false,
+    },
+    wikipedia_fr_images: {
+      label: "Wikipedia en français avec images",
+      divisor: 36.97 * 8 * 1024 * 1024 * 1024,
+      pluralize: false,
+    },
+    h265_4k_10Mbs: {
+      label: "heure de vidéo 4k H265 10Mb/s",
+      divisor: 4.5 * 8 * 1024 * 1024 * 1024,
+    },
+    s23_4k_488Mbs: {
+      label: "heure de vidéo 4k H265 60fps",
+      divisor: 27.4219 * 8 * 1024 * 1024 * 1024,
+    },
+    prores_422_hq_4k_1768Mbs: {
+      label: "heure de vidéo 4k ProRes 60fps 422 HQ",
+      divisor: 798 * 8 * 1024 * 1024 * 1024,
     },
   },
 }
