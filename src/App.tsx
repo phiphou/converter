@@ -11,7 +11,7 @@ function App() {
         <h2 className="text-black dark:text-white">Convertisseur pour journaliste</h2>
       </div>
 
-      <div className="mx-auto lg:max-w-[800px] lg:min-w-[600px]">
+      <div className="mx-auto lg:max-w-[850px] lg:min-w-[600px]">
         <Form />
       </div>
       <footer className="mt-auto mb-2 text-center text-sm text-gray-500 dark:text-gray-400">
