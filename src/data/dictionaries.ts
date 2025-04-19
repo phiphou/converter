@@ -2385,7 +2385,7 @@ export const dictionaries = {
       divisor: 1000,
     },
     rem: {
-      label: "remn",
+      label: "rem",
       divisor: 10,
     },
     mrem: {
