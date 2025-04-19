@@ -1235,6 +1235,75 @@ export const dictionaries = {
       pluralize_all: true,
     },
   },
+  densité: {
+    materials: {
+      water: {label: "eau", divisor: 1, quote: true},
+      concrete: {label: "béton", divisor: 2.2},
+      diamond: {label: "diamant", divisor: 3.517},
+      granit: {label: "granite", divisor: 2.7},
+      marble: {label: "marbre", divisor: 2.7},
+      glass: {label: "verre", divisor: 2.53},
+      steel: {label: "acier", divisor: 7.6, quote: true},
+      aluminium: {label: "aluminium", divisor: 2.7, quote: true},
+      silver: {label: "argent", divisor: 10.5, quote: true},
+      copper: {label: "cuivre", divisor: 8.96},
+      iron: {label: "fer", divisor: 7.86},
+      iridium: {label: "iridium", divisor: 22.56, quote: true},
+      gold: {label: "or", divisor: 19.32, quote: true},
+      mercure: {label: "mercure", divisor: 13.545},
+      nickel: {label: "nickel", divisor: 8.9},
+      platinium: {label: "platine", divisor: 21.45},
+      lead: {label: "plomb", divisor: 11.35},
+      titanium: {label: "titane", divisor: 4.5},
+      tungsten: {label: "tungstène", divisor: 19.3},
+      uranium: {label: "uranium", divisor: 19.1, quote: true},
+      liquid_hydrogen: {label: "hydrogène liquide", divisor: 0.07, quote: true},
+      oil: {label: "essence", divisor: 0.075, quote: true},
+      vegetal_oil: {label: "huile végétale", divisor: 0.092, quote: true},
+      balsa: {label: "balsa", divisor: 0.14},
+      liege: {label: "liège", divisor: 0.24},
+      fir_tree: {label: "sapin", divisor: 0.45},
+      acajou: {label: "acajou", divisor: 0.7, quote: true},
+      hêtre: {label: "hêtre", divisor: 0.8},
+      ébène: {label: "ébène", divisor: 1.15, quote: true},
+    },
+    mg: {
+      label: "milligramme",
+      divisor: 0.001,
+    },
+    g: {
+      label: "gramme",
+      divisor: 1,
+    },
+    kg: {
+      label: "kilogramme",
+      divisor: 1000,
+    },
+    t: {
+      label: "tonne",
+      divisor: 1000000,
+    },
+    mm3: {
+      label: "mm³",
+      divisor: 0.001,
+      pluralize: true,
+    },
+    cm3: {
+      label: "cm³",
+      divisor: 1,
+      pluralize: true,
+    },
+    dcm3: {
+      label: "dm³",
+      divisor: 1000,
+      pluralize: true,
+    },
+    m3: {
+      label: "m³",
+      divisor: 1000000,
+      pluralize: true,
+    },
+  },
   volume: {
     microliter: {
       label: "microlitre",
@@ -2255,22 +2324,18 @@ export const dictionaries = {
     msv: {
       label: "mSv",
       divisor: 1,
-      pluralize: false,
     },
     sv: {
       label: "Sv",
       divisor: 1000,
-      pluralize: false,
     },
     rem: {
       label: "remn",
       divisor: 10,
-      pluralize: false,
     },
     mrem: {
       label: "mrem",
       divisor: 0.01,
-      pluralize: false,
     },
     banana: {
       label: "banane par jour",
