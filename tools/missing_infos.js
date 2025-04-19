@@ -10,7 +10,7 @@ const filePath = path.resolve(__dirname, "../src/data/dictionaries.ts")
 try {
   const fileContent = fs.readFileSync(filePath, "utf-8")
 
-  const match = fileContent.match(/{\n[.\s\w:{}"',éèà<=/\->êë'(%\\âîï)°œ\*\+)ç]*/gim)
+  const match = fileContent.match(/{\n[.\s\w:{}"',éèà<=/\->êë'(%\\âîï)°œ\*\+)çłóôʻÅ#³¹²]*/gim)
 
   if (!match) {
     throw new Error('Impossible de trouver "dictionaries" dans le fichier.')
@@ -46,7 +46,7 @@ try {
   const percentageMissing = ((countWithoutInfo / totalUnits) * 100).toFixed(2)
 
   console.log(`Units : ${totalUnits}`)
-  console.log(`Unit without "info" field : ${countWithoutInfo}`)
+  console.log(`Unit without "infos" field : ${countWithoutInfo}`)
   console.log(`Percentage of missing "info" field : ${percentageMissing}%`)
   // console.log(`\nListe des unités sans "info" :\n${unitsWithoutInfo.join("\n")}`)
 } catch (error) {
