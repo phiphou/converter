@@ -36,7 +36,14 @@ try {
     for (const unitKey in units) {
       totalUnits++
       const unit = units[unitKey]
-      if (!unit.hasOwnProperty("not_unit") && !unit.hasOwnProperty("info")) {
+      // console.log(unitKey)
+      if (
+        unit.hasOwnProperty("not_unit") &&
+        !unit.hasOwnProperty("info") &&
+        unitKey != "list" &&
+        unitKey != "divisor" &&
+        unitKey != "materials"
+      ) {
         countWithoutInfo++
         unitsWithoutInfo.push(`${category}.${unitKey}`)
       }
@@ -48,7 +55,7 @@ try {
   console.log(`Units : ${totalUnits}`)
   console.log(`Unit without "infos" field : ${countWithoutInfo}`)
   console.log(`Percentage of missing "info" field : ${percentageMissing}%`)
-  // console.log(`\nListe des unités sans "info" :\n${unitsWithoutInfo.join("\n")}`)
+  console.log(`\nListe des unités sans "info" :\n${unitsWithoutInfo.join("\n")}`)
 } catch (error) {
   console.error("Erreur :", error.message)
 }
