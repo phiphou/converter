@@ -8,10 +8,18 @@ export const currency_converter = async (
 ): Promise<number> => {
   const now: Date = new Date()
   const date: string = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, "0")}-${now.getDate().toString().padStart(2, "0")}`
-  const cacheKey = `currency-data-${date}`
+  const cacheKey = `currency-data`
+  const cacheDateKey = `currency-data-date`
 
   const cachedData = localStorage.getItem(cacheKey)
-  if (cachedData) {
+  const cachedDate = localStorage.getItem(cacheDateKey)
+
+  if (cachedDate !== date) {
+    localStorage.removeItem(cacheKey)
+    localStorage.removeItem(cacheDateKey)
+  }
+
+  if (cachedData && cachedDate === date) {
     const jsonResponse = JSON.parse(cachedData)
 
     if (!unitFrom.code || !unitTo.code) {
@@ -19,7 +27,6 @@ export const currency_converter = async (
     }
     const from2Euro = jsonResponse["eur"][unitFrom.code.toLowerCase()]
     const euro2To = jsonResponse["eur"][unitTo.code.toLowerCase()]
-    console.log(((euro2To / from2Euro) * value).toFixed(precision))
     return Number(((euro2To / from2Euro) * value).toFixed(precision))
   }
 
@@ -33,7 +40,8 @@ export const currency_converter = async (
     }
 
     localStorage.setItem(cacheKey, JSON.stringify(jsonResponse))
-    if (unitTo === unitFrom) return 1
+    localStorage.setItem(cacheDateKey, date)
+
     const from2Euro = jsonResponse["eur"][unitFrom.code.toLowerCase()]
     const euro2To = jsonResponse["eur"][unitTo.code.toLowerCase()]
 
