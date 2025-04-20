@@ -4,6 +4,7 @@ import {pluralize, scientific_notation} from "../utils/utils"
 import UnitSelect from "./UnitSelect"
 import SwitchUnitButton from "./SwitchUnitButton"
 import InfosBlock from "./InfosBlock"
+import SwitchButton from "./SwitchButton"
 
 function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
   const [unitFrom, setUnitFrom] = useState<string>("")
@@ -19,6 +20,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
   const [dictionary, setDictionary] = useState<Record<string, Unit>>({})
   const [switched, setSwiched] = useState<boolean>(false)
   useEffect(() => {
+    let firstUnit = ""
     if (dic["list"] && !dic["of"]) {
       const new_dictionnary = Object.entries(dic["list"]).reduce(
         (acc, [, value]) => {
@@ -37,12 +39,10 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       if (dic["list"]) new_dictionnary["infos"] = dic["infos"]
 
       setDictionary(new_dictionnary)
-      const firstUnit = Object.keys(new_dictionnary)[0] || ""
-      setUnitFrom(firstUnit)
-      setUnitTo(firstUnit)
+      firstUnit = Object.keys(new_dictionnary)[0] || ""
     } else if (dic["materials"]) {
       setDictionary(dic)
-      const firstUnit =
+      firstUnit =
         Object.keys(dic).find((key) => key !== "infos" && key !== "materials" && key !== "of" && dic[key]) || ""
 
       const list_dictionnary = Object.entries(dic["materials"]).reduce(
@@ -62,20 +62,17 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       const firstSecondaryUnit =
         Object.keys(list_dictionnary).find((key) => key !== "infos" && list_dictionnary[key]) || ""
 
-      setUnitFrom(firstUnit)
-      setUnitTo(firstUnit)
       setSecondaryUnit(firstSecondaryUnit)
       setHasList(true)
-      console.log(firstUnit)
       setList(list_dictionnary)
     } else {
       setDictionary(dic)
       setSwiched(false)
       setHasList(false)
-      const firstUnit = Object.keys(dic).find((key) => key !== "infos" && dic[key]) || ""
-      setUnitFrom(firstUnit)
-      setUnitTo(firstUnit)
+      firstUnit = Object.keys(dic).find((key) => key !== "infos" && dic[key]) || ""
     }
+    setUnitFrom(firstUnit)
+    setUnitTo(firstUnit)
   }, [dic])
 
   useEffect(() => {
@@ -127,6 +124,27 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
     setUnitFrom(unitTo)
     setUnitTo(unitFrom)
     setSwiched(!switched)
+  }
+
+  function formatValueDisplay(
+    value: number,
+    rawValue: string,
+    dictionary: Record<string, Unit>,
+    unitFrom: string,
+    hasList: boolean,
+    list: Record<string, Unit>,
+    secondaryUnit: string
+  ): string {
+    const formattedValue = value.toLocaleString("fr-FR", {minimumFractionDigits: 0}).replace(",", ".")
+    const pluralizedLabel = pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""
+    const ofLabel = hasList && dictionary["of"] ? dictionary["of"].label : ""
+    const quote =
+      hasList && list[secondaryUnit]?.quote
+        ? list[secondaryUnit]?.quote + (list[secondaryUnit]?.quote.endsWith("'") ? "" : " ")
+        : ""
+    const secondaryLabel = hasList ? list[secondaryUnit]?.label : ""
+    console.table([formattedValue, pluralizedLabel, ofLabel, secondaryLabel])
+    return `${formattedValue} ${pluralizedLabel} ${ofLabel}${quote}${secondaryLabel} `
   }
 
   return (
@@ -193,31 +211,10 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         <label className="inline-flex cursor-pointer items-center text-black dark:text-white">
           Notation scientifique :{" "}
         </label>
-        <div className="relative inline-block h-5 w-11">
-          <input
-            id="switch-component-teal"
-            type="checkbox"
-            className="peer h-5 w-11 cursor-pointer appearance-none rounded-full border border-slate-300 bg-slate-400 transition-colors duration-300 checked:bg-teal-500"
-            checked={scientific}
-            onChange={(e) => {
-              setScientific(e.currentTarget.checked)
-            }}
-          />
-          <label
-            htmlFor="switch-component-teal"
-            className="absolute top-0 left-0 h-5 w-5 cursor-pointer rounded-full border-2 border-slate-500 bg-white shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-teal-600"
-          ></label>
-        </div>
+        <SwitchButton scientific={scientific} setScientific={setScientific} />
       </div>
       <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
-        {value.toLocaleString("fr-FR", {minimumFractionDigits: 0}).replace(",", ".")}{" "}
-        {pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""}{" "}
-        {hasList && <span className="mt-4">{dictionary["of"] ? dictionary["of"].label : ""}</span>}
-        {hasList &&
-          (list[secondaryUnit]?.quote !== ""
-            ? " " + list[secondaryUnit]?.quote + (list[secondaryUnit]?.quote?.endsWith("'") ? "" : " ")
-            : "b") + list[secondaryUnit].label}{" "}
-        ={" "}
+        {formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit)}={" "}
         {result !== null
           ? dictionary[unitTo]?.formater
             ? dictionary[unitTo].formater(result)
@@ -233,13 +230,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
-            {value} {pluralize(parseFloat(rawValue), dictionary[unitTo]?.label, dictionary[unitTo]) || ""}{" "}
-            {hasList && <span className="mt-4">{dictionary["of"] ? dictionary["of"].label + " " : ""}</span>}
-            {hasList &&
-              (list[secondaryUnit]?.quote !== ""
-                ? " " + list[secondaryUnit]?.quote + (list[secondaryUnit]?.quote?.endsWith("'") ? "" : " ")
-                : "b") + list[secondaryUnit].label}{" "}
-            {list[secondaryUnit]?.quote && list[secondaryUnit]?.quote?.endsWith("'") ? "" : " "}
+            {formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit)}
             {parseFloat(rawValue) >= 2 ? "valent 1/" : "vaut 1/"}
             {result.toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")}
             ème de {dictionary[unitFrom].label}
@@ -250,13 +241,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       <div className="text-gray-text-white mx-auto mb-8 text-center text-lg font-medium text-black dark:text-white">
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
-            {value} {pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""}{" "}
-            {hasList && <span className="mt-4">{dictionary["of"] ? dictionary["of"].label + " " : ""}</span>}
-            {hasList &&
-              (list[secondaryUnit]?.quote !== ""
-                ? " " + list[secondaryUnit]?.quote + (list[secondaryUnit]?.quote?.endsWith("'") ? "" : " ")
-                : "b") + list[secondaryUnit].label}{" "}
-            {list[secondaryUnit]?.quote && list[secondaryUnit]?.quote?.endsWith("'") ? "" : " "}
+            {formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit)}
             {parseFloat(rawValue) >= 2 ? "valent " : "vaut "}
             {(result * 100).toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")}% de{" "}
             {dictionary[unitTo].label}

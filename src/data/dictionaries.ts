@@ -1242,7 +1242,6 @@ export const dictionaries = {
       divisor: 999999999,
       pluralize: false,
     },
-    of: {label: "", divisor: 0},
     materials: {
       water: {label: "eau", divisor: 1, quote: "d'"},
       concrete: {label: "béton", divisor: 2.2, quote: "de"},
@@ -1318,7 +1317,7 @@ export const dictionaries = {
       divisor: 999999999,
       pluralize: false,
     },
-    of: {label: "avec", divisor: 0},
+    of: {label: "avec ", divisor: 0},
     materials: {
       coal: {label: "charbon", divisor: 0.983, quote: "du"},
       gas: {label: "gaz", divisor: 0.512, quote: "du"},
@@ -2331,7 +2330,7 @@ export const dictionaries = {
   radioactivité: {
     infos: {
       label:
-        "Pour un calcul plus précis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr' target='_blank'>https://expop.irsn.fr</a>",
+        "Pour un calcul plus précis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'<a href='https://expop.irsn.fr' target='_blank'>IRSN</a>.",
       divisor: 999999999,
       pluralize: false,
     },
@@ -2372,7 +2371,7 @@ export const dictionaries = {
   radioactivité_2: {
     infos: {
       label:
-        "Pour un calcul plus précis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'IRSN : <a href='https://expop.irsn.fr' target='_blank'>https://expop.irsn.fr</a>",
+        "Pour un calcul plus précis de votre exposition annuelle aux rayonements ionisants, utilisez le simulateur de l'<a href='https://expop.irsn.fr' target='_blank'>IRSN</a>.",
       divisor: 999999999,
       pluralize: false,
     },
@@ -2397,8 +2396,8 @@ export const dictionaries = {
       divisor: (6.2 / 1000000000) * 365 * 19.2 * 1000,
       not_unit: true,
     },
-    potatoes: {
-      label: "kg de choux par mois",
+    cabbage: {
+      label: "kg de chou par mois",
       divisor: (6.2 / 1000000000) * 150 * 12 * 1000,
       pluralize: false,
       not_unit: true,
