@@ -36,7 +36,6 @@ try {
     for (const unitKey in units) {
       totalUnits++
       const unit = units[unitKey]
-      // console.log(unitKey)
       if (
         unit.hasOwnProperty("not_unit") &&
         !unit.hasOwnProperty("info") &&
@@ -52,9 +51,9 @@ try {
 
   const percentageMissing = ((countWithoutInfo / totalUnits) * 100).toFixed(2)
 
-  console.log(`Units : ${totalUnits}`)
+  console.log(`\nUnits : ${totalUnits}`)
   console.log(`Unit without "info" field : ${countWithoutInfo}`)
-  console.log(`Percentage of missing "info" field : ${percentageMissing}%`)
+  console.log(`Percentage of missing "info" field : ${percentageMissing}%\n`)
   //console.log(`\nListe des unités sans "info" :\n${unitsWithoutInfo.join("\n")}`)
 } catch (error) {
   console.error("Erreur :", error.message)

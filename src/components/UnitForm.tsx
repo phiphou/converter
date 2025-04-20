@@ -143,7 +143,6 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         ? list[secondaryUnit]?.quote + (list[secondaryUnit]?.quote.endsWith("'") ? "" : " ")
         : ""
     const secondaryLabel = hasList ? list[secondaryUnit]?.label : ""
-    console.table([formattedValue, pluralizedLabel, ofLabel, secondaryLabel])
     return `${formattedValue} ${pluralizedLabel} ${ofLabel}${quote}${secondaryLabel} `
   }
 
