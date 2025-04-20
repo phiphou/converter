@@ -33,8 +33,14 @@ try {
 
   for (const category in dictionaries) {
     const units = dictionaries[category]
+    console.log(units)
     for (const unitKey in units) {
-      totalUnits++
+      if (unitKey == "list" || unitKey == "materials") {
+        totalUnits += Object.keys(units[unitKey]).length
+      } else {
+        totalUnits++
+      }
+
       const unit = units[unitKey]
       if (
         unit.hasOwnProperty("not_unit") &&
