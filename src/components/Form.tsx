@@ -21,7 +21,7 @@ function Form() {
               <option value="">Choississez une catégorie</option>
               {Object.keys(dictionaries).map((key) => (
                 <option key={key} value={key}>
-                  {key.charAt(0).toUpperCase() + key.slice(1).replace("_", " ")}
+                  {key.charAt(0).toUpperCase() + key.slice(1).replaceAll("_", " ")}
                 </option>
               ))}
             </select>

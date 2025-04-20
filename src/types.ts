@@ -1,4 +1,5 @@
 export interface Unit {
+  notUnit?: boolean
   label: string
   divisor: number
   code?: string

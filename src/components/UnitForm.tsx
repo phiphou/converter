@@ -40,10 +40,13 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
 
       setDictionary(new_dictionnary)
       firstUnit = Object.keys(new_dictionnary)[0] || ""
+      setHasList(false)
     } else if (dic["materials"]) {
       setDictionary(dic)
       firstUnit =
-        Object.keys(dic).find((key) => key !== "infos" && key !== "materials" && key !== "of" && dic[key]) || ""
+        Object.keys(dic).find(
+          (key) => key !== "infos" && key !== "materials" && key !== "of" && key !== "noSwitch" && dic[key]
+        ) || ""
 
       const list_dictionnary = Object.entries(dic["materials"]).reduce(
         (acc, [, value]) => {
@@ -100,7 +103,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
           )
         } else if (hasList) {
           if (toDivisor === fromDivisor) {
-            if (!switched) {
+            if (!switched && !dictionary["noSwitch"]) {
               calculatedResult = value / list[secondaryUnit].divisor
             } else {
               calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
