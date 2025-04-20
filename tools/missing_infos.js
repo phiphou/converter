@@ -33,7 +33,6 @@ try {
 
   for (const category in dictionaries) {
     const units = dictionaries[category]
-    console.log(units)
     for (const unitKey in units) {
       if (unitKey == "list" || unitKey == "materials") {
         totalUnits += Object.keys(units[unitKey]).length
@@ -60,7 +59,7 @@ try {
   console.log(`\nUnits : ${totalUnits}`)
   console.log(`Unit without "info" field : ${countWithoutInfo}`)
   console.log(`Percentage of missing "info" field : ${percentageMissing}%\n`)
-  //console.log(`\nListe des unités sans "info" :\n${unitsWithoutInfo.join("\n")}`)
+  console.log(`\nListe des unités sans "info" :\n${unitsWithoutInfo.join("\n")}`)
 } catch (error) {
   console.error("Erreur :", error.message)
 }
