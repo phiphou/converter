@@ -1,5 +1,6 @@
 import fs from "fs"
 import path from "path"
+import {exit} from "process"
 import {fileURLToPath} from "url"
 
 const __filename = fileURLToPath(import.meta.url)
@@ -13,7 +14,7 @@ try {
   const match = fileContent.match(/{\n[.\s\w:{}"',éèà<=/\->êë'(%\\âîï)°œ\*\+)çłóôʻÅ#³¹²]*/gim)
 
   if (!match) {
-    throw new Error('Impossible de trouver "dictionaries" dans le fichier.')
+    throw new Error('Unable to find "dictionaries" in file.')
   }
 
   const dictionariesCode = match[0]
@@ -36,18 +37,12 @@ try {
     for (const unitKey in units) {
       if (unitKey == "list" || unitKey == "materials") {
         totalUnits += Object.keys(units[unitKey]).length
-      } else {
+      } else if (unitKey != "infos") {
         totalUnits++
       }
 
       const unit = units[unitKey]
-      if (
-        unit.hasOwnProperty("not_unit") &&
-        !unit.hasOwnProperty("info") &&
-        unitKey != "list" &&
-        unitKey != "divisor" &&
-        unitKey != "materials"
-      ) {
+      if (unit.hasOwnProperty("not_unit") && !unit.hasOwnProperty("info")) {
         countWithoutInfo++
         unitsWithoutInfo.push(`${category}.${unitKey}`)
       }
@@ -61,5 +56,5 @@ try {
   console.log(`Percentage of missing "info" field : ${percentageMissing}%\n`)
   console.log(`\nListe des unités sans "info" :\n${unitsWithoutInfo.join("\n")}`)
 } catch (error) {
-  console.error("Erreur :", error.message)
+  console.error("Error :", error.message)
 }
