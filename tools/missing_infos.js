@@ -54,7 +54,7 @@ try {
   console.log(`\nUnits : ${totalUnits}`)
   console.log(`Units without "info" field : ${countWithoutInfo}`)
   console.log(`% of missing "info" field : ${percentageMissing}%\n`)
-  // console.log(`\nListe des unités sans "info" :\n${unitsWithoutInfo.join("\n")}`)
+  console.log(`\nListe des unités sans "info" :\n${unitsWithoutInfo.join("\n")}`)
 } catch (error) {
   console.error("Error :", error.message)
 }

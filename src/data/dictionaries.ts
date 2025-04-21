@@ -226,23 +226,24 @@ export const dictionaries = {
       not_unit: true,
     },
     micro_wave: {
-      label: "3 minutes d'un micro-ondes de 900W",
+      info: "avec un four de 900W.",
+      label: "3 minutes d'un micro-ondes",
       divisor: 45,
       pluralize: false,
       not_unit: true,
     },
     dishwasher: {
-      label: "cycle de lave-vaisselle",
+      label: "cycle de lave-vaisselle.",
       divisor: 1150,
       not_unit: true,
     },
     washing_machine: {
-      label: "cycle de lave-linge classe B",
+      label: "cycle de lave-linge classe B.",
       divisor: 520,
       not_unit: true,
     },
     bifsteak: {
-      info: "avec un four de 2500W, hors préchaufage",
+      info: "avec un four de 2500W, hors préchaufage.",
       label: "Roti de 1kg 30min au four à 220°",
       divisor: 850,
       pluralize: false,
@@ -2170,6 +2171,7 @@ export const dictionaries = {
       not_unit: true,
     },
     stadium: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Piste_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
       label: "piste olympique",
       divisor: 0.4,
       not_unit: true,
@@ -2189,6 +2191,7 @@ export const dictionaries = {
       not_unit: true,
     },
     marathon: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Marathon_(sport)" target="_blank">Wikipedia</a>.',
       label: "marathon",
       divisor: 42.195,
       not_unit: true,
@@ -2221,13 +2224,29 @@ export const dictionaries = {
       pluralize: false,
       not_unit: true,
     },
-    moon: {
+    Moon: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Lune" target="_blank">Wikipedia</a>.',
       label: "Terre - Lune",
-      divisor: 384400,
+      divisor: 384399,
       pluralize: false,
       not_unit: true,
     },
-    saturn: {
+    Mars: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Mars_(planète)" target="_blank">Wikipedia</a>.',
+      label: "Soleil - Mars",
+      divisor: 227944000,
+      pluralize: false,
+      not_unit: true,
+    },
+    jupiter: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Jupiter_(planète)" target="_blank">Wikipedia</a>.',
+      label: "Soleil - Jupiter",
+      divisor: 778340000,
+      pluralize: false,
+      not_unit: true,
+    },
+    Saturn: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Saturne_(planète)" target="_blank">Wikipedia</a>.',
       label: "Soleil - Saturne",
       divisor: 1426700000,
       pluralize: false,
@@ -3071,6 +3090,7 @@ export const dictionaries = {
       not_unit: true,
     },
     autoroute_max: {
+      info: "vitesse maximale, selon les données de <a href='https://fr.wikipedia.org/wiki/R%C3%A9glementation_de_la_vitesse_sur_route_en_France' target='_blank'>Wikipedia</a>.",
       label: "vitesse max autoroute",
       divisor: 130,
       pluralize: false,
@@ -3232,7 +3252,7 @@ export const dictionaries = {
       not_unit: true,
     },
     mediterranean_sea: {
-      info: 'volume selon <a href=" https://fr.wikipedia.org/wiki/Mer_M%C3%A9diterran%C3%A9e" target="_blank">Wikipedia</a>.',
+      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Mer_M%C3%A9diterran%C3%A9e" target="_blank">Wikipedia</a>.',
       label: "Mer Méditerranée",
       divisor: 3765000000000000,
       pluralize: false,
