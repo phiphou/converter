@@ -200,6 +200,55 @@ export const dictionaries = {
       divisor: 1000000,
     },
   },
+  consommation: {
+    wh: {
+      label: "Wh",
+      divisor: 1,
+      pluralize: false,
+    },
+    kwh: {
+      label: "kWh",
+      divisor: 1000,
+      pluralize: false,
+    },
+    mug: {
+      info: "avec une bouilloire électrique de 1200W",
+      label: "Mug d'eau bouillante",
+      divisor: 40,
+    },
+    m3: {
+      label: "heure de vidéo sur un MacBook Air m4",
+      divisor: 3.59,
+    },
+    s25: {
+      label: "recharge Samsung Galaxy S25",
+      divisor: 25,
+      not_unit: true,
+    },
+    micro_wave: {
+      label: "3 minutes d'un micro-ondes de 900W",
+      divisor: 45,
+      pluralize: false,
+      not_unit: true,
+    },
+    dishwasher: {
+      label: "cycle de lave-vaisselle",
+      divisor: 1150,
+      not_unit: true,
+    },
+    washing_machine: {
+      label: "cycle de lave-linge classe B",
+      divisor: 520,
+      not_unit: true,
+    },
+    bifsteak: {
+      info: "avec un four de 2500W, hors préchaufage",
+      label: "Roti de 1kg 30min au four à 220°",
+      divisor: 850,
+      pluralize: false,
+      not_unit: true,
+    },
+  },
   débit: {
     m3s: {
       label: "m³/s",
@@ -1688,58 +1737,161 @@ export const dictionaries = {
     },
   },
   énergie: {
-    wh: {
-      label: "Wh",
+    j: {
+      label: "joule",
       divisor: 1,
       pluralize: false,
     },
-    kwh: {
-      label: "kWh",
+    kj: {
+      label: "kilojoule",
       divisor: 1000,
       pluralize: false,
     },
-    mug: {
-      info: "avec une bouilloire électrique de 1200W",
-      label: "Mug d'eau bouillante",
-      divisor: 40,
-    },
-    m3: {
-      label: "heure de vidéo sur un MacBook Air m4",
-      divisor: 3.59,
-    },
-    s25: {
-      label: "recharge Samsung Galaxy S25",
-      divisor: 25,
-      not_unit: true,
-    },
-    micro_wave: {
-      label: "3 minutes d'un micro-ondes de 900W",
-      divisor: 45,
+    Mj: {
+      label: "mégajoule",
+      divisor: 1000 * 1000,
       pluralize: false,
-      not_unit: true,
     },
-    dishwasher: {
-      label: "cycle de lave-vaisselle",
-      divisor: 1150,
-      not_unit: true,
-    },
-    washing_machine: {
-      label: "cycle de lave-linge classe B",
-      divisor: 520,
-      not_unit: true,
-    },
-    bifsteak: {
-      info: "avec un four de 2500W, hors préchaufage",
-      label: "Roti de 1kg 30min au four à 220°",
-      divisor: 850,
+    Gj: {
+      label: "gigajoule",
+      divisor: 1000 * 1000 * 1000,
       pluralize: false,
-      not_unit: true,
+    },
+    cal: {
+      label: "calorie",
+      divisor: 1 / 0.2388458966275,
+      pluralize: false,
+    },
+    kcal: {
+      label: "kilocalorie",
+      divisor: 1000 * (1 / 0.2388458966275),
+      pluralize: false,
+    },
+    Wh: {
+      label: "Watt-heure",
+      divisor: 3600,
+    },
+    kWh: {
+      label: "kiloWatt-heure",
+      divisor: 3600 * 1000,
+    },
+    MWh: {
+      label: "megaWatt-heure",
+      divisor: 3600 * 1000 * 1000,
+    },
+    GWh: {
+      label: "gigaWatt-heure",
+      divisor: 3600 * 1000 * 1000 * 1000,
+    },
+    kgOE: {
+      label: "kg équivalent pétrole (kOE)",
+      divisor: 41868000,
+    },
+    TOE: {
+      label: "tonne équivalent pétrole (TOE)",
+      divisor: 41868000000,
+      pluralize: false,
+    },
+    BOE: {
+      label: "baril équivalent pétrole (BOE)",
+      divisor: 5861520000,
+      pluralize: false,
+    },
+    kgSKE: {
+      label: "kg équivalent charbon (kg SKE)",
+      divisor: 29307600,
+    },
+    tSKE: {
+      label: "tonne équivalent charbon (t SKE)",
+      divisor: 29307600000,
+      pluralize: false,
+    },
+    eV: {
+      label: "électron-volt (eV)",
+      divisor: 1.602176487000004e-19,
+    },
+    keV: {
+      label: "kilo-électron-volt (keV)",
+      divisor: 1.602176487000004e-16,
+    },
+    MeV: {
+      label: "mega-électron-volt (MeV)",
+      divisor: 1.602176487000004e-13,
+    },
+    GeV: {
+      label: "giga-électron-volt (GeV)",
+      divisor: 1.602176487000004e-10,
+    },
+    TeV: {
+      label: "tera-électron-volt (TeV)",
+      divisor: 1.602176487000004e-7,
+    },
+    T: {
+      label: "tonne de TNT (T)",
+      divisor: 4184000000,
+      pluralize: false,
+    },
+    kT: {
+      label: "kilo-tonne de TNT (kT)",
+      divisor: 4184000000000,
+      pluralize: false,
+    },
+    MT: {
+      label: "mega-tonne de TNT (MT)",
+      divisor: 4184000000000000,
+      pluralize: false,
+    },
+    Hiroshima: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent_en_TNT#Exemples" target="_blank">Wikipedia</a>.',
+      label: "bombe A Hiroshima",
+      divisor: 4184000000000 * 15,
+      pluralize: false,
+    },
+    Nagasaki: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent_en_TNT#Exemples" target="_blank">Wikipedia</a>.',
+      label: "bombe A Nagasaki",
+      divisor: 4184000000000 * 22,
+      pluralize: false,
+    },
+    Tsar_Bomba: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent_en_TNT#Exemples" target="_blank">Wikipedia</a>.',
+      label: "bombe H Tsar Bomba",
+      divisor: 4184000000000000 * 50,
+      pluralize: false,
+    },
+    bullet_22l: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_d%27%C3%A9nergie" target="_blank">Wikipedia</a>.',
+      label: "balle .22 Long Rifle",
+      divisor: 142,
+      pluralize: false,
+    },
+    LR06: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_d%27%C3%A9nergie" target="_blank">Wikipedia</a>.',
+      label: "pile LR06-AA",
+      divisor: 8640,
+      pluralize: false,
+    },
+    bullet_50BMG: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/12,7_%C3%97_99_mm_OTAN" target="_blank">Wikipedia</a>.',
+      label: "balle .50 BMG",
+      divisor: 19000,
+      pluralize: false,
+    },
+    potatoes_300g: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_d%27%C3%A9nergie" target="_blank">Wikipedia</a>.',
+      label: "300g de pomme de terre",
+      divisor: 1000000,
+    },
+    sun_1s: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_d%27%C3%A9nergie" target="_blank">Wikipedia</a>.',
+      label: "Soleil en une seconde",
+      divisor: 3.827e26,
     },
   },
   informatique: {
     infos: {
       label:
-        "Bien qu'il existe des <a href='https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire' target='_blank'>préfixes binaires</a>, spécialement conçus pour l'informatique, ceux-ci ne sont presque pas utilisés, c'est pourquoi les préfixes montrés ici sont les préfixes usuels (industrie, informaticiens, presse spécialisée, etc)",
+        "Bien qu'il existe des <a href='https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire' target='_blank'>préfixes binaires</a>, spécialement conçus pour l'informatique, ceux-ci ne sont presque pas utilisés, c'est pourquoi les préfixes montrés ici sont les préfixes usuels (industrie, informaticiens, presse spécialisée, etc.).",
       divisor: 999999999,
       pluralize: false,
     },
@@ -2768,6 +2920,7 @@ export const dictionaries = {
       not_unit: true,
     },
     paris: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Paris" target="_blank">Wikipedia</a>.',
       label: "Paris",
       divisor: 1054000,
       pluralize: false,
@@ -2781,8 +2934,9 @@ export const dictionaries = {
       not_unit: true,
     },
     france: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Superficie_de_la_France" target="_blank">Wikipedia</a>.',
       label: "France métropolitaine",
-      divisor: 5516950000,
+      divisor: 549134,
       pluralize: false,
       not_unit: true,
     },
@@ -2931,33 +3085,36 @@ export const dictionaries = {
     },
     rafale: {
       label: "avion Rafale",
-      divisor: 1389,
+      info: "vitesse maximale, selon les données de <a href='https://fr.wikipedia.org/wiki/Dassault_Rafale' target='_blank'>Wikipedia</a>.",
+      divisor: 1912,
       pluralize: false,
       not_unit: true,
     },
     sound: {
-      info: "dans les conditions normales de température et de pression, soit 20°C 1013.25 hPa.",
+      info: "dans les conditions normales de température et de pression, soit 20°C 1013.25 hPa, selon les données de <a href='https://fr.wikipedia.org/wiki/Vitesse_du_son#Exemples' target='_blank'>Wikipedia</a>.",
       label: "vitesse du son",
-      divisor: 1234.8,
+      divisor: 1236.6,
       pluralize: false,
       not_unit: true,
     },
     BMG50: {
       label: "balle .50 BMG",
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/12,7_%C3%97_99_mm_OTAN" target="_blank">Wikipedia</a>.',
       divisor: 3348,
       pluralize: false,
       not_unit: true,
     },
     earth_rotation: {
-      info: "vitesse de rotation à l'équateur.",
+      info: "vitesse de rotation à l'équateur, selon les données de <a href='https://fr.wikipedia.org/wiki/Rotation_de_la_Terre' target='_blank'>Wikipedia</a>.",
       label: "rotation de la Terre",
       divisor: 1674.36,
       pluralize: false,
       not_unit: true,
     },
     earth_revolution: {
+      info: "vitesse moyenne, selon les données de <a href='https://fr.wikipedia.org/wiki/Orbite_de_la_Terre' target='_blank'>Wikipedia</a>.",
       label: "révolution de la Terre",
-      divisor: 107280,
+      divisor: 107208,
       pluralize: false,
       not_unit: true,
     },

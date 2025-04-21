@@ -52,9 +52,9 @@ try {
   const percentageMissing = ((countWithoutInfo / totalUnits) * 100).toFixed(2)
 
   console.log(`\nUnits : ${totalUnits}`)
-  console.log(`Unit without "info" field : ${countWithoutInfo}`)
-  console.log(`Percentage of missing "info" field : ${percentageMissing}%\n`)
-  console.log(`\nListe des unités sans "info" :\n${unitsWithoutInfo.join("\n")}`)
+  console.log(`Units without "info" field : ${countWithoutInfo}`)
+  console.log(`% of missing "info" field : ${percentageMissing}%\n`)
+  // console.log(`\nListe des unités sans "info" :\n${unitsWithoutInfo.join("\n")}`)
 } catch (error) {
   console.error("Error :", error.message)
 }
