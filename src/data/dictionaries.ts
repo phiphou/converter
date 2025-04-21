@@ -5,6 +5,353 @@ import {hms_formater} from "../formaters/hms_formater"
 import {ymd_formater} from "../formaters/ymd_formater"
 
 export const dictionaries = {
+  accélération: {
+    infos: {
+      label:
+        "accélération de surface pour les planètes selon les données de <a href='https://fr.wikipedia.org/wiki/Gravit%C3%A9_de_surface' target='_blank'>Wikipedia</a>.",
+      divisor: 999999999,
+      pluralize: false,
+    },
+    ms2: {
+      label: "m/s²",
+      divisor: 1,
+    },
+    mmin2: {
+      label: "m/min²",
+      divisor: 1 / 3600,
+    },
+    mh2: {
+      label: "m/h²",
+      divisor: 1 / 12960000,
+    },
+    kms2: {
+      label: "km/s²",
+      divisor: 1000,
+    },
+    kmmin2: {
+      label: "km/min²",
+      divisor: 1 / 3.6,
+    },
+    kmh2: {
+      label: "km/h²",
+      divisor: 1 / 12960,
+    },
+    g_earth: {
+      label: "Terre (g)",
+      divisor: 9.81,
+    },
+    g_moon: {
+      label: "Lune (g)",
+      divisor: 1.63,
+    },
+    g_sun: {
+      label: "Soleil (g)",
+      divisor: 273.95,
+    },
+    g_mercury: {
+      label: "Mercure (g)",
+      divisor: 3.701,
+    },
+    g_venus: {
+      label: "Vénus (g)",
+      divisor: 8.87,
+    },
+    g_mars: {
+      label: "Mars (g)",
+      divisor: 3.711,
+    },
+    g_jupiter: {
+      label: "Jupiter (g)",
+      divisor: 24.796,
+    },
+    g_saturn: {
+      label: "Saturne (g)",
+      divisor: 10.44,
+    },
+    g_uranus: {
+      label: "Uranus (g)",
+      divisor: 8.87,
+    },
+    g_neptun: {
+      label: "Neptune (g)",
+      divisor: 11.15,
+    },
+  },
+  angle: {
+    degré: {
+      label: "degré",
+      divisor: 1,
+    },
+    radian: {
+      label: "radian",
+      divisor: 180 / Math.PI,
+    },
+    arc_m: {
+      label: "minute d'arc",
+      divisor: 1 / 60,
+    },
+    arc_s: {
+      label: "seconde d'arc",
+      divisor: 1 / 3600,
+    },
+    grade: {
+      label: "grade",
+      divisor: 0.9,
+    },
+    angular_mil_NATO: {
+      label: "mil angulaire",
+      info: 'le mil angulaire est utilisé en artillerie, notamment par l\'OTAN (<a href="https://fr.wikipedia.org/wiki/Mil_angulaire" target="_blank">source</a>)',
+      divisor: (1 / 3600) * 202.5,
+      pluralize_all: true,
+    },
+  },
+  charge_électrique: {
+    infos: {
+      label:
+        "d'après les données de l'<a href=' https://fr.wikipedia.org/wiki/Charge_%C3%A9lectrique#Unit%C3%A9s' target='_blank'>>Wikipedia</a>.",
+      divisor: 999999999,
+      pluralize: false,
+    },
+    uC: {
+      label: "microCoulomb",
+      divisor: 1 / 3600000000,
+      pluralize: false,
+    },
+    mC: {
+      label: "milliCoulomb",
+      divisor: 1 / 3600000,
+      pluralize: false,
+    },
+    C: {
+      label: "Coulomb",
+      divisor: 1 / 3600,
+      pluralize: false,
+    },
+    uAh: {
+      label: "microAmpère-heure",
+      divisor: 0.000001,
+      pluralize: false,
+    },
+    mAh: {
+      label: "milliAmpère-heure²",
+      divisor: 0.001,
+      pluralize: false,
+    },
+    Ah: {
+      label: "Ampère-heure",
+      divisor: 1,
+      pluralize: false,
+    },
+    Fd: {
+      label: "Faraday",
+      pluralize: false,
+      divisor: 1 / 0.037311367755258,
+    },
+    e: {
+      label: "charge élémentaire",
+      divisor: 1 / 2.2469434729634e22,
+    },
+  },
+  CO2: {
+    infos: {
+      label:
+        "d'après les données de <a href='https://www.electricitymaps.com/' target='_blank' >Electricity Maps</a>, calculées pour la France.",
+      divisor: 999999999,
+      pluralize: false,
+    },
+    of: {label: "avec ", divisor: 0},
+    materials: {
+      coal: {label: "charbon", divisor: 0.983, quote: "du"},
+      gas: {label: "gaz", divisor: 0.512, quote: "du"},
+      oil: {label: "fioul", divisor: 0.901, quote: "du"},
+      nuclear: {label: "nucléaire", divisor: 0.005, quote: "du"},
+      wind: {label: "éolien", divisor: 0.013, quote: "de l'"},
+      solar: {label: "solaire", divisor: 0.03, quote: "du"},
+      hydro: {label: "hydro-électricité", divisor: 0.011, quote: "de l'"},
+      geothermy: {label: "géothermie", divisor: 0.038, quote: "de la"},
+      biomass: {label: "biomasse", divisor: 0.23, quote: "de la"},
+    },
+    mWh: {
+      label: "mWh",
+      divisor: 0.001,
+    },
+    Wh: {
+      label: "Wh",
+      divisor: 1,
+    },
+    kWh: {
+      label: "kWh",
+      divisor: 1000,
+    },
+    MWh: {
+      label: "MWh",
+      divisor: 1000000,
+    },
+    g: {
+      label: "gramme de CO2",
+      divisor: 1,
+    },
+    kg: {
+      label: "kilogramme de CO2",
+      divisor: 1000,
+    },
+    t: {
+      label: "tonne de CO2",
+      divisor: 1000000,
+    },
+  },
+  débit: {
+    m3s: {
+      label: "m³/s",
+      divisor: 1,
+    },
+    m3min: {
+      label: "m³/min",
+      divisor: 1 / 60,
+    },
+    m3h: {
+      label: "m³/h",
+      divisor: 1 / (60 * 60),
+    },
+    m3j: {
+      label: "m³/j",
+      divisor: 1 / (60 * 60 * 24),
+    },
+    m3y: {
+      label: "m³/an",
+      divisor: 1 / (60 * 60 * 24 * 365.25),
+    },
+    ls: {
+      label: "l/s",
+      divisor: 0.001,
+    },
+    lmin: {
+      label: "l/min",
+      divisor: 0.001 / 60,
+    },
+    lh: {
+      label: "l/h",
+      divisor: 0.001 / (60 * 60),
+    },
+    lj: {
+      label: "l/j",
+      divisor: 0.001 / (60 * 60 * 24),
+    },
+    ly: {
+      label: "l/an",
+      divisor: 0.001 / (60 * 60 * 24 * 365.25),
+    },
+    gpd: {
+      label: "gallon par jour",
+      divisor: 0.003785 / (60 * 60 * 24),
+    },
+    leak: {
+      label: "fuite 15 gouttes par minute",
+      divisor: 4.5 / 1000 / 86400,
+    },
+    shower: {
+      label: "douche",
+      divisor: 20 / 60 / 1000,
+    },
+    fire_hose: {
+      info: "débit maximal pour un diamètre de 100mm, selon les données de <a href='https://fr.wikipedia.org/wiki/Lance_%C3%A0_incendie' target='blank'>Wikipedia</a>.",
+      label: "lance à incendie",
+      divisor: 1 / 60,
+    },
+    seine: {
+      info: "débit moyen à Paris, selon les données de <a href='https://fr.wikipedia.org/wiki/Seine' target='blank'>Wikipedia</a>.",
+      label: "Seine",
+      divisor: 328,
+      pluralize: true,
+    },
+    danau: {
+      info: "débit moyen, selon les données de <a href='https://fr.wikipedia.org/wiki/Liste_des_cours_d%27eau_selon_le_d%C3%A9bit' target='blank'>Wikipedia</a>.",
+      label: "Danube",
+      divisor: 6452,
+      pluralize: true,
+    },
+    amazon: {
+      info: "débit moyen, selon les données de <a href='https://fr.wikipedia.org/wiki/Liste_des_cours_d%27eau_selon_le_d%C3%A9bit' target='blank'>Wikipedia</a>.",
+      label: "Amazone",
+      divisor: 220800,
+      pluralize: true,
+    },
+  },
+  densité: {
+    infos: {
+      label:
+        "données de densité de <a href='https://fr.wikipedia.org/wiki/Masse_volumique#Tables_des_masses_volumiques_de_diverses_substances' target='_blank' >Wikipedia</a>, à 20 °C et sous pression atmosphérique normale (1013hPa).",
+      divisor: 999999999,
+      pluralize: false,
+    },
+    materials: {
+      water: {label: "eau", divisor: 1, quote: "d'"},
+      concrete: {label: "béton", divisor: 2.2, quote: "de"},
+      diamond: {label: "diamant", divisor: 3.517, quote: "de"},
+      granit: {label: "granite", divisor: 2.7, quote: "de"},
+      marble: {label: "marbre", divisor: 2.7, quote: "de"},
+      glass: {label: "verre", divisor: 2.53, quote: "de"},
+      steel: {label: "acier", divisor: 7.6, quote: "d'"},
+      aluminium: {label: "aluminium", divisor: 2.7, quote: "d'"},
+      silver: {label: "argent", divisor: 10.5, quote: "d'"},
+      copper: {label: "cuivre", divisor: 8.96, quote: "de"},
+      iron: {label: "fer", divisor: 7.86, quote: "de"},
+      iridium: {label: "iridium", divisor: 22.56, quote: "d'"},
+      gold: {label: "or", divisor: 19.32, quote: "d'"},
+      mercure: {label: "mercure", divisor: 13.545, quote: "de"},
+      nickel: {label: "nickel", divisor: 8.9, quote: "de"},
+      platinium: {label: "platine", divisor: 21.45, quote: "de"},
+      lead: {label: "plomb", divisor: 11.35, quote: "de"},
+      titanium: {label: "titane", divisor: 4.5, quote: "de"},
+      tungsten: {label: "tungstène", divisor: 19.3, quote: "de"},
+      uranium: {label: "uranium", divisor: 19.1, quote: "d'"},
+      liquid_hydrogen: {label: "hydrogène liquide", divisor: 0.07, quote: "d'"},
+      oil: {label: "essence", divisor: 0.075, quote: "d'"},
+      vegetal_oil: {label: "huile végétale", divisor: 0.092, quote: "d'"},
+      balsa: {label: "balsa", divisor: 0.14, quote: "de"},
+      liege: {label: "liège", divisor: 0.24, quote: "de"},
+      fir_tree: {label: "sapin", divisor: 0.45, quote: "de"},
+      acajou: {label: "acajou", divisor: 0.7, quote: "d'"},
+      hêtre: {label: "hêtre", divisor: 0.8, quote: "de"},
+      ébène: {label: "ébène", divisor: 1.15, quote: "d'"},
+    },
+    mg: {
+      label: "milligramme",
+      divisor: 0.001,
+    },
+    g: {
+      label: "gramme",
+      divisor: 1,
+    },
+    kg: {
+      label: "kilogramme",
+      divisor: 1000,
+    },
+    t: {
+      label: "tonne",
+      divisor: 1000000,
+    },
+    mm3: {
+      label: "mm³",
+      divisor: 0.001,
+      pluralize: true,
+    },
+    cm3: {
+      label: "cm³",
+      divisor: 1,
+      pluralize: true,
+    },
+    dcm3: {
+      label: "dm³",
+      divisor: 1000,
+      pluralize: true,
+    },
+    m3: {
+      label: "m³",
+      divisor: 1000000,
+      pluralize: true,
+    },
+  },
   devises: {
     infos: {
       label:
@@ -1208,310 +1555,535 @@ export const dictionaries = {
     pluralize: false,
     divisor: 1,
   },
-  angle: {
-    degré: {
-      label: "degré",
+  durée: {
+    s: {
+      label: "seconde",
       divisor: 1,
     },
-    radian: {
-      label: "radian",
-      divisor: 180 / Math.PI,
+    m: {
+      label: "minute",
+      divisor: 60,
     },
-    arc_m: {
-      label: "minute d'arc",
-      divisor: 1 / 60,
+    h: {
+      label: "heure",
+      divisor: 3600,
     },
-    arc_s: {
-      label: "seconde d'arc",
-      divisor: 1 / 3600,
+    j: {
+      label: "jour",
+      divisor: 86400,
     },
-    grade: {
-      label: "grade",
-      divisor: 0.9,
+    w: {
+      label: "semaine",
+      divisor: 604800,
     },
-    angular_mil_NATO: {
-      label: "mil angulaire",
-      info: 'le mil angulaire est utilisé en artillerie, notamment par l\'OTAN (<a href="https://fr.wikipedia.org/wiki/Mil_angulaire" target="_blank">source</a>)',
-      divisor: (1 / 3600) * 202.5,
-      pluralize_all: true,
+    y: {
+      label: "année",
+      divisor: 31557600,
+    },
+    hms: {
+      label: "hh:mm:ss",
+      divisor: 1,
+      formater: hms_formater,
+    },
+    jmy: {
+      label: "aa:mm:jj",
+      divisor: 1,
+      formater: ymd_formater,
+    },
+    H60m: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 60m H",
+      divisor: 6.34,
+      not_unit: true,
+    },
+    H100m: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 100m H",
+      divisor: 9.58,
+      not_unit: true,
+    },
+    H200m: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 200m H",
+      divisor: 19.19,
+      not_unit: true,
+    },
+    H4x100m: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 4x100m H",
+      divisor: 36.84,
+      not_unit: true,
+    },
+    H400m: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 400m H",
+      divisor: 43.03,
+      not_unit: true,
+    },
+    H800m: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 800m H",
+      divisor: 100.91,
+      not_unit: true,
+    },
+    H4x400m: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 4x400m H",
+      divisor: 174.29,
+      not_unit: true,
+    },
+    H1500m: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 1500m H",
+      divisor: 206,
+      not_unit: true,
+    },
+    Hmile: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du mile H",
+      divisor: 223.13,
+      not_unit: true,
+    },
+    H3000m: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 3000m steeple H",
+      divisor: 472.11,
+      not_unit: true,
+    },
+    H5000m: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 5000m H",
+      divisor: 755.36,
+      not_unit: true,
+    },
+    H10000m: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 10000m H",
+      divisor: 1571,
+      not_unit: true,
+    },
+    Hmarathon: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du Marathon H",
+      divisor: 7235,
+      not_unit: true,
+    },
+    H20kmWalk: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 20km marche H",
+      divisor: 4570,
+      not_unit: true,
+    },
+    H50kmWalk: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 50km marche H",
+      divisor: 12753,
+      not_unit: true,
+    },
+    H100km: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du 100km H",
+      divisor: 21935,
+      not_unit: true,
     },
   },
-  paradoxe_de_Langevin: {
-    infos: {
-      label:
-        "plus d'infos sur le paradoxe de Langevin sur <a href='https://https://fr.wikipedia.org/wiki/Paradoxe_des_jumeaux' target='_blank' >Wikipedia</a>.",
-      divisor: 999999999,
-      pluralize: false,
-    },
-    noSwitch: true,
-    materials: {
-      plane: {label: "vitesse avion de ligne", divisor: 1.00000000000035, quote: "à"},
-      p1: {label: "1% vitesse lumière", divisor: 1.000050004, quote: "à"},
-      p5: {label: "5% vitesse lumière", divisor: 1.001252349, quote: "à"},
-      p10: {label: "10% vitesse lumière", divisor: 1.005037815, quote: "à"},
-      p20: {label: "20% vitesse lumière", divisor: 1.020620726, quote: "à"},
-      p25: {label: "25% vitesse lumière", divisor: 1.032795559, quote: "à"},
-      p50: {label: "50% vitesse lumière", divisor: 1.511857892, quote: "à"},
-      p75: {label: "75% vitesse lumière", divisor: 1.511857892, quote: "à"},
-      p80: {label: "80% vitesse lumière", divisor: 1.666666667, quote: "à"},
-      p90: {label: "90% vitesse lumière", divisor: 2.294157339, quote: "à"},
-      p95: {label: "95% vitesse lumière", divisor: 3.202563076, quote: "à"},
-      p99: {label: "99% vitesse lumière", divisor: 7.08881205, quote: "à"},
-      p99_9: {label: "99.9% vitesse lumière", divisor: 22.36627204, quote: "à"},
-      p99_99: {label: "99.99% vitesse lumière", divisor: 70.71244595, quote: "à"},
-      p99_999: {label: "99.999% vitesse lumière", divisor: 223.6073568, quote: "à"},
-    },
-    jours: {
-      label: "jour sur terre",
-      divisor: 1,
-    },
-    jours2: {
-      label: "jour dans le vaisseau",
-      divisor: 1,
-    },
-    mois: {
-      label: "mois sur terre",
-      divisor: 30.4375,
-      pluralize: false,
-    },
-    mois2: {
-      label: "mois dans le vaisseau",
-      divisor: 30.4375,
-    },
-    années: {
-      label: "année sur terre",
-      divisor: 365.25,
-    },
-    années2: {
-      label: "année dans le vaisseau",
-      divisor: 365.25,
-    },
-  },
-  densité: {
-    infos: {
-      label:
-        "données de densité de <a href='https://fr.wikipedia.org/wiki/Masse_volumique#Tables_des_masses_volumiques_de_diverses_substances' target='_blank' >Wikipedia</a>, à 20 °C et sous pression atmosphérique normale (1013hPa).",
-      divisor: 999999999,
-      pluralize: false,
-    },
-    materials: {
-      water: {label: "eau", divisor: 1, quote: "d'"},
-      concrete: {label: "béton", divisor: 2.2, quote: "de"},
-      diamond: {label: "diamant", divisor: 3.517, quote: "de"},
-      granit: {label: "granite", divisor: 2.7, quote: "de"},
-      marble: {label: "marbre", divisor: 2.7, quote: "de"},
-      glass: {label: "verre", divisor: 2.53, quote: "de"},
-      steel: {label: "acier", divisor: 7.6, quote: "d'"},
-      aluminium: {label: "aluminium", divisor: 2.7, quote: "d'"},
-      silver: {label: "argent", divisor: 10.5, quote: "d'"},
-      copper: {label: "cuivre", divisor: 8.96, quote: "de"},
-      iron: {label: "fer", divisor: 7.86, quote: "de"},
-      iridium: {label: "iridium", divisor: 22.56, quote: "d'"},
-      gold: {label: "or", divisor: 19.32, quote: "d'"},
-      mercure: {label: "mercure", divisor: 13.545, quote: "de"},
-      nickel: {label: "nickel", divisor: 8.9, quote: "de"},
-      platinium: {label: "platine", divisor: 21.45, quote: "de"},
-      lead: {label: "plomb", divisor: 11.35, quote: "de"},
-      titanium: {label: "titane", divisor: 4.5, quote: "de"},
-      tungsten: {label: "tungstène", divisor: 19.3, quote: "de"},
-      uranium: {label: "uranium", divisor: 19.1, quote: "d'"},
-      liquid_hydrogen: {label: "hydrogène liquide", divisor: 0.07, quote: "d'"},
-      oil: {label: "essence", divisor: 0.075, quote: "d'"},
-      vegetal_oil: {label: "huile végétale", divisor: 0.092, quote: "d'"},
-      balsa: {label: "balsa", divisor: 0.14, quote: "de"},
-      liege: {label: "liège", divisor: 0.24, quote: "de"},
-      fir_tree: {label: "sapin", divisor: 0.45, quote: "de"},
-      acajou: {label: "acajou", divisor: 0.7, quote: "d'"},
-      hêtre: {label: "hêtre", divisor: 0.8, quote: "de"},
-      ébène: {label: "ébène", divisor: 1.15, quote: "d'"},
-    },
-    mg: {
-      label: "milligramme",
-      divisor: 0.001,
-    },
-    g: {
-      label: "gramme",
-      divisor: 1,
-    },
-    kg: {
-      label: "kilogramme",
-      divisor: 1000,
-    },
-    t: {
-      label: "tonne",
-      divisor: 1000000,
-    },
-    mm3: {
-      label: "mm³",
-      divisor: 0.001,
-      pluralize: true,
-    },
-    cm3: {
-      label: "cm³",
-      divisor: 1,
-      pluralize: true,
-    },
-    dcm3: {
-      label: "dm³",
-      divisor: 1000,
-      pluralize: true,
-    },
-    m3: {
-      label: "m³",
-      divisor: 1000000,
-      pluralize: true,
-    },
-  },
-  CO2: {
-    infos: {
-      label:
-        "d'après les données de <a href='https://www.electricitymaps.com/' target='_blank' >Electricity Maps</a>, calculées pour la France.",
-      divisor: 999999999,
-      pluralize: false,
-    },
-    of: {label: "avec ", divisor: 0},
-    materials: {
-      coal: {label: "charbon", divisor: 0.983, quote: "du"},
-      gas: {label: "gaz", divisor: 0.512, quote: "du"},
-      oil: {label: "fioul", divisor: 0.901, quote: "du"},
-      nuclear: {label: "nucléaire", divisor: 0.005, quote: "du"},
-      wind: {label: "éolien", divisor: 0.013, quote: "de l'"},
-      solar: {label: "solaire", divisor: 0.03, quote: "du"},
-      hydro: {label: "hydro-électricité", divisor: 0.011, quote: "de l'"},
-      geothermy: {label: "géothermie", divisor: 0.038, quote: "de la"},
-      biomass: {label: "biomasse", divisor: 0.23, quote: "de la"},
-    },
-    mWh: {
-      label: "mWh",
-      divisor: 0.001,
-    },
-    Wh: {
+  énergie: {
+    wh: {
       label: "Wh",
       divisor: 1,
+      pluralize: false,
     },
-    kWh: {
+    kwh: {
       label: "kWh",
       divisor: 1000,
+      pluralize: false,
     },
-    MWh: {
-      label: "MWh",
-      divisor: 1000000,
+    mug: {
+      info: "avec une bouilloire électrique de 1200W",
+      label: "Mug d'eau bouillante",
+      divisor: 40,
     },
-    g: {
-      label: "gramme de CO2",
-      divisor: 1,
+    m3: {
+      label: "heure de vidéo sur un MacBook Air m4",
+      divisor: 3.59,
     },
-    kg: {
-      label: "kilogramme de CO2",
-      divisor: 1000,
+    s25: {
+      label: "recharge Samsung Galaxy S25",
+      divisor: 25,
+      not_unit: true,
     },
-    t: {
-      label: "tonne de CO2",
-      divisor: 1000000,
+    micro_wave: {
+      label: "3 minutes d'un micro-ondes de 900W",
+      divisor: 45,
+      pluralize: false,
+      not_unit: true,
+    },
+    dishwasher: {
+      label: "cycle de lave-vaisselle",
+      divisor: 1150,
+      not_unit: true,
+    },
+    washing_machine: {
+      label: "cycle de lave-linge classe B",
+      divisor: 520,
+      not_unit: true,
+    },
+    bifsteak: {
+      info: "avec un four de 2500W, hors préchaufage",
+      label: "Roti de 1kg 30min au four à 220°",
+      divisor: 850,
+      pluralize: false,
+      not_unit: true,
     },
   },
-  volume: {
-    microliter: {
-      label: "microlitre",
-      divisor: 0.000000001,
+  informatique: {
+    infos: {
+      label:
+        "Bien qu'il existe des <a href='https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire' target='_blank'>préfixes binaires</a>, spécialement conçus pour l'informatique, ceux-ci ne sont presque pas utilisés, c'est pourquoi les préfixes montrés ici sont les préfixes usuels (industrie, informaticiens, presse spécialisée, etc)",
+      divisor: 999999999,
+      pluralize: false,
     },
-    milliliter: {
-      label: "millilitre",
-      divisor: 0.000001,
-    },
-    centiliter: {
-      label: "centilitre",
-      divisor: 0.00001,
-    },
-    deciliter: {
-      label: "décilitre",
-      divisor: 0.0001,
-    },
-    liter: {
-      label: "litre",
-      divisor: 0.001,
-    },
-    cubic_meter: {
-      label: "mètre cube",
+    bit: {
+      label: "bit",
       divisor: 1,
     },
-    wine_bottle: {
-      info: 'volume moyen selon <a href="https://fr.wikipedia.org/wiki/Bouteille_de_vin" target="_blank">Wikipedia</a>.',
-      label: "bouteille de vin",
-      divisor: 0.00075,
+    octet: {
+      label: "octet",
+      divisor: 8,
     },
-    gallon: {
-      label: "gallon",
-      divisor: 0.003785,
+    byte: {
+      label: "byte",
+      divisor: 8,
+    },
+    kb: {
+      label: "kilo-bit",
+      divisor: 1 * 1024,
+    },
+    ko: {
+      label: "kilo-octet",
+      divisor: 8 * 1024,
+    },
+    kB: {
+      label: "kilo-byte",
+      divisor: 8 * 1024,
+    },
+    Mb: {
+      label: "mega-bit",
+      divisor: 1 * 1024 * 1024,
+    },
+    Mo: {
+      info: "avec un mega-octet (1Mo), on peut par exemple stocker un document texte (sans image) de près de 7000 pages A4 ou bien une photo de 1 MegaPixel dans une bonne qualité (avec compression).",
+      label: "mega-octet",
+      divisor: 8 * 1024 * 1024,
+    },
+    MB: {
+      info: "avec un mega-byte (1MB), on peut par exemple stocker un document texte (sans image) de près de 7000 pages A4 ou bien une photo de 1 MegaPixel dans une bonne qualité (avec compression).",
+      label: "mega-byte",
+      divisor: 8 * 1024 * 1024,
+    },
+    Gb: {
+      label: "giga-bit",
+      divisor: 1 * 1024 * 1024 * 1024,
+    },
+    Go: {
+      label: "giga-octet",
+      divisor: 8 * 1024 * 1024 * 1024,
+    },
+    GB: {
+      label: "giga-byte",
+      divisor: 8 * 1024 * 1024 * 1024,
+    },
+    Tb: {
+      label: "tera-bit",
+      divisor: 1 * 1024 * 1024 * 1024 * 1024,
+    },
+    To: {
+      label: "tera-octet",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024,
+    },
+    TB: {
+      label: "tera-byte",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024,
+    },
+    Pb: {
+      label: "peta-bit",
+      divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024,
+    },
+    Po: {
+      label: "peta-octet",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024,
+    },
+    PB: {
+      label: "peta-byte",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024,
+    },
+    Eb: {
+      label: "exa-bit",
+      divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+    },
+    Eo: {
+      label: "exa-octet",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+    },
+    EB: {
+      label: "exa-byte",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+    },
+    Zb: {
+      label: "zeta-bit",
+      divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+    },
+    Zo: {
+      label: "zeta-octet",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+    },
+    ZB: {
+      label: "zeta-byte",
+      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+    },
+    war_peace: {
+      label: "Guerre et Paix, ePub",
+      divisor: 1557 * 8 * 1024,
       pluralize: false,
     },
-    bathtub: {
-      info: 'volume moyen selon <a href="https://isi-sanitaire.fr/blog/astuces_conseils_tutos/litres-eau-pour-remplir-une-baignoire/" target="_blank">isi-sanitaire</a>.',
-      label: "baignoire",
-      divisor: 0.155,
-      not_unit: true,
-    },
-    shower: {
-      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>.',
-      label: "douche de 5 minutes",
-      divisor: 0.12,
-      not_unit: true,
-    },
-    shower2: {
-      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>.',
-      label: "douche de 10 minutes",
-      divisor: 0.2,
-      not_unit: true,
-    },
-    oil_barrel: {
-      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Baril" target="_blank">Wikipedia</a>.',
-      label: "baril de pétrole",
-      divisor: 0.158987294928,
-    },
-    berlingo: {
-      info: 'volume utile selon le <a href="https://www.citroen.fr/vehicules/utility/Nouveau-Berlingo-Van.html" target="_blank">constructeur</a>.',
-      label: "Citroën Berlingo Van M",
-      divisor: 3.3,
+    mp3_minute: {
+      label: "minute de musique en MP3",
+      divisor: 960 * 8 * 1024,
       pluralize: false,
-      not_unit: true,
     },
-    olympic_swimming_pool: {
-      info: "pour une piscine de 50x25x2m",
-      label: "piscine olympique",
-      divisor: 2500,
+    wikipedia_fr: {
+      label: "Wikipedia en français sans image",
+      divisor: 17.33 * 8 * 1024 * 1024 * 1024,
+      pluralize: false,
+    },
+    wikipedia_fr_images: {
+      label: "Wikipedia en français avec images",
+      divisor: 36.97 * 8 * 1024 * 1024 * 1024,
+      pluralize: false,
+    },
+    h265_4k_10Mbs: {
+      label: "heure de vidéo 4k H265 10Mb/s",
+      divisor: 4.5 * 8 * 1024 * 1024 * 1024,
+    },
+    s23_4k_488Mbs: {
+      label: "heure de vidéo 4k H265 60fps",
+      divisor: 27.4219 * 8 * 1024 * 1024 * 1024,
+    },
+    prores_422_hq_4k_1768Mbs: {
+      label: "heure de vidéo 4k ProRes 60fps 422 HQ",
+      divisor: 798 * 8 * 1024 * 1024 * 1024,
+    },
+  },
+  longueur: {
+    nanom: {
+      label: "nanomètre",
+      divisor: 0.000000000001,
+    },
+    micron: {
+      label: "micromètre",
+      divisor: 0.000000001,
+    },
+    mm: {
+      label: "milimètre",
+      divisor: 0.000001,
+    },
+    cm: {
+      label: "centimètre",
+      divisor: 0.00001,
+    },
+    inch: {
+      label: "pouce",
+      divisor: 0.0000254,
+    },
+    dm: {
+      label: "décimètre",
+      divisor: 0.0001,
+    },
+    foot: {
+      label: "pied",
+      divisor: 0.0003048,
+    },
+    yard: {
+      label: "yard",
+      divisor: 0.0009144,
+    },
+    m: {
+      label: "mètre",
+      divisor: 0.001,
+    },
+    km: {
+      label: "kilomètre",
+      divisor: 1,
+    },
+    mile: {
+      label: "mile",
+      divisor: 1.609344,
+    },
+    nm: {
+      label: "mile nautique",
+      divisor: 1.852,
+      pluralize_all: true,
+    },
+    au: {
+      label: "unité astronomique",
+      divisor: 149597870.7,
+      pluralize_all: true,
+    },
+    pc: {
+      label: "parsec",
+      divisor: 30856775810000,
+    },
+    ly: {
+      label: "année lumière",
+      divisor: 9453939595488,
+    },
+    red_cell: {
+      info: 'diamètre moyen selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89rythrocyte" target="_blank">Wikipedia</a>.',
+      label: "globule rouge",
+      divisor: 0.0000000072,
       pluralize_all: true,
       not_unit: true,
     },
-    kheops_pyramid: {
-      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops" target="_blank">Wikipedia</a>.',
-      label: "pyramide de Kheops",
-      divisor: 2592341,
+    white_cell: {
+      info: 'diamètre moyenne selon les données de <a href="https://fr.wikipedia.org/wiki/Leucocyte" target="_blank">Wikipedia</a>.',
+      label: "globule blanc",
+      divisor: 0.000000012,
+      pluralize_all: true,
       not_unit: true,
     },
-    anecy_lake: {
-      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Lac_d%27Annecy" target="_blank">Wikipedia</a>.',
-      label: "lac d'Annecy",
-      divisor: 1124500000,
+    fine_sand: {
+      label: "grain de sable fin",
+      divisor: 0.000000188,
+      not_unit: true,
+      pluralize: false,
+    },
+    london_bus: {
+      info: 'taille des nouveaux Wrightbus New Routemaster en service depuis 2012, selon les données de <a href="https://fr.wikipedia.org/wiki/Wrightbus_New_Routemaster" target="_blank">Wikipedia</a>.',
+      label: "bus londonien",
+      divisor: 0.01123,
+      not_unit: true,
+    },
+    HhighJump: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du saut en hauteur H",
+      divisor: 0.00245,
+      not_unit: true,
+    },
+    HlongJump: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du saut en longueur H",
+      divisor: 0.00895,
+      not_unit: true,
+    },
+    HtripleJump: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du triple saut H",
+      divisor: 0.01829,
+      not_unit: true,
+    },
+    HpoleVault: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du saut à la perche H",
+      divisor: 0.00627,
+      not_unit: true,
+    },
+    HshotPut: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du lancer du poids H",
+      divisor: 0.02356,
+      not_unit: true,
+    },
+    Hjavelin: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du lancer du javelot H",
+      divisor: 0.09848,
+      not_unit: true,
+    },
+    Hdisc: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du lancer du disque H",
+      divisor: 0.07556,
+      not_unit: true,
+    },
+    Hhammer: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
+      label: "record du lancer du marteau H",
+      divisor: 0.08674,
+      not_unit: true,
+    },
+    eiffel_tower: {
+      info: 'hauteur totale, avec l\'antenne, selon les données de <a href="https://fr.wikipedia.org/wiki/Tour_Eiffel" target="_blank">Wikipedia</a>.',
+      label: "tour Eiffel",
+      divisor: 0.33,
+      not_unit: true,
+    },
+    stadium: {
+      label: "piste olympique",
+      divisor: 0.4,
+      not_unit: true,
+    },
+    bastille_republic: {
+      info: 'trajet à pieds, selon les données de <a href="https://maps.app.goo.gl/3wmcZh84Ph3g4MbG8" target="_blank">Google Maps</a>.',
+      label: "Bastille - République",
+      divisor: 1.63,
       pluralize: false,
       not_unit: true,
     },
-    leman_lake: {
-      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/L%C3%A9man" target="_blank">Wikipedia</a>.',
-      label: "lac Léman",
-      divisor: 89000000000,
+    nation_republic: {
+      info: 'trajet à pieds, selon les données de <a href="https://maps.app.goo.gl/ecKyGVoB4MeR13g78" target="_blank">Google Maps</a>.',
+      label: "Nation - République",
+      divisor: 3.03,
       pluralize: false,
       not_unit: true,
     },
-    france_water: {
-      label: "Pluie par an en France",
-      divisor: 510000000000,
+    marathon: {
+      label: "marathon",
+      divisor: 42.195,
+      not_unit: true,
+    },
+    paris_marseille: {
+      info: 'trajet le plus court par la route, selon les données de <a href="https://maps.app.goo.gl/Ei4d2gyrXUojyBYM7" target="_blank">Google Maps</a>.',
+      label: "Paris - Marseille",
+      divisor: 800,
       pluralize: false,
       not_unit: true,
     },
-    mediterranean_sea: {
-      info: 'volume selon <a href=" https://fr.wikipedia.org/wiki/Mer_M%C3%A9diterran%C3%A9e" target="_blank">Wikipedia</a>.',
-      label: "Mer Méditerranée",
-      divisor: 3765000000000000,
+    perpignan_dunkerque: {
+      info: 'trajet le plus court par la route, selon les données de <a href="https://maps.app.goo.gl/xno6P4iJf4fRDxoa7" target="_blank">Google Maps</a>.',
+      label: "Perpignan - Dunkerque",
+      divisor: 1138,
+      pluralize: false,
+      not_unit: true,
+    },
+    paris_nyc: {
+      info: 'trajet le plus court à vol d\'oiseau, selon les données de <a href="https://fr.distance.to/Paris,%C3%8Ele-de-France,FRA/New-York,NY,USA-(New-York-County)" target="_blank">fr.distance.to</a>.',
+      label: "Paris - New-York",
+      divisor: 5828.96,
+      pluralize: false,
+      not_unit: true,
+    },
+    paris_sydney: {
+      info: 'trajet le plus court à vol d\'oiseau, selon les données de <a href="https://fr.distance.to/Paris,%C3%8Ele-de-France,FRA/Sydney,New-South-Wales,AUS" target="_blank">fr.distance.to</a>.',
+      label: "Paris - Sydney",
+      divisor: 16960.01,
+      pluralize: false,
+      not_unit: true,
+    },
+    moon: {
+      label: "Terre - Lune",
+      divisor: 384400,
+      pluralize: false,
+      not_unit: true,
+    },
+    saturn: {
+      label: "Soleil - Saturne",
+      divisor: 1426700000,
+      pluralize: false,
+      not_unit: true,
+    },
+    alpha_centauri: {
+      label: "Soleil - Alpha du Centaure",
+      divisor: 40122519643251.07,
       pluralize: false,
       not_unit: true,
     },
@@ -1741,469 +2313,57 @@ export const dictionaries = {
       not_unit: true,
     },
   },
-  surface: {
-    mm2: {
-      label: "milimètre carré",
-      divisor: 0.00000001,
-      pluralize_all: true,
+  paradoxe_de_Langevin: {
+    infos: {
+      label:
+        "plus d'infos sur le paradoxe de Langevin sur <a href='https://https://fr.wikipedia.org/wiki/Paradoxe_des_jumeaux' target='_blank' >Wikipedia</a>.",
+      divisor: 999999999,
+      pluralize: false,
     },
-    cm2: {
-      label: "centimètre carré",
-      divisor: 0.000001,
-      pluralize_all: true,
+    noSwitch: true,
+    materials: {
+      plane: {label: "vitesse avion de ligne", divisor: 1.00000000000035, quote: "à"},
+      p1: {label: "1% vitesse lumière", divisor: 1.000050004, quote: "à"},
+      p5: {label: "5% vitesse lumière", divisor: 1.001252349, quote: "à"},
+      p10: {label: "10% vitesse lumière", divisor: 1.005037815, quote: "à"},
+      p20: {label: "20% vitesse lumière", divisor: 1.020620726, quote: "à"},
+      p25: {label: "25% vitesse lumière", divisor: 1.032795559, quote: "à"},
+      p50: {label: "50% vitesse lumière", divisor: 1.511857892, quote: "à"},
+      p75: {label: "75% vitesse lumière", divisor: 1.511857892, quote: "à"},
+      p80: {label: "80% vitesse lumière", divisor: 1.666666667, quote: "à"},
+      p90: {label: "90% vitesse lumière", divisor: 2.294157339, quote: "à"},
+      p95: {label: "95% vitesse lumière", divisor: 3.202563076, quote: "à"},
+      p99: {label: "99% vitesse lumière", divisor: 7.08881205, quote: "à"},
+      p99_9: {label: "99.9% vitesse lumière", divisor: 22.36627204, quote: "à"},
+      p99_99: {label: "99.99% vitesse lumière", divisor: 70.71244595, quote: "à"},
+      p99_999: {label: "99.999% vitesse lumière", divisor: 223.6073568, quote: "à"},
     },
-    sqft: {
-      label: "pied carré",
-      divisor: 0.0009290304,
-      pluralize_all: true,
-    },
-    m2: {
-      label: "mètre carré",
-      divisor: 0.01,
-      pluralize_all: true,
-    },
-    a: {
-      label: "are",
+    jours: {
+      label: "jour sur terre",
       divisor: 1,
     },
-    ha: {
-      label: "hectare",
-      divisor: 100,
-    },
-    acre: {
-      label: "acre",
-      divisor: 40.4686,
-    },
-    km2: {
-      label: "kilomètre carré",
-      divisor: 10000,
-      pluralize_all: true,
-    },
-    a5: {
-      label: "feuille A5",
-      divisor: 0.00003108,
-    },
-    a4: {
-      label: "feuille A4",
-      divisor: 0.0006237,
-    },
-    a3: {
-      label: "feuille A3",
-      divisor: 0.0012474,
-    },
-    ping_pong_table: {
-      info: 'surface officielle, selon les <a href="https://documents.ittf.sport/sites/default/files/public/2021-04/2020ITTFHandbook.pdf" target="_blank">règles de l\'ITTF</a> (en anglais, page 34 du document)',
-      label: "table de ping-pong",
-      divisor: 0.041785,
-      not_unit: true,
-    },
-    tennis_field: {
-      label: "terrain de tennis",
-      divisor: 2.607569,
-      not_unit: true,
-    },
-    basket_field: {
-      label: "terrain de basket",
-      divisor: 4.36626,
-      not_unit: true,
-    },
-    handball_field: {
-      label: "terrain de handball",
-      divisor: 8,
-      not_unit: true,
-    },
-    rugby_field: {
-      label: "terrain de rugby",
-      divisor: 67.275,
-      not_unit: true,
-    },
-    football_field: {
-      label: "terrain de football",
-      divisor: 71.4,
-      not_unit: true,
-    },
-    wind_turbine: {
-      info: "emprise totale pour une éolienne terrestre de 2MW",
-      label: "éolienne",
-      divisor: 20,
-      pluralize: false,
-      not_unit: true,
-    },
-    notre_dame_de_paris: {
-      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame_de_Paris" target="_blank">Wikipedia</a>.',
-      label: "Notre-Dame de Paris",
-      divisor: 55,
-      pluralize: false,
-      not_unit: true,
-    },
-    republic_place: {
-      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Place_de_la_R%C3%A9publique_(Paris)" target="_blank">Wikipedia</a>.',
-      label: "Place de la République (Paris)",
-      divisor: 336.77,
-      pluralize: false,
-      not_unit: true,
-    },
-    kheops_pyramid: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops" target="_blank">Wikipedia</a>.',
-      label: "pyramide de Khéops",
-      divisor: 530.3809,
-      pluralize: false,
-      not_unit: true,
-    },
-    versailles: {
-      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Parc_de_Versailles" target="_blank">Wikipedia</a>.',
-      label: "Château de Versailles",
-      divisor: 107000,
-      pluralize: false,
-      not_unit: true,
-    },
-    paris: {
-      label: "Paris",
-      divisor: 1054000,
-      pluralize: false,
-      not_unit: true,
-    },
-    idf: {
-      info: 'superficie totale, selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%8Ele-de-France" target="_blank">Wikipedia</a>.',
-      label: "Région ïle-de-France",
-      divisor: 120110000,
-      pluralize: false,
-      not_unit: true,
-    },
-    france: {
-      label: "France métropolitaine",
-      divisor: 5516950000,
-      pluralize: false,
-      not_unit: true,
-    },
-    africa: {
-      info: 'superficie totale du continent, selon les données de <a href="https://fr.wikipedia.org/wiki/Afrique" target="_blank">Wikipedia</a>.',
-      label: "continent africain",
-      divisor: 304158730000,
-      pluralize: false,
-      not_unit: true,
-    },
-    earth_lands: {
-      info: 'superficie totale des terres émergées de la planète, selon les données de <a href="https://fr.wikipedia.org/wiki/Terre_%C3%A9merg%C3%A9e" target="_blank">Wikipedia</a>.',
-      label: "terres émergées sur Terre",
-      divisor: 1480000000000,
-      pluralize: false,
-      not_unit: true,
-    },
-  },
-  longueur: {
-    nanom: {
-      label: "nanomètre",
-      divisor: 0.000000000001,
-    },
-    micron: {
-      label: "micromètre",
-      divisor: 0.000000001,
-    },
-    mm: {
-      label: "milimètre",
-      divisor: 0.000001,
-    },
-    cm: {
-      label: "centimètre",
-      divisor: 0.00001,
-    },
-    inch: {
-      label: "pouce",
-      divisor: 0.0000254,
-    },
-    dm: {
-      label: "décimètre",
-      divisor: 0.0001,
-    },
-    foot: {
-      label: "pied",
-      divisor: 0.0003048,
-    },
-    yard: {
-      label: "yard",
-      divisor: 0.0009144,
-    },
-    m: {
-      label: "mètre",
-      divisor: 0.001,
-    },
-    km: {
-      label: "kilomètre",
+    jours2: {
+      label: "jour dans le vaisseau",
       divisor: 1,
     },
-    mile: {
-      label: "mile",
-      divisor: 1.609344,
-    },
-    nm: {
-      label: "mile nautique",
-      divisor: 1.852,
-      pluralize_all: true,
-    },
-    au: {
-      label: "unité astronomique",
-      divisor: 149597870.7,
-      pluralize_all: true,
-    },
-    pc: {
-      label: "parsec",
-      divisor: 30856775810000,
-    },
-    ly: {
-      label: "année lumière",
-      divisor: 9453939595488,
-    },
-    red_cell: {
-      info: 'diamètre moyen selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89rythrocyte" target="_blank">Wikipedia</a>.',
-      label: "globule rouge",
-      divisor: 0.0000000072,
-      pluralize_all: true,
-      not_unit: true,
-    },
-    white_cell: {
-      info: 'diamètre moyenne selon les données de <a href="https://fr.wikipedia.org/wiki/Leucocyte" target="_blank">Wikipedia</a>.',
-      label: "globule blanc",
-      divisor: 0.000000012,
-      pluralize_all: true,
-      not_unit: true,
-    },
-    fine_sand: {
-      label: "grain de sable fin",
-      divisor: 0.000000188,
-      not_unit: true,
+    mois: {
+      label: "mois sur terre",
+      divisor: 30.4375,
       pluralize: false,
     },
-    london_bus: {
-      info: 'taille des nouveaux Wrightbus New Routemaster en service depuis 2012, selon les données de <a href="https://fr.wikipedia.org/wiki/Wrightbus_New_Routemaster" target="_blank">Wikipedia</a>.',
-      label: "bus londonien",
-      divisor: 0.01123,
-      not_unit: true,
+    mois2: {
+      label: "mois dans le vaisseau",
+      divisor: 30.4375,
     },
-    HhighJump: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du saut en hauteur H",
-      divisor: 0.00245,
-      not_unit: true,
+    années: {
+      label: "année sur terre",
+      divisor: 365.25,
     },
-    HlongJump: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du saut en longueur H",
-      divisor: 0.00895,
-      not_unit: true,
-    },
-    HtripleJump: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du triple saut H",
-      divisor: 0.01829,
-      not_unit: true,
-    },
-    HpoleVault: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du saut à la perche H",
-      divisor: 0.00627,
-      not_unit: true,
-    },
-    HshotPut: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du lancer du poids H",
-      divisor: 0.02356,
-      not_unit: true,
-    },
-    Hjavelin: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du lancer du javelot H",
-      divisor: 0.09848,
-      not_unit: true,
-    },
-    Hdisc: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du lancer du disque H",
-      divisor: 0.07556,
-      not_unit: true,
-    },
-    Hhammer: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du lancer du marteau H",
-      divisor: 0.08674,
-      not_unit: true,
-    },
-    eiffel_tower: {
-      info: 'hauteur totale, avec l\'antenne, selon les données de <a href="https://fr.wikipedia.org/wiki/Tour_Eiffel" target="_blank">Wikipedia</a>.',
-      label: "tour Eiffel",
-      divisor: 0.33,
-      not_unit: true,
-    },
-    stadium: {
-      label: "piste olympique",
-      divisor: 0.4,
-      not_unit: true,
-    },
-    bastille_republic: {
-      info: 'trajet à pieds, selon les données de <a href="https://maps.app.goo.gl/3wmcZh84Ph3g4MbG8" target="_blank">Google Maps</a>.',
-      label: "Bastille - République",
-      divisor: 1.63,
-      pluralize: false,
-      not_unit: true,
-    },
-    nation_republic: {
-      info: 'trajet à pieds, selon les données de <a href="https://maps.app.goo.gl/ecKyGVoB4MeR13g78" target="_blank">Google Maps</a>.',
-      label: "Nation - République",
-      divisor: 3.03,
-      pluralize: false,
-      not_unit: true,
-    },
-    marathon: {
-      label: "marathon",
-      divisor: 42.195,
-      not_unit: true,
-    },
-    paris_marseille: {
-      info: 'trajet le plus court par la route, selon les données de <a href="https://maps.app.goo.gl/Ei4d2gyrXUojyBYM7" target="_blank">Google Maps</a>.',
-      label: "Paris - Marseille",
-      divisor: 800,
-      pluralize: false,
-      not_unit: true,
-    },
-    perpignan_dunkerque: {
-      info: 'trajet le plus court par la route, selon les données de <a href="https://maps.app.goo.gl/xno6P4iJf4fRDxoa7" target="_blank">Google Maps</a>.',
-      label: "Perpignan - Dunkerque",
-      divisor: 1138,
-      pluralize: false,
-      not_unit: true,
-    },
-    paris_nyc: {
-      info: 'trajet le plus court à vol d\'oiseau, selon les données de <a href="https://fr.distance.to/Paris,%C3%8Ele-de-France,FRA/New-York,NY,USA-(New-York-County)" target="_blank">fr.distance.to</a>.',
-      label: "Paris - New-York",
-      divisor: 5828.96,
-      pluralize: false,
-      not_unit: true,
-    },
-    paris_sydney: {
-      info: 'trajet le plus court à vol d\'oiseau, selon les données de <a href="https://fr.distance.to/Paris,%C3%8Ele-de-France,FRA/Sydney,New-South-Wales,AUS" target="_blank">fr.distance.to</a>.',
-      label: "Paris - Sydney",
-      divisor: 16960.01,
-      pluralize: false,
-      not_unit: true,
-    },
-    moon: {
-      label: "Terre - Lune",
-      divisor: 384400,
-      pluralize: false,
-      not_unit: true,
-    },
-    saturn: {
-      label: "Soleil - Saturne",
-      divisor: 1426700000,
-      pluralize: false,
-      not_unit: true,
-    },
-    alpha_centauri: {
-      label: "Soleil - Alpha du Centaure",
-      divisor: 40122519643251.07,
-      pluralize: false,
-      not_unit: true,
+    années2: {
+      label: "année dans le vaisseau",
+      divisor: 365.25,
     },
   },
-  énergie: {
-    wh: {
-      label: "Wh",
-      divisor: 1,
-      pluralize: false,
-    },
-    kwh: {
-      label: "kWh",
-      divisor: 1000,
-      pluralize: false,
-    },
-    mug: {
-      info: "avec une bouilloire électrique de 1200W",
-      label: "Mug d'eau bouillante",
-      divisor: 40,
-    },
-    m3: {
-      label: "heure de vidéo sur un MacBook Air m4",
-      divisor: 3.59,
-    },
-    s25: {
-      label: "recharge Samsung Galaxy S25",
-      divisor: 25,
-      not_unit: true,
-    },
-    micro_wave: {
-      label: "3 minutes d'un micro-ondes de 900W",
-      divisor: 45,
-      pluralize: false,
-      not_unit: true,
-    },
-    dishwasher: {
-      label: "cycle de lave-vaisselle",
-      divisor: 1150,
-      not_unit: true,
-    },
-    washing_machine: {
-      label: "cycle de lave-linge classe B",
-      divisor: 520,
-      not_unit: true,
-    },
-    bifsteak: {
-      info: "avec un four de 2500W, hors préchaufage",
-      label: "Roti de 1kg 30min au four à 220°",
-      divisor: 850,
-      pluralize: false,
-      not_unit: true,
-    },
-  },
-  puissance: {
-    W: {
-      label: "W",
-      divisor: 1,
-      pluralize: true,
-    },
-    kW: {
-      label: "kW",
-      divisor: 1000,
-      pluralize: true,
-    },
-    MW: {
-      label: "MW",
-      divisor: 1000000,
-      pluralize: true,
-    },
-    ch: {
-      label: "cheval vapeur (ch)",
-      plural: "chevaux",
-      divisor: 735.49875,
-    },
-    hp: {
-      label: "cheval vapeur US (hp)",
-      plural: "chevaux",
-      divisor: 745.66272,
-    },
-    bike: {
-      info: 'selon les données de <a href="https://www.velo101.com/entrainements/programmes-et-techniques/puissance-quelle-est-la-bonne-moyenne-de-watts-en-tant-que-cycliste/" target="_blank">velo101.com</a>.',
-      label: "cycliste pro pendant 1 heure",
-      divisor: 392,
-    },
-    AMG_A35: {
-      label: "Mercedes-AMG A 35",
-      info: 'selon les données du <a href=https://www.mercedes-benz.fr/passengercars/models/saloon/a-class/amg.html#technical-data" target="_blank">constructeur</a>.',
-      divisor: 225062.6175,
-      pluralize: true,
-    },
-    chiron: {
-      info: 'selon les données du <a href= https://newsroom.cdn.bugatti-media.com/6673ecbdbde16a1e54953018/original" target="_blank">constructeur</a>.',
-      label: "Bugatti Chiron Super Sport 300+",
-      divisor: 1177000,
-      pluralize: true,
-    },
-    GE90: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/General_Electric_GE90" target="_blank">Wikipedia</a>.',
-      label: "turboréacteur GE90",
-      divisor: 83.198 * 1000000,
-    },
-  },
-
   pression: {
     mPa: {
       label: "milliPascal",
@@ -2282,441 +2442,53 @@ export const dictionaries = {
       pluralize: false,
     },
   },
-  accélération: {
-    infos: {
-      label:
-        "accélération de surface pour les planètes selon les données de <a href='https://fr.wikipedia.org/wiki/Gravit%C3%A9_de_surface' target='_blank'>Wikipedia</a>.",
-      divisor: 999999999,
-      pluralize: false,
-    },
-    ms2: {
-      label: "m/s²",
+  puissance: {
+    W: {
+      label: "W",
       divisor: 1,
+      pluralize: true,
     },
-    mmin2: {
-      label: "m/min²",
-      divisor: 1 / 3600,
-    },
-    mh2: {
-      label: "m/h²",
-      divisor: 1 / 12960000,
-    },
-    kms2: {
-      label: "km/s²",
+    kW: {
+      label: "kW",
       divisor: 1000,
-    },
-    kmmin2: {
-      label: "km/min²",
-      divisor: 1 / 3.6,
-    },
-    kmh2: {
-      label: "km/h²",
-      divisor: 1 / 12960,
-    },
-    g_earth: {
-      label: "Terre (g)",
-      divisor: 9.81,
-    },
-    g_moon: {
-      label: "Lune (g)",
-      divisor: 1.63,
-    },
-    g_sun: {
-      label: "Soleil (g)",
-      divisor: 273.95,
-    },
-    g_mercury: {
-      label: "Mercure (g)",
-      divisor: 3.701,
-    },
-    g_venus: {
-      label: "Vénus (g)",
-      divisor: 8.87,
-    },
-    g_mars: {
-      label: "Mars (g)",
-      divisor: 3.711,
-    },
-    g_jupiter: {
-      label: "Jupiter (g)",
-      divisor: 24.796,
-    },
-    g_saturn: {
-      label: "Saturne (g)",
-      divisor: 10.44,
-    },
-    g_uranus: {
-      label: "Uranus (g)",
-      divisor: 8.87,
-    },
-    g_neptun: {
-      label: "Neptune (g)",
-      divisor: 11.15,
-    },
-  },
-  charge_électrique: {
-    infos: {
-      label:
-        "d'après les données de l'<a href=' https://fr.wikipedia.org/wiki/Charge_%C3%A9lectrique#Unit%C3%A9s' target='_blank'>>Wikipedia</a>.",
-      divisor: 999999999,
-      pluralize: false,
-    },
-    uC: {
-      label: "microCoulomb",
-      divisor: 1 / 3600000000,
-      pluralize: false,
-    },
-    mC: {
-      label: "milliCoulomb",
-      divisor: 1 / 3600000,
-      pluralize: false,
-    },
-    C: {
-      label: "Coulomb",
-      divisor: 1 / 3600,
-      pluralize: false,
-    },
-    uAh: {
-      label: "microAmpère-heure",
-      divisor: 0.000001,
-      pluralize: false,
-    },
-    mAh: {
-      label: "milliAmpère-heure²",
-      divisor: 0.001,
-      pluralize: false,
-    },
-    Ah: {
-      label: "Ampère-heure",
-      divisor: 1,
-      pluralize: false,
-    },
-    Fd: {
-      label: "Faraday",
-      pluralize: false,
-      divisor: 1 / 0.037311367755258,
-    },
-    e: {
-      label: "charge élémentaire",
-      divisor: 1 / 2.2469434729634e22,
-    },
-  },
-  durée: {
-    s: {
-      label: "seconde",
-      divisor: 1,
-    },
-    m: {
-      label: "minute",
-      divisor: 60,
-    },
-    h: {
-      label: "heure",
-      divisor: 3600,
-    },
-    j: {
-      label: "jour",
-      divisor: 86400,
-    },
-    w: {
-      label: "semaine",
-      divisor: 604800,
-    },
-    y: {
-      label: "année",
-      divisor: 31557600,
-    },
-    hms: {
-      label: "hh:mm:ss",
-      divisor: 1,
-      formater: hms_formater,
-    },
-    jmy: {
-      label: "aa:mm:jj",
-      divisor: 1,
-      formater: ymd_formater,
-    },
-    H60m: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 60m H",
-      divisor: 6.34,
-      not_unit: true,
-    },
-    H100m: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 100m H",
-      divisor: 9.58,
-      not_unit: true,
-    },
-    H200m: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 200m H",
-      divisor: 19.19,
-      not_unit: true,
-    },
-    H4x100m: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 4x100m H",
-      divisor: 36.84,
-      not_unit: true,
-    },
-    H400m: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 400m H",
-      divisor: 43.03,
-      not_unit: true,
-    },
-    H800m: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 800m H",
-      divisor: 100.91,
-      not_unit: true,
-    },
-    H4x400m: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 4x400m H",
-      divisor: 174.29,
-      not_unit: true,
-    },
-    H1500m: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 1500m H",
-      divisor: 206,
-      not_unit: true,
-    },
-    Hmile: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du mile H",
-      divisor: 223.13,
-      not_unit: true,
-    },
-    H3000m: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 3000m steeple H",
-      divisor: 472.11,
-      not_unit: true,
-    },
-    H5000m: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 5000m H",
-      divisor: 755.36,
-      not_unit: true,
-    },
-    H10000m: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 10000m H",
-      divisor: 1571,
-      not_unit: true,
-    },
-    Hmarathon: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du Marathon H",
-      divisor: 7235,
-      not_unit: true,
-    },
-    H20kmWalk: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 20km marche H",
-      divisor: 4570,
-      not_unit: true,
-    },
-    H50kmWalk: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 50km marche H",
-      divisor: 12753,
-      not_unit: true,
-    },
-    H100km: {
-      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Records_du_monde_d%27athl%C3%A9tisme" target="_blank">Wikipedia</a>.',
-      label: "record du 100km H",
-      divisor: 21935,
-      not_unit: true,
-    },
-  },
-  vitesse: {
-    ms: {
-      label: "m/s",
-      divisor: 1 / (1 / 3600) / 1000,
-      pluralize: false,
-    },
-    kms: {
-      label: "km/s",
-      divisor: 1 / (1 / 3600),
-      pluralize: false,
-    },
-    mh: {
-      label: "m/h",
-      divisor: 0.001,
-      pluralize: false,
-    },
-    kmh: {
-      label: "km/h",
-      divisor: 1,
-      pluralize: false,
-    },
-    mih: {
-      label: "mile par heure",
-      divisor: 1.609344,
-    },
-    fs: {
-      label: "pied par seconde",
-      divisor: 0.0003048 / (1 / 3600),
-    },
-    ys: {
-      label: "yard par seconde",
-      divisor: 0.0009144 / (1 / 3600),
-    },
-    yh: {
-      label: "yard par heure",
-      divisor: 0.0009144,
-    },
-    nk: {
-      label: "noeud",
-      info: "les noeuds, aussi appelés noeuds nautiques, sont utilisés aussi bien dans le domaine maritime qu'aéronautique.",
-      divisor: 1.852,
-    },
-    usain_bolt: {
-      info: "vitesse maximale d'Usain Bolt lors de son record du 100m le 16/08/2009 à Berlin (<a href='https://www.leparisien.fr/sports/usain-bolt-l-homme-qui-court-jusqu-a-44-72-km-h-17-08-2009-609024.php' target='blank'>source</a>)",
-      label: "Usain Bolt",
-      divisor: 44.72,
-      pluralize: false,
-      not_unit: true,
-    },
-    autoroute_max: {
-      label: "vitesse max autoroute",
-      divisor: 130,
-      pluralize: false,
-      not_unit: true,
-    },
-    record_tgv: {
-      label: "record TGV",
-      info: "vitesse maximale atteinte lors d'un essai le 03/04/2007 (<a href='https://fr.wikipedia.org/wiki/Records_du_monde_de_vitesse_sur_rail_en_France' target='blank'>source</a>)",
-      divisor: 574.8,
-      pluralize: false,
-      not_unit: true,
-    },
-    rafale: {
-      label: "avion Rafale",
-      divisor: 1389,
-      pluralize: false,
-      not_unit: true,
-    },
-    sound: {
-      info: "dans les conditions normales de température et de pression, soit 20°C 1013.25 hPa.",
-      label: "vitesse du son",
-      divisor: 1234.8,
-      pluralize: false,
-      not_unit: true,
-    },
-    BMG50: {
-      label: "balle .50 BMG",
-      divisor: 3348,
-      pluralize: false,
-      not_unit: true,
-    },
-    earth_rotation: {
-      info: "vitesse de rotation à l'équateur.",
-      label: "rotation de la Terre",
-      divisor: 1674.36,
-      pluralize: false,
-      not_unit: true,
-    },
-    earth_revolution: {
-      label: "révolution de la Terre",
-      divisor: 107280,
-      pluralize: false,
-      not_unit: true,
-    },
-    parker_solar_probe: {
-      info: "vitesse maximale atteinte lors de l'approche la plus courte, d'après la <a href='https://blogs.nasa.gov/parkersolarprobe/2025/03/25/nasas-parker-solar-probe-completes-23rd-close-approach-to-sun/' target='blank'>NASA</a>)",
-      label: "sonde Parker Solar",
-      divisor: 692000,
-      pluralize: false,
-      not_unit: true,
-    },
-    light: {
-      info: "vitesse de la lumière dans le vide",
-      label: "vitesse de la lumière",
-      divisor: 1079252848.8,
-      pluralize: false,
-      not_unit: true,
-    },
-  },
-  débit: {
-    m3s: {
-      label: "m³/s",
-      divisor: 1,
-    },
-    m3min: {
-      label: "m³/min",
-      divisor: 1 / 60,
-    },
-    m3h: {
-      label: "m³/h",
-      divisor: 1 / (60 * 60),
-    },
-    m3j: {
-      label: "m³/j",
-      divisor: 1 / (60 * 60 * 24),
-    },
-    m3y: {
-      label: "m³/an",
-      divisor: 1 / (60 * 60 * 24 * 365.25),
-    },
-    ls: {
-      label: "l/s",
-      divisor: 0.001,
-    },
-    lmin: {
-      label: "l/min",
-      divisor: 0.001 / 60,
-    },
-    lh: {
-      label: "l/h",
-      divisor: 0.001 / (60 * 60),
-    },
-    lj: {
-      label: "l/j",
-      divisor: 0.001 / (60 * 60 * 24),
-    },
-    ly: {
-      label: "l/an",
-      divisor: 0.001 / (60 * 60 * 24 * 365.25),
-    },
-    gpd: {
-      label: "gallon par jour",
-      divisor: 0.003785 / (60 * 60 * 24),
-    },
-    leak: {
-      label: "fuite 15 gouttes par minute",
-      divisor: 4.5 / 1000 / 86400,
-    },
-    shower: {
-      label: "douche",
-      divisor: 20 / 60 / 1000,
-    },
-    fire_hose: {
-      info: "débit maximal pour un diamètre de 100mm, selon les données de <a href='https://fr.wikipedia.org/wiki/Lance_%C3%A0_incendie' target='blank'>Wikipedia</a>.",
-      label: "lance à incendie",
-      divisor: 1 / 60,
-    },
-    seine: {
-      info: "débit moyen à Paris, selon les données de <a href='https://fr.wikipedia.org/wiki/Seine' target='blank'>Wikipedia</a>.",
-      label: "Seine",
-      divisor: 328,
       pluralize: true,
     },
-    danau: {
-      info: "débit moyen, selon les données de <a href='https://fr.wikipedia.org/wiki/Liste_des_cours_d%27eau_selon_le_d%C3%A9bit' target='blank'>Wikipedia</a>.",
-      label: "Danube",
-      divisor: 6452,
+    MW: {
+      label: "MW",
+      divisor: 1000000,
       pluralize: true,
     },
-    amazon: {
-      info: "débit moyen, selon les données de <a href='https://fr.wikipedia.org/wiki/Liste_des_cours_d%27eau_selon_le_d%C3%A9bit' target='blank'>Wikipedia</a>.",
-      label: "Amazone",
-      divisor: 220800,
+    ch: {
+      label: "cheval vapeur (ch)",
+      plural: "chevaux",
+      divisor: 735.49875,
+    },
+    hp: {
+      label: "cheval vapeur US (hp)",
+      plural: "chevaux",
+      divisor: 745.66272,
+    },
+    bike: {
+      info: 'selon les données de <a href="https://www.velo101.com/entrainements/programmes-et-techniques/puissance-quelle-est-la-bonne-moyenne-de-watts-en-tant-que-cycliste/" target="_blank">velo101.com</a>.',
+      label: "cycliste pro pendant 1 heure",
+      divisor: 392,
+    },
+    AMG_A35: {
+      label: "Mercedes-AMG A 35",
+      info: 'selon les données du <a href=https://www.mercedes-benz.fr/passengercars/models/saloon/a-class/amg.html#technical-data" target="_blank">constructeur</a>.',
+      divisor: 225062.6175,
       pluralize: true,
+    },
+    chiron: {
+      info: 'selon les données du <a href= https://newsroom.cdn.bugatti-media.com/6673ecbdbde16a1e54953018/original" target="_blank">constructeur</a>.',
+      label: "Bugatti Chiron Super Sport 300+",
+      divisor: 1177000,
+      pluralize: true,
+    },
+    GE90: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/General_Electric_GE90" target="_blank">Wikipedia</a>.',
+      label: "turboréacteur GE90",
+      divisor: 83.198 * 1000000,
     },
   },
   radioactivité: {
@@ -2879,32 +2651,154 @@ export const dictionaries = {
       pluralize_all: true,
     },
   },
-  température: {
-    celsius: {
-      label: "degré Celsius",
-      divisor: 1,
-      converter: temp_converter,
+  surface: {
+    mm2: {
+      label: "milimètre carré",
+      divisor: 0.00000001,
+      pluralize_all: true,
     },
-    fahrenheit: {
-      label: "degré Fahrenheit",
-      divisor: 1,
-      converter: temp_converter,
+    cm2: {
+      label: "centimètre carré",
+      divisor: 0.000001,
+      pluralize_all: true,
     },
-    kelvin: {
-      label: "Kelvin",
+    sqft: {
+      label: "pied carré",
+      divisor: 0.0009290304,
+      pluralize_all: true,
+    },
+    m2: {
+      label: "mètre carré",
+      divisor: 0.01,
+      pluralize_all: true,
+    },
+    a: {
+      label: "are",
       divisor: 1,
-      converter: temp_converter,
+    },
+    ha: {
+      label: "hectare",
+      divisor: 100,
+    },
+    acre: {
+      label: "acre",
+      divisor: 40.4686,
+    },
+    km2: {
+      label: "kilomètre carré",
+      divisor: 10000,
+      pluralize_all: true,
+    },
+    a5: {
+      label: "feuille A5",
+      divisor: 0.00003108,
+    },
+    a4: {
+      label: "feuille A4",
+      divisor: 0.0006237,
+    },
+    a3: {
+      label: "feuille A3",
+      divisor: 0.0012474,
+    },
+    ping_pong_table: {
+      info: 'surface officielle, selon les <a href="https://documents.ittf.sport/sites/default/files/public/2021-04/2020ITTFHandbook.pdf" target="_blank">règles de l\'ITTF</a> (en anglais, page 34 du document)',
+      label: "table de ping-pong",
+      divisor: 0.041785,
+      not_unit: true,
+    },
+    tennis_field: {
+      label: "terrain de tennis",
+      divisor: 2.607569,
+      not_unit: true,
+    },
+    basket_field: {
+      label: "terrain de basket",
+      divisor: 4.36626,
+      not_unit: true,
+    },
+    handball_field: {
+      label: "terrain de handball",
+      divisor: 8,
+      not_unit: true,
+    },
+    rugby_field: {
+      label: "terrain de rugby",
+      divisor: 67.275,
+      not_unit: true,
+    },
+    football_field: {
+      label: "terrain de football",
+      divisor: 71.4,
+      not_unit: true,
+    },
+    wind_turbine: {
+      info: "emprise totale pour une éolienne terrestre de 2MW",
+      label: "éolienne",
+      divisor: 20,
       pluralize: false,
+      not_unit: true,
     },
-    réaumur: {
-      label: "degré Réaumur",
-      divisor: 1,
-      converter: temp_converter,
+    notre_dame_de_paris: {
+      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame_de_Paris" target="_blank">Wikipedia</a>.',
+      label: "Notre-Dame de Paris",
+      divisor: 55,
+      pluralize: false,
+      not_unit: true,
     },
-    rankine: {
-      label: "degré Rankine",
-      divisor: 1,
-      converter: temp_converter,
+    republic_place: {
+      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Place_de_la_R%C3%A9publique_(Paris)" target="_blank">Wikipedia</a>.',
+      label: "Place de la République (Paris)",
+      divisor: 336.77,
+      pluralize: false,
+      not_unit: true,
+    },
+    kheops_pyramid: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops" target="_blank">Wikipedia</a>.',
+      label: "pyramide de Khéops",
+      divisor: 530.3809,
+      pluralize: false,
+      not_unit: true,
+    },
+    versailles: {
+      info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Parc_de_Versailles" target="_blank">Wikipedia</a>.',
+      label: "Château de Versailles",
+      divisor: 107000,
+      pluralize: false,
+      not_unit: true,
+    },
+    paris: {
+      label: "Paris",
+      divisor: 1054000,
+      pluralize: false,
+      not_unit: true,
+    },
+    idf: {
+      info: 'superficie totale, selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%8Ele-de-France" target="_blank">Wikipedia</a>.',
+      label: "Région ïle-de-France",
+      divisor: 120110000,
+      pluralize: false,
+      not_unit: true,
+    },
+    france: {
+      label: "France métropolitaine",
+      divisor: 5516950000,
+      pluralize: false,
+      not_unit: true,
+    },
+    africa: {
+      info: 'superficie totale du continent, selon les données de <a href="https://fr.wikipedia.org/wiki/Afrique" target="_blank">Wikipedia</a>.',
+      label: "continent africain",
+      divisor: 304158730000,
+      pluralize: false,
+      not_unit: true,
+    },
+    earth_lands: {
+      info: 'superficie totale des terres émergées de la planète, selon les données de <a href="https://fr.wikipedia.org/wiki/Terre_%C3%A9merg%C3%A9e" target="_blank">Wikipedia</a>.',
+      label: "terres émergées sur Terre",
+      divisor: 1480000000000,
+      pluralize: false,
+      not_unit: true,
     },
   },
   systèmes_numériques: {
@@ -2945,142 +2839,247 @@ export const dictionaries = {
       pluralize: true,
     },
   },
-  informatique: {
-    infos: {
-      label:
-        "Bien qu'il existe des <a href='https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire' target='_blank'>préfixes binaires</a>, spécialement conçus pour l'informatique, ceux-ci ne sont presque pas utilisés, c'est pourquoi les préfixes montrés ici sont les préfixes usuels (industrie, informaticiens, presse spécialisée, etc)",
-      divisor: 999999999,
+  température: {
+    celsius: {
+      label: "degré Celsius",
+      divisor: 1,
+      converter: temp_converter,
+    },
+    fahrenheit: {
+      label: "degré Fahrenheit",
+      divisor: 1,
+      converter: temp_converter,
+    },
+    kelvin: {
+      label: "Kelvin",
+      divisor: 1,
+      converter: temp_converter,
       pluralize: false,
     },
-    bit: {
-      label: "bit",
+    réaumur: {
+      label: "degré Réaumur",
+      divisor: 1,
+      converter: temp_converter,
+    },
+    rankine: {
+      label: "degré Rankine",
+      divisor: 1,
+      converter: temp_converter,
+    },
+  },
+  vitesse: {
+    ms: {
+      label: "m/s",
+      divisor: 1 / (1 / 3600) / 1000,
+      pluralize: false,
+    },
+    kms: {
+      label: "km/s",
+      divisor: 1 / (1 / 3600),
+      pluralize: false,
+    },
+    mh: {
+      label: "m/h",
+      divisor: 0.001,
+      pluralize: false,
+    },
+    kmh: {
+      label: "km/h",
+      divisor: 1,
+      pluralize: false,
+    },
+    mih: {
+      label: "mile par heure",
+      divisor: 1.609344,
+    },
+    fs: {
+      label: "pied par seconde",
+      divisor: 0.0003048 / (1 / 3600),
+    },
+    ys: {
+      label: "yard par seconde",
+      divisor: 0.0009144 / (1 / 3600),
+    },
+    yh: {
+      label: "yard par heure",
+      divisor: 0.0009144,
+    },
+    nk: {
+      label: "noeud",
+      info: "les noeuds, aussi appelés noeuds nautiques, sont utilisés aussi bien dans le domaine maritime qu'aéronautique.",
+      divisor: 1.852,
+    },
+    usain_bolt: {
+      info: "vitesse maximale d'Usain Bolt lors de son record du 100m le 16/08/2009 à Berlin (<a href='https://www.leparisien.fr/sports/usain-bolt-l-homme-qui-court-jusqu-a-44-72-km-h-17-08-2009-609024.php' target='blank'>source</a>)",
+      label: "Usain Bolt",
+      divisor: 44.72,
+      pluralize: false,
+      not_unit: true,
+    },
+    autoroute_max: {
+      label: "vitesse max autoroute",
+      divisor: 130,
+      pluralize: false,
+      not_unit: true,
+    },
+    record_tgv: {
+      label: "record TGV",
+      info: "vitesse maximale atteinte lors d'un essai le 03/04/2007 (<a href='https://fr.wikipedia.org/wiki/Records_du_monde_de_vitesse_sur_rail_en_France' target='blank'>source</a>)",
+      divisor: 574.8,
+      pluralize: false,
+      not_unit: true,
+    },
+    rafale: {
+      label: "avion Rafale",
+      divisor: 1389,
+      pluralize: false,
+      not_unit: true,
+    },
+    sound: {
+      info: "dans les conditions normales de température et de pression, soit 20°C 1013.25 hPa.",
+      label: "vitesse du son",
+      divisor: 1234.8,
+      pluralize: false,
+      not_unit: true,
+    },
+    BMG50: {
+      label: "balle .50 BMG",
+      divisor: 3348,
+      pluralize: false,
+      not_unit: true,
+    },
+    earth_rotation: {
+      info: "vitesse de rotation à l'équateur.",
+      label: "rotation de la Terre",
+      divisor: 1674.36,
+      pluralize: false,
+      not_unit: true,
+    },
+    earth_revolution: {
+      label: "révolution de la Terre",
+      divisor: 107280,
+      pluralize: false,
+      not_unit: true,
+    },
+    parker_solar_probe: {
+      info: "vitesse maximale atteinte lors de l'approche la plus courte, d'après la <a href='https://blogs.nasa.gov/parkersolarprobe/2025/03/25/nasas-parker-solar-probe-completes-23rd-close-approach-to-sun/' target='blank'>NASA</a>)",
+      label: "sonde Parker Solar",
+      divisor: 692000,
+      pluralize: false,
+      not_unit: true,
+    },
+    light: {
+      info: "vitesse de la lumière dans le vide",
+      label: "vitesse de la lumière",
+      divisor: 1079252848.8,
+      pluralize: false,
+      not_unit: true,
+    },
+  },
+  volume: {
+    microliter: {
+      label: "microlitre",
+      divisor: 0.000000001,
+    },
+    milliliter: {
+      label: "millilitre",
+      divisor: 0.000001,
+    },
+    centiliter: {
+      label: "centilitre",
+      divisor: 0.00001,
+    },
+    deciliter: {
+      label: "décilitre",
+      divisor: 0.0001,
+    },
+    liter: {
+      label: "litre",
+      divisor: 0.001,
+    },
+    cubic_meter: {
+      label: "mètre cube",
       divisor: 1,
     },
-    octet: {
-      label: "octet",
-      divisor: 8,
+    wine_bottle: {
+      info: 'volume moyen selon <a href="https://fr.wikipedia.org/wiki/Bouteille_de_vin" target="_blank">Wikipedia</a>.',
+      label: "bouteille de vin",
+      divisor: 0.00075,
     },
-    byte: {
-      label: "byte",
-      divisor: 8,
-    },
-    kb: {
-      label: "kilo-bit",
-      divisor: 1 * 1024,
-    },
-    ko: {
-      label: "kilo-octet",
-      divisor: 8 * 1024,
-    },
-    kB: {
-      label: "kilo-byte",
-      divisor: 8 * 1024,
-    },
-    Mb: {
-      label: "mega-bit",
-      divisor: 1 * 1024 * 1024,
-    },
-    Mo: {
-      info: "avec un mega-octet (1Mo), on peut par exemple stocker un document texte (sans image) de près de 7000 pages A4 ou bien une photo de 1 MegaPixel dans une bonne qualité (avec compression).",
-      label: "mega-octet",
-      divisor: 8 * 1024 * 1024,
-    },
-    MB: {
-      info: "avec un mega-byte (1MB), on peut par exemple stocker un document texte (sans image) de près de 7000 pages A4 ou bien une photo de 1 MegaPixel dans une bonne qualité (avec compression).",
-      label: "mega-byte",
-      divisor: 8 * 1024 * 1024,
-    },
-    Gb: {
-      label: "giga-bit",
-      divisor: 1 * 1024 * 1024 * 1024,
-    },
-    Go: {
-      label: "giga-octet",
-      divisor: 8 * 1024 * 1024 * 1024,
-    },
-    GB: {
-      label: "giga-byte",
-      divisor: 8 * 1024 * 1024 * 1024,
-    },
-    Tb: {
-      label: "tera-bit",
-      divisor: 1 * 1024 * 1024 * 1024 * 1024,
-    },
-    To: {
-      label: "tera-octet",
-      divisor: 8 * 1024 * 1024 * 1024 * 1024,
-    },
-    TB: {
-      label: "tera-byte",
-      divisor: 8 * 1024 * 1024 * 1024 * 1024,
-    },
-    Pb: {
-      label: "peta-bit",
-      divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024,
-    },
-    Po: {
-      label: "peta-octet",
-      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024,
-    },
-    PB: {
-      label: "peta-byte",
-      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024,
-    },
-    Eb: {
-      label: "exa-bit",
-      divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-    },
-    Eo: {
-      label: "exa-octet",
-      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-    },
-    EB: {
-      label: "exa-byte",
-      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-    },
-    Zb: {
-      label: "zeta-bit",
-      divisor: 1 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-    },
-    Zo: {
-      label: "zeta-octet",
-      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-    },
-    ZB: {
-      label: "zeta-byte",
-      divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-    },
-    war_peace: {
-      label: "Guerre et Paix, ePub",
-      divisor: 1557 * 8 * 1024,
+    gallon: {
+      label: "gallon",
+      divisor: 0.003785,
       pluralize: false,
     },
-    mp3_minute: {
-      label: "minute de musique en MP3",
-      divisor: 960 * 8 * 1024,
+    bathtub: {
+      info: 'volume moyen selon <a href="https://isi-sanitaire.fr/blog/astuces_conseils_tutos/litres-eau-pour-remplir-une-baignoire/" target="_blank">isi-sanitaire</a>.',
+      label: "baignoire",
+      divisor: 0.155,
+      not_unit: true,
+    },
+    shower: {
+      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>.',
+      label: "douche de 5 minutes",
+      divisor: 0.12,
+      not_unit: true,
+    },
+    shower2: {
+      info: 'volume moyen selon <a href="https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-douche/" target="_blank">ekwateur</a>.',
+      label: "douche de 10 minutes",
+      divisor: 0.2,
+      not_unit: true,
+    },
+    oil_barrel: {
+      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Baril" target="_blank">Wikipedia</a>.',
+      label: "baril de pétrole",
+      divisor: 0.158987294928,
+    },
+    berlingo: {
+      info: 'volume utile selon le <a href="https://www.citroen.fr/vehicules/utility/Nouveau-Berlingo-Van.html" target="_blank">constructeur</a>.',
+      label: "Citroën Berlingo Van M",
+      divisor: 3.3,
       pluralize: false,
+      not_unit: true,
     },
-    wikipedia_fr: {
-      label: "Wikipedia en français sans image",
-      divisor: 17.33 * 8 * 1024 * 1024 * 1024,
+    olympic_swimming_pool: {
+      info: "pour une piscine de 50x25x2m",
+      label: "piscine olympique",
+      divisor: 2500,
+      pluralize_all: true,
+      not_unit: true,
+    },
+    kheops_pyramid: {
+      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops" target="_blank">Wikipedia</a>.',
+      label: "pyramide de Kheops",
+      divisor: 2592341,
+      not_unit: true,
+    },
+    anecy_lake: {
+      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Lac_d%27Annecy" target="_blank">Wikipedia</a>.',
+      label: "lac d'Annecy",
+      divisor: 1124500000,
       pluralize: false,
+      not_unit: true,
     },
-    wikipedia_fr_images: {
-      label: "Wikipedia en français avec images",
-      divisor: 36.97 * 8 * 1024 * 1024 * 1024,
+    leman_lake: {
+      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/L%C3%A9man" target="_blank">Wikipedia</a>.',
+      label: "lac Léman",
+      divisor: 89000000000,
       pluralize: false,
+      not_unit: true,
     },
-    h265_4k_10Mbs: {
-      label: "heure de vidéo 4k H265 10Mb/s",
-      divisor: 4.5 * 8 * 1024 * 1024 * 1024,
+    france_water: {
+      label: "Pluie par an en France",
+      divisor: 510000000000,
+      pluralize: false,
+      not_unit: true,
     },
-    s23_4k_488Mbs: {
-      label: "heure de vidéo 4k H265 60fps",
-      divisor: 27.4219 * 8 * 1024 * 1024 * 1024,
-    },
-    prores_422_hq_4k_1768Mbs: {
-      label: "heure de vidéo 4k ProRes 60fps 422 HQ",
-      divisor: 798 * 8 * 1024 * 1024 * 1024,
+    mediterranean_sea: {
+      info: 'volume selon <a href=" https://fr.wikipedia.org/wiki/Mer_M%C3%A9diterran%C3%A9e" target="_blank">Wikipedia</a>.',
+      label: "Mer Méditerranée",
+      divisor: 3765000000000000,
+      pluralize: false,
+      not_unit: true,
     },
   },
 }
