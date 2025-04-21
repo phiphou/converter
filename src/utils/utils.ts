@@ -3,14 +3,14 @@ import {Unit} from "../types"
 export const pluralize = (result: number | null, label: string, unit: Unit, pluralized: boolean = true): string => {
   if (!unit) return label
 
-  const shouldPluralize = result !== null && result >= 2 && pluralized && !unit.notUnit
+  const shouldPluralize = result !== null && result >= 2 && pluralized
   const processWord = (word: string, index: number): string => {
     if (unit.pluralize_all || (!unit.pluralize && index === 0)) {
       return shouldPluralize
         ? word.endsWith("s") || label.includes("/")
           ? word
           : word + "s"
-        : word.endsWith("s") || word === "mois"
+        : word.endsWith("s") && word === "mois" && !label.includes("/")
           ? word.slice(0, -1)
           : word
     }
