@@ -1,4 +1,5 @@
 import currency_converter from "../converters/currency_converter"
+import {numeric_converter} from "../converters/numeric_converter"
 import {temp_converter} from "../converters/temp_converter"
 import {hms_formater} from "../formaters/hms_formater"
 import {ymd_formater} from "../formaters/ymd_formater"
@@ -2153,6 +2154,56 @@ export const dictionaries = {
       not_unit: true,
     },
   },
+  puissance: {
+    W: {
+      label: "W",
+      divisor: 1,
+      pluralize: true,
+    },
+    kW: {
+      label: "kW",
+      divisor: 1000,
+      pluralize: true,
+    },
+    MW: {
+      label: "MW",
+      divisor: 1000000,
+      pluralize: true,
+    },
+    ch: {
+      label: "cheval vapeur (ch)",
+      plural: "chevaux",
+      divisor: 735.49875,
+    },
+    hp: {
+      label: "cheval vapeur US (hp)",
+      plural: "chevaux",
+      divisor: 745.66272,
+    },
+    bike: {
+      info: 'selon les données de <a href="https://www.velo101.com/entrainements/programmes-et-techniques/puissance-quelle-est-la-bonne-moyenne-de-watts-en-tant-que-cycliste/" target="_blank">velo101.com</a>.',
+      label: "cycliste pro pendant 1 heure",
+      divisor: 392,
+    },
+    AMG_A35: {
+      label: "Mercedes-AMG A 35",
+      info: 'selon les données du <a href=https://www.mercedes-benz.fr/passengercars/models/saloon/a-class/amg.html#technical-data" target="_blank">constructeur</a>.',
+      divisor: 225062.6175,
+      pluralize: true,
+    },
+    chiron: {
+      info: 'selon les données du <a href= https://newsroom.cdn.bugatti-media.com/6673ecbdbde16a1e54953018/original" target="_blank">constructeur</a>.',
+      label: "Bugatti Chiron Super Sport 300+",
+      divisor: 1177000,
+      pluralize: true,
+    },
+    GE90: {
+      info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/General_Electric_GE90" target="_blank">Wikipedia</a>.',
+      label: "turboréacteur GE90",
+      divisor: 83.198 * 1000000,
+    },
+  },
+
   pression: {
     mPa: {
       label: "milliPascal",
@@ -2854,6 +2905,44 @@ export const dictionaries = {
       label: "degré Rankine",
       divisor: 1,
       converter: temp_converter,
+    },
+  },
+  systèmes_numériques: {
+    decimal: {
+      label: "décimal",
+      divisor: 1,
+      converter: numeric_converter,
+      pluralize: true,
+    },
+    binary: {
+      label: "binaire",
+      divisor: 1,
+      converter: numeric_converter,
+      pluralize: true,
+    },
+    octal: {
+      label: "octal",
+      divisor: 1,
+      converter: numeric_converter,
+      pluralize: true,
+    },
+    hexadecimal: {
+      label: "hexadécimal",
+      divisor: 1,
+      converter: numeric_converter,
+      pluralize: true,
+    },
+    sexagesimal: {
+      label: "sexagésimal",
+      divisor: 1,
+      converter: numeric_converter,
+      pluralize: true,
+    },
+    roman: {
+      label: "romain",
+      divisor: 1,
+      converter: numeric_converter,
+      pluralize: true,
     },
   },
   informatique: {

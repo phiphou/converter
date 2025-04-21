@@ -9,9 +9,13 @@ export const pluralize = (result: number | null, label: string, unit: Unit, plur
       return shouldPluralize
         ? word.endsWith("s") || label.includes("/")
           ? word
-          : word + "s"
+          : unit.plural
+            ? unit.plural
+            : word + "s"
         : word.endsWith("s") && word === "mois" && !label.includes("/")
-          ? word.slice(0, -1)
+          ? unit.plural
+            ? word.slice(0, -3)
+            : word.slice(0, -1)
           : word
     }
     return word
