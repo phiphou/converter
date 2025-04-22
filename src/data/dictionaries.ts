@@ -1,7 +1,9 @@
 import currency_converter from "../converters/currency_converter"
 import {numeric_converter} from "../converters/numeric_converter"
 import {temp_converter} from "../converters/temp_converter"
+import {egyptian_formater} from "../formaters/egyptian_formater"
 import {hms_formater} from "../formaters/hms_formater"
+import {maya_formater} from "../formaters/maya_formater"
 import {ymd_formater} from "../formaters/ymd_formater"
 
 export const dictionaries = {
@@ -3082,6 +3084,7 @@ export const dictionaries = {
     },
   },
   systèmes_numériques: {
+    singleResult: true,
     decimal: {
       label: "décimal",
       divisor: 1,
@@ -3116,6 +3119,20 @@ export const dictionaries = {
       label: "romain",
       divisor: 1,
       converter: numeric_converter,
+      pluralize: true,
+    },
+    egytian: {
+      label: "égyptien",
+      divisor: 1,
+      converter: numeric_converter,
+      formater: egyptian_formater,
+      pluralize: true,
+    },
+    maya: {
+      label: "maya",
+      divisor: 1,
+      converter: numeric_converter,
+      formater: maya_formater,
       pluralize: true,
     },
   },

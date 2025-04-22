@@ -87,6 +87,8 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
   const [list, setList] = useState<Record<string, Unit>>({})
   const [dictionary, setDictionary] = useState<Record<string, Unit>>({})
   const [switched, setSwiched] = useState<boolean>(false)
+  const [singleResult, setSingleResult] = useState<boolean>(false)
+
   useEffect(() => {
     let firstUnit = ""
     if (dic["list"] && !dic["of"]) {
@@ -137,6 +139,10 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       setHasList(true)
       setList(list_dictionnary)
     } else {
+      if (dic["singleResult"]) {
+        setSingleResult(true)
+        delete dic["singleResult"]
+      }
       setDictionary(dic)
       setSwiched(false)
       setHasList(false)
@@ -237,16 +243,27 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         </label>
         <SwitchButton scientific={scientific} setScientific={setScientific} />
       </div>
-      <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
-        {formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit)}={" "}
-        {formatResult(result, dictionary, unitTo, scientific, precision)}{" "}
-        {(!dictionary[unitTo]?.formater &&
-          pluralize(parseFloat("" + result), dictionary[unitTo]?.label, dictionary[unitTo])) ||
-          ""}
+      <div className="text-gray-text-white mx-auto mb-3 flex items-center justify-center text-center text-lg font-medium text-black dark:text-white">
+        <span
+          dangerouslySetInnerHTML={{
+            __html: formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit),
+          }}
+        ></span>{" "}
+        <span className="mx-2">=</span>
+        <div
+          className="inline-block"
+          dangerouslySetInnerHTML={{
+            __html: `${formatResult(result, dictionary, unitTo, scientific, precision)}${" "}${
+              (!dictionary[unitTo]?.formater &&
+                pluralize(parseFloat("" + result), dictionary[unitTo]?.label, dictionary[unitTo])) ||
+              ""
+            }`,
+          }}
+        ></div>
       </div>
 
       <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
-        {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
+        {result !== null && dictionary[unitFrom] && dictionary[unitTo] && !singleResult && (
           <>
             {formatValueDisplay(value, rawValue, dictionary, unitTo, hasList, list, secondaryUnit)}
             {(parseFloat(rawValue) >= 2 ? "valent " : "vaut ") + (result > 1 ? "1/" : "")}
@@ -259,7 +276,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       </div>
 
       <div className="text-gray-text-white mx-auto mb-8 text-center text-lg font-medium text-black dark:text-white">
-        {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
+        {result !== null && dictionary[unitFrom] && dictionary[unitTo] && !singleResult && (
           <>
             {formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit)}
             {parseFloat(rawValue) >= 2 ? "valent " : "vaut "}

@@ -65,7 +65,7 @@ function decimalToOctal(decimalNumber: string) {
 }
 
 function decimalToHexadecimal(decimalNumber: string) {
-  return parseInt(decimalNumber).toString(16)
+  return parseInt(decimalNumber).toString(16).toUpperCase()
 }
 
 function binaryToDecimal(binaryNumber: string) {
@@ -91,8 +91,117 @@ function sexagesimalToDecimal(sexaStr: string): string {
   return (hours + minutes / 60 + seconds / 3600).toString()
 }
 
+const digitCipher = {
+  "𓏺": 1,
+  "𓎆": 10,
+  "𓍢": 100,
+  "𓆼": 1000,
+  "𓂭": 10000,
+  "𓆐": 100000,
+  "𓁨": 1000000,
+}
+
+const reverseCipher: Record<number, string> = {}
+for (const [glyph, value] of Object.entries(digitCipher)) {
+  reverseCipher[value] = glyph
+}
+
+// function hieroglyphs2number(hieroglyphs:string) {
+//   let res = 0;
+//   for (const char of hieroglyphs) {
+//     res += digitCipher[char as keyof typeof digitCipher] || 0;
+//   }
+//   return res;
+// }
+
+function integerTohieroglyphs(number: string) {
+  let n = parseInt(number)
+  let res = ""
+  const powers = Object.keys(reverseCipher)
+    .map(Number)
+    .sort((a, b) => b - a)
+
+  for (const power of powers) {
+    while (n >= power) {
+      res += reverseCipher[power]
+      n -= power
+    }
+  }
+  return res
+}
+
+const numeralDict = {
+  "\u{1D2E0}": 0,
+  "\u{1D2E1}": 1,
+  "\u{1D2E2}": 2,
+  "\u{1D2E3}": 3,
+  "\u{1D2E4}": 4,
+  "\u{1D2E5}": 5,
+  "\u{1D2E6}": 6,
+  "\u{1D2E7}": 7,
+  "\u{1D2E8}": 8,
+  "\u{1D2E9}": 9,
+  "\u{1D2EA}": 10,
+  "\u{1D2EB}": 11,
+  "\u{1D2EC}": 12,
+  "\u{1D2ED}": 13,
+  "\u{1D2EE}": 14,
+  "\u{1D2EF}": 15,
+  "\u{1D2F0}": 16,
+  "\u{1D2F1}": 17,
+  "\u{1D2F2}": 18,
+  "\u{1D2F3}": 19,
+}
+
+// Inversion : chiffre => glyphe
+const reverseDict: Record<number, string> = {}
+for (const [glyph, value] of Object.entries(numeralDict)) {
+  reverseDict[value] = glyph
+}
+
+// Convertisseur nombre vers glyphes mayas
+function convertToMayaGlyphs(number: string) {
+  const num: number = parseInt(number)
+  if (num < 0) return ""
+
+  const numeralStack = []
+  let n = num
+
+  while (n > 0) {
+    const remainder = n % 20
+    numeralStack.push(remainder)
+    n = Math.floor(n / 20)
+  }
+
+  if (numeralStack.length === 0) numeralStack.push(0)
+
+  return (
+    "<span>" +
+    numeralStack
+      .map((num) => reverseDict[num])
+      .reverse()
+      .join(" </span><span>") +
+    "</span>"
+  )
+}
+
+// function convertFromMayaGlyphs(glyphList) {
+//   let total = 0
+//   let power = glyphList.length - 1
+
+//   for (const glyph of glyphList) {
+//     const value = numeralDict[glyph] !== undefined ? numeralDict[glyph] : 0
+//     total += value * Math.pow(20, power)
+//     power--
+//   }
+
+//   return total
+// }
+
 const conversionMap: Record<string, (v: string) => string> = {
   "décimal:romain": (v) => integerToRoman(v),
+  "décimal:égyptien": (v) => integerTohieroglyphs(v),
+  "décimal:maya": (v) => convertToMayaGlyphs(v),
   "décimal:binaire": (v) => decimalToBinary(v),
   "décimal:octal": (v) => decimalToOctal(v),
   "décimal:hexadécimal": (v) => decimalToHexadecimal(v),
