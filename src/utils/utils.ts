@@ -12,10 +12,10 @@ export const pluralize = (result: number | null, label: string, unit: Unit, plur
           : unit.plural
             ? unit.plural
             : word + "s"
-        : word.endsWith("s") && word === "mois" && !label.includes("/")
-          ? unit.plural
-            ? word.slice(0, -3)
-            : word.slice(0, -1)
+        : !label.includes("/")
+          ? unit.plural && word.endsWith("s") && label != "mois"
+            ? word.slice(0, -1)
+            : word
           : word
     }
     return word

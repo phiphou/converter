@@ -6,6 +6,74 @@ import SwitchUnitButton from "./SwitchUnitButton"
 import InfosBlock from "./InfosBlock"
 import SwitchButton from "./SwitchButton"
 
+async function calculateConversionResult(
+  value: number,
+  unitFrom: string,
+  unitTo: string,
+  dictionary: Record<string, Unit>,
+  list: Record<string, Unit>,
+  secondaryUnit: string,
+  hasList: boolean,
+  switched: boolean,
+  precision: number
+): Promise<number | null> {
+  const fromDivisor = dictionary[unitFrom]?.divisor || 1
+  const toDivisor = dictionary[unitTo]?.divisor || 1
+
+  if (unitFrom === unitTo) return value
+
+  if (dictionary[unitFrom]?.converter && dictionary[unitTo]?.converter) {
+    return await dictionary[unitFrom].converter(value, dictionary[unitFrom], dictionary[unitTo], precision)
+  }
+
+  if (hasList) {
+    const secondaryDivisor = list[secondaryUnit]?.divisor || 1
+    if (toDivisor === fromDivisor) {
+      return !switched ? value / secondaryDivisor : (value * secondaryDivisor) / toDivisor
+    }
+    return (value * secondaryDivisor) / toDivisor
+  }
+
+  return (value * fromDivisor) / toDivisor
+}
+
+function formatResult(
+  result: number | null,
+  dictionary: Record<string, Unit>,
+  unitTo: string,
+  scientific: boolean,
+  precision: number
+): string {
+  if (result === null) return ""
+  if (dictionary[unitTo]?.formater) {
+    return dictionary[unitTo].formater(result)
+  }
+  if (scientific) {
+    return scientific_notation(result, precision)
+  }
+  return result.toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")
+}
+
+function formatValueDisplay(
+  value: number,
+  rawValue: string,
+  dictionary: Record<string, Unit>,
+  unitFrom: string,
+  hasList: boolean,
+  list: Record<string, Unit>,
+  secondaryUnit: string
+): string {
+  const formattedValue = value.toLocaleString("fr-FR", {minimumFractionDigits: 0}).replace(",", ".")
+  const pluralizedLabel = pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""
+  const ofLabel = hasList && dictionary["of"] ? dictionary["of"].label + "\u00A0" : ""
+  const quote =
+    hasList && list[secondaryUnit]?.quote
+      ? list[secondaryUnit]?.quote + (list[secondaryUnit]?.quote.endsWith("'") ? "" : " ")
+      : ""
+  const secondaryLabel = hasList ? list[secondaryUnit]?.label : ""
+  return `${formattedValue} ${pluralizedLabel} ${ofLabel}${quote}${secondaryLabel}`
+}
+
 function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
   const [unitFrom, setUnitFrom] = useState<string>("")
   const [secondaryUnit, setSecondaryUnit] = useState<string>("")
@@ -80,44 +148,18 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
 
   useEffect(() => {
     async function calculateResult() {
-      if (unitFrom && unitTo) {
-        const fromDivisor = dictionary[unitFrom].divisor
-        const toDivisor = dictionary[unitTo].divisor
-        let calculatedResult: number | null = null
-
-        if (dictionary && dictionary[unitFrom].converter && dictionary[unitTo].converter) {
-          calculatedResult = await dictionary[unitFrom].converter(
-            value,
-            dictionary[unitFrom],
-            dictionary[unitTo],
-            precision
-          )
-        } else if (unitFrom === unitTo) {
-          calculatedResult = value
-        } else if (dictionary[unitFrom].converter && dictionary[unitFrom].converter === dictionary[unitTo].converter) {
-          calculatedResult = await dictionary[unitTo].converter(
-            value,
-            dictionary[unitFrom],
-            dictionary[unitTo],
-            precision
-          )
-        } else if (hasList) {
-          if (toDivisor === fromDivisor) {
-            if (!switched && !dictionary["noSwitch"]) {
-              calculatedResult = value / list[secondaryUnit].divisor
-            } else {
-              calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
-            }
-          } else {
-            calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
-          }
-        } else {
-          calculatedResult = (value * fromDivisor) / toDivisor
-        }
-        setResult(calculatedResult)
-      } else {
-        setResult(null)
-      }
+      const calculatedResult = await calculateConversionResult(
+        value,
+        unitFrom,
+        unitTo,
+        dictionary,
+        list,
+        secondaryUnit,
+        hasList,
+        switched,
+        precision
+      )
+      setResult(calculatedResult)
     }
 
     calculateResult()
@@ -127,26 +169,6 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
     setUnitFrom(unitTo)
     setUnitTo(unitFrom)
     setSwiched(!switched)
-  }
-
-  function formatValueDisplay(
-    value: number,
-    rawValue: string,
-    dictionary: Record<string, Unit>,
-    unitFrom: string,
-    hasList: boolean,
-    list: Record<string, Unit>,
-    secondaryUnit: string
-  ): string {
-    const formattedValue = value.toLocaleString("fr-FR", {minimumFractionDigits: 0}).replace(",", ".")
-    const pluralizedLabel = pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""
-    const ofLabel = hasList && dictionary["of"] ? dictionary["of"].label : ""
-    const quote =
-      hasList && list[secondaryUnit]?.quote
-        ? list[secondaryUnit]?.quote + (list[secondaryUnit]?.quote.endsWith("'") ? "" : " ")
-        : ""
-    const secondaryLabel = hasList ? list[secondaryUnit]?.label : ""
-    return `${formattedValue} ${pluralizedLabel} ${ofLabel}${quote}${secondaryLabel} `
   }
 
   return (
@@ -181,7 +203,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
               </div>
             )}
             {hasList && <UnitSelect unit={secondaryUnit} setUnit={setSecondaryUnit} dictionary={list} />}
-            <SwitchUnitButton switchUnits={switchUnits} />
+            {!dictionary[unitFrom]?.noSwitch && <SwitchUnitButton switchUnits={switchUnits} />}
           </div>
         </div>
         <div className="mt-3 mb-5 flex items-baseline justify-items-center gap-0 md:ml-36 lg:mx-auto">
@@ -217,13 +239,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       </div>
       <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
         {formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit)}={" "}
-        {result !== null
-          ? dictionary[unitTo]?.formater
-            ? dictionary[unitTo].formater(result)
-            : scientific
-              ? scientific_notation(result, precision)
-              : result.toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")
-          : ""}{" "}
+        {formatResult(result, dictionary, unitTo, scientific, precision)}{" "}
         {(!dictionary[unitTo]?.formater &&
           pluralize(parseFloat("" + result), dictionary[unitTo]?.label, dictionary[unitTo])) ||
           ""}
@@ -232,12 +248,12 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
         {result !== null && dictionary[unitFrom] && dictionary[unitTo] && (
           <>
-            {formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit)}
-            {(parseFloat(rawValue) >= 2 ? "valent " : "vaut ") + (result < 1 ? "1/" : "")}
+            {formatValueDisplay(value, rawValue, dictionary, unitTo, hasList, list, secondaryUnit)}
+            {(parseFloat(rawValue) >= 2 ? "valent " : "vaut ") + (result > 1 ? "1/" : "")}
             {(result < 1 ? 1 / result : scientific ? scientific_notation(result, precision) : result)
               .toLocaleString("fr-FR", {maximumFractionDigits: precision})
               .replace(",", ".")}
-            {result < 1 ? "ème de " + dictionary[unitTo].label : " fois " + dictionary[unitTo].label}
+            {result > 1 ? "ème de " + dictionary[unitFrom].label : " fois " + dictionary[unitFrom].label}
           </>
         )}
       </div>

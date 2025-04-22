@@ -10,4 +10,5 @@ export interface Unit {
   converter?: (value: number, from: Unit, to: Unit, precision: number) => number
   info?: string
   plural?: string
+  noSwitch?: boolean
 }
