@@ -1,4 +1,5 @@
 import currency_converter from "../converters/currency_converter"
+import {decibel_converter} from "../converters/decibel_converter"
 import {numeric_converter} from "../converters/numeric_converter"
 import {temp_converter} from "../converters/temp_converter"
 import {egyptian_formater} from "../formaters/egyptian_formater"
@@ -2027,6 +2028,29 @@ export const dictionaries = {
     prores_422_hq_4k_1768Mbs: {
       label: "heure de vidéo 4k ProRes 60fps 422 HQ",
       divisor: 798 * 8 * 1024 * 1024 * 1024,
+    },
+  },
+  intensité_sonore: {
+    infos: {
+      label:
+        "plus d'infos sur l'intensité acoustique sur <a href='https://fr.wikipedia.org/wiki/Intensit%C3%A9_acoustique' target='_blank'>Wikipédia</a>.",
+      divisor: 999999999,
+      pluralize: false,
+    },
+    Wm2: {
+      label: "W/m²",
+      divisor: 1,
+      converter: decibel_converter,
+    },
+    mWm2: {
+      label: "mW/m²",
+      divisor: 1,
+      converter: decibel_converter,
+    },
+    dB: {
+      label: "décibel",
+      divisor: 1,
+      converter: decibel_converter,
     },
   },
   longueur: {
