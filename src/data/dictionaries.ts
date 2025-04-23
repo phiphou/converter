@@ -2911,6 +2911,7 @@ export const dictionaries = {
       not_unit: true,
     },
     annual_worker_max_dose: {
+      info: 'selon les données de l\'<a href="https://www.irsn.fr/savoir-comprendre/sante/modalites-surveillance-lexposition-travailleurs" target="_blank">IRSN</a>.',
       label: "dose max dans le nucléaire",
       divisor: 20,
       not_unit: true,
@@ -3017,22 +3018,27 @@ export const dictionaries = {
       not_unit: true,
     },
     tennis_field: {
+      info: 'selon les données de la <a href="https://fft-site.cdn.prismic.io/fft-site/ZtGuhEaF0TcGJlLv_R%C3%A8glesdujeu2025.pdf" target="_blank">fédération française de tennis</a>, page 12 du document.',
       label: "terrain de tennis",
       divisor: 2.607569,
       not_unit: true,
     },
     basket_field: {
+      info: 'selon les données de la <a href="https://api.ffbb.com/assets/313f308a-7b3b-4116-b969-882eb9c1d3ea" target="_blank">fédération française de basket-ball</a>, page 7 du document.',
       label: "terrain de basket",
       divisor: 4.36626,
       not_unit: true,
     },
     handball_field: {
+      info: 'selon les données de la <a href="https://www.calameo.com/ffhandball/read/0072751114d0768227674?page=3a" target="_blank">fédération française de handball</a>, page 9 du document.',
       label: "terrain de handball",
       divisor: 8,
       not_unit: true,
     },
     rugby_field: {
+      info: 'selon les données de la <a href="https://formation.ffr.fr/sites/default/files/documents/doc/2017-01/Les%20r%C3%A8gles%20du%20jeu%202017%20%28rugby%20%C3%A0%20XV%29%20_0.pdf" target="_blank">fédération française de rugby, page 30 du document</a>.',
       label: "terrain de rugby",
+
       divisor: 67.275,
       not_unit: true,
     },
@@ -3401,8 +3407,9 @@ export const dictionaries = {
       not_unit: true,
     },
     france_water: {
+      info: 'volume selon <a href="https://fr.wikipedia.org/wiki/Eau_en_France" target="_blank">Wikipedia</a>.',
       label: "Pluie par an en France",
-      divisor: 510000000000,
+      divisor: 512000000000,
       pluralize: false,
       not_unit: true,
     },
