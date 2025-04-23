@@ -112,7 +112,7 @@ export const dictionaries = {
   charge_électrique: {
     infos: {
       label:
-        "d'après les données de l'<a href=' https://fr.wikipedia.org/wiki/Charge_%C3%A9lectrique#Unit%C3%A9s' target='_blank'>>Wikipedia</a>.",
+        "d'après les données de <a href='https://fr.wikipedia.org/wiki/Charge_%C3%A9lectrique#Unit%C3%A9s' target='_blank'>Wikipedia</a>.",
       divisor: 999999999,
       pluralize: false,
     },
@@ -2034,7 +2034,7 @@ export const dictionaries = {
   intensité_sonore: {
     infos: {
       label:
-        "plus d'infos sur l'intensité acoustique sur <a href='https://fr.wikipedia.org/wiki/Intensit%C3%A9_acoustique' target='_blank'>Wikipédia</a>.",
+        "plus d'infos sur l'intensité acoustique sur <a href='https://fr.wikipedia.org/wiki/Intensit%C3%A9_acoustique' target='_blank'>Wikipedia</a>.",
       divisor: 999999999,
       pluralize: false,
     },
