@@ -2701,6 +2701,10 @@ export const dictionaries = {
       divisor: 100000,
       pluralize: false,
     },
+    kgcm2: {
+      label: "kg/cm²",
+      divisor: 98066.5,
+    },
     atm: {
       label: "atmosphère normale",
       divisor: 101325,
@@ -3116,57 +3120,48 @@ export const dictionaries = {
     singleResult: true,
     decimal: {
       label: "décimal",
-      divisor: 1,
       converter: numeric_converter,
       pluralize: true,
     },
     binary: {
       label: "binaire",
-      divisor: 1,
       converter: numeric_converter,
       pluralize: true,
     },
     octal: {
       label: "octal",
-      divisor: 1,
       converter: numeric_converter,
       pluralize: true,
     },
     hexadecimal: {
       label: "hexadécimal",
-      divisor: 1,
       converter: numeric_converter,
       pluralize: true,
     },
     sexagesimal: {
       label: "sexagésimal",
-      divisor: 1,
       converter: numeric_converter,
       pluralize: true,
     },
     roman: {
       label: "romain",
-      divisor: 1,
       converter: numeric_converter,
       pluralize: true,
     },
     egytian: {
       label: "égyptien",
-      divisor: 1,
       converter: numeric_converter,
       formater: egyptian_formater,
       pluralize: true,
     },
     maya: {
       label: "maya",
-      divisor: 1,
       converter: numeric_converter,
       formater: maya_formater,
       pluralize: true,
     },
     babylonian: {
       label: "babylonien",
-      divisor: 1,
       converter: numeric_converter,
       formater: babylonian_formater,
       pluralize: true,

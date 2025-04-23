@@ -22,12 +22,9 @@ export const babylonian_formater = (v: string): string => {
   let result: string = ""
   if (typeof v === "string") {
     const nums: string[] = v.split("-").map((n) => n)
-
     nums.forEach((n) => {
       const tens = parseInt(n.split(",")[0])
       const units = parseInt(n.split(",")[1])
-      console.log(tens, units)
-
       if (tens > 0) {
         result += `<img class="filter-dark-light h-6" src="${tens > 0 ? symbols.tens[tens - 1] : ""}" />`
       }
@@ -37,6 +34,5 @@ export const babylonian_formater = (v: string): string => {
       result += "&nbsp;&nbsp;"
     })
   }
-
   return `<div class="flex items-start leading-[14px] text-1xl">${result}</div>`
 }

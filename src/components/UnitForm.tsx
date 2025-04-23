@@ -268,12 +268,12 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             {formatValueDisplay(value, rawValue, dictionary, unitTo, hasList, list, secondaryUnit)}
             {(parseFloat(rawValue) >= 2 ? "valent " : "vaut ") + (result > 1 ? "1/" : "")}
             {(result > 1
-              ? scientific_notation(1 / result, precision)
-                ? 1 / result
-                : 1 / result
-              : scientific
+              ? scientific
                 ? scientific_notation(result, precision)
                 : result
+              : scientific
+                ? scientific_notation(1 / result, precision)
+                : 1 / result
             )
               .toLocaleString("fr-FR", {maximumFractionDigits: precision})
               .replace(",", ".")}
