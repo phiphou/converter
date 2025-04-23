@@ -1,7 +1,7 @@
 import {Unit} from "../types"
 
 function integerToRoman(number: string): string {
-  let num = parseInt(number)
+  let num = parseInt(number.toString())
   const romanValues = {
     M: 1000,
     CM: 900,
@@ -198,10 +198,28 @@ function convertToMayaGlyphs(number: string) {
 //   return total
 // }
 
+function integerToBabylonian(number: string): string {
+  let num = parseInt(number)
+  if (num < 0) return "Le nombre doit être positif."
+
+  const result = []
+  while (num > 0) {
+    const remainder = num % 60
+    const tens = Math.floor(remainder / 10)
+    const units = remainder % 10
+
+    result.unshift([tens, units].toString())
+    num = Math.floor(num / 60)
+  }
+
+  return result.join("-")
+}
+
 const conversionMap: Record<string, (v: string) => string> = {
   "décimal:romain": (v) => integerToRoman(v),
   "décimal:égyptien": (v) => integerTohieroglyphs(v),
   "décimal:maya": (v) => convertToMayaGlyphs(v),
+  "décimal:babylonien": (v) => integerToBabylonian(v),
   "décimal:binaire": (v) => decimalToBinary(v),
   "décimal:octal": (v) => decimalToOctal(v),
   "décimal:hexadécimal": (v) => decimalToHexadecimal(v),

@@ -2,6 +2,7 @@ import currency_converter from "../converters/currency_converter"
 import {decibel_converter} from "../converters/decibel_converter"
 import {numeric_converter} from "../converters/numeric_converter"
 import {temp_converter} from "../converters/temp_converter"
+import {babylonian_formater} from "../formaters/babylonian_formater"
 import {egyptian_formater} from "../formaters/egyptian_formater"
 import {hms_formater} from "../formaters/hms_formater"
 import {maya_formater} from "../formaters/maya_formater"
@@ -3107,7 +3108,11 @@ export const dictionaries = {
       not_unit: true,
     },
   },
-  systèmes_numériques: {
+  systèmes_de_numération: {
+    infos: {
+      label:
+        "plus d'infos sur les systèmes de numération sur <a href='https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_num%C3%A9ration' target='_blank'>Wikipedia</a>.",
+    },
     singleResult: true,
     decimal: {
       label: "décimal",
@@ -3157,6 +3162,13 @@ export const dictionaries = {
       divisor: 1,
       converter: numeric_converter,
       formater: maya_formater,
+      pluralize: true,
+    },
+    babylonian: {
+      label: "babylonien",
+      divisor: 1,
+      converter: numeric_converter,
+      formater: babylonian_formater,
       pluralize: true,
     },
   },

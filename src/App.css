@@ -13,6 +13,15 @@
   margin-right: -65px;
 }
 
+[data-theme="light"] .filter-dark-light {
+  filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+}
+
+[data-theme="dark"] .filter-dark-light {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%)
+    contrast(100%);
+}
+
 @media screen(sm) {
   .logo {
     max-height: 80px;
