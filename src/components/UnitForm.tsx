@@ -189,8 +189,10 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
               calculatedResult = ((value * (1 / list[secondaryUnit].divisor)) / toDivisor) * fromDivisor
             }
           } else {
-            if (dictionary["materials"]) {
+            if (dictionary["materials"] && !dictionary["noSwitch"]) {
               calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
+            } else if (dictionary["materials"] && dictionary["noSwitch"]) {
+              calculatedResult = (value / list[secondaryUnit].divisor / toDivisor) * fromDivisor
             } else {
               calculatedResult = 222
             }
@@ -260,7 +262,9 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
               </div>
             )}
             {hasList && <UnitSelect unit={secondaryUnit} setUnit={setSecondaryUnit} dictionary={list} />}
-            {!dictionary[unitFrom]?.noSwitch && !dictionary["input"] && <SwitchUnitButton switchUnits={switchUnits} />}
+            {!dictionary[unitFrom]?.noSwitch && !dictionary["input"] && !dictionary["noSwitch"] && (
+              <SwitchUnitButton switchUnits={switchUnits} />
+            )}
           </div>
         </div>
         {!dictionary["input"] && (

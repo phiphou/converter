@@ -213,12 +213,12 @@ export const dictionaries = {
     wh: {
       label: "Wh",
       divisor: 1,
-      pluralize: false,
+      pluralize: true,
     },
     kwh: {
       label: "kWh",
       divisor: 1000,
-      pluralize: false,
+      pluralize: true,
     },
     mug: {
       info: "avec une bouilloire électrique de 1200W",
@@ -236,7 +236,7 @@ export const dictionaries = {
     },
     micro_wave: {
       info: "avec un four de 900W.",
-      label: "3 minutes d'un micro-ondes",
+      label: "trois minutes d'un micro-ondes",
       divisor: 45,
       pluralize: false,
       not_unit: true,
