@@ -21,6 +21,5 @@ const conversionMap: Record<string, string> = {
 }
 
 export const date_converter = (value: number, unitTo: Unit): string => {
-  console.log(value, unitTo)
-  return `${toDate(value, conversionMap[unitTo.label])}`
+  return `${toDate(value, conversionMap[unitTo.label.replace("calendrier ", "")])}`
 }
