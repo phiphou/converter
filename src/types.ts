@@ -3,7 +3,7 @@ export interface Unit {
   label: string
   divisor: number
   code?: string
-  formater?: (value: number) => string
+  formater?: (value: number | string) => string
   pluralize?: boolean
   quote?: string
   pluralize_all?: boolean

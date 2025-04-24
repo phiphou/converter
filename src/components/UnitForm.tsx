@@ -47,7 +47,7 @@ function formatResult(
   if (result === null) return ""
   if (dictionary["input"]) return "" + result
   if (dictionary[unitTo]?.formater) {
-    return dictionary[unitTo].formater(typeof result === "number" ? result : parseFloat(result))
+    return dictionary[unitTo].formater(result)
   }
   if (scientific) {
     return scientific_notation(typeof result === "number" ? result : parseFloat(result), precision)
@@ -217,12 +217,12 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
   return (
     <div>
       <div className="mx-auto mt-5 mb-0 flex min-w-full flex-col items-baseline justify-items-center">
-        <div className="mx-auto mb-5 flex h-12 flex-col justify-items-center gap-3 md:flex-row">
+        <div className="mx-auto mb-5 flex flex-col justify-items-center gap-2 md:h-12 md:flex-row">
           {!dictionary["input"] && (
             <input
               type="number"
               min={0}
-              className="mr-1 block w-40 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              className="mr-1 block w-25 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               placeholder={label}
               value={rawValue}
               onKeyDown={(e) => {
@@ -264,10 +264,10 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
           </div>
         </div>
         {!dictionary["input"] && (
-          <div className="mt-3 mb-5 flex items-baseline justify-items-center gap-0 md:ml-36 lg:mx-auto">
+          <div className="mt-3 mb-5 flex items-baseline justify-items-center gap-0 md:ml-36 md:flex-row lg:mx-auto">
             <label className="mr-3 mb-2 ml-3 block text-sm font-medium text-gray-900 dark:text-white">en</label>
             <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
-            <div className="flex items-center">
+            <div className="flex items-center md:flex">
               <label className="ml-3">Précision&nbsp;:</label>
               <input
                 type="number"

@@ -3097,13 +3097,13 @@ export const dictionaries = {
     rugby_field: {
       info: 'selon les données de la <a href="https://formation.ffr.fr/sites/default/files/documents/doc/2017-01/Les%20r%C3%A8gles%20du%20jeu%202017%20%28rugby%20%C3%A0%20XV%29%20_0.pdf" target="_blank">fédération française de rugby, page 30 du document</a>.',
       label: "terrain de rugby",
-
       divisor: 67.275,
       not_unit: true,
     },
     football_field: {
+      info: 'selon les données de la <a href="https://publications.fifa.com/fr/football-stadiums-guidelines/technical-guideline/stadium-guidelines/pitch-dimensions-and-surrounding-areas/" target="_blank">fédération internationale de football</a>.',
       label: "terrain de football",
-      divisor: 71.4,
+      divisor: 60.9,
       not_unit: true,
     },
     wind_turbine: {
