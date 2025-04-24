@@ -17,6 +17,7 @@ const conversionMap: Record<string, string> = {
   indien: "hi-u-ca-indian",
   perse: "ar-u-ca-persian",
   chinois: "zh-u-ca-chinese",
+  japonais: "ja-JP-u-ca-japanese",
 }
 
 export const date_converter = (value: number, unitTo: Unit): string => {

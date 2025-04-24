@@ -110,39 +110,7 @@ export const dictionaries = {
       pluralize_all: true,
     },
   },
-  date: {
-    input: "date",
-    gregorian: {
-      label: "grégorien",
-      divisor: 1,
-      converter: date_converter,
-    },
-    arabic: {
-      label: "arabe",
-      divisor: 1,
-      converter: date_converter,
-    },
-    jexwish: {
-      label: "juif",
-      divisor: 1,
-      converter: date_converter,
-    },
-    persian: {
-      label: "perse",
-      divisor: 1,
-      converter: date_converter,
-    },
-    chinese: {
-      label: "chinois",
-      divisor: 1,
-      converter: date_converter,
-    },
-    hindi: {
-      label: "indien",
-      divisor: 1,
-      converter: date_converter,
-    },
-  },
+
   charge_électrique: {
     infos: {
       label:
@@ -289,6 +257,44 @@ export const dictionaries = {
       divisor: 850,
       pluralize: false,
       not_unit: true,
+    },
+  },
+  date: {
+    input: "date",
+    gregorian: {
+      label: "grégorien",
+      divisor: 1,
+      converter: date_converter,
+    },
+    arabic: {
+      label: "arabe",
+      divisor: 1,
+      converter: date_converter,
+    },
+    jexwish: {
+      label: "juif",
+      divisor: 1,
+      converter: date_converter,
+    },
+    persian: {
+      label: "perse",
+      divisor: 1,
+      converter: date_converter,
+    },
+    chinese: {
+      label: "chinois",
+      divisor: 1,
+      converter: date_converter,
+    },
+    japonais: {
+      label: "japonais",
+      divisor: 1,
+      converter: date_converter,
+    },
+    hindi: {
+      label: "indien",
+      divisor: 1,
+      converter: date_converter,
     },
   },
   débit: {
