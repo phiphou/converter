@@ -6,50 +6,51 @@ import SwitchUnitButton from "./SwitchUnitButton"
 import InfosBlock from "./InfosBlock"
 import SwitchButton from "./SwitchButton"
 
-async function calculateConversionResult(
-  value: number,
-  unitFrom: string,
-  unitTo: string,
-  dictionary: Record<string, Unit>,
-  list: Record<string, Unit>,
-  secondaryUnit: string,
-  hasList: boolean,
-  switched: boolean,
-  precision: number
-): Promise<number | null> {
-  const fromDivisor = dictionary[unitFrom]?.divisor || 1
-  const toDivisor = dictionary[unitTo]?.divisor || 1
+// async function calculateConversionResult(
+//   value: number,
+//   unitFrom: string,
+//   unitTo: string,
+//   dictionary: Record<string, Unit>,
+//   list: Record<string, Unit>,
+//   secondaryUnit: string,
+//   hasList: boolean,
+//   switched: boolean,
+//   precision: number
+// ): Promise<number | null> {
+//   const fromDivisor = dictionary[unitFrom]?.divisor || 1
+//   const toDivisor = dictionary[unitTo]?.divisor || 1
 
-  if (unitFrom === unitTo) return value
+//   if (unitFrom === unitTo) return value
 
-  if (dictionary[unitFrom]?.converter && dictionary[unitTo]?.converter) {
-    return await dictionary[unitFrom].converter(value, dictionary[unitFrom], dictionary[unitTo], precision)
-  }
+//   if (dictionary[unitFrom]?.converter && dictionary[unitTo]?.converter) {
+//     return await dictionary[unitFrom].converter(value, dictionary[unitFrom], dictionary[unitTo], precision)
+//   }
 
-  if (hasList) {
-    const secondaryDivisor = list[secondaryUnit]?.divisor || 1
-    if (toDivisor === fromDivisor) {
-      return !switched ? value / secondaryDivisor : (value * secondaryDivisor) / toDivisor
-    }
-    return (value * secondaryDivisor) / toDivisor
-  }
+//   if (hasList) {
+//     const secondaryDivisor = list[secondaryUnit]?.divisor || 1
+//     if (toDivisor === fromDivisor) {
+//       return !switched ? value / secondaryDivisor : (value * secondaryDivisor) / toDivisor
+//     }
+//     return (value * secondaryDivisor) / toDivisor
+//   }
 
-  return (value * fromDivisor) / toDivisor
-}
+//   return (value * fromDivisor) / toDivisor
+// }
 
 function formatResult(
-  result: number | null,
+  result: number | string | null,
   dictionary: Record<string, Unit>,
   unitTo: string,
   scientific: boolean,
   precision: number
 ): string {
   if (result === null) return ""
+  if (dictionary["input"]) return "" + result
   if (dictionary[unitTo]?.formater) {
-    return dictionary[unitTo].formater(result)
+    return dictionary[unitTo].formater(typeof result === "number" ? result : parseFloat(result))
   }
   if (scientific) {
-    return scientific_notation(result, precision)
+    return scientific_notation(typeof result === "number" ? result : parseFloat(result), precision)
   }
   return result.toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")
 }
@@ -63,9 +64,10 @@ function formatValueDisplay(
   list: Record<string, Unit>,
   secondaryUnit: string
 ): string {
+  if (dictionary["input"]) return "bob"
   const formattedValue = value.toLocaleString("fr-FR", {minimumFractionDigits: 0}).replace(",", ".")
   const pluralizedLabel = pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""
-  const ofLabel = hasList && dictionary["of"] ? dictionary["of"].label + "\u00A0" : ""
+  const ofLabel = hasList && dictionary["of"] ? dictionary["of"].label + "" : ""
   const quote =
     hasList && list[secondaryUnit]?.quote
       ? list[secondaryUnit]?.quote + (list[secondaryUnit]?.quote.endsWith("'") ? "" : " ")
@@ -88,6 +90,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
   const [dictionary, setDictionary] = useState<Record<string, Unit>>({})
   const [switched, setSwiched] = useState<boolean>(false)
   const [singleResult, setSingleResult] = useState<boolean>(false)
+  const [currentDate, SetCurrentDate] = useState<Date>(new Date())
 
   useEffect(() => {
     let firstUnit = ""
@@ -146,62 +149,110 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       setDictionary(dic)
       setSwiched(false)
       setHasList(false)
-      firstUnit = Object.keys(dic).find((key) => key !== "infos" && dic[key]) || ""
+      firstUnit = Object.keys(dic).find((key) => key !== "infos" && key !== "input" && dic[key]) || ""
     }
     setUnitFrom(firstUnit)
     setUnitTo(firstUnit)
+    SetCurrentDate(new Date())
   }, [dic])
 
   useEffect(() => {
     async function calculateResult() {
-      const calculatedResult = await calculateConversionResult(
-        value,
-        unitFrom,
-        unitTo,
-        dictionary,
-        list,
-        secondaryUnit,
-        hasList,
-        switched,
-        precision
-      )
-      setResult(calculatedResult)
+      if (unitFrom && unitTo) {
+        const fromDivisor = dictionary[unitFrom].divisor
+        const toDivisor = dictionary[unitTo].divisor
+        let calculatedResult: number | null = null
+
+        if (unitFrom === unitTo && !dictionary["input"]) {
+          calculatedResult = value
+        } else if (dictionary["input"] && dictionary[unitTo].converter) {
+          calculatedResult = await dictionary[unitTo].converter(
+            currentDate.getTime(),
+            dictionary[unitTo],
+            dictionary[unitTo],
+            precision
+          )
+
+          setResult(calculatedResult)
+        } else if (dictionary[unitFrom].converter && dictionary[unitFrom].converter === dictionary[unitTo].converter) {
+          calculatedResult = await dictionary[unitTo].converter(
+            value,
+            dictionary[unitFrom],
+            dictionary[unitTo],
+            precision
+          )
+        } else if (hasList) {
+          if (toDivisor === fromDivisor) {
+            if (!switched && !dictionary["noSwitch"]) {
+              calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
+            } else {
+              calculatedResult = ((value * (1 / list[secondaryUnit].divisor)) / toDivisor) * fromDivisor
+            }
+          } else {
+            if (dictionary["materials"]) {
+              calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
+            } else {
+              calculatedResult = 222
+            }
+          }
+        } else {
+          calculatedResult = (value * fromDivisor) / toDivisor
+        }
+
+        setResult(calculatedResult)
+      } else {
+        setResult(null)
+      }
     }
 
     calculateResult()
-  }, [value, unitFrom, unitTo, dictionary, precision, hasList, list, secondaryUnit, switched])
+  }, [value, unitFrom, unitTo, dictionary, precision, hasList, list, secondaryUnit, switched, currentDate])
 
   const switchUnits = () => {
     setUnitFrom(unitTo)
     setUnitTo(unitFrom)
-    setSwiched(!switched)
+    setSwiched((prev) => !prev)
   }
 
   return (
     <div>
       <div className="mx-auto mt-5 mb-0 flex min-w-full flex-col items-baseline justify-items-center">
-        <div className="mx-auto mb-5 flex flex-col justify-items-center gap-3 md:flex-row">
-          <input
-            type="number"
-            min={0}
-            className="mr-1 block w-40 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            placeholder={label}
-            value={rawValue}
-            onKeyDown={(e) => {
-              if (e.key === "-") e.preventDefault()
-            }}
-            onChange={(e) => {
-              const inputValue = e.target.value.replace(",", ".")
-              setRawValue(inputValue)
-              const numericValue = parseFloat(inputValue)
-              if (!isNaN(numericValue)) setValue(numericValue)
-            }}
-          />
+        <div className="mx-auto mb-5 flex h-12 flex-col justify-items-center gap-3 md:flex-row">
+          {!dictionary["input"] && (
+            <input
+              type="number"
+              min={0}
+              className="mr-1 block w-40 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              placeholder={label}
+              value={rawValue}
+              onKeyDown={(e) => {
+                if (e.key === "-") e.preventDefault()
+              }}
+              onChange={(e) => {
+                const inputValue = e.target.value.replace(",", ".")
+                setRawValue(inputValue)
+                const numericValue = parseFloat(inputValue)
+                if (!isNaN(numericValue)) setValue(numericValue)
+              }}
+            />
+          )}
+          {dictionary["input"] && (
+            <input
+              type="date"
+              className="mr-1 block w-40 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              placeholder={label}
+              value={currentDate.toISOString().split("T")[0]}
+              onChange={(e) => {
+                SetCurrentDate(new Date(e.target.value))
+              }}
+            />
+          )}
           <div className="flex gap-2">
-            <UnitSelect unit={unitFrom} setUnit={setUnitFrom} dictionary={dictionary} />
+            {dictionary["input"] && <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />}
+            {!dictionary["input"] && <UnitSelect unit={unitFrom} setUnit={setUnitFrom} dictionary={dictionary} />}
             {hasList && (
-              <div className="flex gap-0">
-                <span className="mt-4">{dictionary["of"] ? dictionary["of"].label + "\u00A0" : ""}</span>
+              <div className="flex gap-1">
+                <span className="mt-4">{dictionary["of"] ? dictionary["of"].label + "\u00A0" : " "}</span>
                 <span className="mt-4 whitespace-nowrap">
                   {list[secondaryUnit]?.quote && list[secondaryUnit]?.quote}
                   {list[secondaryUnit]?.quote && list[secondaryUnit].quote.endsWith("'") ? "" : " "}
@@ -209,64 +260,92 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
               </div>
             )}
             {hasList && <UnitSelect unit={secondaryUnit} setUnit={setSecondaryUnit} dictionary={list} />}
-            {!dictionary[unitFrom]?.noSwitch && <SwitchUnitButton switchUnits={switchUnits} />}
+            {!dictionary[unitFrom]?.noSwitch && !dictionary["input"] && <SwitchUnitButton switchUnits={switchUnits} />}
           </div>
         </div>
-        <div className="mt-3 mb-5 flex items-baseline justify-items-center gap-0 md:ml-36 lg:mx-auto">
-          <label className="mr-3 mb-2 ml-3 block text-sm font-medium text-gray-900 dark:text-white">en</label>
-          <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
-          <label className="ml-3">Précision&nbsp;:</label>
-          <input
-            type="number"
-            min={0}
-            max={15}
-            className="mr-3 ml-3 block w-17 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            placeholder={precision.toString()}
-            value={precision}
-            onKeyDown={(e) => {
-              if (e.key === "-") e.preventDefault()
-            }}
-            onChange={(e) => {
-              let inputValue = e.target.value.replace(",", "").replace(".", "")
-              if (inputValue.startsWith("0")) inputValue = e.target.value.replace("0", "")
-              e.target.value = inputValue
-              const numericValue = inputValue == "" ? 0 : parseFloat(inputValue)
-              if (!isNaN(numericValue) && numericValue < 100) setPrecision(numericValue)
-            }}
-          />
-        </div>
+        {!dictionary["input"] && (
+          <div className="mt-3 mb-5 flex items-baseline justify-items-center gap-0 md:ml-36 lg:mx-auto">
+            <label className="mr-3 mb-2 ml-3 block text-sm font-medium text-gray-900 dark:text-white">en</label>
+            <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
+            <div className="flex items-center">
+              <label className="ml-3">Précision&nbsp;:</label>
+              <input
+                type="number"
+                min={0}
+                max={15}
+                className="mr-3 ml-3 block w-17 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                placeholder={precision.toString()}
+                value={precision}
+                onKeyDown={(e) => {
+                  if (e.key === "-") e.preventDefault()
+                }}
+                onChange={(e) => {
+                  let inputValue = e.target.value.replace(",", "").replace(".", "")
+                  if (inputValue.startsWith("0")) inputValue = e.target.value.replace("0", "")
+                  e.target.value = inputValue
+                  const numericValue = inputValue === "" ? 0 : parseFloat(inputValue)
+                  if (!isNaN(numericValue) && numericValue < 100) setPrecision(numericValue)
+                }}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
-      <div className="mt-3 mb-5 flex w-max items-center gap-3 md:pl-40">
-        <label className="inline-flex cursor-pointer items-center text-black dark:text-white">
-          Notation scientifique :{" "}
-        </label>
-        <SwitchButton scientific={scientific} setScientific={setScientific} />
-      </div>
-      <div className="text-gray-text-white mx-auto mb-3 flex items-center justify-center text-center text-lg font-medium text-black dark:text-white">
-        <span
-          dangerouslySetInnerHTML={{
-            __html: formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit),
-          }}
-        ></span>{" "}
+      {!dictionary["input"] && (
+        <div className="mt-3 mb-5 flex w-max items-center gap-3 md:pl-40">
+          <label className="inline-flex cursor-pointer items-center text-black dark:text-white">
+            Notation scientifique :{" "}
+          </label>
+          <SwitchButton scientific={scientific} setScientific={setScientific} />
+        </div>
+      )}
+      <div className="text-gray-text-white mx-auto mt-2 mb-3 flex items-center justify-center text-center text-lg font-medium text-black dark:text-white">
+        {!dictionary["input"] && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit),
+            }}
+          ></span>
+        )}
+        {dictionary["input"] && (
+          <span>
+            {new Intl.DateTimeFormat("fr-u-ca-fr", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            }).format(currentDate)}
+          </span>
+        )}{" "}
         <span className="mx-2">=</span>
-        <div
-          className="inline-block"
-          dangerouslySetInnerHTML={{
-            __html: `${formatResult(result, dictionary, unitTo, scientific, precision)}${" "}${
-              (!dictionary[unitTo]?.formater &&
-                pluralize(parseFloat("" + result), dictionary[unitTo]?.label, dictionary[unitTo])) ||
-              ""
-            }`,
-          }}
-        ></div>
+        {!dictionary["input"] && (
+          <div
+            className="inline-block"
+            dangerouslySetInnerHTML={{
+              __html: `${formatResult(result, dictionary, unitTo, scientific, precision)}${" "}${
+                (!dictionary[unitTo]?.formater &&
+                  pluralize(parseFloat("" + result), dictionary[unitTo]?.label, dictionary[unitTo])) ||
+                ""
+              }`,
+            }}
+          ></div>
+        )}
+        {dictionary["input"] && (
+          <div
+            className="inline-block"
+            dangerouslySetInnerHTML={{
+              __html: `${result}`,
+            }}
+          ></div>
+        )}
       </div>
 
       <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
-        {result !== null && dictionary[unitFrom] && dictionary[unitTo] && !singleResult && (
+        {!dictionary["input"] && result !== null && dictionary[unitFrom] && dictionary[unitTo] && !singleResult && (
           <>
             {formatValueDisplay(value, rawValue, dictionary, unitTo, hasList, list, secondaryUnit)}
-            {(parseFloat(rawValue) >= 2 ? "valent " : "vaut ") + (result > 1 ? "1/" : "")}
+            {(parseFloat(rawValue) >= 2 ? " valent " : " vaut ") + (result > 1 ? "1/" : "")}
             {(result > 1
               ? scientific
                 ? scientific_notation(result, precision)
@@ -283,10 +362,10 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       </div>
 
       <div className="text-gray-text-white mx-auto mb-8 text-center text-lg font-medium text-black dark:text-white">
-        {result !== null && dictionary[unitFrom] && dictionary[unitTo] && !singleResult && (
+        {!dictionary["input"] && result !== null && dictionary[unitFrom] && dictionary[unitTo] && !singleResult && (
           <>
             {formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit)}
-            {parseFloat(rawValue) >= 2 ? "valent " : "vaut "}
+            {parseFloat(rawValue) >= 2 ? " valent " : " vaut "}
             {(result * 100).toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")}% de{" "}
             {dictionary[unitTo].label}
           </>

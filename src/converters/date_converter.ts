@@ -1,18 +1,25 @@
-const myDate = new Date(Date.now()) // today's date
+import {Unit} from "../types"
 
-function toDate(format: string) {
+function toDate(date: number, format: string) {
   const formatter = new Intl.DateTimeFormat(format, {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
   })
-  return formatter.format(myDate)
+  return formatter.format(new Date(date))
 }
 
-console.log("calendrier français : ", toDate("fr-u-ca-fr"))
-console.log("calendrier juif : ", toDate("he-u-ca-hebrew"))
-console.log("calendrier arabe : ", toDate("ar-u-ca-islamic-umalqura"))
-console.log("calendrier indien : ", toDate("hi-u-ca-indian"))
-console.log("calendrier perse : ", toDate("ar-u-ca-persian"))
-console.log("calendrier chinois : ", toDate("zh-u-ca-chinese"))
+const conversionMap: Record<string, string> = {
+  gregorien: "fr-u-ca-fr",
+  arabe: "ar-u-ca-islamic-umalqura",
+  juif: "he-u-ca-hebrew",
+  indien: "hi-u-ca-indian",
+  perse: "ar-u-ca-persian",
+  chinois: "zh-u-ca-chinese",
+}
+
+export const date_converter = (value: number, unitTo: Unit): string => {
+  console.log(value, unitTo)
+  return `${toDate(value, conversionMap[unitTo.label])}`
+}

@@ -26,10 +26,10 @@ export const babylonian_formater = (v: string): string => {
       const tens = parseInt(n.split(",")[0])
       const units = parseInt(n.split(",")[1])
       if (tens > 0) {
-        result += `<img class="filter-dark-light h-6" src="${tens > 0 ? symbols.tens[tens - 1] : ""}" />`
+        result += `<img class="filter-dark-light h-8" src="${tens > 0 ? symbols.tens[tens - 1] : ""}" />`
       }
       if (units > 0) {
-        result += `<img class="filter-dark-light h-6" src="${units > 0 ? symbols.units[units - 1] : ""}" />`
+        result += `<img class="filter-dark-light h-8" src="${units > 0 ? symbols.units[units - 1] : ""}" />`
       }
       result += "&nbsp;&nbsp;"
     })

@@ -20,7 +20,7 @@ export const pluralize = (result: number | null, label: string, unit: Unit, plur
     }
     return word
   }
-
+  if (!label) return ""
   return label.split(" ").map(processWord).join(" ")
 }
 
