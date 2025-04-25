@@ -1,13 +1,13 @@
-import currency_converter from "../converters/currency_converter"
-import {date_converter} from "../converters/date_converter"
-import {decibel_converter} from "../converters/decibel_converter"
-import {numeric_converter} from "../converters/numeric_converter"
-import {temp_converter} from "../converters/temp_converter"
-import {babylonian_formater} from "../formaters/babylonian_formater"
-import {egyptian_formater} from "../formaters/egyptian_formater"
-import {hms_formater} from "../formaters/hms_formater"
-import {maya_formater} from "../formaters/maya_formater"
-import {ymd_formater} from "../formaters/ymd_formater"
+import currency_converter from "./src/converters/currency_converter"
+import {date_converter} from "./src/converters/date_converter"
+import {decibel_converter} from "./src/converters/decibel_converter"
+import {numeric_converter} from "./src/converters/numeric_converter"
+import {temp_converter} from "./src/converters/temp_converter"
+import {babylonian_formater} from "./src/formaters/babylonian_formater"
+import {egyptian_formater} from "./src/formaters/egyptian_formater"
+import {hms_formater} from "./src/formaters/hms_formater"
+import {maya_formater} from "./src/formaters/maya_formater"
+import {ymd_formater} from "./src/formaters/ymd_formater"
 
 export const dictionaries = {
   accélération: {
@@ -110,7 +110,6 @@ export const dictionaries = {
       pluralize_all: true,
     },
   },
-
   charge_électrique: {
     infos: {
       label:

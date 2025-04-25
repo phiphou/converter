@@ -1,12 +1,6 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Creator: fig2dev Version 3.2 Patchlevel 5-alpha5 -->
-<!-- CreationDate: Thu Aug 31 12:05:32 2006 -->
-<!-- Magnification: 1.050 -->
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="auto" viewBox="2217 894 1234 1801" preserveAspectRatio="xMidYMid meet">
-  <g style="stroke:currentcolor;stroke-width:63;stroke-linejoin:bevel;stroke-linecap:butt;fill:currentcolor;">
-    <polyline points="2834,944 3118,1228 3118,2645 3118,1228 3401,944" />
-    <polyline points="2267,944 2551,1228 2551,2645 2551,1228 2834,944" />
-  </g>
+<svg height="0INVALID" viewBox="2217 894 1234 1801" xmlns="http://www.w3.org/2000/svg">
+    <g fill="currentcolor" stroke="currentcolor" stroke-linejoin="bevel" stroke-width="63">
+        <polyline points="2834 944 3118 1228 3118 2645 3118 1228 3401 944" />
+        <polyline points="2267 944 2551 1228 2551 2645 2551 1228 2834 944" />
+    </g>
 </svg>

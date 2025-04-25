@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "bob/pays_fusionnes_filtrés.ts", "bob/merge.js"]
+  "include": ["src", "bob/pays_fusionnes_filtrés.ts", "bob/merge.js", "dictionaries.ts"]
 }

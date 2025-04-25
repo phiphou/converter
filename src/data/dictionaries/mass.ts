@@ -1,0 +1,227 @@
+const mass = {
+  microgram: {
+    label: "microgramme",
+    divisor: 0.000000000001,
+  },
+  miligram: {
+    label: "miligramme",
+    divisor: 0.000000001,
+  },
+  gram: {
+    label: "gramme",
+    divisor: 0.000001,
+  },
+  kilogram: {
+    label: "kilogramme",
+    divisor: 0.001,
+  },
+  tons: {
+    label: "tonne",
+    divisor: 1,
+  },
+  oz: {
+    label: "once anglo-saxone",
+    divisor: 0.00002835,
+  },
+  ozt: {
+    label: "once troy",
+    divisor: 0.0000311034768,
+  },
+  lb: {
+    label: "livre",
+    divisor: 0.00045359237,
+  },
+  one_euro_cent: {
+    info: 'selon les données de la <a href="https://www.stefm.fr/numismatique/informations-generales/poids-pieces-euro" target="_blank">Société Française des Monnaies</a>.',
+    label: "pièce de 1 centime d'euro",
+    divisor: 0.0000023,
+    not_unit: true,
+  },
+  two_euro_cent: {
+    info: 'selon les données de la <a href="https://www.stefm.fr/numismatique/informations-generales/poids-pieces-euro" target="_blank">Société Française des Monnaies</a>.',
+    label: "pièce de 2 centimes d'euro",
+    divisor: 0.00000306,
+    not_unit: true,
+  },
+  five_euro_cent: {
+    info: 'selon les données de la <a href="https://www.stefm.fr/numismatique/informations-generales/poids-pieces-euro" target="_blank">Société Française des Monnaies</a>.',
+    label: "pièce de 5 centimes d'euro",
+    divisor: 0.00000392,
+    not_unit: true,
+  },
+  ten_euro_cent: {
+    info: 'selon les données de la <a href="https://www.stefm.fr/numismatique/informations-generales/poids-pieces-euro" target="_blank">Société Française des Monnaies</a>.',
+    label: "pièce de 10 centimes d'euro",
+    divisor: 0.0000041,
+    not_unit: true,
+  },
+  twenty_euro_cent: {
+    info: 'selon les données de la <a href="https://www.stefm.fr/numismatique/informations-generales/poids-pieces-euro" target="_blank">Société Française des Monnaies</a>.',
+    label: "pièce de 20 centimes d'euro",
+    divisor: 0.00000574,
+    not_unit: true,
+  },
+  fifty_euro_cent: {
+    info: 'selon les données de la <a href="https://www.stefm.fr/numismatique/informations-generales/poids-pieces-euro" target="_blank">Société Française des Monnaies</a>.',
+    label: "pièce de 50 centimes d'euro",
+    divisor: 0.0000078,
+    not_unit: true,
+  },
+  one_euro: {
+    info: 'selon les données de la <a href="https://www.stefm.fr/numismatique/informations-generales/poids-pieces-euro" target="_blank">Société Française des Monnaies</a>.',
+    label: "pièce de un euro",
+    divisor: 0.0000075,
+    not_unit: true,
+  },
+  two_euro: {
+    info: 'selon les données de la <a href="https://www.stefm.fr/numismatique/informations-generales/poids-pieces-euro" target="_blank">Société Française des Monnaies</a>.',
+    label: "pièce de deux euros",
+    divisor: 0.0000085,
+    not_unit: true,
+  },
+  rice_grain: {
+    label: "grain de riz",
+    divisor: 0.0000003014,
+    not_unit: true,
+  },
+  ping_pong_ball: {
+    info: "moyenne des limites réglementaires",
+    label: "balle de ping-pong",
+    divisor: 0.0000027,
+    not_unit: true,
+  },
+  tennis_ball: {
+    info: "moyenne des limites réglementaires",
+    label: "balle de tennis",
+    divisor: 0.0000577,
+    not_unit: true,
+  },
+  volley_ball: {
+    info: "moyenne des limites réglementaires",
+    label: "ballon de volleyball",
+    divisor: 0.00027,
+    not_unit: true,
+  },
+  hand_ball: {
+    info: "moyenne des limites réglementaires",
+    label: "ballon de handball",
+    divisor: 0.00045,
+    not_unit: true,
+  },
+  foot_ball: {
+    info: "moyenne des limites réglementaires",
+    label: "ballon de foot",
+    divisor: 0.00043,
+    not_unit: true,
+  },
+  basket_ball: {
+    info: "moyenne des limites réglementaires",
+    label: "ballon de basket",
+    divisor: 0.00065,
+    not_unit: true,
+  },
+  petanque_ball: {
+    info: "moyenne des limites réglementaires",
+    label: "boule de pétanque",
+    divisor: 0.0008,
+    not_unit: true,
+  },
+  oak_stere: {
+    info: "pour un bois de chauffage sec (20% d'humidité)",
+    label: "stère de chêne",
+    divisor: 0.44,
+    not_unit: true,
+  },
+  twingo: {
+    info: 'masse à vide, selon les données de <a href="https://fr.wikipedia.org/wiki/Renault_Twingo_III" target="_blank">Wikipedia</a>.',
+    label: "Renault Twingo 3",
+    divisor: 0.864,
+    pluralize: false,
+    not_unit: true,
+  },
+  tesla_s: {
+    info: 'masse à vide, selon les données du <a href="https://www.tesla.com/fr_fr/models" target="_blank">constructeur</a>.',
+    label: "Tesla model S",
+    divisor: 2.068,
+    pluralize: true,
+    not_unit: true,
+  },
+  grizzli_bear: {
+    label: "ours Grizzli",
+    divisor: 0.27,
+    pluralize: false,
+    not_unit: true,
+  },
+  polar_bear: {
+    label: "ours polaire",
+    divisor: 0.45,
+    pluralize: false,
+    not_unit: true,
+  },
+  male_white_shark: {
+    label: "requin blanc femelle",
+    divisor: 1.325,
+    not_unit: true,
+  },
+  male_hippopotamus: {
+    info: 'poids moyen d\'un hippopotame mâle selon les données de <a href="https://fr.wikipedia.org/wiki/Hippopotamus_amphibius" target="_blank">Wikipedia</a>.',
+    label: "hippopotame",
+    divisor: 1.5,
+    not_unit: true,
+  },
+  african_elephant: {
+    label: "éléphant d'Afrique mâle",
+    divisor: 6,
+    not_unit: true,
+  },
+  titanic: {
+    info: 'selon les données <a href="https://fr.wikipedia.org/wiki/Titanic" target="_blank">Wikipedia</a>.',
+    label: "Titanic",
+    divisor: 52310,
+    pluralize: false,
+    not_unit: true,
+  },
+  USS_Gerald_Ford: {
+    info: 'selon les données <a href="https://fr.wikipedia.org/wiki/USS_Gerald_R._Ford_(CVN-78)" target="_blank">Wikipedia</a>.',
+    label: "USS Gerald R. Ford",
+    divisor: 112000,
+    pluralize: false,
+    not_unit: true,
+  },
+  a380: {
+    info: "masse à vide",
+    label: "Airbus A380",
+    divisor: 276.8,
+    pluralize: false,
+    not_unit: true,
+  },
+  leclerc_tank: {
+    info: "masse à vide",
+    label: "char Leclerc",
+    divisor: 56,
+    not_unit: true,
+  },
+  eiffel_tower: {
+    info: "avec fondations",
+    label: "Tour Eiffel",
+    divisor: 10100,
+    pluralize: false,
+    not_unit: true,
+  },
+  triumph_arch: {
+    info: 'sans les fondations (le double avec), selon les données <a href="https://fr.wikipedia.org/wiki/Arc_de_triomphe_de_l%27%C3%89toile" target="_blank">Wikipedia</a>.',
+    label: "Arc de triomphe",
+    divisor: 50000,
+    pluralize: false,
+    not_unit: true,
+  },
+  gizeh_pyramid: {
+    info: 'selon les données <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops" target="_blank">Wikipedia</a>.',
+
+    label: "pyramide de Khéops",
+    divisor: 5000000,
+    not_unit: true,
+  },
+}
+
+export default mass

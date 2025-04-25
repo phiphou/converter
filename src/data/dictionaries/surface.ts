@@ -1,0 +1,159 @@
+const surface = {
+  mm2: {
+    label: "milimètre carré",
+    divisor: 0.00000001,
+    pluralize_all: true,
+  },
+  cm2: {
+    label: "centimètre carré",
+    divisor: 0.000001,
+    pluralize_all: true,
+  },
+  sqft: {
+    label: "pied carré",
+    divisor: 0.0009290304,
+    pluralize_all: true,
+  },
+  m2: {
+    label: "mètre carré",
+    divisor: 0.01,
+    pluralize_all: true,
+  },
+  a: {
+    label: "are",
+    divisor: 1,
+  },
+  ha: {
+    label: "hectare",
+    divisor: 100,
+  },
+  acre: {
+    label: "acre",
+    divisor: 40.4686,
+  },
+  km2: {
+    label: "kilomètre carré",
+    divisor: 10000,
+    pluralize_all: true,
+  },
+  a5: {
+    label: "feuille A5",
+    divisor: 0.00003108,
+  },
+  a4: {
+    label: "feuille A4",
+    divisor: 0.0006237,
+  },
+  a3: {
+    label: "feuille A3",
+    divisor: 0.0012474,
+  },
+  ping_pong_table: {
+    info: 'surface officielle, selon les <a href="https://documents.ittf.sport/sites/default/files/public/2021-04/2020ITTFHandbook.pdf" target="_blank">règles de l\'ITTF</a> (en anglais, page 34 du document)',
+    label: "table de ping-pong",
+    divisor: 0.041785,
+    not_unit: true,
+  },
+  tennis_field: {
+    info: 'selon les données de la <a href="https://fft-site.cdn.prismic.io/fft-site/ZtGuhEaF0TcGJlLv_R%C3%A8glesdujeu2025.pdf" target="_blank">fédération française de tennis</a>, page 12 du document.',
+    label: "terrain de tennis",
+    divisor: 2.607569,
+    not_unit: true,
+  },
+  basket_field: {
+    info: 'selon les données de la <a href="https://api.ffbb.com/assets/313f308a-7b3b-4116-b969-882eb9c1d3ea" target="_blank">fédération française de basket-ball</a>, page 7 du document.',
+    label: "terrain de basket",
+    divisor: 4.36626,
+    not_unit: true,
+  },
+  handball_field: {
+    info: 'selon les données de la <a href="https://www.calameo.com/ffhandball/read/0072751114d0768227674?page=3a" target="_blank">fédération française de handball</a>, page 9 du document.',
+    label: "terrain de handball",
+    divisor: 8,
+    not_unit: true,
+  },
+  rugby_field: {
+    info: 'selon les données de la <a href="https://formation.ffr.fr/sites/default/files/documents/doc/2017-01/Les%20r%C3%A8gles%20du%20jeu%202017%20%28rugby%20%C3%A0%20XV%29%20_0.pdf" target="_blank">fédération française de rugby, page 30 du document</a>.',
+    label: "terrain de rugby",
+    divisor: 67.275,
+    not_unit: true,
+  },
+  football_field: {
+    info: 'selon les données de la <a href="https://publications.fifa.com/fr/football-stadiums-guidelines/technical-guideline/stadium-guidelines/pitch-dimensions-and-surrounding-areas/" target="_blank">fédération internationale de football</a>.',
+    label: "terrain de football",
+    divisor: 60.9,
+    not_unit: true,
+  },
+  wind_turbine: {
+    info: "emprise totale pour une éolienne terrestre de 2MW",
+    label: "éolienne",
+    divisor: 20,
+    pluralize: false,
+    not_unit: true,
+  },
+  notre_dame_de_paris: {
+    info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame_de_Paris" target="_blank">Wikipedia</a>.',
+    label: "Notre-Dame de Paris",
+    divisor: 55,
+    pluralize: false,
+    not_unit: true,
+  },
+  republic_place: {
+    info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Place_de_la_R%C3%A9publique_(Paris)" target="_blank">Wikipedia</a>.',
+    label: "Place de la République (Paris)",
+    divisor: 336.77,
+    pluralize: false,
+    not_unit: true,
+  },
+  kheops_pyramid: {
+    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Pyramide_de_Kh%C3%A9ops" target="_blank">Wikipedia</a>.',
+    label: "pyramide de Khéops",
+    divisor: 530.3809,
+    pluralize: false,
+    not_unit: true,
+  },
+  versailles: {
+    info: 'superficie totale du site, selon les données de <a href="https://fr.wikipedia.org/wiki/Parc_de_Versailles" target="_blank">Wikipedia</a>.',
+    label: "Château de Versailles",
+    divisor: 107000,
+    pluralize: false,
+    not_unit: true,
+  },
+  paris: {
+    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Paris" target="_blank">Wikipedia</a>.',
+    label: "Paris",
+    divisor: 1054000,
+    pluralize: false,
+    not_unit: true,
+  },
+  idf: {
+    info: 'superficie totale, selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%8Ele-de-France" target="_blank">Wikipedia</a>.',
+    label: "Région ïle-de-France",
+    divisor: 120110000,
+    pluralize: false,
+    not_unit: true,
+  },
+  france: {
+    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Superficie_de_la_France" target="_blank">Wikipedia</a>.',
+    label: "France métropolitaine",
+    divisor: 549134,
+    pluralize: false,
+    not_unit: true,
+  },
+  africa: {
+    info: 'superficie totale du continent, selon les données de <a href="https://fr.wikipedia.org/wiki/Afrique" target="_blank">Wikipedia</a>.',
+    label: "continent africain",
+    divisor: 304158730000,
+    pluralize: false,
+    not_unit: true,
+  },
+  earth_lands: {
+    info: 'superficie totale des terres émergées de la planète, selon les données de <a href="https://fr.wikipedia.org/wiki/Terre_%C3%A9merg%C3%A9e" target="_blank">Wikipedia</a>.',
+    label: "terres émergées sur Terre",
+    divisor: 1480000000000,
+    pluralize: false,
+    not_unit: true,
+  },
+}
+
+export default surface

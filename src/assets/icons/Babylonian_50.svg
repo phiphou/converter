@@ -1,43 +1,9 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Creator: fig2dev Version 3.2 Patchlevel 5-alpha5 -->
-<!-- CreationDate: Thu Aug 31 12:06:15 2006 -->
-<!-- Magnification: 1.050 -->
-<svg xmlns="http://www.w3.org/2000/svg" width="1.6in" height="1.5in" viewBox="-95 -46 1891 1749">
-<g style="stroke:currentcolor;stroke-width:63;
-stroke-linejoin:bevel; stroke-linecap:butt;
-fill:currentcolor;
-">
-<polyline points="1228,755
-740,1099
-1419,1609
-966,1269
-966,929
-"/>
-<polyline points="387,862
-29,1146
-708,1656
-256,1316
-256,976
-"/>
-<polyline points="768,489
-257,837
-674,1150
-483,1007
-483,667
-"/>
-<polyline points="1228,0
-599,473
-1016,786
-826,643
-826,303
-"/>
-<polyline points="1714,100
-1035,611
-1714,1121
-1261,781
-1261,440
-"/>
-</g>
+<svg width="1.6in" height="1.5in" viewBox="-95 -46 1891 1749" xmlns="http://www.w3.org/2000/svg">
+    <g fill="currentcolor" stroke="currentcolor" stroke-linejoin="bevel" stroke-width="63">
+        <polyline points="1228 755 740 1099 1419 1609 966 1269 966 929" />
+        <polyline points="387 862 29 1146 708 1656 256 1316 256 976" />
+        <polyline points="768 489 257 837 674 1150 483 1007 483 667" />
+        <polyline points="1228 0 599 473 1016 786 826 643 826 303" />
+        <polyline points="1714 100 1035 611 1714 1121 1261 781 1261 440" />
+    </g>
 </svg>

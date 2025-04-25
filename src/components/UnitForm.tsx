@@ -6,37 +6,6 @@ import SwitchUnitButton from "./SwitchUnitButton"
 import InfosBlock from "./InfosBlock"
 import SwitchButton from "./SwitchButton"
 
-// async function calculateConversionResult(
-//   value: number,
-//   unitFrom: string,
-//   unitTo: string,
-//   dictionary: Record<string, Unit>,
-//   list: Record<string, Unit>,
-//   secondaryUnit: string,
-//   hasList: boolean,
-//   switched: boolean,
-//   precision: number
-// ): Promise<number | null> {
-//   const fromDivisor = dictionary[unitFrom]?.divisor || 1
-//   const toDivisor = dictionary[unitTo]?.divisor || 1
-
-//   if (unitFrom === unitTo) return value
-
-//   if (dictionary[unitFrom]?.converter && dictionary[unitTo]?.converter) {
-//     return await dictionary[unitFrom].converter(value, dictionary[unitFrom], dictionary[unitTo], precision)
-//   }
-
-//   if (hasList) {
-//     const secondaryDivisor = list[secondaryUnit]?.divisor || 1
-//     if (toDivisor === fromDivisor) {
-//       return !switched ? value / secondaryDivisor : (value * secondaryDivisor) / toDivisor
-//     }
-//     return (value * secondaryDivisor) / toDivisor
-//   }
-
-//   return (value * fromDivisor) / toDivisor
-// }
-
 function formatResult(
   result: number | string | null,
   dictionary: Record<string, Unit>,
@@ -97,10 +66,10 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
     if (dic["list"] && !dic["of"]) {
       const new_dictionnary = Object.entries(dic["list"]).reduce(
         (acc, [, value]) => {
-          const label = value.curr_code.toUpperCase()
+          const label = value.code.toUpperCase()
           acc[label] = {
             label,
-            code: value.curr_code,
+            code: value.code,
             converter: typeof dic["converter"] === "function" ? dic["converter"] : undefined,
             divisor: 1,
             pluralize: true,
