@@ -73,9 +73,10 @@ const radioactivity2 = {
     divisor: 20,
     not_unit: true,
   },
-  month__astronaut: {
+  month_astronaut: {
+    info: 'selon les données du <a href=" https://www.forumnucleaire.be/topics/le-rayonnement-radioactif-dans-lespace" target="_blank">Forum Nucléaire Belge</a>.',
     label: "astronaute dans l'ISS par mois",
-    divisor: 25,
+    divisor: 21.67,
     not_unit: true,
     pluralize: false,
   },

@@ -260,7 +260,8 @@ const length = {
     not_unit: true,
     pluralize: true,
   },
-  alpha_centauri: {
+  proxima_centauri: {
+    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Proxima_Centauri" target="_blank">Wikipedia</a>.',
     label: "Soleil - Proxima du Centaure",
     divisor: 9453939595488 * 2.444,
     not_unit: true,

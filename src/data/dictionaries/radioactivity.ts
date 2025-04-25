@@ -16,6 +16,7 @@ const radioactivity = {
     pluralize: false,
   },
   banana: {
+    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Dose_%C3%A9quivalente_en_banane" target="_blank">Wikipedia</a>.',
     label: "banane",
     divisor: 19.5,
     not_unit: true,

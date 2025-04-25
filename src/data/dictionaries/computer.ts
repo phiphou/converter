@@ -1,7 +1,8 @@
 const computer = {
   infos: {
     label:
-      "Bien qu'il existe des <a href='https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire' target='_blank'>préfixes binaires</a>, spécialement conçus pour l'informatique, ceux-ci ne sont presque pas utilisés, c'est pourquoi les préfixes montrés ici sont les préfixes usuels (industrie, informaticiens, presse spécialisée, etc.).",
+      "Bien qu'il existe des <a href='https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire' target='_blank'>préfixes binaires</a>, spécialement conçus pour l'informatique, ceux-ci ne sont presque pas utilisés, c'est pourquoi les préfixes montrés ici sont les préfixes usuels (industrie, informaticiens, presse spécialisée, etc.).<br><br>Notez aussi que lorsqu'un fabricant indique 1To, par exemple pour un disque dur, cela signifie en réalité que le disque a une capacité de 1000 milliards d'octet, et non pas 1099.51 milliards d'octet. Pour cette raison, l'ordinateur sur lequel il est installé indiquera une capacité de 931Go, et non pas 1To.",
+
     divisor: 999999999,
     pluralize: false,
   },
@@ -113,21 +114,32 @@ const computer = {
     divisor: 960 * 8 * 1024,
     pluralize: false,
   },
+  jpg_12Mpx: {
+    info: "moyenne sur 100 photos variées sur un Samsung Galaxy S23.",
+    label: "photo de 12MPx en JPG ",
+    divisor: 3.53 * 8 * 1024 * 1024,
+    pluralize: false,
+  },
+  heic_12Mpx: {
+    info: "moyenne sur 100 photos variées sur un Samsung Galaxy S23.",
+    label: "photo de 12MPx en HEIC",
+    divisor: 1.9 * 8 * 1024 * 1024,
+    pluralize: false,
+  },
   wikipedia_fr: {
     label: "Wikipedia en français sans image",
     divisor: 17.33 * 8 * 1024 * 1024 * 1024,
-    pluralize: false,
   },
   wikipedia_fr_images: {
     label: "Wikipedia en français avec images",
     divisor: 36.97 * 8 * 1024 * 1024 * 1024,
-    pluralize: false,
   },
   h265_4k_10Mbs: {
     label: "heure de vidéo 4k H265 10Mb/s",
     divisor: 4.5 * 8 * 1024 * 1024 * 1024,
   },
   s23_4k_488Mbs: {
+    info: "test réalisés sur un Samsung Galaxy S23.",
     label: "heure de vidéo 4k H265 60fps",
     divisor: 27.4219 * 8 * 1024 * 1024 * 1024,
   },

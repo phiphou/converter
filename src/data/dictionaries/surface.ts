@@ -38,18 +38,24 @@ const surface = {
   },
   a5: {
     label: "feuille A5",
+    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Format_de_papier" target="_blank">Wikipedia</a>/',
     divisor: 0.00003108,
+    not_unit: true,
   },
   a4: {
+    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/A4_(format)" target="_blank">Wikipedia</a>/',
     label: "feuille A4",
     divisor: 0.0006237,
+    not_unit: true,
   },
   a3: {
+    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Format_de_papier" target="_blank">Wikipedia</a>/',
     label: "feuille A3",
     divisor: 0.0012474,
+    not_unit: true,
   },
   ping_pong_table: {
-    info: 'surface officielle, selon les <a href="https://documents.ittf.sport/sites/default/files/public/2021-04/2020ITTFHandbook.pdf" target="_blank">règles de l\'ITTF</a> (en anglais, page 34 du document)',
+    info: 'surface officielle, selon les <a href="https://documents.ittf.sport/sites/default/files/public/2021-04/2020ITTFHandbook.pdf" target="_blank">règles de l\'ITTF</a> (en anglais, page 34 du document)/',
     label: "table de ping-pong",
     divisor: 0.041785,
     not_unit: true,

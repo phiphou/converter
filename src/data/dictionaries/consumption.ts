@@ -31,11 +31,13 @@ const consumption = {
     not_unit: true,
   },
   dishwasher: {
-    label: "cycle de lave-vaisselle.",
-    divisor: 1150,
+    info: 'selon les données de <a href=" https://particuliers.engie.fr/economies-energie/conseils-economies-energie/conseils-calcul-consommation/consommation-electrique-lave-vaisselle.html" target="_blank">Engie</a>.',
+    label: "cycle de lave-vaisselle classe C.",
+    divisor: 750,
     not_unit: true,
   },
   washing_machine: {
+    info: 'selon les données de <a href="https://particuliers.engie.fr/economies-energie/conseils-economies-energie/conseils-calcul-consommation/comment-calculer-la-consommation-de-votre-lave-linge.html" target="_blank">Engie</a>.',
     label: "cycle de lave-linge classe B.",
     divisor: 520,
     not_unit: true,
