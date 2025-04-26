@@ -1,6 +1,5 @@
 import fs from "fs"
 import path from "path"
-import {exit} from "process"
 import {fileURLToPath} from "url"
 
 const __filename = fileURLToPath(import.meta.url)
@@ -9,11 +8,12 @@ const __dirname = path.dirname(__filename)
 const dataDir = path.resolve(__dirname, "../src/data/dictionaries")
 
 try {
-  // Lire tous les fichiers dans le dossier "../src/data/"
   const files = fs.readdirSync(dataDir).filter((file) => file.endsWith(".ts"))
 
   let totalUnits = 0
   let countWithoutInfo = 0
+  let countNeedInfo = 0
+  let countTrueUnits = 0
   let unitsWithoutInfo = []
 
   for (const file of files) {
@@ -54,10 +54,13 @@ try {
       }
 
       if (units.hasOwnProperty("not_unit")) {
+        countNeedInfo++
         if (!units.hasOwnProperty("info")) {
           countWithoutInfo++
           unitsWithoutInfo.push(` ${file.replace(".ts", "")}.${category}`)
         }
+      } else {
+        countTrueUnits++
       }
     }
   }
@@ -65,8 +68,10 @@ try {
 
   console.log(`\n Units : ${totalUnits}`)
   console.log(` Units without "info" field : ${countWithoutInfo}`)
+  console.log(` True units : ${countTrueUnits}`)
+  console.log(` Units that need infos : ${countNeedInfo}`)
   console.log(` % of missing "info" field : ${percentageMissing}%\n`)
-  console.log(`\n Liste des unités sans "info" :\n\n${unitsWithoutInfo.join("\n")}\n\n`)
+  console.log(`\n Units without "info" info" :\n\n${unitsWithoutInfo.join("\n")}\n\n`)
 } catch (error) {
   console.error("Error :", error.message)
 }

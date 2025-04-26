@@ -29,6 +29,9 @@ export const categories = {
   duration: {
     label: "durée",
   },
+  lightning: {
+    label: "éclairement",
+  },
   energy: {
     label: "énergie",
   },

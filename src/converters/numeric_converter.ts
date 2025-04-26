@@ -28,33 +28,33 @@ function integerToRoman(number: string): string {
   return roman
 }
 
-function romanToInteger(s: string): string {
-  const sym = {
-    I: 1,
-    V: 5,
-    X: 10,
-    L: 50,
-    C: 100,
-    D: 500,
-    M: 1000,
-  }
+// function romanToInteger(s: string): string {
+//   const sym = {
+//     I: 1,
+//     V: 5,
+//     X: 10,
+//     L: 50,
+//     C: 100,
+//     D: 500,
+//     M: 1000,
+//   }
 
-  let result = 0
+//   let result = 0
 
-  for (let i = 0; i < s.length; i++) {
-    const cur = sym[s[i] as keyof typeof sym]
-    const next = sym[s[i + 1] as keyof typeof sym]
+//   for (let i = 0; i < s.length; i++) {
+//     const cur = sym[s[i] as keyof typeof sym]
+//     const next = sym[s[i + 1] as keyof typeof sym]
 
-    if (cur < next) {
-      result += next - cur
-      i++
-    } else {
-      result += cur
-    }
-  }
+//     if (cur < next) {
+//       result += next - cur
+//       i++
+//     } else {
+//       result += cur
+//     }
+//   }
 
-  return result.toString()
-}
+//   return result.toString()
+// }
 
 function decimalToBinary(decimalNumber: string) {
   return parseInt(decimalNumber).toString(2)
@@ -68,13 +68,13 @@ function decimalToHexadecimal(decimalNumber: string) {
   return parseInt(decimalNumber).toString(16).toUpperCase()
 }
 
-function binaryToDecimal(binaryNumber: string) {
-  return parseInt(binaryNumber, 2).toString()
-}
+// function binaryToDecimal(binaryNumber: string) {
+//   return parseInt(binaryNumber, 2).toString()
+// }
 
-function binaryToHexadecimal(binaryNumber: string) {
-  return parseInt(binaryNumber, 16).toString()
-}
+// function binaryToHexadecimal(binaryNumber: string) {
+//   return parseInt(binaryNumber, 16).toString()
+// }
 
 function decimalToSexagesimal(decimalNumber: string) {
   const value = parseFloat(decimalNumber)
@@ -86,10 +86,10 @@ function decimalToSexagesimal(decimalNumber: string) {
   return `${hours}° ${minutes}' ${seconds}"`
 }
 
-function sexagesimalToDecimal(sexaStr: string): string {
-  const [hours, minutes, seconds] = sexaStr.split(":").map(Number)
-  return (hours + minutes / 60 + seconds / 3600).toString()
-}
+// function sexagesimalToDecimal(sexaStr: string): string {
+//   const [hours, minutes, seconds] = sexaStr.split(":").map(Number)
+//   return (hours + minutes / 60 + seconds / 3600).toString()
+// }
 
 const digitCipher = {
   "𓏺": 1,
@@ -153,13 +153,11 @@ const numeralDict = {
   "\u{1D2F3}": 19,
 }
 
-// Inversion : chiffre => glyphe
 const reverseDict: Record<number, string> = {}
 for (const [glyph, value] of Object.entries(numeralDict)) {
   reverseDict[value] = glyph
 }
 
-// Convertisseur nombre vers glyphes mayas
 function convertToMayaGlyphs(number: string) {
   const num: number = parseInt(number)
   if (num < 0) return ""
@@ -224,15 +222,15 @@ const conversionMap: Record<string, (v: string) => string> = {
   "décimal:octal": (v) => decimalToOctal(v),
   "décimal:hexadécimal": (v) => decimalToHexadecimal(v),
   "décimal:sexagésimal": (v) => decimalToSexagesimal(v),
-  "romain:décimal": (v) => romanToInteger(v),
-  "romain:binaire": (v) => decimalToBinary(romanToInteger(v)),
-  "romain:octal": (v) => decimalToOctal(romanToInteger(v)),
-  "romain:hexadécimal": (v) => decimalToBinary(romanToInteger(v)),
-  "binaire:décimal": (v) => binaryToDecimal(v),
-  "binaire:romain": (v) => integerToRoman(binaryToDecimal(v)),
-  "binaire:octal": (v) => decimalToOctal(binaryToDecimal(v)),
-  "binaire:hexadécimal": (v) => binaryToHexadecimal(v),
-  "sexagésimal:décimal": (v) => sexagesimalToDecimal(v.toString()),
+  // "romain:décimal": (v) => romanToInteger(v),
+  // "romain:binaire": (v) => decimalToBinary(romanToInteger(v)),
+  // "romain:octal": (v) => decimalToOctal(romanToInteger(v)),
+  // "romain:hexadécimal": (v) => decimalToBinary(romanToInteger(v)),
+  // "binaire:décimal": (v) => binaryToDecimal(v),
+  // "binaire:romain": (v) => integerToRoman(binaryToDecimal(v)),
+  // "binaire:octal": (v) => decimalToOctal(binaryToDecimal(v)),
+  // "binaire:hexadécimal": (v) => binaryToHexadecimal(v),
+  // "sexagésimal:décimal": (v) => sexagesimalToDecimal(v.toString()),
 }
 
 export const numeric_converter = (value: string, unitFrom: Unit, unitTo: Unit): string => {
@@ -242,7 +240,8 @@ export const numeric_converter = (value: string, unitFrom: Unit, unitTo: Unit): 
 
   const conversionFunction = conversionMap[key]
 
-  if (!conversionFunction) throw new Error(`Unsupported conversion from ${unitFrom.label} to ${unitTo.label}`)
+  if (!conversionFunction)
+    throw new Error(`La convertion de ${unitFrom.label} vers ${unitTo.label} n'est pas supportée.`)
 
   return conversionFunction(value)
 }

@@ -5,6 +5,7 @@ import UnitSelect from "./UnitSelect"
 import SwitchUnitButton from "./SwitchUnitButton"
 import InfosBlock from "./InfosBlock"
 import SwitchButton from "./SwitchButton"
+import ErrorBlock from "./ErrorBlock"
 
 function formatResult(
   result: number | string | null,
@@ -33,7 +34,6 @@ function formatValueDisplay(
   list: Record<string, Unit>,
   secondaryUnit: string
 ): string {
-  if (dictionary["input"]) return "bob"
   const formattedValue = value.toLocaleString("fr-FR", {minimumFractionDigits: 0}).replace(",", ".")
   const pluralizedLabel = pluralize(parseFloat(rawValue), dictionary[unitFrom]?.label, dictionary[unitFrom]) || ""
   const ofLabel = hasList && dictionary["of"] ? dictionary["of"].label + "" : ""
@@ -60,6 +60,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
   const [switched, setSwiched] = useState<boolean>(false)
   const [singleResult, setSingleResult] = useState<boolean>(false)
   const [currentDate, SetCurrentDate] = useState<Date>(new Date())
+  const [error, SetError] = useState<Error | null>(null)
 
   useEffect(() => {
     let firstUnit = ""
@@ -127,6 +128,8 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
 
   useEffect(() => {
     async function calculateResult() {
+      setResult(null)
+      SetError(null)
       if (unitFrom && unitTo) {
         const fromDivisor = dictionary[unitFrom].divisor
         const toDivisor = dictionary[unitTo].divisor
@@ -135,21 +138,29 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         if (unitFrom === unitTo && !dictionary["input"]) {
           calculatedResult = value
         } else if (dictionary["input"] && dictionary[unitTo].converter) {
-          calculatedResult = await dictionary[unitTo].converter(
-            currentDate.getTime(),
-            dictionary[unitTo],
-            dictionary[unitTo],
-            precision
-          )
+          try {
+            calculatedResult = await dictionary[unitTo].converter(
+              currentDate.getTime(),
+              dictionary[unitTo],
+              dictionary[unitTo],
+              precision
+            )
+          } catch (error) {
+            SetError(error as Error)
+          }
 
           setResult(calculatedResult)
         } else if (dictionary[unitFrom].converter && dictionary[unitFrom].converter === dictionary[unitTo].converter) {
-          calculatedResult = await dictionary[unitTo].converter(
-            value,
-            dictionary[unitFrom],
-            dictionary[unitTo],
-            precision
-          )
+          try {
+            calculatedResult = await dictionary[unitTo].converter(
+              value,
+              dictionary[unitFrom],
+              dictionary[unitTo],
+              precision
+            )
+          } catch (error) {
+            SetError(error as Error)
+          }
         } else if (hasList) {
           if (toDivisor === fromDivisor) {
             if (!switched && !dictionary["noSwitch"]) {
@@ -169,7 +180,6 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         } else {
           calculatedResult = (value * fromDivisor) / toDivisor
         }
-
         setResult(calculatedResult)
       } else {
         setResult(null)
@@ -274,7 +284,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         </div>
       )}
       <div className="text-gray-text-white mx-auto mt-2 mb-3 flex items-center justify-center text-center text-lg font-medium text-black dark:text-white">
-        {!dictionary["input"] && (
+        {!dictionary["input"] && !error && (
           <span
             dangerouslySetInnerHTML={{
               __html: formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit),
@@ -291,8 +301,8 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             }).format(currentDate)}
           </span>
         )}{" "}
-        <span className="mx-2">=</span>
-        {!dictionary["input"] && (
+        {!dictionary["input"] && !error && <span className="mx-2">=</span>}
+        {!dictionary["input"] && !error && (
           <div
             className="inline-block"
             dangerouslySetInnerHTML={{
@@ -315,36 +325,46 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       </div>
 
       <div className="text-gray-text-white mx-auto mb-3 text-center text-lg font-medium text-black dark:text-white">
-        {!dictionary["input"] && result !== null && dictionary[unitFrom] && dictionary[unitTo] && !singleResult && (
-          <>
-            {formatValueDisplay(value, rawValue, dictionary, unitTo, hasList, list, secondaryUnit)}
-            {(parseFloat(rawValue) >= 2 ? " valent " : " vaut ") + (result > 1 ? "1/" : "")}
-            {(result > 1
-              ? scientific
-                ? scientific_notation(result, precision)
-                : result
-              : scientific
-                ? scientific_notation(1 / result, precision)
-                : 1 / result
-            )
-              .toLocaleString("fr-FR", {maximumFractionDigits: precision})
-              .replace(",", ".")}
-            {result > 1 ? "ème de " + dictionary[unitFrom].label : " fois " + dictionary[unitFrom].label}
-          </>
-        )}
+        {!dictionary["input"] &&
+          !error &&
+          result !== null &&
+          dictionary[unitFrom] &&
+          dictionary[unitTo] &&
+          !singleResult && (
+            <>
+              {formatValueDisplay(value, rawValue, dictionary, unitTo, hasList, list, secondaryUnit)}
+              {(parseFloat(rawValue) >= 2 ? " valent " : " vaut ") + (result > 1 ? "1/" : "")}
+              {(result > 1
+                ? scientific
+                  ? scientific_notation(result, precision)
+                  : result
+                : scientific
+                  ? scientific_notation(1 / result, precision)
+                  : 1 / result
+              )
+                .toLocaleString("fr-FR", {maximumFractionDigits: precision})
+                .replace(",", ".")}
+              {result > 1 ? "ème de " + dictionary[unitFrom].label : " fois " + dictionary[unitFrom].label}
+            </>
+          )}
       </div>
 
       <div className="text-gray-text-white mx-auto mb-8 text-center text-lg font-medium text-black dark:text-white">
-        {!dictionary["input"] && result !== null && dictionary[unitFrom] && dictionary[unitTo] && !singleResult && (
-          <>
-            {formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit)}
-            {parseFloat(rawValue) >= 2 ? " valent " : " vaut "}
-            {(result * 100).toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")}% de{" "}
-            {dictionary[unitTo].label}
-          </>
-        )}
+        {!dictionary["input"] &&
+          !error &&
+          result !== null &&
+          dictionary[unitFrom] &&
+          dictionary[unitTo] &&
+          !singleResult && (
+            <>
+              {formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit)}
+              {parseFloat(rawValue) >= 2 ? " valent " : " vaut "}
+              {(result * 100).toLocaleString("fr-FR", {maximumFractionDigits: precision}).replace(",", ".")}% de{" "}
+              {dictionary[unitTo].label}
+            </>
+          )}
       </div>
-
+      {error && <ErrorBlock info={error.message} />}
       {dictionary[unitFrom]?.info && <InfosBlock label={dictionary[unitFrom].label} info={dictionary[unitFrom].info} />}
       {dictionary[unitTo]?.info && dictionary[unitTo]?.info !== dictionary[unitFrom]?.info && (
         <InfosBlock label={dictionary[unitTo].label} info={dictionary[unitTo].info} />

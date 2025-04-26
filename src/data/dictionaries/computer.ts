@@ -105,47 +105,58 @@ const computer = {
     divisor: 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
   },
   war_peace: {
-    label: "Guerre et Paix, ePub",
+    info: "le livre au format ePub (pour liseuses)",
+    label: "Guerre et Paix",
     divisor: 1557 * 8 * 1024,
     pluralize: false,
+    not_unit: true,
   },
   mp3_minute: {
+    info: "avec un encodage en 128kb/s",
     label: "minute de musique en MP3",
     divisor: 960 * 8 * 1024,
     pluralize: false,
+    not_unit: true,
   },
   jpg_12Mpx: {
-    info: "moyenne sur 100 photos variées sur un Samsung Galaxy S23.",
-    label: "photo de 12MPx en JPG ",
+    info: "moyenne sur 100 photos variées en JPEG sur un Samsung Galaxy S23.",
+    label: "photo de 12MPx en JPEG ",
     divisor: 3.53 * 8 * 1024 * 1024,
     pluralize: false,
+    not_unit: true,
   },
   heic_12Mpx: {
-    info: "moyenne sur 100 photos variées sur un Samsung Galaxy S23.",
+    info: "moyenne sur 100 photos variées en HEIC sur un Samsung Galaxy S23.",
     label: "photo de 12MPx en HEIC",
     divisor: 1.9 * 8 * 1024 * 1024,
     pluralize: false,
+    not_unit: true,
   },
   wikipedia_fr: {
     label: "Wikipedia en français sans image",
     divisor: 17.33 * 8 * 1024 * 1024 * 1024,
+    not_unit: true,
   },
   wikipedia_fr_images: {
     label: "Wikipedia en français avec images",
     divisor: 36.97 * 8 * 1024 * 1024 * 1024,
+    not_unit: true,
   },
   h265_4k_10Mbs: {
     label: "heure de vidéo 4k H265 10Mb/s",
     divisor: 4.5 * 8 * 1024 * 1024 * 1024,
+    not_unit: true,
   },
   s23_4k_488Mbs: {
     info: "test réalisés sur un Samsung Galaxy S23.",
     label: "heure de vidéo 4k H265 60fps",
     divisor: 27.4219 * 8 * 1024 * 1024 * 1024,
+    not_unit: true,
   },
   prores_422_hq_4k_1768Mbs: {
     label: "heure de vidéo 4k ProRes 60fps 422 HQ",
     divisor: 798 * 8 * 1024 * 1024 * 1024,
+    not_unit: true,
   },
 }
 

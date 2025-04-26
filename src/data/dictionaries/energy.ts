@@ -118,52 +118,61 @@ const energy = {
     label: "bombe A Hiroshima",
     divisor: 4184000000000 * 15,
     pluralize: false,
+    not_unit: true,
   },
   Nagasaki: {
     info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent_en_TNT#Exemples" target="_blank">Wikipedia</a>.',
     label: "bombe A Nagasaki",
     divisor: 4184000000000 * 22,
     pluralize: false,
+    not_unit: true,
   },
   Tsar_Bomba: {
     info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent_en_TNT#Exemples" target="_blank">Wikipedia</a>.',
     label: "bombe H Tsar Bomba",
     divisor: 4184000000000000 * 50,
     pluralize: false,
+    not_unit: true,
   },
-  bullet_22l: {
+  bullet_22lr: {
     info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_d%27%C3%A9nergie" target="_blank">Wikipedia</a>.',
     label: "balle .22 Long Rifle",
     divisor: 142,
     pluralize: false,
+    not_unit: true,
   },
   LR06: {
     info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_d%27%C3%A9nergie" target="_blank">Wikipedia</a>.',
     label: "pile LR06-AA",
     divisor: 8640,
     pluralize: false,
+    not_unit: true,
   },
   bullet_50BMG: {
     info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/12,7_%C3%97_99_mm_OTAN" target="_blank">Wikipedia</a>.',
     label: "balle .50 BMG",
     divisor: 19000,
     pluralize: false,
+    not_unit: true,
   },
   potatoes_300g: {
     info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_d%27%C3%A9nergie" target="_blank">Wikipedia</a>.',
     label: "300g de pomme de terre",
     divisor: 1000000,
+    not_unit: true,
   },
   oil_liter: {
     info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Essence_(hydrocarbure)" target="_blank">Wikipedia</a>.',
     label: "litre d'essence",
     divisor: 33.6 * 1000000,
     pluralize: false,
+    not_unit: true,
   },
   sun_1s: {
     info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_d%27%C3%A9nergie" target="_blank">Wikipedia</a>.',
     label: "Soleil en une seconde",
     divisor: 3.827e26,
+    not_unit: true,
   },
 }
 

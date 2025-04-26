@@ -1,10 +1,1 @@
-<svg width="1.6in" height="1.5in" viewBox="1888 898 1891 1793" xmlns="http://www.w3.org/2000/svg">
-    <g fill="currentcolor" stroke="currentcolor" stroke-linejoin="bevel" stroke-width="63">
-        <polyline points="2551 944 2834 1228 3118 944" />
-        <polyline points="1984 944 2267 1228 2551 944" />
-        <polyline points="3118 944 3401 1228 3685 944" />
-        <polyline points="1984 1228 2267 1511 2267 2645 2267 2645 2267 1511 2551 1228" />
-        <polyline points="2551 1228 2834 1511 2834 2645 2834 2645 2834 1511 3118 1228" />
-        <polyline points="3118 1228 3401 1511 3401 2645 3401 2645 3401 1511 3685 1228" />
-    </g>
-</svg>
+<svg width="1.6in" height="144" viewBox="1888 898 1891 1793" xmlns="http://www.w3.org/2000/svg"><g fill="currentcolor" stroke="currentcolor" stroke-linejoin="bevel" stroke-width="63"><path d="m2551 944 283 284 284-284M1984 944l283 284 284-284M3118 944l283 284 284-284M1984 1228l283 283v1134-1134l284-283M2551 1228l283 283v1134-1134l284-283M3118 1228l283 283v1134-1134l284-283"/></g></svg>

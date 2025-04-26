@@ -1,7 +1,1 @@
-<svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="#fa0" stroke-linejoin="round" stroke-width="2.4">
-        <circle cx="12" cy="12" r="9" />
-        <rect x="12" y="8" width=".01" height=".01" />
-        <path d="m12 12v6" />
-    </g>
-</svg>
+<svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="#fa0" stroke-linejoin="round" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01v.01H12zM12 12v6"/></g></svg>

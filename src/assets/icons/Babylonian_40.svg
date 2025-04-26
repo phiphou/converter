@@ -1,8 +1,1 @@
-<svg width="1.6in" height="1.5in" viewBox="-1 -46 1891 1749" xmlns="http://www.w3.org/2000/svg">
-    <g fill="currentcolor" stroke="currentcolor" stroke-linejoin="bevel" stroke-width="63">
-        <polyline points="1702 588 1023 1099 1702 1609 1250 1269 1250 929" />
-        <polyline points="670 862 312 1146 992 1656 539 1316 539 976" />
-        <polyline points="1051 489 540 837 957 1150 767 1007 767 667" />
-        <polyline points="1511 0 882 473 1299 786 1109 643 1109 303" />
-    </g>
-</svg>
+<svg width="1.6in" height="144" viewBox="-1 -46 1891 1749" xmlns="http://www.w3.org/2000/svg"><g fill="currentcolor" stroke="currentcolor" stroke-linejoin="bevel" stroke-width="63"><path d="m1702 588-679 511 679 510-452-340V929M670 862l-358 284 680 510-453-340V976"/><path d="M1051 489 540 837l417 313-190-143V667"/><path d="M1511 0 882 473l417 313-190-143V303"/></g></svg>

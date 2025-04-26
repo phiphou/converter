@@ -22,6 +22,7 @@ const radioactivity2 = {
     divisor: 0.01,
   },
   banana: {
+    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Dose_%C3%A9quivalente_en_banane" target="_blank">Wikipedia</a>.',
     label: "banane par jour",
     divisor: (6.2 / 1000000000) * 365 * 19.2 * 1000,
     not_unit: true,

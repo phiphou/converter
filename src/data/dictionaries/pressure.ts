@@ -66,18 +66,21 @@ const pressure = {
     label: "100m sous l'eau",
     divisor: 1000000,
     pluralize: false,
+    not_unit: true,
   },
   earth: {
     info: 'pression à l\'intérieur au de la Terre (<a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_de_pression" target="_blank">source</a>).',
     label: "centre de la Terre",
     divisor: 380000000000,
     pluralize: false,
+    not_unit: true,
   },
   sun: {
     info: 'pression à l\'intérieur du noyeau du Soleil (<a href="https://fr.wikipedia.org/wiki/Ordres_de_grandeur_de_pression" target="_blank">source</a>).',
     label: "cœur du Soleil",
     divisor: 35000000000000000,
     pluralize: false,
+    not_unit: true,
   },
 }
 
