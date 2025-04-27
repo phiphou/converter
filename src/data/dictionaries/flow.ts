@@ -50,8 +50,9 @@ const flow = {
     not_unit: true,
   },
   shower: {
+    info: "débit moyen, selon les données de <a href='https://www.manomano.fr/conseil/comment-choisir-son-pommeau-de-douche-2945' target='blank'>Manomano</a>.",
     label: "douche",
-    divisor: 20 / 60 / 1000,
+    divisor: 15 / 60 / 1000,
     not_unit: true,
   },
   fire_hose: {

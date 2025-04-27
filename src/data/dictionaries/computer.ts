@@ -133,13 +133,9 @@ const computer = {
     not_unit: true,
   },
   wikipedia_fr: {
+    info: "selon les données de <a href=' https://dumps.wikimedia.org/frwiki/latest/' target='blank'>Wikipedia</a>. Attention, ici c'est la taille du fichier non compressé (6.07Go en compressé).",
     label: "Wikipedia en français sans image",
-    divisor: 17.33 * 8 * 1024 * 1024 * 1024,
-    not_unit: true,
-  },
-  wikipedia_fr_images: {
-    label: "Wikipedia en français avec images",
-    divisor: 36.97 * 8 * 1024 * 1024 * 1024,
+    divisor: 27.4 * 8 * 1024 * 1024 * 1024,
     not_unit: true,
   },
   h265_4k_10Mbs: {

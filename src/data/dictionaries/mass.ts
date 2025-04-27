@@ -147,18 +147,21 @@ const mass = {
     not_unit: true,
   },
   grizzli_bear: {
+    info: 'poids moyen d\'un Grizzli mâle selon les données de <a href="https://fr.wikipedia.org/wiki/Grizzli" target="_blank">Wikipedia</a>.',
     label: "ours Grizzli",
-    divisor: 0.27,
+    divisor: 0.22,
     pluralize: false,
     not_unit: true,
   },
   polar_bear: {
-    label: "ours polaire",
-    divisor: 0.45,
+    info: 'poids moyen d\'un ours blanc mâle selon les données de <a href="https://fr.wikipedia.org/wiki/Ours_blanc" target="_blank">Wikipedia</a>.',
+    label: "ours blanc",
+    divisor: 0.5,
     pluralize: false,
     not_unit: true,
   },
   male_white_shark: {
+    info: 'poids moyen d\'un grand requin blanc mâle selon les données de <a href="https://fr.wikipedia.org/wiki/Grand_requin_blanc" target="_blank">Wikipedia</a>.',
     label: "requin blanc femelle",
     divisor: 1.325,
     not_unit: true,
@@ -170,6 +173,7 @@ const mass = {
     not_unit: true,
   },
   african_elephant: {
+    info: 'poids moyen d\'un éléphant d\'Afrique mâle selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89l%C3%A9phant_de_savane_d%27Afrique" target="_blank">Wikipedia</a>.',
     label: "éléphant d'Afrique mâle",
     divisor: 6,
     not_unit: true,

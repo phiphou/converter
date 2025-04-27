@@ -67,13 +67,14 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
     if (dic["list"] && !dic["of"]) {
       const new_dictionnary = Object.entries(dic["list"]).reduce(
         (acc, [, value]) => {
-          const label = value.code.toUpperCase()
+          const label = `${value.name_fr} (${value.code.toUpperCase()})`
           acc[label] = {
             label,
             code: value.code,
             converter: typeof dic["converter"] === "function" ? dic["converter"] : undefined,
             divisor: 1,
-            pluralize: true,
+            pluralize: false,
+            pluralize_all: true,
           }
           return acc
         },
