@@ -8,12 +8,12 @@ const radioactivity = {
   bq: {
     label: "Bequerel",
     divisor: 1,
-    pluralize: false,
+    pluralize: true,
   },
   cu: {
     label: "Curie",
     divisor: 37000000000,
-    pluralize: false,
+    pluralize: true,
   },
   sea_water: {
     info: 'selon les données du <a href=" https://www.cea.fr/comprendre/Pages/radioactivite/essentiel-sur-grandeur-unites-radioactivite.aspx" target="_blank">CEA</a>.',
@@ -24,28 +24,45 @@ const radioactivity = {
   },
   banana: {
     info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Dose_%C3%A9quivalente_en_banane" target="_blank">Wikipedia</a>.',
-    label: "banane",
+    label: "une banane",
     divisor: 19.5,
+    pluralize: true,
+    not_unit: true,
+  },
+  salad: {
+    info: 'selon les données de l\'<a href="https://expo-radioactivite.irsn.fr/thematiques/la-radioactivite-cest-quoi/la-radioactivite-dans-les-aliments/" target="_blank">IRSN/a>.',
+    label: "kg de salade",
+    divisor: 90,
+    pluralize: true,
+    not_unit: true,
+  },
+  chicken: {
+    info: 'selon les données de l\'<a href="https://expo-radioactivite.irsn.fr/thematiques/la-radioactivite-cest-quoi/la-radioactivite-dans-les-aliments/" target="_blank">IRSN/a>.',
+    label: "kg de viande de poulet",
+    divisor: 100,
+    pluralize: true,
     not_unit: true,
   },
   potatoes: {
-    info: 'selon les données du <a href=" https://www.cea.fr/comprendre/Pages/radioactivite/essentiel-sur-grandeur-unites-radioactivite.aspx" target="_blank">CEA</a>.',
+    info: 'selon les données du <a href="https://www.cea.fr/comprendre/Pages/radioactivite/essentiel-sur-grandeur-unites-radioactivite.aspx" target="_blank">CEA</a>.',
     label: "kg de pommes de terres",
     divisor: 150,
-    pluralize: false,
     not_unit: true,
+    pluralize: true,
   },
   white_bread: {
+    info: 'selon les données de <a href="https://laradioactivite.com/articles/au-quotidien/alimentation" target="_blank">laradioactivite.com</a>.',
     label: "kg de pain blanc",
     divisor: 546,
-    pluralize: false,
     not_unit: true,
+    pluralize: true,
   },
   thea: {
-    label: "kg de thé",
+    info: 'selon les données de <a href="https://laradioactivite.com/articles/au-quotidien/alimentation" target="_blank">laradioactivite.com</a>.',
+    label: "kg de feuilles de thé",
     divisor: 740,
-    pluralize: false,
     not_unit: true,
+    pluralize: true,
   },
 }
 

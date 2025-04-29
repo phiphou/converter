@@ -22,38 +22,43 @@ const radioactivity2 = {
     divisor: 0.01,
   },
   banana: {
-    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Dose_%C3%A9quivalente_en_banane" target="_blank">Wikipedia</a>.',
+    info: 'selon les données de l\'<a href="https://expo-radioactivite.irsn.fr/thematiques/la-radioactivite-cest-quoi/la-radioactivite-dans-les-aliments/" target="_blank">IRSN</a>.',
     label: "banane par jour",
     divisor: (6.2 / 1000000000) * 365 * 19.2 * 1000,
     not_unit: true,
   },
   cabbage: {
+    info: 'selon les données de l\'<a href="https://expo-radioactivite.irsn.fr/thematiques/la-radioactivite-cest-quoi/la-radioactivite-dans-les-aliments/" target="_blank">IRSN</a>.',
     label: "kg de chou par mois",
     divisor: (6.2 / 1000000000) * 150 * 12 * 1000,
     pluralize: false,
     not_unit: true,
   },
-  white_bread: {
+  wine_liter: {
+    info: 'selon les données de l\'<a href="https://expo-radioactivite.irsn.fr/thematiques/la-radioactivite-cest-quoi/la-radioactivite-dans-les-aliments/" target="_blank">IRSN</a>.',
     label: "litres de vin par semaine",
     divisor: (6.2 / 1000000000) * 35 * 12 * 1000,
     pluralize: false,
     not_unit: true,
   },
   fish: {
+    info: 'selon les données de l\'<a href="https://expo-radioactivite.irsn.fr/thematiques/la-radioactivite-cest-quoi/la-radioactivite-dans-les-aliments/" target="_blank">IRSN</a>.',
     label: "kg de poisson par mois",
     divisor: (1.2 / 1000000) * 12 * 1000,
     pluralize: false,
     not_unit: true,
   },
   thea: {
+    info: 'selon les données de <a href="https://laradioactivite.com/articles/au-quotidien/alimentation" target="_blank">laradioactivite.com</a>.',
     label: "kg de thé par an",
     divisor: (6.2 / 1000000000) * 740 * 1000,
     pluralize: false,
     not_unit: true,
   },
   mountain_1500: {
+    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Radioactivit%C3%A9" target="_blank">Wikipedia</a>.',
     label: "année en montagne à 1500m",
-    divisor: 0.8,
+    divisor: 0.561024,
     not_unit: true,
   },
   paris_newyork_AR: {

@@ -1,4 +1,8 @@
 const mass = {
+  nanogram: {
+    label: "nanogramme",
+    divisor: 0.000000000000001,
+  },
   microgram: {
     label: "microgramme",
     divisor: 0.000000000001,

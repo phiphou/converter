@@ -1,4 +1,8 @@
 const length = {
+  picom: {
+    label: "picomètre",
+    divisor: 0.000000000000001,
+  },
   nanom: {
     label: "nanomètre",
     divisor: 0.000000000001,
@@ -69,13 +73,14 @@ const length = {
     not_unit: true,
   },
   white_cell: {
-    info: 'diamètre moyenne selon les données de <a href="https://fr.wikipedia.org/wiki/Leucocyte" target="_blank">Wikipedia</a>.',
+    info: 'diamètre moyen selon les données de <a href="https://fr.wikipedia.org/wiki/Leucocyte" target="_blank">Wikipedia</a>.',
     label: "globule blanc",
     divisor: 0.000000012,
     pluralize_all: true,
     not_unit: true,
   },
   fine_sand: {
+    info: 'diamètre moyen selon les données de <a href="https://fr.wikipedia.org/wiki/Grosseur_de_grains" target="_blank">Wikipedia</a>.',
     label: "grain de sable fin",
     divisor: 0.000000188,
     not_unit: true,
