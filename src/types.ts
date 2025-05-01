@@ -11,4 +11,5 @@ export interface Unit {
   info?: string
   plural?: string
   noSwitch?: boolean
+  max?: number
 }

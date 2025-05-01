@@ -136,9 +136,10 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         const toDivisor = dictionary[unitTo].divisor
         let calculatedResult: number | null = null
 
-        if (unitFrom === unitTo && !dictionary["input"]) {
+        if (unitFrom === unitTo && !dictionary["input"] && !dictionary[unitTo].converter) {
           calculatedResult = value
         } else if (dictionary["input"] && dictionary[unitTo].converter) {
+          console.log("m")
           try {
             calculatedResult = await dictionary[unitTo].converter(
               currentDate.getTime(),
@@ -151,7 +152,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
           }
 
           setResult(calculatedResult)
-        } else if (dictionary[unitFrom].converter && dictionary[unitFrom].converter === dictionary[unitTo].converter) {
+        } else if (dictionary[unitTo].converter) {
           try {
             calculatedResult = await dictionary[unitTo].converter(
               value,
@@ -207,14 +208,25 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
               className="mr-1 block w-25 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               placeholder={label}
               value={rawValue}
+              max={dictionary[unitTo]?.max != undefined ? dictionary[unitTo]?.max : undefined}
               onKeyDown={(e) => {
                 if (e.key === "-") e.preventDefault()
               }}
               onChange={(e) => {
                 const inputValue = e.target.value.replace(",", ".")
-                setRawValue(inputValue)
                 const numericValue = parseFloat(inputValue)
-                if (!isNaN(numericValue)) setValue(numericValue)
+
+                if (
+                  !isNaN(numericValue) &&
+                  dictionary[unitTo]?.max !== undefined &&
+                  numericValue > dictionary[unitTo].max
+                ) {
+                  setRawValue(dictionary[unitTo].max.toString())
+                  setValue(dictionary[unitTo].max)
+                } else {
+                  setRawValue(inputValue)
+                  if (!isNaN(numericValue)) setValue(numericValue)
+                }
               }}
             />
           )}

@@ -1,3 +1,4 @@
+/* eslint-disable local/no-double-space-in-strings */
 import {Unit} from "../types"
 
 function integerToRoman(number: string): string {
@@ -213,6 +214,64 @@ function integerToBabylonian(number: string): string {
   return result.join("-")
 }
 
+const POINTS = [
+  "0,0 0,3",
+  "0,0 1,0",
+  "0,1 1,1",
+  "0,0 1,1",
+  "0,1 1,0",
+  "0,0 1,0 0,1",
+  "1,0 1,1",
+  "0,0 1,0 1,1",
+  "1,0 1,1 0,1",
+  "0,0 1,0 1,1 0,1",
+]
+
+const Digit = (value: number, magnitude: number) => {
+  const getTransform = () => {
+    switch (magnitude) {
+      case 1:
+        return "scale(-1, 1)"
+      case 2:
+        return "translate(0, 3) scale(1, -1)"
+      case 3:
+        return "translate(0, 3) scale(-1, -1)"
+      default:
+        return ""
+    }
+  }
+
+  return `<polyline  ${getTransform() != "" ? "transform='" + getTransform() + "'" : "transform"} points="${POINTS[value]}"></polyline>`
+}
+
+const getDigits = (number: number) => number.toString().split("").reverse()
+
+function decimalToCistercian(number: string): string {
+  const num = parseInt(number)
+  if (num < 0) return "Le nombre doit être positif."
+  if (num > 9999) return "Le nombre doit être inférieur à 10000."
+
+  let result = `<svg viewBox="-1.5 -1 3 5" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    polyline {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 0.2;
+      stroke-linecap: butt;
+      stroke-linejoin: round;
+    }
+  </style>`
+
+  result += `${Digit(0, 0)}`
+
+  getDigits(num).map((value, i) => {
+    result += `${Digit(parseInt(value), i)}`
+  })
+
+  result += `</svg>`
+  return result
+}
+
 const conversionMap: Record<string, (v: string) => string> = {
   "décimal:romain": (v) => integerToRoman(v),
   "décimal:égyptien": (v) => integerTohieroglyphs(v),
@@ -222,6 +281,7 @@ const conversionMap: Record<string, (v: string) => string> = {
   "décimal:octal": (v) => decimalToOctal(v),
   "décimal:hexadécimal": (v) => decimalToHexadecimal(v),
   "décimal:sexagésimal": (v) => decimalToSexagesimal(v),
+  "décimal:cistercien": (v) => decimalToCistercian(v),
   // "romain:décimal": (v) => romanToInteger(v),
   // "romain:binaire": (v) => decimalToBinary(romanToInteger(v)),
   // "romain:octal": (v) => decimalToOctal(romanToInteger(v)),

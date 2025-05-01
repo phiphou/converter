@@ -63,7 +63,7 @@ const length = {
   },
   ly: {
     label: "année lumière",
-    divisor: 9453939595488,
+    divisor: 299792.458 * 86400 * 365.25,
   },
   red_cell: {
     info: 'diamètre moyen selon les données de <a href="https://fr.wikipedia.org/wiki/%C3%89rythrocyte" target="_blank">Wikipedia</a>.',
@@ -268,7 +268,7 @@ const length = {
   proxima_centauri: {
     info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Proxima_Centauri" target="_blank">Wikipedia</a>.',
     label: "Soleil - Proxima du Centaure",
-    divisor: 9453939595488 * 2.444,
+    divisor: 299792.458 * 86400 * 365 * 4.244,
     not_unit: true,
     pluralize: true,
   },
