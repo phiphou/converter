@@ -12,7 +12,11 @@ Elle est disponible ici : [converter.phiphou.com](https://converter.phiphou.com)
 
 Lassé de voir des articles de presse confondre les unités entre elles ou bien des journalistes ne sachant convertir correctement une valeur, j'ai décidé de faire ce petit site.
 
+## Inspirations
+
 Présentant l'idée sur X, on m'a montré celui de @DrScratch ([theklem.github.io](https://theklem.github.io/)). J'ai décidé de m'en inspirer.
+
+j'ai également repris des choses de [Unit Juggler](https://www.unitjuggler.com/index-fr.html),et de ([dCode.fr](https://www.dcode.fr/fr)).  
 
 ## Contribuer
 
