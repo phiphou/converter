@@ -248,17 +248,17 @@ const getDigits = (number: number) => number.toString().split("").reverse()
 
 function decimalToCistercian(number: string): string {
   const num = parseInt(number)
-  if (num < 0) return "Le nombre doit être positif."
-  if (num > 9999) return "Le nombre doit être inférieur à 10000."
+  if (num < 0) return ""
+  if (num > 9999) return ""
 
   let result = `<svg viewBox="-1.5 -1 3 5" xmlns="http://www.w3.org/2000/svg">
   <style>
     polyline {
       fill: none;
       stroke: currentColor;
-      stroke-width: 0.2;
-      stroke-linecap: butt;
-      stroke-linejoin: round;
+      stroke-width: 0.25;
+      stroke-linecap: square;
+      stroke-linejoin: square;
     }
   </style>`
 
