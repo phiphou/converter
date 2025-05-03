@@ -1,5 +1,9 @@
 const astronomy = {
   custom: true,
+  infos: {
+    label:
+      "selon les données de Wikipedia (<a href='https://fr.wikipedia.org/wiki/Syst%C3%A8me_solaire' target='_blank'>planètes</a> et <a href='https://fr.wikipedia.org/wiki/Liste_d%27%C3%A9toiles_par_taille_d%C3%A9croissante' target='_blank'>étoiles</a>)",
+  },
   planets: {
     sun: {
       label: "Soleil",
@@ -13,7 +17,7 @@ const astronomy = {
     },
     venus: {
       label: "Vénus",
-      diameter: 108209500,
+      diameter: 12103.6,
       distance: 108209500,
     },
     earth: {
@@ -55,6 +59,36 @@ const astronomy = {
       label: "Proxima du Centaure",
       diameter: 107280,
       distance: 299792.458 * 86400 * 365 * 4.244,
+    },
+    // Sirius: {
+    //   label: "Sirius",
+    //   diameter: 1.7144 * (1392684 / 2),
+    //   distance: 299792.458 * 86400 * 365 * 8.601,
+    // },
+    Aldebaran: {
+      label: "Aldébaran",
+      diameter: 45.1 * (1392684 / 2),
+      distance: 299792.458 * 86400 * 365 * 66.6,
+    },
+    Betelgeuse: {
+      label: "Bételgeuse",
+      diameter: 1077.5 * (1392684 / 2),
+      distance: 299792.458 * 86400 * 365 * 643,
+    },
+    // Rigel: {
+    //   label: "Rigel",
+    //   diameter: 78.9 * (1392684 / 2),
+    //   distance: 299792.458 * 86400 * 365 * 863,
+    // },
+    UY_Scuti: {
+      label: "UY Scuti",
+      diameter: 1708 * (1392684 / 2),
+      distance: 299792.458 * 86400 * 365 * 5871,
+    },
+    Stephenson_2_18: {
+      label: "Stephenson 2-18",
+      diameter: 2150 * (1392684 / 2),
+      distance: 299792.458 * 86400 * 365 * 18700,
     },
   },
 }
