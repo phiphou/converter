@@ -5,6 +5,9 @@ export const categories = {
   acceleration: {
     label: "accelération",
   },
+  astronomy: {
+    label: "astronomie",
+  },
   electric_charge: {
     label: "charge électrique",
   },

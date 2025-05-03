@@ -3,6 +3,7 @@ import {categories} from "../data/categories"
 import UnitForm from "./UnitForm"
 import {Unit} from "../types"
 import spinner from "../assets/icons/spinner.svg"
+import Planets from "./Planets"
 
 function Form() {
   const [category, setCategory] = useState<keyof typeof categories | "">("")
@@ -53,7 +54,12 @@ function Form() {
               <img src={spinner} className="mx-auto h-25 w-25" />
             </div>
           )}
-          {!isLoading && selectedDictionary && (
+          {!isLoading && selectedDictionary && selectedDictionary["custom"] && (
+            <Suspense fallback={<div>Chargement</div>}>
+              <Planets dictionary={selectedDictionary} />
+            </Suspense>
+          )}
+          {!isLoading && selectedDictionary && !selectedDictionary["custom"] && (
             <Suspense fallback={<div>Chargement</div>}>
               <UnitForm
                 label={category.charAt(0).toUpperCase() + category.slice(1).replace("_2", " ")}

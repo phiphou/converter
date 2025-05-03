@@ -62,6 +62,7 @@ footer {
 @media (min-width: 800px) {
   footer {
     margin-top: 4px;
+    padding-bottom: 15px;
   }
 
   .vvv {
