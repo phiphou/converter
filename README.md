@@ -16,7 +16,7 @@ Lassé de voir des articles de presse confondre les unités entre elles ou bien 
 
 Présentant l'idée sur X, on m'a montré celui de @DrScratch ([theklem.github.io](https://theklem.github.io/)). J'ai décidé de m'en inspirer.
 
-j'ai également repris des choses de [UnitJuggler](https://www.unitjuggler.com/index-fr.html), de [dCode](https://www.dcode.fr/fr) et de [VOS4P](https://vos4o.oca.eu/).
+j'ai également repris des choses de [UnitJuggler](https://www.unitjuggler.com/index-fr.html), de [dCode](https://www.dcode.fr/fr) et de [VOS4O](https://vos4o.oca.eu/).
 
 ## Contribuer
 
