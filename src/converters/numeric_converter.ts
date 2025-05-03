@@ -184,6 +184,24 @@ function convertToMayaGlyphs(number: string) {
   )
 }
 
+function convertToKaktovik_digit(number: string) {
+  const num: number = parseInt(number)
+  if (num < 0) return ""
+
+  const numeralStack = []
+  let n = num
+
+  while (n > 0) {
+    const remainder = n % 20
+    numeralStack.push(remainder)
+    n = Math.floor(n / 20)
+  }
+
+  if (numeralStack.length === 0) numeralStack.push(0)
+
+  return numeralStack.join("-")
+}
+
 // function convertFromMayaGlyphs(glyphList) {
 //   let total = 0
 //   let power = glyphList.length - 1
@@ -251,14 +269,14 @@ function decimalToCistercian(number: string): string {
   if (num < 0) return ""
   if (num > 9999) return ""
 
-  let result = `<svg viewBox="-1.5 -1 3 5" xmlns="http://www.w3.org/2000/svg">
+  let result = `<svg viewBox="-1.5 -0.5 3 4" xmlns="http://www.w3.org/2000/svg">
   <style>
     polyline {
       fill: none;
       stroke: currentColor;
       stroke-width: 0.25;
-      stroke-linecap: square;
-      stroke-linejoin: square;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
   </style>`
 
@@ -282,6 +300,7 @@ const conversionMap: Record<string, (v: string) => string> = {
   "décimal:hexadécimal": (v) => decimalToHexadecimal(v),
   "décimal:sexagésimal": (v) => decimalToSexagesimal(v),
   "décimal:cistercien": (v) => decimalToCistercian(v),
+  "décimal:kaktovik": (v) => convertToKaktovik_digit(v),
   // "romain:décimal": (v) => romanToInteger(v),
   // "romain:binaire": (v) => decimalToBinary(romanToInteger(v)),
   // "romain:octal": (v) => decimalToOctal(romanToInteger(v)),

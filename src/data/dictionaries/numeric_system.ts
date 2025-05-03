@@ -1,6 +1,7 @@
 import {numeric_converter} from "../../converters/numeric_converter"
 import {babylonian_formater} from "../../formaters/babylonian_formater"
 import {egyptian_formater} from "../../formaters/egyptian_formater"
+import {kaktovik_formater} from "../../formaters/kaktovik_formater"
 import {maya_formater} from "../../formaters/maya_formater"
 import {cistercian_formater} from "../../formaters/sistercian_formater"
 
@@ -64,6 +65,12 @@ const numeric_systeem = {
     formater: cistercian_formater,
     pluralize: true,
     max: 9999,
+  },
+  kaktovik: {
+    label: "kaktovik",
+    converter: numeric_converter,
+    formater: kaktovik_formater,
+    pluralize: true,
   },
 }
 

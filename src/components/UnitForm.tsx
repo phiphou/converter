@@ -115,12 +115,13 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
     } else {
       if (dic["singleResult"]) {
         setSingleResult(true)
-        delete dic["singleResult"]
+        //delete dic["singleResult"]
       }
       setDictionary(dic)
       setSwiched(false)
       setHasList(false)
-      firstUnit = Object.keys(dic).find((key) => key !== "infos" && key !== "input" && dic[key]) || ""
+      firstUnit =
+        Object.keys(dic).find((key) => key !== "infos" && key !== "input" && dic[key] && key != "singleResult") || ""
     }
     setUnitFrom(firstUnit)
     setUnitTo(firstUnit)
@@ -288,7 +289,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         )}
       </div>
 
-      {!dictionary["input"] && (
+      {!dictionary["input"] && !singleResult && (
         <div className="mt-3 mb-5 flex w-max items-center gap-3 md:pl-40">
           <label className="inline-flex cursor-pointer items-center text-black dark:text-white">
             Notation scientifique :{" "}
