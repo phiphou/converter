@@ -15,6 +15,20 @@
   margin-right: -65px;
 }
 
+[data-theme="light"] .custom-tooltip {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(173, 173, 173);
+  border-radius: 8px;
+  padding: 10px 10px;
+}
+
+[data-theme="dark"] .custom-tooltip {
+  background-color: hsl(240, 6%, 15%);
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 8px;
+  padding: 10px 10px;
+}
+
 [data-theme="light"] .filter-dark-light {
   filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
 }

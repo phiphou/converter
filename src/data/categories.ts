@@ -38,6 +38,9 @@ export const categories = {
   energy: {
     label: "énergie",
   },
+  finance: {
+    label: "finance",
+  },
   computer: {
     label: "informatique",
   },

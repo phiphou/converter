@@ -1,5 +1,5 @@
 const astronomy = {
-  custom: true,
+  custom: "planets",
   infos: {
     label:
       "selon les données de Wikipedia (<a href='https://fr.wikipedia.org/wiki/Syst%C3%A8me_solaire' target='_blank'>planètes</a> et <a href='https://fr.wikipedia.org/wiki/Liste_d%27%C3%A9toiles_par_taille_d%C3%A9croissante' target='_blank'>étoiles</a>)",

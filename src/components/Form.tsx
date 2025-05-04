@@ -3,6 +3,7 @@ import {categories} from "../data/categories"
 import UnitForm from "./UnitForm"
 import {Unit} from "../types"
 import spinner from "../assets/icons/spinner.svg"
+import Finance from "./Finance"
 
 const Planets = lazy(() => import("./Planets"))
 
@@ -55,20 +56,40 @@ function Form() {
               <img src={spinner} className="mx-auto h-25 w-25" />
             </div>
           )}
-          {!isLoading && selectedDictionary && selectedDictionary["custom"] && (
-            <Suspense
-              fallback={
-                <div>
-                  <div className="mx-auto text-center text-gray-500">
-                    {" "}
-                    <img src={spinner} className="mx-auto h-25 w-25" />
+          {!isLoading &&
+            selectedDictionary &&
+            typeof selectedDictionary["custom"] === "string" &&
+            selectedDictionary["custom"] === "finance" && (
+              <Suspense
+                fallback={
+                  <div>
+                    <div className="mx-auto text-center text-gray-500">
+                      {" "}
+                      <img src={spinner} className="mx-auto h-25 w-25" />
+                    </div>
                   </div>
-                </div>
-              }
-            >
-              <Planets dictionary={selectedDictionary} />
-            </Suspense>
-          )}
+                }
+              >
+                <Finance dictionary={selectedDictionary} />
+              </Suspense>
+            )}
+          {!isLoading &&
+            selectedDictionary &&
+            typeof selectedDictionary["custom"] === "string" &&
+            selectedDictionary["custom"] === "planets" && (
+              <Suspense
+                fallback={
+                  <div>
+                    <div className="mx-auto text-center text-gray-500">
+                      {" "}
+                      <img src={spinner} className="mx-auto h-25 w-25" />
+                    </div>
+                  </div>
+                }
+              >
+                <Planets dictionary={selectedDictionary} />
+              </Suspense>
+            )}
           {!isLoading && selectedDictionary && !selectedDictionary["custom"] && (
             <Suspense fallback={<div>Chargement</div>}>
               <UnitForm
