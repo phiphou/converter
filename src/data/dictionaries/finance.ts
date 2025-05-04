@@ -2,7 +2,7 @@ const finance = {
   custom: "finance",
   infos: {
     label:
-      "plus d'infos sur les calculs sur <a href='https://fr.wikipedia.org/wiki/Syst%C3%A8me_solaire' target='_blank'>Wikipedia</a>.",
+      "plus d'infos sur les calculs sur <a href='https://fr.wikipedia.org/wiki/Int%C3%A9r%C3%AAts_compos%C3%A9s' target='_blank'>Wikipedia</a>.",
   },
 }
 

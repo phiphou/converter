@@ -8,7 +8,7 @@ export default defineConfig({
       treeshake: true,
       output: {
         manualChunks: {
-          vendor: ["react", "react-dom"], // Separate React into its own chunk
+          vendor: ["react", "react-dom", "recharts"],
         },
       },
     },
