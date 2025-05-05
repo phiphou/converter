@@ -2,10 +2,19 @@ import {useEffect, useState} from "react"
 import {Unit} from "../types"
 import InfosBlock from "./InfosBlock"
 
-import {Chart as ChartJS, CategoryScale, LinearScale, LineElement, Tooltip, Filler, TooltipItem} from "chart.js"
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  LineElement,
+  Tooltip,
+  Filler,
+  TooltipItem,
+  PointElement,
+} from "chart.js"
 import {Line} from "react-chartjs-2"
 
-ChartJS.register(CategoryScale, LinearScale, LineElement, Tooltip, Filler)
+ChartJS.register(CategoryScale, LinearScale, LineElement, Tooltip, Filler, PointElement)
 
 interface UnitSelectProps {
   dictionary: Record<string, Unit>

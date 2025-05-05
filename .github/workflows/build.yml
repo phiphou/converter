@@ -52,7 +52,7 @@ jobs:
         run: |
           echo "Installing dependencies..."
           cd $GITHUB_WORKSPACE
-          pnpm install
+          pnpm install --no-frozen-lockfile
 
       - name: Run validate
         run: |
