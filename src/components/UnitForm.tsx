@@ -356,7 +356,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
                     : 1 / (result / value / value)
                 : scientific
                   ? scientific_notation((1 / result) * value * value, precision)
-                  : result / value / value
+                  : result
               )
                 .toLocaleString("fr-FR", {maximumFractionDigits: precision})
                 .replace(",", ".")}
