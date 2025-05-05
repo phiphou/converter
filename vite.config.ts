@@ -8,7 +8,7 @@ export default defineConfig({
       treeshake: true,
       output: {
         manualChunks: {
-          vendor: ["react", "react-dom", "recharts"],
+          vendor: ["react", "react-dom", "react-chartjs-2"],
         },
       },
     },

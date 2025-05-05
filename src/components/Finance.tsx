@@ -1,7 +1,11 @@
 import {useEffect, useState} from "react"
 import {Unit} from "../types"
 import InfosBlock from "./InfosBlock"
-import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from "recharts"
+
+import {Chart as ChartJS, CategoryScale, LinearScale, LineElement, Tooltip, Filler, TooltipItem} from "chart.js"
+import {Line} from "react-chartjs-2"
+
+ChartJS.register(CategoryScale, LinearScale, LineElement, Tooltip, Filler)
 
 interface UnitSelectProps {
   dictionary: Record<string, Unit>
@@ -17,7 +21,129 @@ function Finance({dictionary}: UnitSelectProps) {
   const [rawRate, setRawRate] = useState<string>("1")
   const [periodicity, setPeriodicity] = useState<string>("1")
   const [result, setResult] = useState(1)
-  const [data, setData] = useState<Array<object>>([{}])
+  interface ChartData {
+    labels: string[]
+    datasets: {
+      fill: boolean
+      label: string
+      data: number[]
+      borderColor: string
+      backgroundColor: string
+    }[]
+  }
+
+  interface ChartOptions {
+    responsive: boolean
+    pointRadius: number
+    scales: {
+      x: {
+        grid: {
+          color: string
+          borderColor: string
+          tickColor: string
+          z: number
+        }
+      }
+      y: {
+        stacked: boolean
+        grid: {
+          color: string
+          borderColor: string
+          tickColor: string
+          z: number
+        }
+      }
+    }
+    plugins: {
+      title: {
+        display: boolean
+        text: string
+      }
+      tooltip: {
+        backgroundColor: string
+        borderColor: string
+        borderWidth: number
+        bodyFont: {size: number}
+        titleFont: {size: number}
+        bodySpacing: number
+        padding: number
+        boxPadding: number
+        mode: "index"
+        intersect: boolean
+        position: "nearest"
+        callbacks: {
+          label: (context: {dataset: {label?: string}; parsed: {y: number | null}}) => string
+          title: (tooltipItems: TooltipItem<"line">[]) => string
+        }
+      }
+    }
+  }
+
+  const options: ChartOptions = {
+    responsive: true,
+    pointRadius: 0,
+    scales: {
+      x: {
+        grid: {
+          color: "rgba(127,127,127,0.2)",
+          borderColor: "rgba(127,127,127,0.2)",
+          tickColor: "rgba(127,127,127,0.2)",
+          z: 12,
+        },
+      },
+      y: {
+        stacked: false,
+        grid: {
+          color: "rgba(127,127,127,0.2)",
+          borderColor: "rgba(127,127,127,0.2)",
+          tickColor: "rgba(127,127,127,0.2)",
+          z: 12,
+        },
+      },
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: "Chart.js Line Chart",
+      },
+      tooltip: {
+        backgroundColor: "#303030",
+        borderColor: "#AAAAAA",
+        borderWidth: 1,
+        bodyFont: {size: 14},
+        titleFont: {size: 14},
+        bodySpacing: 10,
+        padding: 12,
+        boxPadding: 6,
+        mode: "index",
+        intersect: false,
+        position: "nearest",
+        callbacks: {
+          label: function (tooltipItem) {
+            let label = tooltipItem.dataset.label || ""
+
+            if (label) {
+              label += ": "
+            }
+            if (tooltipItem.parsed !== null) {
+              label += new Intl.NumberFormat("fr-FR", {style: "currency", currency: "EUR"}).format(
+                tooltipItem.parsed.y as number
+              )
+            }
+            return label
+          },
+          title: function (tooltipItems: TooltipItem<"line">[]) {
+            return tooltipItems.length > 0 && tooltipItems[0].label ? "année " + tooltipItems[0].label : ""
+          },
+        },
+      },
+    },
+  }
+
+  const [data, setData] = useState<ChartData>({
+    labels: [],
+    datasets: [],
+  })
 
   useEffect(() => {
     const p = periodicity === "mois" ? 12 : periodicity === "an" ? 1 : 365.25 / 7
@@ -29,7 +155,12 @@ function Finance({dictionary}: UnitSelectProps) {
       setResult(results)
     }
 
-    const d = []
+    const d2 = []
+
+    const interestsA = []
+    const valueA = []
+    const somme_épargnéeA = []
+    const labelsA = []
 
     for (let p2 = 0; p2 < period + 1; p2++) {
       const result =
@@ -37,39 +168,71 @@ function Finance({dictionary}: UnitSelectProps) {
         (invests * (Math.pow(1 + rate / 100 / p, p2 * p) - 1)) / (rate / 100 / p)
 
       const interests = result - initial - invests * p2 * p
-      d.push({
+      d2.push({
         name: "" + p2,
         intérêts: interests,
         valeur: result,
         somme_épargnée: invests * p2 * p,
       })
-      if (period > 1) setData(d)
+      interestsA.push(interests)
+      somme_épargnéeA.push(invests * p2 * p)
+      valueA.push(result)
+      labelsA.push("" + p2)
+    }
+
+    if (period > 1) {
+      setData({
+        labels: labelsA,
+        datasets: [
+          {
+            fill: true,
+            label: "Intérêts",
+            data: interestsA,
+            borderColor: "#8884d8",
+            backgroundColor: "#8884d8",
+          },
+          {
+            fill: true,
+            label: "Somme épargnée",
+            data: somme_épargnéeA,
+            borderColor: "#ccb866",
+            backgroundColor: "#ffe780",
+          },
+          {
+            fill: true,
+            label: "Capital",
+            data: valueA,
+            borderColor: "#82ca9d",
+            backgroundColor: "#82ca9d",
+          },
+        ],
+      })
     }
 
     calculateResult()
   }, [initial, invests, rate, period, periodicity])
 
-  const CustomTooltip = ({
-    active,
-    payload,
-  }: {
-    active?: boolean
-    payload?: {payload: {name: string; valeur: number; intérêts: number; somme_épargnée: number}}[]
-    label?: string
-  }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="custom-tooltip">
-          <p className="text-black dark:text-white">{`année : ${payload[0].payload.name}`}</p>
-          <p className="text-emerald-400">{`valeur : ${payload[0]["payload"].valeur.toLocaleString("fr-FR", {maximumFractionDigits: 2}).replace(",", ".")}€`}</p>
-          <p className="text-amber-400">{`somme épargnée : ${payload[0]["payload"].somme_épargnée.toLocaleString("fr-FR", {maximumFractionDigits: 2}).replace(",", ".")}€`}</p>
+  // const CustomTooltip = ({
+  //   active,
+  //   payload,
+  // }: {
+  //   active?: boolean
+  //   payload?: {payload: {name: string; valeur: number; intérêts: number; somme_épargnée: number}}[]
+  //   label?: string
+  // }) => {
+  //   if (active && payload && payload.length) {
+  //     return (
+  //       <div className="custom-tooltip">
+  //         <p className="text-black dark:text-white">{`année : ${payload[0].payload.name}`}</p>
+  //         <p className="text-emerald-400">{`valeur : ${payload[0]["payload"].valeur.toLocaleString("fr-FR", {maximumFractionDigits: 2}).replace(",", ".")}€`}</p>
+  //         <p className="text-amber-400">{`somme épargnée : ${payload[0]["payload"].somme_épargnée.toLocaleString("fr-FR", {maximumFractionDigits: 2}).replace(",", ".")}€`}</p>
 
-          <p className="text-purple-400">{`intérêts : ${payload[0]["payload"].intérêts.toLocaleString("fr-FR", {maximumFractionDigits: 2}).replace(",", ".")}€`}</p>
-        </div>
-      )
-    }
-    return ""
-  }
+  //         <p className="text-purple-400">{`intérêts : ${payload[0]["payload"].intérêts.toLocaleString("fr-FR", {maximumFractionDigits: 2}).replace(",", ".")}€`}</p>
+  //       </div>
+  //     )
+  //   }
+  //   return ""
+  // }
 
   return (
     <>
@@ -215,8 +378,13 @@ function Finance({dictionary}: UnitSelectProps) {
         </div>
       </div>
 
-      <div className="flex items-center" style={{width: "75%", marginLeft: "auto", marginRight: "auto", height: 275}}>
-        <ResponsiveContainer>
+      <div className="mt-6 flex">
+        <div className="chart-container" style={{position: "relative", height: "40vh", width: "400vh"}}>
+          <Line options={options} data={data} />
+          <canvas id="chart"></canvas>
+        </div>
+
+        {/* <ResponsiveContainer>
           <AreaChart
             data={data}
             stackOffset="positive"
@@ -243,7 +411,7 @@ function Finance({dictionary}: UnitSelectProps) {
             />
             <Area type="monotone" dataKey="intérêts" stackId={0} stroke="#8884d8" fill="#8884d8" fillOpacity={0.8} />
           </AreaChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer> */}
       </div>
 
       <div className="pb-6">

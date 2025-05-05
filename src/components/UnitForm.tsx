@@ -347,18 +347,22 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
           !singleResult && (
             <>
               {formatValueDisplay(value, rawValue, dictionary, unitTo, hasList, list, secondaryUnit)}
-              {(parseFloat(rawValue) >= 2 ? " valent " : " vaut ") + (result > 1 ? "1/" : "")}
-              {(result > 1
+              {(parseFloat(rawValue) >= 2 ? " valent " : " vaut ") + (result / value / value >= 1 ? "1/" : "")}
+              {(result >= 1
                 ? scientific
-                  ? scientific_notation(result, precision)
-                  : result
+                  ? scientific_notation((1 / result) * value * value, precision)
+                  : result / value / value >= 1
+                    ? result / value / value
+                    : 1 / (result / value / value)
                 : scientific
-                  ? scientific_notation(1 / result, precision)
-                  : 1 / result
+                  ? scientific_notation((1 / result) * value * value, precision)
+                  : result / value / value
               )
                 .toLocaleString("fr-FR", {maximumFractionDigits: precision})
                 .replace(",", ".")}
-              {result > 1 ? "ème de " + dictionary[unitFrom].label : " fois " + dictionary[unitFrom].label}
+              {result / value / value >= 1
+                ? "ème de " + dictionary[unitFrom].label
+                : " fois " + dictionary[unitFrom].label}
             </>
           )}
       </div>

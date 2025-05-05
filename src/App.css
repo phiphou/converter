@@ -46,6 +46,13 @@
     margin-right: -50px;
   }
 }
+.chart-container {
+  margin-left: auto;
+  margin-right: auto;
+  height: 275px !important;
+  width: 65% !important;
+  position: relative;
+}
 
 .noto-sans-mayan-numerals-regular {
   font-family: "Noto Sans Mayan Numerals", sans-serif;
