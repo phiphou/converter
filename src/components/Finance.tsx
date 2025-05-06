@@ -12,6 +12,9 @@ import {
   TooltipItem,
   PointElement,
 } from "chart.js"
+
+import type {ChartData, ChartOptions} from "chart.js"
+
 import {Line} from "react-chartjs-2"
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, Tooltip, Filler, PointElement)
@@ -30,81 +33,58 @@ function Finance({dictionary}: UnitSelectProps) {
   const [rawRate, setRawRate] = useState<string>("1")
   const [periodicity, setPeriodicity] = useState<string>("1")
   const [result, setResult] = useState(1)
-  interface ChartData {
-    labels: string[]
-    datasets: {
-      fill: boolean
-      label: string
-      data: number[]
-      borderColor: string
-      backgroundColor: string
-    }[]
-  }
 
-  interface ChartOptions {
-    responsive: boolean
-    pointRadius: number
-    scales: {
-      x: {
-        grid: {
-          color: string
-          borderColor: string
-          tickColor: string
-          z: number
-        }
-      }
-      y: {
-        stacked: boolean
-        grid: {
-          color: string
-          borderColor: string
-          tickColor: string
-          z: number
-        }
-      }
-    }
-    plugins: {
-      title: {
-        display: boolean
-        text: string
-      }
+  interface VerticalLinePlugin {
+    id: string
+    afterDatasetsDraw: (chart: {
       tooltip: {
-        backgroundColor: string
-        borderColor: string
-        borderWidth: number
-        bodyFont: {size: number}
-        titleFont: {size: number}
-        bodySpacing: number
-        padding: number
-        boxPadding: number
-        mode: "index"
-        intersect: boolean
-        position: "nearest"
-        callbacks: {
-          label: (context: {dataset: {label?: string}; parsed: {y: number | null}}) => string
-          title: (tooltipItems: TooltipItem<"line">[]) => string
-        }
+        _active: {element: {x: number}; index: number}[]
       }
-    }
+      ctx: CanvasRenderingContext2D
+      chartArea: {top: number; bottom: number}
+    }) => void
   }
 
-  const options: ChartOptions = {
+  const verticalLinePlugin: VerticalLinePlugin = {
+    id: "verticalLine",
+    afterDatasetsDraw: (chart) => {
+      if (chart.tooltip._active && chart.tooltip._active.length) {
+        const ctx = chart.ctx
+        const x = chart.tooltip._active[0].element.x
+        ctx.save()
+        ctx.beginPath()
+        ctx.moveTo(x, chart.chartArea.top)
+        ctx.lineTo(x, chart.chartArea.bottom)
+        ctx.lineWidth = 1
+        ctx.strokeStyle = "#EEEEEE"
+        ctx.stroke()
+        ctx.restore()
+      }
+    },
+  }
+
+  ChartJS.register(verticalLinePlugin)
+
+  const options: ChartOptions<"line"> = {
     responsive: true,
-    pointRadius: 0,
+    interaction: {
+      intersect: false as const,
+      mode: "index" as const,
+    },
     scales: {
       x: {
+        type: "category",
         grid: {
           color: "rgba(127,127,127,0.2)",
-          borderColor: "rgba(127,127,127,0.2)",
           tickColor: "rgba(127,127,127,0.2)",
           z: 12,
         },
       },
       y: {
+        type: "linear",
         stacked: false,
         grid: {
           color: "rgba(127,127,127,0.2)",
-          borderColor: "rgba(127,127,127,0.2)",
           tickColor: "rgba(127,127,127,0.2)",
           z: 12,
         },
@@ -149,7 +129,7 @@ function Finance({dictionary}: UnitSelectProps) {
     },
   }
 
-  const [data, setData] = useState<ChartData>({
+  const [data, setData] = useState<ChartData<"line">>({
     labels: [],
     datasets: [],
   })
@@ -189,26 +169,33 @@ function Finance({dictionary}: UnitSelectProps) {
       labelsA.push("" + p2)
     }
 
+    const ds = {
+      fill: true,
+      pointHitRadius: 0,
+      pointRadius: 0,
+      pointHoverRadius: 0,
+    }
+
     if (period > 1) {
       setData({
         labels: labelsA,
         datasets: [
           {
-            fill: true,
+            ...ds,
             label: "Intérêts",
             data: interestsA,
             borderColor: "#8884d8",
             backgroundColor: "#8884d8",
           },
           {
-            fill: true,
+            ...ds,
             label: "Epargné",
             data: somme_épargnéeA,
             borderColor: "#ccb866",
             backgroundColor: "#ffe780",
           },
           {
-            fill: true,
+            ...ds,
             label: "Capital",
             data: valueA,
             borderColor: "#82ca9d",
@@ -392,35 +379,6 @@ function Finance({dictionary}: UnitSelectProps) {
           <Line options={options} data={data} />
           <canvas id="chart"></canvas>
         </div>
-
-        {/* <ResponsiveContainer>
-          <AreaChart
-            data={data}
-            stackOffset="positive"
-            margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <CartesianGrid fillOpacity={0.1} strokeDasharray="1 1" />
-            <XAxis dataKey="name" padding="gap" />
-            <YAxis />
-            <Tooltip content={<CustomTooltip />} />
-
-            <Area type="monotone" dataKey="valeur" stackId={1} stroke="#82ca9d" fill="#82ca9d" />
-            <Area
-              type="monotone"
-              dataKey="somme_épargnée"
-              stackId={2}
-              stroke="#ccb866"
-              fill="#ffe780"
-              fillOpacity={0.9}
-            />
-            <Area type="monotone" dataKey="intérêts" stackId={0} stroke="#8884d8" fill="#8884d8" fillOpacity={0.8} />
-          </AreaChart>
-        </ResponsiveContainer> */}
       </div>
 
       <div className="pb-6">

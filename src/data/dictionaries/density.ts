@@ -39,38 +39,46 @@ const density = {
   mg: {
     label: "milligramme",
     divisor: 0.001,
+    group: 1,
   },
   g: {
     label: "gramme",
     divisor: 1,
+    group: 1,
   },
   kg: {
     label: "kilogramme",
     divisor: 1000,
+    group: 1,
   },
   t: {
     label: "tonne",
     divisor: 1000000,
+    group: 1,
   },
   mm3: {
     label: "mm³",
     divisor: 0.001,
     pluralize: true,
+    group: 2,
   },
   cm3: {
     label: "cm³",
     divisor: 1,
     pluralize: true,
+    group: 2,
   },
   dcm3: {
     label: "dm³",
     divisor: 1000,
     pluralize: true,
+    group: 2,
   },
   m3: {
     label: "m³",
     divisor: 1000000,
     pluralize: true,
+    group: 2,
   },
 }
 

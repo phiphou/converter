@@ -165,7 +165,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             SetError(error as Error)
           }
         } else if (hasList) {
-          if (toDivisor === fromDivisor) {
+          if (toDivisor === fromDivisor && dictionary[unitFrom].group === dictionary[unitTo].group) {
             if (!switched && !dictionary["noSwitch"]) {
               calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
             } else {
@@ -173,7 +173,20 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             }
           } else {
             if (dictionary["materials"] && !dictionary["noSwitch"]) {
-              calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
+              if (dictionary[unitFrom].group !== dictionary[unitTo].group) {
+                if (!switched && !dictionary["noSwitch"]) {
+                  calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
+                } else {
+                  calculatedResult = ((value * (1 / list[secondaryUnit].divisor)) / toDivisor) * fromDivisor
+                }
+              } else {
+                calculatedResult =
+                  toDivisor == 1 && fromDivisor < 1
+                    ? value * fromDivisor
+                    : toDivisor > 1 && fromDivisor < 1
+                      ? value / toDivisor
+                      : value / toDivisor
+              }
             } else if (dictionary["materials"] && dictionary["noSwitch"]) {
               calculatedResult = (value / list[secondaryUnit].divisor / toDivisor) * fromDivisor
             } else {
