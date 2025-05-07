@@ -23,11 +23,11 @@
 }
 
 [data-theme="light"] .chart-container {
-  --line-color: #000000; /* Couleur de la ligne */
+  --line-color: #000000;
 }
 
 [data-theme="dark"] .chart-container {
-  --line-color: #ffffff; /* Couleur de la ligne */
+  --line-color: #ffffff;
 }
 
 [data-theme="light"] .filter-dark-light {
