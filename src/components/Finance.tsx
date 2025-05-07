@@ -1,23 +1,8 @@
 import {useEffect, useState} from "react"
 import {Unit} from "../types"
 import InfosBlock from "./InfosBlock"
-
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  LineElement,
-  Tooltip,
-  Filler,
-  TooltipItem,
-  PointElement,
-} from "chart.js"
-
-import type {ChartData, ChartOptions} from "chart.js"
-
-import {Line} from "react-chartjs-2"
-
-ChartJS.register(CategoryScale, LinearScale, LineElement, Tooltip, Filler, PointElement)
+import Chart from "./Chart"
+import type {ChartData} from "chart.js"
 
 interface UnitSelectProps {
   dictionary: Record<string, Unit>
@@ -33,101 +18,6 @@ function Finance({dictionary}: UnitSelectProps) {
   const [rawRate, setRawRate] = useState<string>("1")
   const [periodicity, setPeriodicity] = useState<string>("1")
   const [result, setResult] = useState(1)
-
-  interface VerticalLinePlugin {
-    id: string
-    afterDatasetsDraw: (chart: {
-      tooltip: {
-        _active: {element: {x: number}; index: number}[]
-      }
-      ctx: CanvasRenderingContext2D
-      chartArea: {top: number; bottom: number}
-    }) => void
-  }
-
-  const verticalLinePlugin: VerticalLinePlugin = {
-    id: "verticalLine",
-    afterDatasetsDraw: (chart) => {
-      if (chart.tooltip._active && chart.tooltip._active.length) {
-        const ctx = chart.ctx
-        const x = chart.tooltip._active[0].element.x
-        ctx.save()
-        ctx.beginPath()
-        ctx.moveTo(x, chart.chartArea.top)
-        ctx.lineTo(x, chart.chartArea.bottom)
-        ctx.lineWidth = 1
-        ctx.strokeStyle = "#EEEEEE"
-        ctx.stroke()
-        ctx.restore()
-      }
-    },
-  }
-
-  ChartJS.register(verticalLinePlugin)
-
-  const options: ChartOptions<"line"> = {
-    responsive: true,
-    interaction: {
-      intersect: false as const,
-      mode: "index" as const,
-    },
-    scales: {
-      x: {
-        type: "category",
-        grid: {
-          color: "rgba(127,127,127,0.2)",
-          tickColor: "rgba(127,127,127,0.2)",
-          z: 12,
-        },
-      },
-      y: {
-        type: "linear",
-        stacked: false,
-        grid: {
-          color: "rgba(127,127,127,0.2)",
-          tickColor: "rgba(127,127,127,0.2)",
-          z: 12,
-        },
-      },
-    },
-    plugins: {
-      title: {
-        display: true,
-        text: "Chart.js Line Chart",
-      },
-      tooltip: {
-        backgroundColor: "#303030",
-        borderColor: "#AAAAAA",
-        borderWidth: 1,
-        bodyFont: {size: 14},
-        titleFont: {size: 14},
-        bodySpacing: 8,
-        padding: 14,
-        boxPadding: 8,
-        mode: "index",
-        intersect: false,
-        position: "nearest",
-        callbacks: {
-          label: function (tooltipItem) {
-            let label = tooltipItem.dataset.label || ""
-
-            if (label) {
-              label += ": "
-            }
-            if (tooltipItem.parsed !== null) {
-              label += new Intl.NumberFormat("fr-FR", {style: "currency", currency: "EUR"}).format(
-                tooltipItem.parsed.y as number
-              )
-            }
-            return label
-          },
-          title: function (tooltipItems: TooltipItem<"line">[]) {
-            return tooltipItems.length > 0 && tooltipItems[0].label ? "année " + tooltipItems[0].label : ""
-          },
-        },
-      },
-    },
-  }
 
   const [data, setData] = useState<ChartData<"line">>({
     labels: [],
@@ -207,28 +97,6 @@ function Finance({dictionary}: UnitSelectProps) {
 
     calculateResult()
   }, [initial, invests, rate, period, periodicity])
-
-  // const CustomTooltip = ({
-  //   active,
-  //   payload,
-  // }: {
-  //   active?: boolean
-  //   payload?: {payload: {name: string; valeur: number; intérêts: number; somme_épargnée: number}}[]
-  //   label?: string
-  // }) => {
-  //   if (active && payload && payload.length) {
-  //     return (
-  //       <div className="custom-tooltip">
-  //         <p className="text-black dark:text-white">{`année : ${payload[0].payload.name}`}</p>
-  //         <p className="text-emerald-400">{`valeur : ${payload[0]["payload"].valeur.toLocaleString("fr-FR", {maximumFractionDigits: 2}).replace(",", ".")}€`}</p>
-  //         <p className="text-amber-400">{`somme épargnée : ${payload[0]["payload"].somme_épargnée.toLocaleString("fr-FR", {maximumFractionDigits: 2}).replace(",", ".")}€`}</p>
-
-  //         <p className="text-purple-400">{`intérêts : ${payload[0]["payload"].intérêts.toLocaleString("fr-FR", {maximumFractionDigits: 2}).replace(",", ".")}€`}</p>
-  //       </div>
-  //     )
-  //   }
-  //   return ""
-  // }
 
   return (
     <>
@@ -375,10 +243,7 @@ function Finance({dictionary}: UnitSelectProps) {
       </div>
 
       <div className="mt-6 flex">
-        <div className="chart-container" style={{position: "relative", height: "40vh", width: "400vh"}}>
-          <Line options={options} data={data} />
-          <canvas id="chart"></canvas>
-        </div>
+        <Chart {...data} />
       </div>
 
       <div className="pb-6">

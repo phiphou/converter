@@ -22,11 +22,12 @@
   padding: 10px 10px;
 }
 
-[data-theme="dark"] .custom-tooltip {
-  background-color: hsl(240, 6%, 15%);
-  border: 1px solid rgb(204, 204, 204);
-  border-radius: 8px;
-  padding: 10px 10px;
+[data-theme="light"] .chart-container {
+  --line-color: #000000; /* Couleur de la ligne */
+}
+
+[data-theme="dark"] .chart-container {
+  --line-color: #ffffff; /* Couleur de la ligne */
 }
 
 [data-theme="light"] .filter-dark-light {
@@ -49,8 +50,8 @@
 .chart-container {
   margin-left: auto;
   margin-right: auto;
-  height: 275px !important;
-  width: 65% !important;
+  height: 350px !important;
+  width: 80% !important;
   position: relative;
 }
 
