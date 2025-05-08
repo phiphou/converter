@@ -1,4 +1,4 @@
-import currency_converter from "../../converters/currency_converter"
+import currency_converter from "../../converters/cypher_converter"
 
 const currency = {
   infos: {

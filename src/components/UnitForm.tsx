@@ -140,14 +140,14 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         if (unitFrom === unitTo && !dictionary["input"] && !dictionary[unitTo].converter) {
           calculatedResult = value
         } else if (dictionary["input"] && dictionary[unitTo].converter) {
-          console.log("m")
           try {
-            calculatedResult = await dictionary[unitTo].converter(
+            const converterResult = await dictionary[unitTo].converter(
               currentDate.getTime(),
               dictionary[unitTo],
               dictionary[unitTo],
               precision
             )
+            calculatedResult = typeof converterResult === "number" ? converterResult : parseFloat(converterResult)
           } catch (error) {
             SetError(error as Error)
           }
@@ -155,12 +155,13 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
           setResult(calculatedResult)
         } else if (dictionary[unitTo].converter) {
           try {
-            calculatedResult = await dictionary[unitTo].converter(
+            const converterResult = await dictionary[unitTo].converter(
               value,
               dictionary[unitFrom],
               dictionary[unitTo],
               precision
             )
+            calculatedResult = typeof converterResult === "number" ? converterResult : parseFloat(converterResult)
           } catch (error) {
             SetError(error as Error)
           }

@@ -11,6 +11,9 @@ export const categories = {
   electric_charge: {
     label: "charge électrique",
   },
+  codes: {
+    label: "Codes",
+  },
   CO2: {
     label: "CO2",
   },

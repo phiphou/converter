@@ -5,7 +5,7 @@ import {kaktovik_formater} from "../../formaters/kaktovik_formater"
 import {maya_formater} from "../../formaters/maya_formater"
 import {cistercian_formater} from "../../formaters/sistercian_formater"
 
-const numeric_systeem = {
+const numeric_system = {
   infos: {
     label:
       "plus d'infos sur les systèmes de numération sur <a href='https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_num%C3%A9ration' target='_blank'>Wikipedia</a>.",
@@ -74,4 +74,4 @@ const numeric_systeem = {
   },
 }
 
-export default numeric_systeem
+export default numeric_system

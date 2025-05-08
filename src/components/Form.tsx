@@ -4,6 +4,7 @@ import UnitForm from "./UnitForm"
 import {Unit} from "../types"
 import spinner from "../assets/icons/spinner.svg"
 import Finance from "./Finance"
+import Codes from "./Codes"
 
 const Planets = lazy(() => import("./Planets"))
 
@@ -71,6 +72,23 @@ function Form() {
                 }
               >
                 <Finance dictionary={selectedDictionary} />
+              </Suspense>
+            )}
+          {!isLoading &&
+            selectedDictionary &&
+            typeof selectedDictionary["custom"] === "string" &&
+            selectedDictionary["custom"] === "codes" && (
+              <Suspense
+                fallback={
+                  <div>
+                    <div className="mx-auto text-center text-gray-500">
+                      {" "}
+                      <img src={spinner} className="mx-auto h-25 w-25" />
+                    </div>
+                  </div>
+                }
+              >
+                <Codes dictionary={selectedDictionary} />
               </Suspense>
             )}
           {!isLoading &&

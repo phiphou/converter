@@ -7,10 +7,11 @@ export interface Unit {
   pluralize?: boolean
   quote?: string
   pluralize_all?: boolean
-  converter?: (value: number, from: Unit, to: Unit, precision: number) => number
+  converter?: (value: number | string, from: Unit, to: Unit, precision?: number) => number | string
   info?: string
   plural?: string
   noSwitch?: boolean
   max?: number
   group?: number
+  key?: string
 }

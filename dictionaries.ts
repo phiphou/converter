@@ -1,4 +1,4 @@
-import currency_converter from "./src/converters/currency_converter"
+import currency_converter from "./src/converters/cypher_converter"
 import {date_converter} from "./src/converters/date_converter"
 import {decibel_converter} from "./src/converters/decibel_converter"
 import {numeric_converter} from "./src/converters/numeric_converter"
