@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react"
-import {Unit} from "../types"
+import {Unit} from "../types/types"
 import {pluralize, scientific_notation} from "../utils/utils"
 import UnitSelect from "./UnitSelect"
 import SwitchUnitButton from "./SwitchUnitButton"

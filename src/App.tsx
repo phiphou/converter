@@ -2,21 +2,12 @@ import "./App.css"
 import Form from "./components/Form"
 import mainLogo from "./assets/logo.png"
 import DarkModebutton from "./components/DarkModeButton"
-import cypher_converter from "./converters/cypher_converter"
-
-function test() {
-  console.log(
-    cypher_converter("dogisgood", {label: "text", divisor: 1}, {label: "substitution", divisor: 1, key: "newyork"})
-  )
-}
 
 function App() {
-  //console.log(cypher_converter("EHGXOYEE", {label: "vigenere", key: "LACOUR"}, {label: "text", key: ""}))
-
   return (
     <div className="pb-0">
       <div className="mx-auto flex items-center justify-center lg:mt-10 lg:pt-7">
-        <img src={mainLogo} className="logo" onClick={test} />
+        <img src={mainLogo} className="logo" />
         <h2 className="text-black dark:text-white">Convertisseur pour journaliste</h2>
       </div>
 

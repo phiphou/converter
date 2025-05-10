@@ -13,5 +13,6 @@ export interface Unit {
   noSwitch?: boolean
   max?: number
   group?: number
-  key?: string
+  key?: string | number
+  key2?: number
 }

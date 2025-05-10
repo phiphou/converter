@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import {Unit} from "../types"
+import {Unit} from "../types/types"
 import InfosBlock from "./InfosBlock"
 
 // interface PlanetData {

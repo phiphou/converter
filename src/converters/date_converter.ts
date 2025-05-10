@@ -1,4 +1,4 @@
-import {Unit} from "../types"
+import {Unit} from "../types/types"
 
 function toDate(date: number, format: string) {
   const formatter = new Intl.DateTimeFormat(format, {

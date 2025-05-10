@@ -1,10 +1,11 @@
 import {Suspense, useState, lazy} from "react"
 import {categories} from "../data/categories"
 import UnitForm from "./UnitForm"
-import {Unit} from "../types"
+import {Unit} from "../types/types"
 import spinner from "../assets/icons/spinner.svg"
 import Finance from "./Finance"
 import Codes from "./Codes"
+import Hash from "./Hash"
 
 const Planets = lazy(() => import("./Planets"))
 
@@ -89,6 +90,23 @@ function Form() {
                 }
               >
                 <Codes dictionary={selectedDictionary} />
+              </Suspense>
+            )}
+          {!isLoading &&
+            selectedDictionary &&
+            typeof selectedDictionary["custom"] === "string" &&
+            selectedDictionary["custom"] === "hash" && (
+              <Suspense
+                fallback={
+                  <div>
+                    <div className="mx-auto text-center text-gray-500">
+                      {" "}
+                      <img src={spinner} className="mx-auto h-25 w-25" />
+                    </div>
+                  </div>
+                }
+              >
+                <Hash dictionary={selectedDictionary} />
               </Suspense>
             )}
           {!isLoading &&

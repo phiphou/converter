@@ -1,5 +1,5 @@
 /* eslint-disable local/no-double-space-in-strings */
-import {Unit} from "../types"
+import {Unit} from "../types/types"
 
 function integerToRoman(number: string): string {
   let num = parseInt(number.toString())

@@ -1,4 +1,4 @@
-import {Unit} from "../types"
+import {Unit} from "../types/types"
 
 const conversionMap: Record<string, (v: number) => number> = {
   "W/m²:décibel": (v) => 10 * Math.log10(v / 1e-12),

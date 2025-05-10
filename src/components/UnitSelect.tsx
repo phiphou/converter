@@ -1,4 +1,4 @@
-import {Unit} from "../types"
+import {Unit} from "../types/types"
 
 interface UnitSelectProps {
   unit: string

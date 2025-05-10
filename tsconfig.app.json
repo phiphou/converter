@@ -14,6 +14,10 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["types/*"]
+    },
 
     /* Linting */
     "strict": true,
@@ -22,5 +26,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "bob/pays_fusionnes_filtrés.ts", "bob/merge.js", "dictionaries.ts"]
+  "include": ["src", "types", "bob/pays_fusionnes_filtrés.ts", "bob/merge.js", "dictionaries.ts"]
 }

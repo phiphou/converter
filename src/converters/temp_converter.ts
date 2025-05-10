@@ -1,4 +1,4 @@
-import {Unit} from "../types"
+import {Unit} from "../types/types"
 
 const conversionMap: Record<string, (v: number) => number> = {
   "degré Celsius:degré Fahrenheit": (v) => (v * 9) / 5 + 32,

@@ -1,4 +1,4 @@
-import {Unit} from "../types"
+import {Unit} from "../types/types"
 
 export const pluralize = (result: number | null, label: string, unit: Unit, pluralized: boolean = true): string => {
   if (!unit) return label
