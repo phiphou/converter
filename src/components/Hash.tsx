@@ -21,7 +21,7 @@ function Hash({dictionary}: UnitSelectProps) {
   const changeUnit = async (v: string) => {
     setOutput("calcul en cours...")
     setUnitTo(v)
-    setKey(["BCRYPT", "ARGON2"].includes(v) ? "12" : "SECRET")
+    setKey(["BCRYPT", "ARGON2"].includes(v) ? (v === "ARGON2" ? "3" : "12") : "SECRET")
     setKey2("65536")
   }
 
@@ -35,6 +35,7 @@ function Hash({dictionary}: UnitSelectProps) {
 
   useEffect(() => {
     async function calculateResult() {
+      setOutput("calcul en cours...")
       let calculatedResult = ""
 
       if (converter && unitTo != "" && key != "") {
@@ -51,7 +52,7 @@ function Hash({dictionary}: UnitSelectProps) {
     }
 
     if (unitTo != "") calculateResult()
-  }, [input, dictionary, unitTo, key, converter])
+  }, [input, dictionary, unitTo, key, converter, key2])
 
   const BclassName = `mr-2 bloc rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500`
 
@@ -75,7 +76,7 @@ function Hash({dictionary}: UnitSelectProps) {
           <div className="mt-5 flex max-w-100 min-w-100 items-center gap-2">
             {unitTo === "morse" && <div className="w-40"></div>}
 
-            <div className="mr-3 ml-3">
+            <div className="mr-1 ml-3">
               <UnitSelect unit={unitTo} setUnit={changeUnit} dictionary={dictionary} />
             </div>
             {["HMAC_SHA1", "HMAC_SHA256", "HMAC_SHA384", "HMAC_SHA512", "BCRYPT", "ARGON2"].includes(unitTo) && (
@@ -89,7 +90,7 @@ function Hash({dictionary}: UnitSelectProps) {
                   value={key}
                   onChange={(e) => {
                     if (e.target.value == "") {
-                      setKey("")
+                      setKey("1")
                       return
                     }
                     setKey(e.target.value)
@@ -119,7 +120,6 @@ function Hash({dictionary}: UnitSelectProps) {
 
           <div className="mt-6 flex flex-col items-center text-black dark:text-white">
             <div className="flex align-middle">
-              {unitTo == "morse" && <div className="w-11"></div>}
               <textarea
                 className="mr-3 ml-3 block max-w-100 min-w-100 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                 rows={4}

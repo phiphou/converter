@@ -1,7 +1,6 @@
 import {Unit} from "../types/types"
 import {md5} from "js-md5"
 import bcrypt from "bcryptjs"
-import {hash, ArgonType} from "argon2-browser/dist/argon2-bundled.min.js"
 
 const sha = async (text: string, type: string): Promise<string> => {
   const encoder = new TextEncoder()
@@ -35,33 +34,47 @@ async function createHMAC(message: string, keyString: string, type: string) {
     .join("")
 }
 
-// async function hbcrypt(message: string, cost: number): Promise<string> {
-//   if (cost < 4 || cost > 31) {
-//     throw new Error("Cost must be between 4 and 31 for bcrypt.")
-//   }
-//   const salt = await bcrypt.genSalt(cost)
-//   const bhash = await bcrypt.hash(message, salt)
-//   return bhash
-// }
-
 async function hbcrypt(message: string, cost: number): Promise<string> {
   const salt = await bcrypt.genSalt(cost)
   const hash = await bcrypt.hash(message, salt)
   return hash
 }
 
-async function hArgon2(message: string, time: number, mem: number): Promise<string> {
-  const result = await hash({
-    pass: message,
-    salt: crypto.getRandomValues(new Uint8Array(16)), // 16-byte random salt
-    time: time, // number of iterations
-    mem: mem, // memory in KiB (64 MiB)
-    hashLen: 32, // desired hash length
-    parallelism: 1, // number of threads,
-    type: ArgonType.Argon2id,
-  })
+// async function hArgon2(message: string, time: number, mem: number): Promise<string> {
+//   const result = await hash({
+//     pass: message,
+//     salt: crypto.getRandomValues(new Uint8Array(16)), // 16-byte random salt
+//     time: time, // number of iterations
+//     mem: mem, // memory in KiB (64 MiB)
+//     hashLen: 32, // desired hash length
+//     parallelism: 1, // number of threads,
+//     type: ArgonType.Argon2id,
+//   })
 
-  return result.encoded
+//   return result.encoded
+// }
+
+export async function hArgon2(message: string, time: number, mem: number): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const worker = new Worker(new URL("../workers/argon2.worker.ts", import.meta.url), {type: "module"})
+
+    worker.onmessage = (event) => {
+      const {success, hash, error} = event.data
+      if (success) {
+        resolve(hash)
+      } else {
+        reject(new Error(error))
+      }
+      worker.terminate() // Terminer le worker après l'exécution
+    }
+
+    worker.onerror = (error) => {
+      reject(error)
+      worker.terminate()
+    }
+
+    worker.postMessage({message, time, mem})
+  })
 }
 
 const conversionMap: Record<string, (t: string, k: string, k2: number) => Promise<string>> = {
