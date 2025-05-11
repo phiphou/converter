@@ -116,7 +116,7 @@ function Chart(data: ChartData<"line">) {
   }
 
   return (
-    <div className="chart-container" style={{position: "relative", height: "50vh", width: "500vh"}}>
+    <div className="chart-container md:ml-[8%]">
       <Line options={options} data={data} />
     </div>
   )

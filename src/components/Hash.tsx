@@ -62,12 +62,12 @@ function Hash({dictionary}: UnitSelectProps) {
 
   return (
     <>
-      <div className="m-3 mx-auto flex flex-col items-center justify-center">
-        <div className="flex flex-col text-black dark:text-white">
-          <div className="flex flex-col items-center text-black dark:text-white">
-            <div className="mr-3 mb-1 ml-3 max-w-100 min-w-100">Texte en clair : </div>
+      <div className="m-3 mx-auto flex max-w-full min-w-full flex-col items-center justify-center md:max-w-[60%] md:min-w-[60%]">
+        <div className="flex max-w-full min-w-full flex-col text-black dark:text-white">
+          <div className="flex max-w-full min-w-full flex-col items-center text-black dark:text-white">
+            <div className="mr-3 mb-1 ml-3 max-w-full min-w-full">Texte en clair : </div>
             <textarea
-              className="mr-3 ml-3 block max-w-100 min-w-100 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              className="mr-3 ml-3 block max-w-full min-w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               rows={4}
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -76,7 +76,7 @@ function Hash({dictionary}: UnitSelectProps) {
           <div className="mt-5 flex max-w-100 min-w-100 items-center gap-2">
             {unitTo === "morse" && <div className="w-40"></div>}
 
-            <div className="mr-1 ml-3">
+            <div className="mr-1">
               <UnitSelect unit={unitTo} setUnit={changeUnit} dictionary={dictionary} />
             </div>
             {["HMAC_SHA1", "HMAC_SHA256", "HMAC_SHA384", "HMAC_SHA512", "BCRYPT", "ARGON2", "AES"].includes(unitTo) && (
@@ -119,9 +119,9 @@ function Hash({dictionary}: UnitSelectProps) {
           </div>
 
           <div className="mt-6 flex flex-col items-center text-black dark:text-white">
-            <div className="flex align-middle">
+            <div className="flex max-w-full min-w-full align-middle">
               <textarea
-                className="mr-3 ml-3 block max-w-100 min-w-100 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                className="mr-3 block max-w-full min-w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                 rows={4}
                 value={output}
                 onChange={(e) => setOutput(e.target.value)}

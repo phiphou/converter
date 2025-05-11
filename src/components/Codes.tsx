@@ -20,6 +20,11 @@ function Codes({dictionary}: UnitSelectProps) {
     ((value: string | number, from: Unit, to: Unit, precision?: number) => string | number) | undefined
   >()
 
+  const BclassName =
+    "mr-3 block rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+
+  const className = `${BclassName} ${unitTo == "morse" ? " max-w-[80%] min-w-[80%]" : " max-w-full min-w-full"}`
+
   const switchUnits = () => {
     setDecode(!decode)
     setInput(output)
@@ -77,63 +82,58 @@ function Codes({dictionary}: UnitSelectProps) {
 
   return (
     <>
-      <div className="m-3 mx-auto flex flex-col items-center justify-center">
-        <div className="flex flex-col text-black dark:text-white">
-          <div className="flex flex-col items-center text-black dark:text-white">
-            <div className="mr-3 mb-1 ml-3 max-w-100 min-w-100">Texte en clair : </div>
+      <div className="m-3 mx-auto flex max-w-[100%] min-w-[100%] flex-col items-center justify-center md:max-w-[60%] md:min-w-[60%]">
+        <div className="flex w-full flex-col text-black dark:text-white">
+          <div className="flex w-full flex-col items-center text-black dark:text-white">
+            <div className="mr-3 mb-1 ml-3 max-w-full min-w-full">Texte en clair : </div>
             <textarea
-              className="mr-3 ml-3 block max-w-100 min-w-100 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              className="mr-3 ml-3 block max-w-full min-w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               rows={4}
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
           </div>
-          <div className="mt-5 flex max-w-100 min-w-100 items-center gap-2">
-            {unitTo === "morse" && <div className="w-40"></div>}
+          <div className="mt-5 flex max-w-full min-w-full items-center gap-2">
+            {/* {unitTo === "morse" && <div className="md:w-40"></div>} */}
 
-            <div className="mr-2 ml-3">
-              <UnitSelect unit={unitTo} setUnit={changeUnit} dictionary={dictionary} />
+            <div className="flex flex-col items-center gap-4 md:flex-row md:gap-3">
+              <div className="mr-2 ml-3">
+                <UnitSelect unit={unitTo} setUnit={changeUnit} dictionary={dictionary} />
+              </div>
+              {unitTo !== "morse" && (
+                <div className="ml-2 flex items-center gap-2">
+                  <span>{unitTo === "rotation" ? " valeur" : " clef"}</span>
+                  <input
+                    type="text"
+                    min={0}
+                    className="mr-2 block max-w-40 min-w-40 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                    value={key}
+                    onChange={(e) => {
+                      if (e.target.value == "") {
+                        setKey("")
+                        return
+                      }
+                      if (unitTo !== "rotation" && !isNaN(parseInt(e.target.value))) {
+                        setKey("ABC")
+                      } else if (unitTo === "rotation" && isNaN(parseInt(e.target.value))) {
+                        setKey("13")
+                      } else if (unitTo === "rotation" && !isNaN(parseInt(e.target.value))) {
+                        setKey(e.target.value)
+                      } else if (unitTo !== "rotation" && isNaN(parseInt(e.target.value))) {
+                        setKey(e.target.value)
+                      }
+                    }}
+                  />
+                </div>
+              )}
             </div>
-            {unitTo !== "morse" && (
-              <>
-                <span>{unitTo === "rotation" ? " valeur" : " clef"}</span>
-                <input
-                  type="text"
-                  min={0}
-                  className="mr-2 block max-w-40 min-w-40 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                  value={key}
-                  onChange={(e) => {
-                    if (e.target.value == "") {
-                      setKey("")
-                      return
-                    }
-                    if (unitTo !== "rotation" && !isNaN(parseInt(e.target.value))) {
-                      setKey("ABC")
-                    } else if (unitTo === "rotation" && isNaN(parseInt(e.target.value))) {
-                      setKey("13")
-                    } else if (unitTo === "rotation" && !isNaN(parseInt(e.target.value))) {
-                      setKey(e.target.value)
-                    } else if (unitTo !== "rotation" && isNaN(parseInt(e.target.value))) {
-                      setKey(e.target.value)
-                    }
-                  }}
-                />
-              </>
-            )}
             {!dictionary[unitTo]?.noSwitch && !dictionary["input"] && !dictionary["noSwitch"] && (
               <SwitchUnitButton switchUnits={switchUnits} />
             )}
           </div>
-
-          <div className="mt-6 flex flex-col items-center text-black dark:text-white">
-            <div className="flex align-middle">
-              {unitTo == "morse" && <div className="w-11"></div>}
-              <textarea
-                className="mr-3 ml-3 block max-w-100 min-w-100 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                rows={4}
-                value={output}
-                onChange={(e) => setOutput(e.target.value)}
-              />
+          <div className="mt-6 flex max-w-full min-w-full flex-col items-center text-black dark:text-white">
+            <div className="flex max-w-full min-w-full align-middle">
+              <textarea className={className} rows={4} value={output} onChange={(e) => setOutput(e.target.value)} />
 
               {unitTo === "morse" && (
                 <button

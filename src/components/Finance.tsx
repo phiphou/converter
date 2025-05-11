@@ -100,69 +100,79 @@ function Finance({dictionary}: UnitSelectProps) {
 
   return (
     <>
-      <div className="m-3 mx-auto flex flex-col items-center justify-center">
-        <div className="flex w-125 flex-col items-start text-black dark:text-white">
-          <div className="flex items-center text-black dark:text-white">
-            <div className="min-w-8">Si je place</div>
-            <input
-              type="number"
-              min={0}
-              step="any"
-              className="mr-3 ml-2 block w-25 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-              value={rawInitial}
-              onChange={(e) => {
-                const inputValue = e.target.value.replace(",", ".")
-                const numericValue = parseFloat(inputValue)
-                setRawInitial(inputValue)
-                if (!isNaN(numericValue)) setInitial(numericValue)
-              }}
-            />
-            <span>€ à un taux de</span>
-            <input
-              type="text"
-              min={0}
-              className="mr-3 ml-2 block max-w-15 min-w-15 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-              value={rawRate}
-              onChange={(e) => {
-                const inputValue = e.target.value.replace(",", ".")
-                const numericValue = parseFloat(inputValue)
-                setRawRate(inputValue)
-                if (!isNaN(numericValue)) setRate(numericValue)
-              }}
-            />
-            <span>% par an</span>
+      <div className="m-3 mx-auto flex max-w-full min-w-full flex-col items-center justify-center md:max-w-[60%] md:min-w-[60%]">
+        <div className="flex w-full flex-col items-start text-black dark:text-white">
+          <div className="flex flex-col items-center gap-3 text-black md:flex-row md:gap-1 dark:text-white">
+            <div className="flex items-center justify-center gap-1">
+              <div className="min-w-8">Si je place</div>
+              <input
+                type="number"
+                min={0}
+                step="any"
+                className="mr-3 ml-2 block w-20 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                value={rawInitial}
+                onChange={(e) => {
+                  const inputValue = e.target.value.replace(",", ".")
+                  const numericValue = parseFloat(inputValue)
+                  setRawInitial(inputValue)
+                  if (!isNaN(numericValue)) setInitial(numericValue)
+                }}
+              />
+              <div>€ </div>
+            </div>
+
+            <div className="flex items-center gap-2 md:gap-1">
+              <span>à un taux de</span>
+              <input
+                type="text"
+                min={0}
+                className="mr-3 ml-2 block max-w-15 min-w-15 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                value={rawRate}
+                onChange={(e) => {
+                  const inputValue = e.target.value.replace(",", ".")
+                  const numericValue = parseFloat(inputValue)
+                  setRawRate(inputValue)
+                  if (!isNaN(numericValue)) setRate(numericValue)
+                }}
+              />
+              <span>% par an</span>
+            </div>
           </div>
           <div className="mt-6 flex items-center text-black dark:text-white">
-            <div className="max-w-36 min-w-36">en mettant de côté</div>
-            <input
-              type="text"
-              min={0}
-              className="mr-3 ml-1 block w-25 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-              value={rawInvests}
-              onChange={(e) => {
-                const inputValue = e.target.value.replace(",", ".")
-                const numericValue = parseFloat(inputValue)
-                setRawInvests(inputValue)
-                if (!isNaN(numericValue)) setInvests(numericValue)
-              }}
-            />
-            <div className="max-w-12 min-w-12">€ par</div>
-            <select
-              onChange={(e) => setPeriodicity(e.target.value)}
-              className="ml block w-full max-w-50 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            >
-              <option key={0} value={"semaine"}>
-                semaine
-              </option>
-              <option key={1} value={"mois"}>
-                mois
-              </option>
-              <option key={2} value={"an"}>
-                an
-              </option>
-            </select>
+            <div className="flex flex-col items-center gap-2 md:flex-row">
+              <div className="max-w-36 min-w-36">en mettant de côté</div>
+              <input
+                type="text"
+                min={0}
+                className="mr-3 ml-1 block w-25 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                value={rawInvests}
+                onChange={(e) => {
+                  const inputValue = e.target.value.replace(",", ".")
+                  const numericValue = parseFloat(inputValue)
+                  setRawInvests(inputValue)
+                  if (!isNaN(numericValue)) setInvests(numericValue)
+                }}
+              />
+            </div>
+            <div className="mt-8 flex flex-row items-center gap-2 md:mt-0">
+              <div className="max-w-12 min-w-12">€ par</div>
+              <select
+                onChange={(e) => setPeriodicity(e.target.value)}
+                className="ml block w-full max-w-50 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              >
+                <option key={0} value={"semaine"}>
+                  semaine
+                </option>
+                <option key={1} value={"mois"}>
+                  mois
+                </option>
+                <option key={2} value={"an"}>
+                  an
+                </option>
+              </select>
+            </div>
           </div>
-          <div className="mt-3 flex items-center text-black dark:text-white">
+          <div className="mt-5 flex items-center text-black dark:text-white">
             <div className="max-w-36 min-w-36">sur une période de</div>
             <input
               type="text"
