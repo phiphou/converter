@@ -64,3 +64,19 @@ export const scientific_notation = (value: number | null, precision: number): st
 
   return `${coefficient}×10${unicodeExponent}`
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function debounce<T extends (...args: any[]) => void>(func: T, wait: number): T & {cancel: () => void} {
+  let timeout: NodeJS.Timeout
+
+  const debounced = (...args: Parameters<T>) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => func(...args), wait)
+  }
+
+  debounced.cancel = () => {
+    clearTimeout(timeout)
+  }
+
+  return debounced as T & {cancel: () => void}
+}

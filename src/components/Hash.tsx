@@ -2,6 +2,7 @@ import {useEffect, useState} from "react"
 import {Unit} from "../types/types"
 import InfosBlock from "./InfosBlock"
 import UnitSelect from "./UnitSelect"
+import {debounce} from "../utils/utils"
 
 interface UnitSelectProps {
   dictionary: Record<string, Unit>
@@ -26,6 +27,34 @@ function Hash({dictionary}: UnitSelectProps) {
   }
 
   useEffect(() => {
+    const debouncedCalculation = debounce(async () => {
+      if (input) {
+        setOutput("calcul en cours...")
+        async function calculateResult() {
+          let calculatedResult = ""
+          if (converter && unitTo != "" && key != "") {
+            dictionary[unitTo].key = key
+            try {
+              calculatedResult = String(
+                await converter(input, {label: "text", divisor: 1, converter: converter}, dictionary[unitTo])
+              )
+              setOutput(calculatedResult)
+            } catch (error) {
+              console.log(error)
+            }
+          }
+        }
+        if (unitTo != "") calculateResult()
+      }
+    }, 150)
+
+    debouncedCalculation()
+    return () => {
+      debouncedCalculation.cancel()
+    }
+  }, [input, dictionary, unitTo, key, converter, key2])
+
+  useEffect(() => {
     const firstUnit = Object.keys(dictionary)[3] || ""
     if (dictionary[firstUnit]?.converter) {
       setConverter(() => dictionary[firstUnit].converter)
@@ -33,31 +62,9 @@ function Hash({dictionary}: UnitSelectProps) {
     setUnitTo(firstUnit)
   }, [dictionary, converter])
 
-  useEffect(() => {
-    async function calculateResult() {
-      setOutput("calcul en cours...")
-      let calculatedResult = ""
-
-      if (converter && unitTo != "" && key != "") {
-        dictionary[unitTo].key = key
-        try {
-          calculatedResult = String(
-            await converter(input, {label: "text", divisor: 1, converter: converter}, dictionary[unitTo])
-          )
-          setOutput(calculatedResult)
-        } catch (error) {
-          console.log(error)
-        }
-      }
-    }
-
-    if (unitTo != "") calculateResult()
-  }, [input, dictionary, unitTo, key, converter, key2])
-
   const BclassName = `mr-2 bloc rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500`
 
   const className = `${BclassName} ${!["BCRYPT", "ARGON2"].includes(unitTo) ? " max-w-40 min-w-40" : " max-w-12 min-w-12"}`
-
   const className2 = `${BclassName} ${!["BCRYPT", "ARGON2"].includes(unitTo) ? " max-w-40 min-w-40" : " max-w-20 min-w-20"}`
 
   return (
