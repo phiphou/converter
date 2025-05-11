@@ -111,9 +111,10 @@ function Planets({dictionary}: UnitSelectProps) {
           </select>
         </div>
         <div className="mt-6 flex items-center text-black dark:text-white">
-          <div className="max-w-19 min-w-19">est {mode === "distance" ? "égale à" : "égal à"}</div>
+          <div className="max-w-20 min-w-20">est {mode === "distance" ? "égale à" : "égal à"}</div>
           <input
             type="text"
+            inputMode="numeric"
             min={0}
             className="mr-3 ml-2 block w-25 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             value={rawValue}
@@ -146,7 +147,7 @@ function Planets({dictionary}: UnitSelectProps) {
             </option>
           </select>
         </div>
-        <div className="relative mt-10 max-w-200 min-w-200 overflow-x-auto rounded-lg shadow">
+        <div className="relative mt-10 max-w-full min-w-full overflow-x-auto rounded-lg shadow">
           <table className="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
             <thead className="bg-gray-50 text-xs text-gray-800 uppercase dark:bg-gray-700 dark:text-gray-200">
               <tr>

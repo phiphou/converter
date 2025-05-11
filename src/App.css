@@ -48,8 +48,9 @@
   }
 }
 .chart-container {
-  height: 350px !important;
-  width: 95% !important;
+  /* width: 95% !important; */
+  margin-top: 15px;
+  margin-bottom: 15px;
   position: relative;
 }
 

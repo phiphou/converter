@@ -116,7 +116,7 @@ function Chart(data: ChartData<"line">) {
   }
 
   return (
-    <div className="chart-container md:ml-[8%]">
+    <div className="chart-container mr-0 ml-0 w-full md:ml-[10%] md:w-[80%]">
       <Line options={options} data={data} />
     </div>
   )
