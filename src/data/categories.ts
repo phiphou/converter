@@ -45,7 +45,7 @@ export const categories = {
     label: "finance",
   },
   hash: {
-    label: "hash",
+    label: "hash et cryptographie",
   },
   computer: {
     label: "informatique",

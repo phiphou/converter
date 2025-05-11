@@ -18,6 +18,8 @@
     "paths": {
       "*": ["types/*"]
     },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
 
     /* Linting */
     "strict": true,

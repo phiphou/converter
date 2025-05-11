@@ -79,7 +79,7 @@ function Hash({dictionary}: UnitSelectProps) {
             <div className="mr-1 ml-3">
               <UnitSelect unit={unitTo} setUnit={changeUnit} dictionary={dictionary} />
             </div>
-            {["HMAC_SHA1", "HMAC_SHA256", "HMAC_SHA384", "HMAC_SHA512", "BCRYPT", "ARGON2"].includes(unitTo) && (
+            {["HMAC_SHA1", "HMAC_SHA256", "HMAC_SHA384", "HMAC_SHA512", "BCRYPT", "ARGON2", "AES"].includes(unitTo) && (
               <>
                 <span>{["BCRYPT", "ARGON2"].includes(unitTo) ? " tours" : " clef"}</span>
 

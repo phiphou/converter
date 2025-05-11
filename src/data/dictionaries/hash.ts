@@ -7,6 +7,11 @@ const hash = {
     // label:
     //   "plus d'infos sur les systèmes de numération sur <a href='https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_num%C3%A9ration' target='_blank'>Wikipedia</a>.",
   },
+  CRC32: {
+    label: "CRC32",
+    converter: hash_converter,
+    pluralize: true,
+  },
   MD5: {
     label: "MD5",
     converter: hash_converter,
@@ -32,6 +37,21 @@ const hash = {
     converter: hash_converter,
     pluralize: true,
   },
+  SHA3: {
+    label: "SHA-3",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  RIPEMD160: {
+    label: "RIPEMD-160",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  WHIRLPOOL: {
+    label: "WHIRLPOOL",
+    converter: hash_converter,
+    pluralize: true,
+  },
   BCRYPT: {
     label: "BCRYPT",
     converter: hash_converter,
@@ -39,6 +59,11 @@ const hash = {
   },
   ARGON2: {
     label: "ARGON2",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  AES: {
+    label: "AES",
     converter: hash_converter,
     pluralize: true,
   },
