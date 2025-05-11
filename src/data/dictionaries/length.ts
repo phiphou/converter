@@ -167,6 +167,13 @@ const length = {
     not_unit: true,
     pluralize: true,
   },
+  periph: {
+    info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Boulevard_p%C3%A9riph%C3%A9rique_de_Paris" target="_blank">Wikipedia Maps</a>.',
+    label: "périphérique parisien",
+    divisor: 35.04,
+    not_unit: true,
+    pluralize: true,
+  },
   marathon: {
     info: 'selon les données de <a href="https://fr.wikipedia.org/wiki/Marathon_(sport)" target="_blank">Wikipedia</a>.',
     label: "marathon",
@@ -202,10 +209,10 @@ const length = {
     not_unit: true,
     pluralize: true,
   },
-  Moon_radius: {
-    info: 'rayon équatorial, selon les données de <a href="https://fr.wikipedia.org/wiki/Lune" target="_blank">Wikipedia</a>.',
-    label: "Lune (rayon)",
-    divisor: 1737.4,
+  Sun_radius: {
+    info: 'rayon équatorial, selon les données de <a href="https://fr.wikipedia.org/wiki/Soleil" target="_blank">Wikipedia</a>.',
+    label: "Soleil (rayon)",
+    divisor: 696342,
     not_unit: true,
     pluralize: true,
   },
@@ -227,6 +234,13 @@ const length = {
     info: 'rayon équatorial, selon les données de <a href="https://fr.wikipedia.org/wiki/Terre" target="_blank">Wikipedia</a>.',
     label: "Terre (rayon)",
     divisor: 6378.137,
+    not_unit: true,
+    pluralize: true,
+  },
+  Moon_radius: {
+    info: 'rayon équatorial, selon les données de <a href="https://fr.wikipedia.org/wiki/Lune" target="_blank">Wikipedia</a>.',
+    label: "Lune (rayon)",
+    divisor: 1737.4,
     not_unit: true,
     pluralize: true,
   },
