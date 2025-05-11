@@ -6,6 +6,7 @@ import spinner from "../assets/icons/spinner.svg"
 import Finance from "./Finance"
 import Codes from "./Codes"
 import Hash from "./Hash"
+import Colors from "./Colors"
 
 const Planets = lazy(() => import("./Planets"))
 
@@ -30,6 +31,17 @@ function Form() {
       setSelectedDictionary(null)
       setIsLoading(false)
     }
+  }
+
+  const fallback = () => {
+    return (
+      <div>
+        <div className="mx-auto text-center text-gray-500">
+          {" "}
+          <img src={spinner} className="mx-auto h-25 w-25" />
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -62,16 +74,7 @@ function Form() {
             selectedDictionary &&
             typeof selectedDictionary["custom"] === "string" &&
             selectedDictionary["custom"] === "finance" && (
-              <Suspense
-                fallback={
-                  <div>
-                    <div className="mx-auto text-center text-gray-500">
-                      {" "}
-                      <img src={spinner} className="mx-auto h-25 w-25" />
-                    </div>
-                  </div>
-                }
-              >
+              <Suspense fallback={fallback()}>
                 <Finance dictionary={selectedDictionary} />
               </Suspense>
             )}
@@ -79,33 +82,23 @@ function Form() {
             selectedDictionary &&
             typeof selectedDictionary["custom"] === "string" &&
             selectedDictionary["custom"] === "codes" && (
-              <Suspense
-                fallback={
-                  <div>
-                    <div className="mx-auto text-center text-gray-500">
-                      {" "}
-                      <img src={spinner} className="mx-auto h-25 w-25" />
-                    </div>
-                  </div>
-                }
-              >
+              <Suspense fallback={fallback()}>
                 <Codes dictionary={selectedDictionary} />
               </Suspense>
             )}
           {!isLoading &&
             selectedDictionary &&
             typeof selectedDictionary["custom"] === "string" &&
+            selectedDictionary["custom"] === "colors" && (
+              <Suspense fallback={fallback()}>
+                <Colors dictionary={selectedDictionary} />
+              </Suspense>
+            )}
+          {!isLoading &&
+            selectedDictionary &&
+            typeof selectedDictionary["custom"] === "string" &&
             selectedDictionary["custom"] === "hash" && (
-              <Suspense
-                fallback={
-                  <div>
-                    <div className="mx-auto text-center text-gray-500">
-                      {" "}
-                      <img src={spinner} className="mx-auto h-25 w-25" />
-                    </div>
-                  </div>
-                }
-              >
+              <Suspense fallback={fallback()}>
                 <Hash dictionary={selectedDictionary} />
               </Suspense>
             )}
@@ -113,16 +106,7 @@ function Form() {
             selectedDictionary &&
             typeof selectedDictionary["custom"] === "string" &&
             selectedDictionary["custom"] === "planets" && (
-              <Suspense
-                fallback={
-                  <div>
-                    <div className="mx-auto text-center text-gray-500">
-                      {" "}
-                      <img src={spinner} className="mx-auto h-25 w-25" />
-                    </div>
-                  </div>
-                }
-              >
+              <Suspense fallback={fallback()}>
                 <Planets dictionary={selectedDictionary} />
               </Suspense>
             )}

@@ -59,8 +59,8 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
   const [dictionary, setDictionary] = useState<Record<string, Unit>>({})
   const [switched, setSwiched] = useState<boolean>(false)
   const [singleResult, setSingleResult] = useState<boolean>(false)
-  const [currentDate, SetCurrentDate] = useState<Date>(new Date())
-  const [error, SetError] = useState<Error | null>(null)
+  const [currentDate, setCurrentDate] = useState<Date>(new Date())
+  const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
     let firstUnit = ""
@@ -125,13 +125,13 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
     }
     setUnitFrom(firstUnit)
     setUnitTo(firstUnit)
-    SetCurrentDate(new Date())
+    setCurrentDate(new Date())
   }, [dic])
 
   useEffect(() => {
     async function calculateResult() {
       setResult(null)
-      SetError(null)
+      setError(null)
       if (unitFrom && unitTo) {
         const fromDivisor = dictionary[unitFrom].divisor
         const toDivisor = dictionary[unitTo].divisor
@@ -149,7 +149,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             )
             calculatedResult = typeof converterResult === "number" ? converterResult : parseFloat(converterResult)
           } catch (error) {
-            SetError(error as Error)
+            setError(error as Error)
           }
 
           setResult(calculatedResult)
@@ -163,7 +163,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             )
             calculatedResult = typeof converterResult === "number" ? converterResult : parseFloat(converterResult)
           } catch (error) {
-            SetError(error as Error)
+            setError(error as Error)
           }
         } else if (hasList) {
           if (toDivisor === fromDivisor && dictionary[unitFrom].group === dictionary[unitTo].group) {
@@ -252,7 +252,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
               placeholder={label}
               value={currentDate.toISOString().split("T")[0]}
               onChange={(e) => {
-                SetCurrentDate(new Date(e.target.value))
+                setCurrentDate(new Date(e.target.value))
               }}
             />
           )}

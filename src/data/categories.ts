@@ -17,6 +17,9 @@ export const categories = {
   CO2: {
     label: "CO2",
   },
+  colors: {
+    label: "Couleurs",
+  },
   consumption: {
     label: "consommation",
   },
