@@ -129,7 +129,7 @@ export const cypher_converter = (value: string, unitFrom: Unit, unitTo: Unit): s
   const key = `${unitFrom.label}:${unitTo.label}`
   const conversionFunction = conversionMap[key]
 
-  if (!conversionFunction) throw new Error(`Unsupported conversion from ${unitFrom.label} to ${unitTo.label}`)
+  if (!conversionFunction) throw new Error(`Conversion impossible de ${unitFrom.label} vers ${unitTo.label}`)
 
   return conversionFunction(
     value,

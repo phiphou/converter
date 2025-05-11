@@ -29,7 +29,7 @@ export const temp_converter = (value: number, unitFrom: Unit, unitTo: Unit): num
   const key = `${unitFrom.label}:${unitTo.label}`
   const conversionFunction = conversionMap[key]
 
-  if (!conversionFunction) throw new Error(`Unsupported conversion from ${unitFrom.label} to ${unitTo.label}`)
+  if (!conversionFunction) throw new Error(`Conversion impossible de ${unitFrom.label} vers ${unitTo.label}`)
 
   return conversionFunction(value)
 }
