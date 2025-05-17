@@ -1,4 +1,5 @@
 import {defineConfig} from "vite"
+// import {analyzer} from "vite-bundle-analyzer"
 import tailwindcss from "@tailwindcss/vite"
 export default defineConfig({
   plugins: [tailwindcss()],
@@ -8,7 +9,9 @@ export default defineConfig({
       treeshake: true,
       output: {
         manualChunks: {
-          vendor: ["react", "react-dom", "react-chartjs-2", "chart.js"],
+          vendor: ["react", "react-dom"],
+          "chart.js": ["react-chartjs-2", "chart.js"],
+          hash_wasm: ["hash-wasm"],
         },
       },
     },

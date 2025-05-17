@@ -17,7 +17,13 @@ function Codes({dictionary}: UnitSelectProps) {
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const [decode, setDecode] = useState<boolean>(false)
   const [converter, setConverter] = useState<
-    ((value: string | number, from: Unit, to: Unit, precision?: number) => string | number) | undefined
+    | ((
+        value: string | number,
+        from: Unit,
+        to: Unit,
+        precision?: number
+      ) => string | number | Promise<string> | Promise<number>)
+    | undefined
   >()
 
   const BclassName =

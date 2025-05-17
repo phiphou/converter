@@ -12,6 +12,21 @@ const hash = {
     converter: hash_converter,
     pluralize: true,
   },
+  CRC64: {
+    label: "CRC64",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  ADLER32: {
+    label: "ADLER32",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  MD4: {
+    label: "MD4",
+    converter: hash_converter,
+    pluralize: true,
+  },
   MD5: {
     label: "MD5",
     converter: hash_converter,
@@ -37,8 +52,39 @@ const hash = {
     converter: hash_converter,
     pluralize: true,
   },
-  SHA3: {
-    label: "SHA-3",
+  SHA3_256: {
+    label: "SHA-3-256",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  SHA3_384: {
+    label: "SHA-3-384",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  SHA3_512: {
+    label: "SHA-3-512",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  SCRYPT: {
+    label: "SCRYPT",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  PBKDF2: {
+    label: "PBKDF2",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  BLAKE3: {
+    label: "BLAKE3",
+    converter: hash_converter,
+    pluralize: true,
+  },
+
+  XXHASH128: {
+    label: "XXHash128",
     converter: hash_converter,
     pluralize: true,
   },

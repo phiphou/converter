@@ -1,7 +1,18 @@
 import {Unit} from "../types/types"
-import bcrypt from "bcryptjs"
-import {AES, MD5, SHA3, RIPEMD160, enc} from "crypto-js"
-import {Whirlpool, encoders} from "whirlpool-hash"
+import {
+  md4,
+  adler32,
+  xxhash128,
+  md5,
+  whirlpool,
+  sha3,
+  ripemd160,
+  bcrypt,
+  argon2id,
+  blake3,
+  crc64,
+  scrypt,
+} from "hash-wasm"
 
 const sha = async (text: string, type: string): Promise<string> => {
   const encoder = new TextEncoder()
@@ -34,31 +45,10 @@ async function createHMAC(message: string, keyString: string, type: string) {
 }
 
 async function hbcrypt(message: string, cost: number): Promise<string> {
-  const salt = await bcrypt.genSalt(cost)
-  const hash = await bcrypt.hash(message, salt)
-  return hash
-}
+  const salt = new Uint8Array(16)
+  window.crypto.getRandomValues(salt)
 
-async function whirlpoolHash(message: string): Promise<string> {
-  const whirlpool = new Whirlpool()
-  const hash: string = whirlpool.getHash(message).toString()
-  return encoders.toHex(hash)
-}
-
-async function ripemd160(message: string): Promise<string> {
-  return RIPEMD160(message).toString(enc.Hex)
-}
-
-async function aes(message: string, key: string): Promise<string> {
-  return AES.encrypt(message, key).toString()
-}
-
-async function sha3(message: string): Promise<string> {
-  return SHA3(message, {outputLength: 256}).toString(enc.Hex)
-}
-
-async function md5(message: string): Promise<string> {
-  return MD5(message).toString(enc.Hex)
+  return await bcrypt({password: message, costFactor: cost, salt})
 }
 
 async function crc_32(message: string): Promise<string> {
@@ -85,49 +75,114 @@ async function crc_32(message: string): Promise<string> {
     }
     return toUnsignedInt32(crc ^ 0xffffffff)
   }
-  return "0x" + crc32UnsignedFull(message).toString().padStart(8, "0")
+  return "0x" + crc32UnsignedFull(message).toString(16)
 }
 
 export async function hArgon2(message: string, time: number, mem: number): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const worker = new Worker(new URL("../workers/argon2.worker.ts", import.meta.url), {type: "module"})
+  const salt = new Uint8Array(16)
+  window.crypto.getRandomValues(salt)
 
-    worker.onmessage = (event) => {
-      const {success, hash, error} = event.data
-      if (success) {
-        resolve(hash)
-      } else {
-        reject(new Error(error))
-      }
-      worker.terminate()
-    }
-
-    worker.onerror = (error) => {
-      reject(error)
-      worker.terminate()
-    }
-
-    worker.postMessage({message, time, mem})
+  window.crypto.getRandomValues(salt)
+  return await argon2id({
+    password: message,
+    salt,
+    parallelism: 1,
+    iterations: time,
+    memorySize: mem,
+    hashLength: 64,
+    outputType: "encoded",
   })
+}
+
+async function scryptHash(t: string, k: string): Promise<string> {
+  if (k === "") k = "1024"
+
+  return await scrypt({
+    password: t,
+    salt: new TextEncoder().encode("MYSALT123"),
+    costFactor: parseInt(k),
+    blockSize: 8,
+    parallelism: 2,
+    hashLength: 32,
+  })
+}
+
+async function pbkdf2Hash(t: string, k: string): Promise<string> {
+  if (k === "") k = "65536"
+
+  const salt = new Uint8Array(16)
+  window.crypto.getRandomValues(salt)
+
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(t), {name: "PBKDF2"}, false, ["deriveBits"])
+
+  const derivedKey = await crypto.subtle.deriveBits(
+    {
+      name: "PBKDF2",
+      salt,
+      iterations: parseInt(k),
+      hash: "SHA-256",
+    },
+    key,
+    256
+  )
+
+  return Array.from(new Uint8Array(derivedKey))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("")
+}
+
+async function aes(message: string) {
+  try {
+    const algorithm = {name: "AES-GCM", length: 256}
+    const symmetricKey = await crypto.subtle.generateKey(algorithm, true, ["encrypt", "decrypt"])
+    const keyPair = await crypto.subtle.generateKey(
+      {
+        name: "RSA-OAEP",
+        modulusLength: 2048,
+        publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+        hash: "SHA-256",
+      },
+      true,
+      ["encrypt", "decrypt"]
+    )
+    const iv = crypto.getRandomValues(new Uint8Array(12)) // Generate 12-byte IV
+
+    const encodedMessage = new TextEncoder().encode(message)
+    const encryptedMessage = await crypto.subtle.encrypt({name: "AES-GCM", iv}, symmetricKey, encodedMessage)
+    const symmetricKeyBytes = await crypto.subtle.exportKey("raw", symmetricKey)
+    const encryptedSymmetricKey = await crypto.subtle.encrypt({name: "RSA-OAEP"}, keyPair.publicKey, symmetricKeyBytes)
+    return `Clef : ${btoa(String.fromCharCode(...new Uint8Array(iv))) + btoa(String.fromCharCode(...new Uint8Array(encryptedSymmetricKey)))} \n\n Message : ${btoa(String.fromCharCode(...new Uint8Array(encryptedMessage)))}` // Convert to Base64
+  } catch (error) {
+    return `Error: ${error}`
+  }
 }
 
 const conversionMap: Record<string, (t: string, k: string, k2: number) => Promise<string>> = {
   "text:CRC32": async (t) => crc_32(t),
+  "text:MD4": async (t) => md4(t),
   "text:MD5": async (t) => md5(t),
   "text:SHA-1": async (t) => sha(t, "SHA-1"),
   "text:SHA-256": async (t) => sha(t, "SHA-256"),
   "text:SHA-384": async (t) => sha(t, "SHA-384"),
   "text:SHA-512": async (t) => sha(t, "SHA-512"),
-  "text:SHA-3": async (t) => sha3(t),
+  "text:SHA-3-256": async (t) => sha3(t, 256),
+  "text:SHA-3-384": async (t) => sha3(t, 384),
+  "text:SHA-3-512": async (t) => sha3(t, 512),
   "text:RIPEMD-160": async (t) => ripemd160(t),
-  "text:WHIRLPOOL": async (t) => whirlpoolHash(t),
+  "text:WHIRLPOOL": async (t) => whirlpool(t),
+  "text:ADLER32": async (t) => adler32(t),
   "text:HMAC SHA-1": async (t, k) => createHMAC(t, k, "SHA-1"),
   "text:HMAC SHA-256": async (t, k) => createHMAC(t, k, "SHA-256"),
   "text:HMAC SHA-384": async (t, k) => createHMAC(t, k, "SHA-384"),
   "text:HMAC SHA-512": async (t, k) => createHMAC(t, k, "SHA-512"),
-  "text:AES": async (t, k) => aes(t, k),
+  "text:XXHash128": async (t) => xxhash128(t),
+  "text:AES": async (t) => aes(t),
   "text:BCRYPT": async (t, k) => await hbcrypt(t, parseInt(k)),
   "text:ARGON2": async (t, k, k2) => await hArgon2(t, parseInt(k), k2),
+  "text:BLAKE3": async (t) => await blake3(t),
+  "text:CRC64": async (t) => await crc64(t),
+  "text:SCRYPT": async (t, k) => scryptHash(t, k),
+  "text:PBKDF2": async (t, k) => pbkdf2Hash(t, k),
 }
 
 export const hash_converter = async (value: string, unitFrom: Unit, unitTo: Unit): Promise<string> => {
@@ -141,7 +196,7 @@ export const hash_converter = async (value: string, unitFrom: Unit, unitTo: Unit
   return await conversionFunction(
     value,
     unitTo.key === undefined || unitTo.key === "" ? (unitFrom.key ?? "").toString() : unitTo.key.toString(),
-    unitTo.key2 === undefined ? (unitFrom.key2 ?? 65536) : unitTo.key2
+    Number(unitTo.key2 === undefined ? (unitFrom.key2 ?? 65536) : unitTo.key2)
   )
 }
 

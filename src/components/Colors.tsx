@@ -15,7 +15,13 @@ function Colors({dictionary}: UnitSelectProps) {
   const [unitFrom, setUnitFrom] = useState<string>("")
   const [unitTo, setUnitTo] = useState<string>("")
   const [converter, setConverter] = useState<
-    ((value: string | number, from: Unit, to: Unit, precision?: number) => string | number) | undefined
+    | ((
+        value: string | number,
+        from: Unit,
+        to: Unit,
+        precision?: number
+      ) => string | number | Promise<string> | Promise<number>)
+    | undefined
   >()
   const [error, setError] = useState<Error | null>(null)
 
@@ -27,7 +33,7 @@ function Colors({dictionary}: UnitSelectProps) {
   useEffect(() => {
     const firstUnit = Object.keys(dictionary)[2] || ""
     if (dictionary[firstUnit]?.converter) {
-      setConverter(() => dictionary[firstUnit].converter)
+      setConverter(dictionary[firstUnit].converter)
     }
     setUnitFrom(firstUnit)
     setUnitTo(firstUnit)

@@ -7,6 +7,7 @@ import Finance from "./Finance"
 import Codes from "./Codes"
 import Hash from "./Hash"
 import Colors from "./Colors"
+import Inflation from "./Inflation"
 
 const Planets = lazy(() => import("./Planets"))
 
@@ -76,6 +77,14 @@ function Form() {
             selectedDictionary["custom"] === "finance" && (
               <Suspense fallback={fallback()}>
                 <Finance dictionary={selectedDictionary} />
+              </Suspense>
+            )}
+          {!isLoading &&
+            selectedDictionary &&
+            typeof selectedDictionary["custom"] === "string" &&
+            selectedDictionary["custom"] === "inflation" && (
+              <Suspense fallback={fallback()}>
+                <Inflation dictionary={selectedDictionary} />
               </Suspense>
             )}
           {!isLoading &&

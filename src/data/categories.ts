@@ -50,6 +50,9 @@ export const categories = {
   hash: {
     label: "hash et cryptographie",
   },
+  inflation: {
+    label: "inflation",
+  },
   computer: {
     label: "informatique",
   },

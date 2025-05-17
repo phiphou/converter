@@ -16,24 +16,43 @@ function Hash({dictionary}: UnitSelectProps) {
   const [unitTo, setUnitTo] = useState<string>("")
 
   const [converter, setConverter] = useState<
-    ((value: string | number, from: Unit, to: Unit, precision?: number) => string | number) | undefined
+    | ((
+        value: string | number,
+        from: Unit,
+        to: Unit,
+        precision?: number
+      ) => string | number | Promise<string> | Promise<number>)
+    | undefined
   >()
 
   const changeUnit = async (v: string) => {
     setOutput("calcul en cours...")
     setUnitTo(v)
-    setKey(["BCRYPT", "ARGON2"].includes(v) ? (v === "ARGON2" ? "3" : "12") : "SECRET")
+    switch (v) {
+      case "BCRYPT":
+        setKey("12")
+        break
+      case "ARGON2":
+        setKey("3")
+        break
+      case "SCRYPT":
+        setKey("1024")
+        break
+      case "PBKDF2":
+        setKey("1024")
+        break
+    }
     setKey2("65536")
   }
 
   useEffect(() => {
     const debouncedCalculation = debounce(async () => {
       if (input) {
-        setOutput("calcul en cours...")
         async function calculateResult() {
           let calculatedResult = ""
           if (converter && unitTo != "" && key != "") {
             dictionary[unitTo].key = key
+            setOutput("calcul en cours...")
             try {
               calculatedResult = String(
                 await converter(input, {label: "text", divisor: 1, converter: converter}, dictionary[unitTo])
@@ -86,9 +105,11 @@ function Hash({dictionary}: UnitSelectProps) {
             <div className="mr-1">
               <UnitSelect unit={unitTo} setUnit={changeUnit} dictionary={dictionary} />
             </div>
-            {["HMAC_SHA1", "HMAC_SHA256", "HMAC_SHA384", "HMAC_SHA512", "BCRYPT", "ARGON2", "AES"].includes(unitTo) && (
+            {["HMAC_SHA1", "HMAC_SHA256", "HMAC_SHA384", "HMAC_SHA512", "BCRYPT", "ARGON2", "AES", "SCRYPT"].includes(
+              unitTo
+            ) && (
               <>
-                <span>{["BCRYPT", "ARGON2"].includes(unitTo) ? " tours" : " clef"}</span>
+                <span>{["BCRYPT", "ARGON2", "SCRYPT"].includes(unitTo) ? " coût" : " clef"}</span>
 
                 <input
                   type="text"
@@ -97,7 +118,7 @@ function Hash({dictionary}: UnitSelectProps) {
                   value={key}
                   onChange={(e) => {
                     if (e.target.value == "") {
-                      setKey("1")
+                      setKey("")
                       return
                     }
                     setKey(e.target.value)
@@ -129,7 +150,7 @@ function Hash({dictionary}: UnitSelectProps) {
             <div className="flex max-w-full min-w-full align-middle">
               <textarea
                 className="mr-3 block max-w-full min-w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                rows={4}
+                rows={unitTo === "AES" ? 11 : 4}
                 value={output}
                 onChange={(e) => setOutput(e.target.value)}
               />
