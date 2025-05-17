@@ -41,25 +41,23 @@ function Inflation({dictionary}: UnitSelectProps) {
     setError(null)
     async function calculateResult() {
       let calculatedResult = ""
-      console.log("unitFrom", unitFrom)
-      console.log("unitTo", unitTo)
-      console.log("value", value)
-      console.log("conversionType", conversionType)
-      console.log("converter", converter)
+
       if (typeof converter === "function" && unitTo !== "") {
-        console.log("go")
         try {
           const conversionResult = await converter(
             value,
             {label: unitFrom, key: parseInt(unitFrom), divisor: 1, key2: conversionType},
             {label: unitTo, key: parseInt(unitTo), divisor: 1, key2: conversionType}
           )
-          console.log("conversionResult", conversionResult)
           if (typeof conversionResult === "object" && conversionResult !== null && "result" in conversionResult) {
-            calculatedResult = conversionResult.result
-            if ("cumulativeInflation" in conversionResult) {
-              setCumulativeInflation(conversionResult.cumulativeInflation)
-              setOutput(Math.round(parseFloat(calculatedResult)).toString())
+            const {result, cumulativeInflation: cumInfl} = conversionResult as {
+              result: string
+              cumulativeInflation?: string
+            }
+            calculatedResult = result
+            if (cumInfl !== undefined) {
+              setCumulativeInflation(cumInfl)
+              setOutput(parseFloat(calculatedResult).toFixed(2))
             }
           }
         } catch (error) {

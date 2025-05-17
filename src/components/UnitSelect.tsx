@@ -20,7 +20,8 @@ function UnitSelect({unit, setUnit, dictionary}: UnitSelectProps) {
           key !== "materials" &&
           key !== "input" &&
           key != "singleResult" &&
-          key != "custom"
+          key != "custom" &&
+          key != "no_precision"
         ) {
           return (
             <option key={key} value={key}>

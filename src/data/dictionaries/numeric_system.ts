@@ -11,6 +11,7 @@ const numeric_system = {
       "plus d'infos sur les systèmes de numération sur <a href='https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_num%C3%A9ration' target='_blank'>Wikipedia</a>.",
   },
   singleResult: true,
+  no_precision: true,
   decimal: {
     label: "décimal",
     converter: numeric_converter,

@@ -328,7 +328,6 @@ export const inflation_converter = async (
 
   let result = convertCurrency(numericValue, conversionType)
   result = applyInflation(start, end, result)
-  console.log("result", result)
 
   const inflationFactor = getCumulativeInflationFactor(start, end)
   const cumulativeInflation = ((inflationFactor - 1) * 100).toFixed(2)

@@ -228,7 +228,6 @@ async function integerToBabylonian(number: string): Promise<string> {
     result.unshift([tens, units].toString())
     num = Math.floor(num / 60)
   }
-  console.log("integerToBabylonian", result.join("-"))
   return result.join("-")
 }
 
