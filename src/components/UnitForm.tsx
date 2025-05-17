@@ -149,7 +149,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
               dictionary[unitTo],
               precision
             )
-            calculatedResult = typeof converterResult === "number" ? converterResult : parseFloat(converterResult)
+            calculatedResult = typeof converterResult === "number" ? parseFloat(converterResult) : converterResult
           } catch (error) {
             setError(error as Error)
           }
@@ -349,7 +349,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
         )}
         {dictionary["input"] && (
           <div
-            className="inline-block"
+            className="ml-4 inline-block"
             dangerouslySetInnerHTML={{
               __html: `${result}`,
             }}

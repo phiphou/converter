@@ -46,9 +46,7 @@ function Hash({dictionary}: UnitSelectProps) {
             dictionary[unitTo].key = key
             setOutput("calcul en cours...")
             try {
-              calculatedResult = String(
-                await converter(input, {label: "text", divisor: 1, converter: converter}, dictionary[unitTo])
-              )
+              calculatedResult = await converter(input, {label: "text", divisor: 1}, dictionary[unitTo])
               setOutput(calculatedResult)
             } catch (error) {
               console.log(error)
@@ -67,11 +65,13 @@ function Hash({dictionary}: UnitSelectProps) {
 
   useEffect(() => {
     const firstUnit = Object.keys(dictionary)[3] || ""
-    if (dictionary[firstUnit]?.converter) {
-      setConverter(dictionary[firstUnit].converter)
+    if (typeof dictionary[firstUnit]?.converter === "function") {
+      setConverter(() => dictionary[firstUnit]?.converter)
+    } else {
+      setConverter(undefined)
     }
     setUnitTo(firstUnit)
-  }, [dictionary, converter])
+  }, [dictionary])
 
   const BclassName = `mr-2 bloc rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500`
 
