@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import {Unit} from "../types/types"
+import {converterType, Unit} from "../types/types"
 import InfosBlock from "./InfosBlock"
 import UnitSelect from "./UnitSelect"
 import {debounce} from "../utils/utils"
@@ -15,15 +15,7 @@ function Hash({dictionary}: UnitSelectProps) {
   const [key2, setKey2] = useState<string>("65536")
   const [unitTo, setUnitTo] = useState<string>("")
 
-  const [converter, setConverter] = useState<
-    | ((
-        value: string | number,
-        from: Unit,
-        to: Unit,
-        precision?: number
-      ) => string | number | Promise<string> | Promise<number>)
-    | undefined
-  >()
+  const [converter, setConverter] = useState<converterType>()
 
   const changeUnit = async (v: string) => {
     setOutput("calcul en cours...")
@@ -76,7 +68,7 @@ function Hash({dictionary}: UnitSelectProps) {
   useEffect(() => {
     const firstUnit = Object.keys(dictionary)[3] || ""
     if (dictionary[firstUnit]?.converter) {
-      setConverter(() => dictionary[firstUnit].converter)
+      setConverter(dictionary[firstUnit].converter)
     }
     setUnitTo(firstUnit)
   }, [dictionary, converter])

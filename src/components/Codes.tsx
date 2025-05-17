@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import {Unit} from "../types/types"
+import {converterType, Unit} from "../types/types"
 import InfosBlock from "./InfosBlock"
 import UnitSelect from "./UnitSelect"
 import {initializeAudioContext, playSentence, stopAudioContext} from "../utils/morse"
@@ -16,15 +16,7 @@ function Codes({dictionary}: UnitSelectProps) {
   const [unitTo, setUnitTo] = useState<string>("")
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const [decode, setDecode] = useState<boolean>(false)
-  const [converter, setConverter] = useState<
-    | ((
-        value: string | number,
-        from: Unit,
-        to: Unit,
-        precision?: number
-      ) => string | number | Promise<string> | Promise<number>)
-    | undefined
-  >()
+  const [converter, setConverter] = useState<converterType>()
 
   const BclassName =
     "mr-3 block rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"

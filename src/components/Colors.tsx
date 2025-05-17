@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import {Unit} from "../types/types"
+import {converterType, Unit} from "../types/types"
 import InfosBlock from "./InfosBlock"
 import UnitSelect from "./UnitSelect"
 import SwitchUnitButton from "./SwitchUnitButton"
@@ -14,15 +14,7 @@ function Colors({dictionary}: UnitSelectProps) {
   const [output, setOutput] = useState<string>("")
   const [unitFrom, setUnitFrom] = useState<string>("")
   const [unitTo, setUnitTo] = useState<string>("")
-  const [converter, setConverter] = useState<
-    | ((
-        value: string | number,
-        from: Unit,
-        to: Unit,
-        precision?: number
-      ) => string | number | Promise<string> | Promise<number>)
-    | undefined
-  >()
+  const [converter, setConverter] = useState<converterType>()
   const [error, setError] = useState<Error | null>(null)
 
   const switchUnits = () => {
@@ -37,7 +29,7 @@ function Colors({dictionary}: UnitSelectProps) {
     }
     setUnitFrom(firstUnit)
     setUnitTo(firstUnit)
-  }, [dictionary, converter])
+  }, [dictionary])
 
   useEffect(() => {
     setError(null)

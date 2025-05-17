@@ -23,7 +23,7 @@ export type converterType = (
   to: Unit,
   precision?: number,
   conversionType?: ConversionType
-) => string | number | Promise<string> | Promise<number> | Promise<{result: string; cumulativeInflation: string}>
+) => string | Promise<string>
 
 export enum ConversionType {
   OFE = "Ancien Franc vers Euro",

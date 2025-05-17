@@ -51,7 +51,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
   const [unitTo, setUnitTo] = useState<string>("")
   const [rawValue, setRawValue] = useState<string>("1")
   const [value, setValue] = useState<number>(1)
-  const [result, setResult] = useState<number | null>(1)
+  const [result, setResult] = useState<number | string | null>(1)
   const [precision, setPrecision] = useState<number>(2)
   const [scientific, setScientific] = useState<boolean>(false)
   const [hasList, setHasList] = useState<boolean>(false)
@@ -135,7 +135,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       if (unitFrom && unitTo) {
         const fromDivisor = dictionary[unitFrom].divisor
         const toDivisor = dictionary[unitTo].divisor
-        let calculatedResult: number | null = null
+        let calculatedResult: number | string | null = null
 
         if (unitFrom === unitTo && !dictionary["input"] && !dictionary[unitTo].converter) {
           calculatedResult = value
@@ -161,7 +161,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
               dictionary[unitTo],
               precision
             )
-            calculatedResult = typeof converterResult === "number" ? converterResult : parseFloat(converterResult)
+            calculatedResult = typeof converterResult === "number" ? converterResult : converterResult
           } catch (error) {
             setError(error as Error)
           }
@@ -358,23 +358,33 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
           result !== null &&
           dictionary[unitFrom] &&
           dictionary[unitTo] &&
-          !singleResult && (
+          !singleResult &&
+          typeof result !== "string" && (
             <>
               {formatValueDisplay(value, rawValue, dictionary, unitTo, hasList, list, secondaryUnit)}
-              {(parseFloat(rawValue) >= 2 ? " valent " : " vaut ") + (result / value / value >= 1 ? "1/" : "")}
+              {(parseFloat(rawValue) >= 2 ? " valent " : " vaut ") +
+                ((typeof result === "number" ? result : parseFloat(result as string)) / value / value >= 1 ? "1/" : "")}
               {(result >= 1
                 ? scientific
-                  ? scientific_notation((1 / result) * value * value, precision)
-                  : result / value / value >= 1
-                    ? result / value / value
-                    : 1 / (result / value / value)
+                  ? scientific_notation(
+                      (1 / (typeof result === "number" ? result : parseFloat(result))) * value * value,
+                      precision
+                    )
+                  : (typeof result === "number" ? result : parseFloat(result)) / value / value >= 1
+                    ? (typeof result === "number" ? result : parseFloat(result)) / value / value
+                    : 1 / ((typeof result === "number" ? result : parseFloat(result)) / value / value)
                 : scientific
-                  ? scientific_notation((1 / result) * value * value, precision)
-                  : result
+                  ? scientific_notation(
+                      (1 / (typeof result === "number" ? result : parseFloat(result))) * value * value,
+                      precision
+                    )
+                  : typeof result === "number"
+                    ? result
+                    : parseFloat(result)
               )
                 .toLocaleString("fr-FR", {maximumFractionDigits: precision})
                 .replace(",", ".")}
-              {result / value / value >= 1
+              {(typeof result === "number" ? result : parseFloat(result as string)) / value / value >= 1
                 ? "ème de " + dictionary[unitFrom].label
                 : " fois " + dictionary[unitFrom].label}
             </>
@@ -387,7 +397,8 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
           result !== null &&
           dictionary[unitFrom] &&
           dictionary[unitTo] &&
-          !singleResult && (
+          !singleResult &&
+          typeof result !== "string" && (
             <>
               {formatValueDisplay(value, rawValue, dictionary, unitFrom, hasList, list, secondaryUnit)}
               {parseFloat(rawValue) >= 2 ? " valent " : " vaut "}

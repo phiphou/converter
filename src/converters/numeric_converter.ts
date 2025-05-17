@@ -215,7 +215,7 @@ function convertToKaktovik_digit(number: string) {
 //   return total
 // }
 
-function integerToBabylonian(number: string): string {
+async function integerToBabylonian(number: string): Promise<string> {
   let num = parseInt(number)
   if (num < 0) return "Le nombre doit être positif."
 
@@ -228,7 +228,7 @@ function integerToBabylonian(number: string): string {
     result.unshift([tens, units].toString())
     num = Math.floor(num / 60)
   }
-
+  console.log("integerToBabylonian", result.join("-"))
   return result.join("-")
 }
 
@@ -290,7 +290,7 @@ function decimalToCistercian(number: string): string {
   return result
 }
 
-const conversionMap: Record<string, (v: string) => string> = {
+const conversionMap: Record<string, (v: string) => Promise<string> | string> = {
   "décimal:romain": (v) => integerToRoman(v),
   "décimal:égyptien": (v) => integerTohieroglyphs(v),
   "décimal:maya": (v) => convertToMayaGlyphs(v),
@@ -312,7 +312,11 @@ const conversionMap: Record<string, (v: string) => string> = {
   // "sexagésimal:décimal": (v) => sexagesimalToDecimal(v.toString()),
 }
 
-export const numeric_converter = (value: string, unitFrom: Unit, unitTo: Unit): string => {
+export const numeric_converter = async (
+  value: string,
+  unitFrom: Unit,
+  unitTo: Unit
+): Promise<string | number | Promise<string>> => {
   if (unitFrom.label === unitTo.label) return value.toString()
 
   const key = `${unitFrom.label}:${unitTo.label}`
@@ -322,5 +326,5 @@ export const numeric_converter = (value: string, unitFrom: Unit, unitTo: Unit): 
   if (!conversionFunction)
     throw new Error(`La convertion de ${unitFrom.label} vers ${unitTo.label} n'est pas supportée.`)
 
-  return conversionFunction(value)
+  return await conversionFunction(value)
 }
