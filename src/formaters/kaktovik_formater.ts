@@ -30,7 +30,7 @@ export const kaktovik_formater = (v: string): string => {
       .map((n) => n)
     nums.forEach((n) => {
       const t = parseInt(n)
-      result += `<img class="filter-dark-light h-9 mr-1" src="${symbols[t]}" />`
+      if (symbols[t]) result += `<img class="filter-dark-light h-9 mr-1" src="${symbols[t]}" />`
 
       result += ""
     })

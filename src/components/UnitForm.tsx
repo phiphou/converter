@@ -122,7 +122,9 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       setHasList(false)
       firstUnit =
         Object.keys(dic).find(
-          (key) => key !== "infos" && key !== "input" && dic[key] && key != "singleResult" && key != "no_precision"
+          (key) =>
+            !["infos", "noSwitch", "materials", "input", "singleResult", "custom", "no_precision"].includes(key) &&
+            dic[key]
         ) || ""
     }
     setUnitFrom(firstUnit)
@@ -276,34 +278,34 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             )}
           </div>
         </div>
+
         {!dictionary["input"] && (
           <div className="mt-3 mb-5 flex items-baseline justify-items-center gap-0 md:ml-36 md:flex-row lg:mx-auto">
             <label className="mr-3 mb-2 ml-3 block text-sm font-medium text-gray-900 dark:text-white">en</label>
             <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
-            {!dictionary["input"] ||
-              (!dictionary["no_precision"] && (
-                <div className="flex items-center md:flex">
-                  <label className="ml-3">Précision&nbsp;:</label>
-                  <input
-                    type="number"
-                    min={0}
-                    max={15}
-                    className="mr-3 ml-3 block w-17 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                    placeholder={precision.toString()}
-                    value={precision}
-                    onKeyDown={(e) => {
-                      if (e.key === "-") e.preventDefault()
-                    }}
-                    onChange={(e) => {
-                      let inputValue = e.target.value.replace(",", "").replace(".", "")
-                      if (inputValue.startsWith("0")) inputValue = e.target.value.replace("0", "")
-                      e.target.value = inputValue
-                      const numericValue = inputValue === "" ? 0 : parseFloat(inputValue)
-                      if (!isNaN(numericValue) && numericValue < 100) setPrecision(numericValue)
-                    }}
-                  />
-                </div>
-              ))}
+            {dictionary["no_precision"] === undefined && (
+              <div className="flex items-center md:flex">
+                <label className="ml-3">Précision&nbsp;:</label>
+                <input
+                  type="number"
+                  min={0}
+                  max={15}
+                  className="mr-3 ml-3 block w-17 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                  placeholder={precision.toString()}
+                  value={precision}
+                  onKeyDown={(e) => {
+                    if (e.key === "-") e.preventDefault()
+                  }}
+                  onChange={(e) => {
+                    let inputValue = e.target.value.replace(",", "").replace(".", "")
+                    if (inputValue.startsWith("0")) inputValue = e.target.value.replace("0", "")
+                    e.target.value = inputValue
+                    const numericValue = inputValue === "" ? 0 : parseFloat(inputValue)
+                    if (!isNaN(numericValue) && numericValue < 100) setPrecision(numericValue)
+                  }}
+                />
+              </div>
+            )}
           </div>
         )}
       </div>

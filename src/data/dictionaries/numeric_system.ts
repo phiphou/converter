@@ -12,6 +12,7 @@ const numeric_system = {
   },
   singleResult: true,
   no_precision: true,
+  noSwitch: true,
   decimal: {
     label: "décimal",
     converter: numeric_converter,

@@ -21,32 +21,40 @@ const CO2 = {
     label: "mWh",
     divisor: 0.001,
     pluralize: true,
+    group: 1,
   },
   Wh: {
     label: "Wh",
     divisor: 1,
     pluralize: true,
+    group: 1,
   },
   kWh: {
     label: "kWh",
     divisor: 1000,
     pluralize: true,
+    group: 1,
   },
   MWh: {
     label: "MWh",
     divisor: 1000000,
+    group: 1,
+    pluralize: true,
   },
   g: {
     label: "gramme de CO2",
     divisor: 1,
+    group: 2,
   },
   kg: {
     label: "kilogramme de CO2",
     divisor: 1000,
+    group: 2,
   },
   t: {
     label: "tonne de CO2",
     divisor: 1000000,
+    group: 2,
   },
 }
 
