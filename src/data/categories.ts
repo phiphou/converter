@@ -20,6 +20,9 @@ export const categories = {
   colors: {
     label: "Couleurs",
   },
+  color_contrast: {
+    label: "Contraste de couleurs",
+  },
   consumption: {
     label: "consommation",
   },

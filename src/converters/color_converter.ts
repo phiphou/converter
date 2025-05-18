@@ -1,5 +1,5 @@
-import {Unit} from "../types/types"
 import convert from "color-convert"
+import {Unit} from "../types/types"
 
 const toRGB = (t: string): [number, number, number] => {
   const rgb = t.split(",").map((v: string) => parseInt(v.trim()))
@@ -77,18 +77,18 @@ const conversionMap: Record<string, (t: string) => Promise<object>> = {
   "XYZ:LAB": async (t) => convert.xyz.lab(toRGB(t)),
 }
 
-export const color_converter = async (value: string, unitFrom: Unit, unitTo: Unit): Promise<string> => {
-  if (!unitFrom && !unitTo) return value
+export const color_converter = async (value: string | number, unitFrom: Unit, unitTo: Unit): Promise<string> => {
+  if (!unitFrom && !unitTo) return value.toString()
 
   const key = `${unitFrom.label}:${unitTo.label}`
   const conversionFunction = conversionMap[key]
 
   if (!conversionFunction) throw new Error(`Conversion impossible de ${unitFrom.label} vers ${unitTo.label}`)
-  const result: object = await conversionFunction(value)
+  const result: object = await conversionFunction(value.toString())
   if (Object.prototype.hasOwnProperty.call(result, "result")) {
     return (result as {result: string}).result.toString()
   }
-  return (await conversionFunction(value)).toString()
+  return (await conversionFunction(value.toString())).toString()
 }
 
 export default color_converter
