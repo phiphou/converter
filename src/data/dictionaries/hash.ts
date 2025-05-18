@@ -47,6 +47,11 @@ const hash = {
     converter: hash_converter,
     pluralize: true,
   },
+  RIPEMD160: {
+    label: "RIPEMD-160",
+    converter: hash_converter,
+    pluralize: true,
+  },
   SHA1: {
     label: "SHA-1",
     converter: hash_converter,
@@ -87,6 +92,11 @@ const hash = {
     converter: hash_converter,
     pluralize: true,
   },
+  WHIRLPOOL: {
+    label: "WHIRLPOOL",
+    converter: hash_converter,
+    pluralize: true,
+  },
   PBKDF2: {
     label: "PBKDF2",
     converter: hash_converter,
@@ -97,19 +107,18 @@ const hash = {
     converter: hash_converter,
     pluralize: true,
   },
-
+  XXHASH32: {
+    label: "XXHash32",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  XXHASH64: {
+    label: "XXHash64",
+    converter: hash_converter,
+    pluralize: true,
+  },
   XXHASH128: {
     label: "XXHash128",
-    converter: hash_converter,
-    pluralize: true,
-  },
-  RIPEMD160: {
-    label: "RIPEMD-160",
-    converter: hash_converter,
-    pluralize: true,
-  },
-  WHIRLPOOL: {
-    label: "WHIRLPOOL",
     converter: hash_converter,
     pluralize: true,
   },

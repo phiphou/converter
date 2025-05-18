@@ -13,6 +13,9 @@ import {
   blake3,
   crc64,
   scrypt,
+  xxhash64,
+  xxhash32,
+  xxhash3,
 } from "hash-wasm"
 
 import {Buffer} from "buffer"
@@ -41,7 +44,6 @@ async function createHMAC(message: string, keyString: string, type: string) {
     false,
     ["sign"]
   )
-
   const signature = await crypto.subtle.sign("HMAC", cryptoKey, messageData)
   return Array.from(new Uint8Array(signature))
     .map((b) => b.toString(16).padStart(2, "0"))
@@ -51,7 +53,6 @@ async function createHMAC(message: string, keyString: string, type: string) {
 async function hbcrypt(message: string, cost: number): Promise<string> {
   const salt = new Uint8Array(16)
   window.crypto.getRandomValues(salt)
-
   return await bcrypt({password: message, costFactor: cost, salt})
 }
 
@@ -85,8 +86,6 @@ async function crc_32(message: string): Promise<string> {
 export async function hArgon2(message: string, time: number, mem: number): Promise<string> {
   const salt = new Uint8Array(16)
   window.crypto.getRandomValues(salt)
-
-  window.crypto.getRandomValues(salt)
   return await argon2id({
     password: message,
     salt,
@@ -113,12 +112,9 @@ async function scryptHash(t: string, k: string): Promise<string> {
 
 async function pbkdf2Hash(t: string, k: string): Promise<string> {
   if (k === "") k = "65536"
-
   const salt = new Uint8Array(16)
   window.crypto.getRandomValues(salt)
-
   const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(t), {name: "PBKDF2"}, false, ["deriveBits"])
-
   const derivedKey = await crypto.subtle.deriveBits(
     {
       name: "PBKDF2",
@@ -129,7 +125,6 @@ async function pbkdf2Hash(t: string, k: string): Promise<string> {
     key,
     256
   )
-
   return Array.from(new Uint8Array(derivedKey))
     .map((byte) => byte.toString(16).padStart(2, "0"))
     .join("")
@@ -182,7 +177,10 @@ const conversionMap: Record<string, (t: string, k: string, k2: number) => Promis
   "text:HMAC SHA-256": async (t, k) => createHMAC(t, k, "SHA-256"),
   "text:HMAC SHA-384": async (t, k) => createHMAC(t, k, "SHA-384"),
   "text:HMAC SHA-512": async (t, k) => createHMAC(t, k, "SHA-512"),
+  "text:XXHash32": async (t) => xxhash32(t),
+  "text:XXHash61": async (t) => xxhash64(t),
   "text:XXHash128": async (t) => xxhash128(t),
+  "text:XXHash3": async (t) => xxhash3(t),
   "text:AES": async (t) => aes(t),
   "text:BCRYPT": async (t, k) => await hbcrypt(t, parseInt(k)),
   "text:ARGON2": async (t, k, k2) => await hArgon2(t, parseInt(k), k2),
