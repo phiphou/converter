@@ -252,9 +252,7 @@ function Finance({dictionary}: UnitSelectProps) {
         </div>
       </div>
 
-      <div className="mt-6 flex">
-        <Chart {...data} />
-      </div>
+      <div className="mt-6 flex">{Chart(data, "euro")}</div>
 
       <div className="pb-6">
         {" "}

@@ -24,27 +24,29 @@ interface VerticalLinePlugin {
   }) => void
 }
 
-function Chart(data: ChartData<"line">) {
+function Chart(data: ChartData<"line">, mode: string) {
   ChartJS.register(CategoryScale, LinearScale, LineElement, Tooltip, Filler, PointElement)
 
   const verticalLinePlugin: VerticalLinePlugin = {
     id: "verticalLine",
     afterDatasetsDraw: (chart) => {
-      if (chart.tooltip._active && chart.tooltip._active.length) {
-        const ctx = chart.ctx
-        const x = chart.tooltip._active[0].element.x
-        const chartContainer = chart.canvas.parentNode as HTMLElement
+      if (chart.tooltip) {
+        if (chart.tooltip._active && chart.tooltip._active.length) {
+          const ctx = chart.ctx
+          const x = chart.tooltip._active[0].element.x
+          const chartContainer = chart.canvas.parentNode as HTMLElement
 
-        const lineColor = getComputedStyle(chartContainer).getPropertyValue("--line-color").trim()
+          const lineColor = getComputedStyle(chartContainer).getPropertyValue("--line-color").trim()
 
-        ctx.save()
-        ctx.beginPath()
-        ctx.moveTo(x, chart.chartArea.top)
-        ctx.lineTo(x, chart.chartArea.bottom)
-        ctx.lineWidth = 1
-        ctx.strokeStyle = lineColor || "#FFFFFF" // Utiliser la couleur CSS ou une couleur par défaut
-        ctx.stroke()
-        ctx.restore()
+          ctx.save()
+          ctx.beginPath()
+          ctx.moveTo(x, chart.chartArea.top)
+          ctx.lineTo(x, chart.chartArea.bottom)
+          ctx.lineWidth = 1
+          ctx.strokeStyle = lineColor || "#FFFFFF" // Utiliser la couleur CSS ou une couleur par défaut
+          ctx.stroke()
+          ctx.restore()
+        }
       }
     },
   }
@@ -101,9 +103,13 @@ function Chart(data: ChartData<"line">) {
               label += " : "
             }
             if (tooltipItem.parsed !== null) {
-              label += new Intl.NumberFormat("fr-FR", {style: "currency", currency: "EUR"}).format(
-                tooltipItem.parsed.y as number
-              )
+              if (mode === "euro") {
+                label += new Intl.NumberFormat("fr-FR", {style: "currency", currency: "EUR"}).format(
+                  tooltipItem.parsed.y as number
+                )
+              } else {
+                label += (tooltipItem.parsed.y as number) + "%"
+              }
             }
             return label
           },

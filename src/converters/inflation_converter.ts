@@ -311,12 +311,35 @@ function getCumulativeInflationFactor(startYear: number, endYear: number): numbe
   return factor
 }
 
+function getGraphDatas(startYear: number, endYear: number): object {
+  const datas = []
+  const labels = []
+  if (startYear > endYear) {
+    for (let year = startYear - 1; year > endYear; year--) {
+      const rate = values[year.toString()]
+      if (rate !== undefined) {
+        labels.push(year)
+        datas.push(rate)
+      }
+    }
+  } else {
+    for (let year = startYear + 1; year <= endYear; year++) {
+      const rate = values[year.toString()]
+      if (rate !== undefined) {
+        labels.push(year)
+        datas.push(rate)
+      }
+    }
+  }
+  return {labels, datas}
+}
+
 export const inflation_converter = async (
   value: string | number,
   unitFrom: Unit,
   unitTo: Unit
-): Promise<{result: string; cumulativeInflation: string}> => {
-  if (!unitFrom || !unitTo) return {result: "", cumulativeInflation: ""}
+): Promise<{result: string; cumulativeInflation: string; graphDatas: object}> => {
+  if (!unitFrom || !unitTo) return {result: "", cumulativeInflation: "", graphDatas: {}}
 
   const startYear = unitFrom.key?.toString() ?? "1990"
   const endYear = unitTo.key?.toString() ?? "2014"
@@ -331,10 +354,11 @@ export const inflation_converter = async (
 
   const inflationFactor = getCumulativeInflationFactor(start, end)
   const cumulativeInflation = ((inflationFactor - 1) * 100).toFixed(2)
-
+  const graphDatas = getGraphDatas(start, end)
   return {
     result: result.toString(),
     cumulativeInflation: cumulativeInflation,
+    graphDatas,
   }
 }
 

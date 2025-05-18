@@ -4,6 +4,8 @@ import InfosBlock from "./InfosBlock"
 
 import SwitchUnitButton from "./SwitchUnitButton"
 import ErrorBlock from "./ErrorBlock"
+import Chart from "./Chart"
+import {ChartData} from "chart.js"
 
 interface UnitSelectProps {
   dictionary: Record<string, Unit>
@@ -17,7 +19,10 @@ function Inflation({dictionary}: UnitSelectProps) {
   const [unitTo, setUnitTo] = useState<string>("")
   const [conversionType, setConversionType] = useState<ConversionType>(ConversionType.EE)
   const [converter, setConverter] = useState<converterType | undefined>()
-
+  const [data, setData] = useState<ChartData<"line">>({
+    labels: [],
+    datasets: [],
+  })
   const [error, setError] = useState<Error | null>(null)
 
   const switchUnits = () => {
@@ -50,10 +55,36 @@ function Inflation({dictionary}: UnitSelectProps) {
             {label: unitTo, key: parseInt(unitTo), divisor: 1, key2: conversionType}
           )
           if (typeof conversionResult === "object" && conversionResult !== null && "result" in conversionResult) {
-            const {result, cumulativeInflation: cumInfl} = conversionResult as {
+            const {
+              result,
+              cumulativeInflation: cumInfl,
+              graphDatas,
+            } = conversionResult as {
               result: string
               cumulativeInflation?: string
+              graphDatas: {
+                labels: string[] | number[]
+                datas: number[]
+              }
             }
+            const {labels, datas} = graphDatas as {
+              labels: string[] | number[]
+              datas: number[]
+            }
+            setData({
+              labels: labels,
+              datasets: [
+                {
+                  label: "Inflation",
+                  data: datas,
+                  borderColor: "#8884d8",
+                  backgroundColor: "#8884d8",
+                  pointHitRadius: 0,
+                  pointRadius: 0,
+                  pointHoverRadius: 0,
+                },
+              ],
+            })
             calculatedResult = result
             if (cumInfl !== undefined) {
               setCumulativeInflation(cumInfl)
@@ -155,6 +186,7 @@ function Inflation({dictionary}: UnitSelectProps) {
             </div>
           </div>
         </div>
+        <div className="mt-6 flex w-full">{Chart(data, "")}</div>
       </div>
 
       {error && <ErrorBlock info={error.message} />}
