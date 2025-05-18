@@ -32,6 +32,21 @@ const hash = {
     converter: hash_converter,
     pluralize: true,
   },
+  TIGER128: {
+    label: "TIGER-128",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  TIGER160: {
+    label: "TIGER-160",
+    converter: hash_converter,
+    pluralize: true,
+  },
+  TIGER192: {
+    label: "TIGER-192",
+    converter: hash_converter,
+    pluralize: true,
+  },
   SHA1: {
     label: "SHA-1",
     converter: hash_converter,

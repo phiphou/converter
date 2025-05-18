@@ -16,16 +16,16 @@ function Color_contrast({dictionary}: UnitSelectProps) {
   const [error, setError] = useState<Error | null>(null)
 
   type ContrastReport = {
-    AAsmall: boolean
-    AAAsmall: boolean
-    AAlarge: boolean
-    AAAlarge: boolean
+    "AA small": boolean
+    "AAA small": boolean
+    "AA large": boolean
+    "AAA large": boolean
   }
   const [report, setReport] = useState<ContrastReport>({
-    AAsmall: false,
-    AAAsmall: false,
-    AAlarge: false,
-    AAAlarge: false,
+    "AA small": false,
+    "AAA small": false,
+    "AA large": false,
+    "AAA large": false,
   })
 
   const switchUnits = () => {
@@ -41,10 +41,10 @@ function Color_contrast({dictionary}: UnitSelectProps) {
           const contrastV = await contrast_converter(backgroundColor, foregroundColor)
           setConstrast(contrastV)
           setReport({
-            AAsmall: contrastV >= 3,
-            AAAsmall: contrastV >= 4.5,
-            AAlarge: contrastV >= 4.5,
-            AAAlarge: contrastV >= 7,
+            "AA small": contrastV >= 3,
+            "AAA small": contrastV >= 4.5,
+            "AA large": contrastV >= 4.5,
+            "AAA large": contrastV >= 7,
           })
         } catch (error) {
           setError(error as Error)

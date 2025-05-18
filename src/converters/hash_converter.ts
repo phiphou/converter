@@ -1,3 +1,4 @@
+import {Tiger} from "fb-tiger-hash"
 import {Unit} from "../types/types"
 import {
   md4,
@@ -13,6 +14,9 @@ import {
   crc64,
   scrypt,
 } from "hash-wasm"
+
+import {Buffer} from "buffer"
+window.Buffer = Buffer
 
 const sha = async (text: string, type: string): Promise<string> => {
   const encoder = new TextEncoder()
@@ -161,6 +165,9 @@ const conversionMap: Record<string, (t: string, k: string, k2: number) => Promis
   "text:CRC32": async (t) => crc_32(t),
   "text:MD4": async (t) => md4(t),
   "text:MD5": async (t) => md5(t),
+  "text:TIGER-128": async (t) => new Tiger(Tiger.L128, 0, false).hash(t),
+  "text:TIGER-160": async (t) => new Tiger(Tiger.L160, 0, false).hash(t),
+  "text:TIGER-192": async (t) => new Tiger(Tiger.L192, 0, false).hash(t),
   "text:SHA-1": async (t) => sha(t, "SHA-1"),
   "text:SHA-256": async (t) => sha(t, "SHA-256"),
   "text:SHA-384": async (t) => sha(t, "SHA-384"),
