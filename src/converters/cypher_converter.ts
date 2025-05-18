@@ -112,6 +112,46 @@ function vigenere(text: string, decode: boolean, key: string): string {
   return result.toUpperCase()
 }
 
+const braille_encode = function (message: string) {
+  const map: Record<string, string> = " A1B'K2L@CIF/MSP\"E3H9O6R^DJG>NTQ,*5<-U8V.%[$+X!&;:4\\0Z7(_?W]#Y)="
+    .split("")
+    .reduce(
+      (o, n, i) => {
+        return (
+          (o[n] = "⠀⠁⠂⠃⠄⠅⠆⠇⠈⠉⠊⠋⠌⠍⠎⠏⠐⠑⠒⠓⠔⠕⠖⠗⠘⠙⠚⠛⠜⠝⠞⠟⠠⠡⠢⠣⠤⠥⠦⠧⠨⠩⠪⠫⠬⠭⠮⠯⠰⠱⠲⠳⠴⠵⠶⠷⠸⠹⠺⠻⠼⠽⠾⠿"[i]), (o[n.toLowerCase()] = o[n]), o
+        )
+      },
+      {} as Record<string, string>
+    )
+
+  return message
+    .split("")
+    .map((c) => map[c])
+    .join("")
+}
+
+const bacon_encode = function (message: string) {
+  message = message.toUpperCase()
+  const alphabet: string = "ABCDEFGHIJKLMNOPQRSTUVW"
+
+  let index = -1
+  const length = message.length
+  let alphabetIndex
+  let result = ""
+  while (++index < length) {
+    alphabetIndex = alphabet.indexOf(message.charAt(index))
+    if (alphabetIndex > -1) {
+      result +=
+        (alphabetIndex & 0x10 ? "B" : "A") +
+        (alphabetIndex & 0x08 ? "B" : "A") +
+        (alphabetIndex & 0x04 ? "B" : "A") +
+        (alphabetIndex & 0x02 ? "B" : "A") +
+        (alphabetIndex & 0x01 ? "B" : "A")
+    }
+  }
+  return result.replace(/(?<=^(?:.{5})+)(?!$)/g, " ")
+}
+
 const conversionMap: Record<string, (t: string, k: string) => string> = {
   "text:rotation": (t, k) => ROT(t, false, parseInt(k)),
   "rotation:text": (t, k) => ROT(t, true, parseInt(k)),
@@ -121,6 +161,8 @@ const conversionMap: Record<string, (t: string, k: string) => string> = {
   "morse:text": (t) => morse(t, true),
   "substitution:text": (t, k) => replace(t.toUpperCase(), true, k.toUpperCase()),
   "text:substitution": (t, k) => replace(t.toUpperCase(), false, k.toUpperCase()),
+  "text:bacon": (t) => bacon_encode(t),
+  "text:braille": (t) => braille_encode(t),
 }
 
 export const cypher_converter = (value: string, unitFrom: Unit, unitTo: Unit): string => {

@@ -98,7 +98,7 @@ function Codes({dictionary}: UnitSelectProps) {
               <div className="mr-2 ml-3">
                 <UnitSelect unit={unitTo} setUnit={changeUnit} dictionary={dictionary} />
               </div>
-              {unitTo !== "morse" && (
+              {dictionary[unitTo]?.withKey === true && (
                 <div className="ml-2 flex items-center gap-2">
                   <span>{unitTo === "rotation" ? " valeur" : " clef"}</span>
                   <input
@@ -160,7 +160,7 @@ function Codes({dictionary}: UnitSelectProps) {
       <div className="mt-20 pb-6">
         {" "}
         {typeof dictionary["infos"] === "object" && (dictionary["infos"] as {label: string})?.label && (
-          <InfosBlock label={"intérêts composés"} info={(dictionary["infos"] as {label: string}).label} />
+          <InfosBlock label={""} info={(dictionary["infos"] as {label: string}).label} />
         )}
       </div>
     </>

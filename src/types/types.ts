@@ -16,6 +16,7 @@ export interface Unit {
   key?: string | number
   key2?: number | ConversionType
   placeHolder?: string
+  withKey?: boolean
 }
 
 export type converterType = (
