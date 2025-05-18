@@ -19,9 +19,6 @@ export default defineConfig({
     minify: "esbuild",
     rollupOptions: {
       treeshake: true,
-      external: [
-        "@ck0nrad/krypto", // ← Ignore le module natif dans le bundle
-      ],
       output: {
         manualChunks: {
           vendor: ["react", "react-dom"],
