@@ -281,12 +281,12 @@ function convertCurrency(value: number, type: ConversionType): number {
 function applyInflation(startYear: number, endYear: number, value: number): number {
   let result = value
   if (startYear > endYear) {
-    for (let year = startYear - 1; year > endYear; year--) {
+    for (let year = startYear; year > endYear; year--) {
       const rate = values[year.toString()]
       if (rate !== undefined) result /= 1 + rate / 100
     }
   } else {
-    for (let year = startYear + 1; year <= endYear; year++) {
+    for (let year = startYear; year <= endYear; year++) {
       const rate = values[year.toString()]
       if (rate !== undefined) result *= 1 + rate / 100
     }
@@ -297,12 +297,12 @@ function applyInflation(startYear: number, endYear: number, value: number): numb
 function getCumulativeInflationFactor(startYear: number, endYear: number): number {
   let factor = 1
   if (startYear > endYear) {
-    for (let year = startYear - 1; year > endYear; year--) {
+    for (let year = startYear; year > endYear; year--) {
       const rate = values[year.toString()]
       if (rate !== undefined) factor /= 1 + rate / 100
     }
   } else {
-    for (let year = startYear + 1; year <= endYear; year++) {
+    for (let year = startYear; year <= endYear; year++) {
       const rate = values[year.toString()]
 
       if (rate !== undefined) factor *= 1 + rate / 100
@@ -315,7 +315,7 @@ function getGraphDatas(startYear: number, endYear: number): object {
   const datas = []
   const labels = []
   if (startYear > endYear) {
-    for (let year = startYear - 1; year > endYear; year--) {
+    for (let year = startYear; year > endYear; year--) {
       const rate = values[year.toString()]
       if (rate !== undefined) {
         labels.push(year)
@@ -323,7 +323,7 @@ function getGraphDatas(startYear: number, endYear: number): object {
       }
     }
   } else {
-    for (let year = startYear + 1; year <= endYear; year++) {
+    for (let year = startYear; year <= endYear; year++) {
       const rate = values[year.toString()]
       if (rate !== undefined) {
         labels.push(year)
