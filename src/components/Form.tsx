@@ -1,4 +1,4 @@
-import {Suspense, useState, lazy} from "react"
+import {Suspense, useState} from "react"
 import {categories} from "../data/categories"
 import UnitForm from "./UnitForm"
 import {Unit} from "../types/types"
@@ -9,8 +9,17 @@ import Hash from "./Hash"
 import Colors from "./Colors"
 import Inflation from "./Inflation"
 import Color_contrast from "./Color_contrast"
+import Planets from "./Planets"
 
-const Planets = lazy(() => import("./Planets"))
+const customComponentMap: Record<string, React.ComponentType<{dictionary: Record<string, Unit>}>> = {
+  finance: Finance,
+  inflation: Inflation,
+  codes: Codes,
+  color_contrast: Color_contrast,
+  colors: Colors,
+  hash: Hash,
+  planets: Planets,
+}
 
 function Form() {
   const [category, setCategory] = useState<keyof typeof categories | "">("")
@@ -35,14 +44,39 @@ function Form() {
     }
   }
 
-  const fallback = () => {
-    return (
-      <div>
-        <div className="mx-auto text-center text-gray-500">
-          {" "}
-          <img src={spinner} className="mx-auto h-25 w-25" />
-        </div>
+  const fallback = () => (
+    <div>
+      <div className="mx-auto text-center text-gray-500">
+        <img src={spinner} className="mx-auto h-25 w-25" />
       </div>
+    </div>
+  )
+
+  let content = null
+
+  if (isLoading) {
+    content = (
+      <div className="mx-auto text-center text-gray-500">
+        <img src={spinner} className="mx-auto h-25 w-25" />
+      </div>
+    )
+  } else if (selectedDictionary && typeof selectedDictionary["custom"] === "string") {
+    const CustomComponent = customComponentMap[selectedDictionary["custom"]]
+    if (CustomComponent) {
+      content = (
+        <Suspense fallback={fallback()}>
+          <CustomComponent dictionary={selectedDictionary} />
+        </Suspense>
+      )
+    }
+  } else if (selectedDictionary && !selectedDictionary["custom"]) {
+    content = (
+      <Suspense fallback={<div>Chargement</div>}>
+        <UnitForm
+          label={category.charAt(0).toUpperCase() + category.slice(1).replace("_2", " ")}
+          dic={selectedDictionary}
+        />
+      </Suspense>
     )
   }
 
@@ -65,77 +99,7 @@ function Form() {
               ))}
             </select>
           </form>
-
-          {isLoading && (
-            <div className="mx-auto text-center text-gray-500">
-              {" "}
-              <img src={spinner} className="mx-auto h-25 w-25" />
-            </div>
-          )}
-          {!isLoading &&
-            selectedDictionary &&
-            typeof selectedDictionary["custom"] === "string" &&
-            selectedDictionary["custom"] === "finance" && (
-              <Suspense fallback={fallback()}>
-                <Finance dictionary={selectedDictionary} />
-              </Suspense>
-            )}
-          {!isLoading &&
-            selectedDictionary &&
-            typeof selectedDictionary["custom"] === "string" &&
-            selectedDictionary["custom"] === "inflation" && (
-              <Suspense fallback={fallback()}>
-                <Inflation dictionary={selectedDictionary} />
-              </Suspense>
-            )}
-          {!isLoading &&
-            selectedDictionary &&
-            typeof selectedDictionary["custom"] === "string" &&
-            selectedDictionary["custom"] === "codes" && (
-              <Suspense fallback={fallback()}>
-                <Codes dictionary={selectedDictionary} />
-              </Suspense>
-            )}
-          {!isLoading &&
-            selectedDictionary &&
-            typeof selectedDictionary["custom"] === "string" &&
-            selectedDictionary["custom"] === "color_contrast" && (
-              <Suspense fallback={fallback()}>
-                <Color_contrast dictionary={selectedDictionary} />
-              </Suspense>
-            )}
-          {!isLoading &&
-            selectedDictionary &&
-            typeof selectedDictionary["custom"] === "string" &&
-            selectedDictionary["custom"] === "colors" && (
-              <Suspense fallback={fallback()}>
-                <Colors dictionary={selectedDictionary} />
-              </Suspense>
-            )}
-          {!isLoading &&
-            selectedDictionary &&
-            typeof selectedDictionary["custom"] === "string" &&
-            selectedDictionary["custom"] === "hash" && (
-              <Suspense fallback={fallback()}>
-                <Hash dictionary={selectedDictionary} />
-              </Suspense>
-            )}
-          {!isLoading &&
-            selectedDictionary &&
-            typeof selectedDictionary["custom"] === "string" &&
-            selectedDictionary["custom"] === "planets" && (
-              <Suspense fallback={fallback()}>
-                <Planets dictionary={selectedDictionary} />
-              </Suspense>
-            )}
-          {!isLoading && selectedDictionary && !selectedDictionary["custom"] && (
-            <Suspense fallback={<div>Chargement</div>}>
-              <UnitForm
-                label={category.charAt(0).toUpperCase() + category.slice(1).replace("_2", " ")}
-                dic={selectedDictionary}
-              />
-            </Suspense>
-          )}
+          {content}
         </div>
       </div>
     </div>

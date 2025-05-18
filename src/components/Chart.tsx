@@ -67,6 +67,10 @@ function Chart(data: ChartData<"line">, mode: string) {
           tickColor: "rgba(127,127,127,0.2)",
           z: 12,
         },
+        ticks: {
+          maxRotation: 0, // empêche la rotation
+          minRotation: 0, // empêche toute inclinaison
+        },
       },
       y: {
         type: "linear",
