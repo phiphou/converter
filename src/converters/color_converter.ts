@@ -78,7 +78,7 @@ const conversionMap: Record<string, (t: string) => Promise<object>> = {
 }
 
 export const color_converter = async (value: string | number, unitFrom: Unit, unitTo: Unit): Promise<string> => {
-  if (!unitFrom && !unitTo) return value.toString()
+  if (!unitFrom && !unitTo) return "" + value
 
   const key = `${unitFrom.label}:${unitTo.label}`
   const conversionFunction = conversionMap[key]

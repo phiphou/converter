@@ -82,7 +82,24 @@ function Color_contrast({dictionary}: UnitSelectProps) {
           </div>
         </div>
 
-        <div className="mt-8 font-bold text-black dark:text-white">Constraste W3ACG : {constrast}:1</div>
+        <div
+          className="rounded-2xl border-1 border-gray-500"
+          style={{
+            margin: 25,
+            padding: 15,
+            backgroundColor: backgroundColor,
+            color: foregroundColor,
+          }}
+        >
+          <div className="m-3 text-[16px]">{"Text normal (< 18pt / < 14pt gras)"}</div>
+          <div className="m-3 text-[19px] font-bold">{"Grand texte (>= 18pt / >= 14pt gras)"}</div>
+          <div className="m-3 flex items-center">
+            <span className="text-[16px]">{"Elément graphique :"}</span>
+            <span className="ml-5 text-[30px]"> ★ </span>
+          </div>
+        </div>
+
+        <div className="mt-3 text-xl font-bold text-black dark:text-white">Constraste W3ACG : {constrast}:1</div>
         <div className="mt-8 flex flex-col text-black dark:text-white">
           <table className="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
             <thead className="bg-gray-50 text-xs text-gray-800 uppercase dark:bg-gray-700 dark:text-gray-200">

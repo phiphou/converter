@@ -15,6 +15,7 @@ export interface Unit {
   group?: number
   key?: string | number
   key2?: number | ConversionType
+  placeHolder?: string
 }
 
 export type converterType = (

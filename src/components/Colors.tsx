@@ -1,9 +1,10 @@
 import {useEffect, useState} from "react"
-import {converterType, Unit} from "../types/types"
 import InfosBlock from "./InfosBlock"
 import UnitSelect from "./UnitSelect"
 import SwitchUnitButton from "./SwitchUnitButton"
 import ErrorBlock from "./ErrorBlock"
+import color_converter from "../converters/color_converter"
+import {Unit} from "../types/types"
 
 interface UnitSelectProps {
   dictionary: Record<string, Unit>
@@ -12,33 +13,25 @@ interface UnitSelectProps {
 function Colors({dictionary}: UnitSelectProps) {
   const [input, setInput] = useState<string>("")
   const [output, setOutput] = useState<string>("")
-  const [unitFrom, setUnitFrom] = useState<string>("")
-  const [unitTo, setUnitTo] = useState<string>("")
-  const [converter, setConverter] = useState<converterType>()
+  const [unitFrom, setUnitFrom] = useState<string>("HEX")
+  const [unitTo, setUnitTo] = useState<string>("RGB")
   const [error, setError] = useState<Error | null>(null)
 
   const switchUnits = () => {
     setUnitFrom(unitTo)
     setUnitTo(unitFrom)
+    setInput(output)
+    setOutput(input)
   }
-
-  useEffect(() => {
-    const firstUnit = Object.keys(dictionary)[2] || ""
-    if (dictionary[firstUnit]?.converter) {
-      setConverter(dictionary[firstUnit].converter)
-    }
-    setUnitFrom(firstUnit)
-    setUnitTo(firstUnit)
-  }, [dictionary])
 
   useEffect(() => {
     setError(null)
     async function calculateResult() {
       let calculatedResult = ""
 
-      if (converter && unitTo != "") {
+      if (unitFrom != "" && input.length >= 6) {
         try {
-          calculatedResult = String(await converter(input, dictionary[unitFrom], dictionary[unitTo]))
+          calculatedResult = String(await color_converter(input, dictionary[unitFrom], dictionary[unitTo]))
         } catch (error) {
           setError(error as Error)
         }
@@ -47,7 +40,7 @@ function Colors({dictionary}: UnitSelectProps) {
     }
 
     if (unitTo !== unitFrom) calculateResult()
-  }, [input, output, dictionary, unitTo, unitFrom, converter])
+  }, [input, output, dictionary, unitTo, unitFrom])
 
   return (
     <>
@@ -57,6 +50,7 @@ function Colors({dictionary}: UnitSelectProps) {
             <input
               className="mr-3 ml-3 block max-w-[65%] min-w-[65%] rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               value={input}
+              placeholder={dictionary[unitFrom]?.placeHolder}
               onChange={(e) => setInput(e.target.value)}
             />{" "}
             <div className="w-25">
