@@ -304,7 +304,6 @@ function getCumulativeInflationFactor(startYear: number, endYear: number): numbe
   } else {
     for (let year = startYear; year <= endYear; year++) {
       const rate = values[year.toString()]
-
       if (rate !== undefined) factor *= 1 + rate / 100
     }
   }
@@ -340,18 +339,14 @@ export const inflation_converter = async (
   unitTo: Unit
 ): Promise<{result: string; cumulativeInflation: string; graphDatas: object}> => {
   if (!unitFrom || !unitTo) return {result: "", cumulativeInflation: "", graphDatas: {}}
-
   const startYear = unitFrom.key?.toString() ?? "1990"
   const endYear = unitTo.key?.toString() ?? "2014"
   const conversionType = (unitTo.key2 as ConversionType) ?? ConversionType.FE
   const numericValue = typeof value === "string" ? parseFloat(value) : value
-
   const start = parseInt(startYear)
   const end = parseInt(endYear)
-
   let result = convertCurrency(numericValue, conversionType)
   result = applyInflation(start, end, result)
-
   const inflationFactor = getCumulativeInflationFactor(start, end)
   const cumulativeInflation = ((inflationFactor - 1) * 100).toFixed(2)
   const graphDatas = getGraphDatas(start, end)

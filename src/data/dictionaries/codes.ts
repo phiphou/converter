@@ -1,4 +1,6 @@
+import {pigpen_formater} from "../../formaters/pigpen_formater"
 import cypher_converter from "../../converters/cypher_converter"
+import {chappe_formater} from "../../formaters/chappe_formater"
 
 const codes = {
   custom: "codes",
@@ -41,6 +43,20 @@ const codes = {
   morse: {
     label: "morse",
     converter: cypher_converter,
+    pluralize: true,
+    noSwitch: true,
+  },
+  pigpen: {
+    label: "Pigpen",
+    converter: cypher_converter,
+    formater: pigpen_formater,
+    pluralize: true,
+    noSwitch: true,
+  },
+  chappe: {
+    label: "Chappe",
+    converter: cypher_converter,
+    formater: chappe_formater,
     pluralize: true,
     noSwitch: true,
   },

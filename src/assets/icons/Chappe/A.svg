@@ -1,0 +1,46 @@
+<svg
+   viewBox="0 0 19.456963 22.860342"
+   xmlns="http://www.w3.org/2000/svg"
+>
+   <defs>
+      <marker
+         id="start-14"
+         orient="auto"
+         style="overflow:visible">
+         <path
+            class="mk-se"
+            d="M 0,0 V -0.5 H 0.2 L 0,0 v 0.5 h 0.2 z"
+         />
+      </marker>
+      <marker
+         id="joint-55"
+         orient="auto"
+         style="overflow:visible">
+         <circle
+            r="0.69999999"
+            class="c-blk"
+            style="stroke-width:0.1px"
+         />
+      </marker>
+      <marker
+         id="end-28"
+         orient="auto"
+         style="overflow:visible">
+         <path
+            class="mk-se"
+            d="M 0,0 V -0.5 H -0.2 L 0,0 v 0.5 h -0.2 z"
+         />
+      </marker>
+   </defs>
+   <g
+      transform="translate(-8.4652083,-6.7879736)">
+      <path
+         d="M 18.158577,29.648315 V 16.526877"
+         class="c-blue"
+         style="display:inline;fill:none;stroke-width:1.05401" />
+      <path
+         d="m 10.216073,11.193608 v 5.291666 h 7.9375 7.9375 v -5.291666"
+         stroke="currentColor"
+         style="fill:none;stroke-width:1.05833;marker-start:url(#start-14);marker-mid:url(#joint-55);marker-end:url(#end-28)" />
+   </g>
+</svg>

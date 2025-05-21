@@ -58,9 +58,7 @@ async function hbcrypt(message: string, cost: number): Promise<string> {
 
 async function crc_32(message: string): Promise<string> {
   const toUnsignedInt32 = (n: number): number => {
-    if (n >= 0) {
-      return n
-    }
+    if (n >= 0) return n
     return 0xffffffff - n * -1 + 1
   }
   const crc32UnsignedFull = (input: string): number => {
@@ -71,11 +69,7 @@ async function crc_32(message: string): Promise<string> {
     for (const byte of bytes) {
       crc = crc ^ byte
       for (let i = 0; i < 8; i++) {
-        if (crc & 1) {
-          crc = (crc >>> 1) ^ divisor
-        } else {
-          crc = crc >>> 1
-        }
+        crc = crc & 1 ? (crc >>> 1) ^ divisor : crc >>> 1
       }
     }
     return toUnsignedInt32(crc ^ 0xffffffff)
@@ -99,7 +93,6 @@ export async function hArgon2(message: string, time: number, mem: number): Promi
 
 async function scryptHash(t: string, k: string): Promise<string> {
   if (k === "") k = "1024"
-
   return await scrypt({
     password: t,
     salt: new TextEncoder().encode("MYSALT123"),
@@ -145,7 +138,6 @@ async function aes(message: string) {
       ["encrypt", "decrypt"]
     )
     const iv = crypto.getRandomValues(new Uint8Array(12)) // Generate 12-byte IV
-
     const encodedMessage = new TextEncoder().encode(message)
     const encryptedMessage = await crypto.subtle.encrypt({name: "AES-GCM", iv}, symmetricKey, encodedMessage)
     const symmetricKeyBytes = await crypto.subtle.exportKey("raw", symmetricKey)

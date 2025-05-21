@@ -39,6 +39,34 @@
     contrast(100%);
 }
 
+.c-blue {
+  stroke: #73888c !important;
+}
+
+[data-theme="light"] {
+  .chappe-white {
+    stroke: #000000 !important;
+  }
+  .c-blk {
+    stroke: #ffffff !important;
+  }
+  .mk_se {
+    fill: white;
+  }
+}
+
+[data-theme="dark"] {
+  .chappe-white {
+    stroke: #ffffff !important;
+  }
+  .c-blk {
+    stroke: #ffffff !important;
+  }
+  .mk_se {
+    fill: black;
+  }
+}
+
 @media screen(sm) {
   .logo {
     max-height: 80px;

@@ -235,7 +235,6 @@ function decimalToCistercian(number: string): string {
   const num = parseInt(number)
   if (num < 0) return ""
   if (num > 9999) return ""
-
   let result = `<svg viewBox="-1.5 -0.5 3 4" xmlns="http://www.w3.org/2000/svg">
   <style>
     polyline {
@@ -289,11 +288,9 @@ export const numeric_converter = async (
   unitTo: Unit
 ): Promise<string | number | Promise<string>> => {
   if (unitFrom.label === unitTo.label) return value.toString()
-
   const key = `${unitFrom.label}:${unitTo.label}`
   const conversionFunction = conversionMap[key]
   if (!conversionFunction)
     throw new Error(`La convertion de ${unitFrom.label} vers ${unitTo.label} n'est pas supportée.`)
-
   return await conversionFunction(value)
 }

@@ -71,7 +71,11 @@ function Codes({dictionary}: UnitSelectProps) {
         } catch (error) {
           console.log(error)
         }
-        setOutput(calculatedResult)
+        if (dictionary[unitTo]?.formater) {
+          setOutput(dictionary[unitTo]?.formater(calculatedResult))
+        } else {
+          setOutput(calculatedResult)
+        }
       }
     }
 
@@ -80,7 +84,7 @@ function Codes({dictionary}: UnitSelectProps) {
 
   return (
     <>
-      <div className="m-3 mx-auto flex max-w-[100%] min-w-[100%] flex-col items-center justify-center md:max-w-[60%] md:min-w-[60%]">
+      <div className="m-3 mx-auto flex max-w-[100%] min-w-[100%] flex-col items-center justify-center md:max-w-[75%] md:min-w-[75%]">
         <div className="flex w-full flex-col text-black dark:text-white">
           <div className="flex w-full flex-col items-center text-black dark:text-white">
             <div className="mr-3 mb-1 ml-3 max-w-full min-w-full">Texte en clair : </div>
@@ -131,8 +135,19 @@ function Codes({dictionary}: UnitSelectProps) {
           </div>
           <div className="mt-6 flex max-w-full min-w-full flex-col items-center text-black dark:text-white">
             <div className="flex max-w-full min-w-full align-middle">
-              <textarea className={className} rows={4} value={output} onChange={(e) => setOutput(e.target.value)} />
-
+              {dictionary[unitTo]?.formater && (
+                <div className="mt-5">
+                  <div
+                    className="inline-block"
+                    dangerouslySetInnerHTML={{
+                      __html: `${output}`,
+                    }}
+                  ></div>
+                </div>
+              )}
+              {!dictionary[unitTo]?.formater && (
+                <textarea className={className} rows={6} value={output} onChange={(e) => setOutput(e.target.value)} />
+              )}
               {unitTo === "morse" && (
                 <button
                   onClick={playMorse}

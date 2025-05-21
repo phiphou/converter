@@ -1,0 +1,49 @@
+<svg
+   viewBox="0 0 19.456963 22.860342"
+   version="1.1"
+   xmlns="http://www.w3.org/2000/svg"
+>
+   <defs
+      id="defs1">
+      <marker
+         id="start-80"
+         orient="auto"
+         style="overflow:visible">
+         <path
+            class="mk-se"
+            d="M 0,0 V -0.5 H 0.2 L 0,0 v 0.5 h 0.2 z"
+         />
+      </marker>
+      <marker
+         id="joint-31"
+         orient="auto"
+         style="overflow:visible">
+         <circle
+            r="0.69999999"
+            class="c-blk"
+            style="stroke-width:0.1px"
+         />
+      </marker>
+      <marker
+         id="end-301"
+         orient="auto"
+         style="overflow:visible">
+         <path
+            class="mk-se"
+            d="M 0,0 V -0.5 H -0.2 L 0,0 v 0.5 h -0.2 z"
+         />
+      </marker>
+   </defs>
+   <g
+      transform="translate(-8.4652083,-6.7879736)">
+      <path
+         d="M 18.158577,29.648315 V 16.526877"
+         class="c-blue"
+         style="display:inline;fill:none;stroke-width:1.05401"
+      />
+      <path
+         d="m 8.8125459,14.598517 3.7417631,-3.741763 5.61266,5.612659 5.612659,5.612659 -3.741764,3.741764"
+         stroke="currentColor"
+         style="fill:none;stroke-width:1.05833;marker-start:url(#start-80);marker-mid:url(#joint-31);marker-end:url(#end-301)" />
+   </g>
+</svg>

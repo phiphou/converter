@@ -163,6 +163,8 @@ const conversionMap: Record<string, (t: string, k: string) => string> = {
   "text:substitution": (t, k) => replace(t.toUpperCase(), false, k.toUpperCase()),
   "text:bacon": (t) => bacon_encode(t),
   "text:braille": (t) => braille_encode(t),
+  "text:Pigpen": (t) => t.toLocaleUpperCase(),
+  "text:Chappe": (t) => t.toUpperCase().replace("J", "I"),
 }
 
 export const cypher_converter = (value: string, unitFrom: Unit, unitTo: Unit): string => {

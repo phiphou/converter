@@ -2,7 +2,6 @@ function getLuminance(hexcolor: string) {
   const r = parseInt(hexcolor.substring(0, 2), 16)
   const g = parseInt(hexcolor.substring(2, 4), 16)
   const b = parseInt(hexcolor.substring(4, 6), 16)
-  console.log(r, g, b)
   const RsRGB = r / 255
   const GsRGB = g / 255
   const BsRGB = b / 255

@@ -10,7 +10,6 @@ export const currency_converter = async (
   const date: string = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, "0")}-${now.getDate().toString().padStart(2, "0")}`
   const cacheKey = `currency-data`
   const cacheDateKey = `currency-data-date`
-
   const cachedData = localStorage.getItem(cacheKey)
   const cachedDate = localStorage.getItem(cacheDateKey)
 
@@ -21,7 +20,6 @@ export const currency_converter = async (
 
   if (cachedData && cachedDate === date) {
     const jsonResponse = JSON.parse(cachedData)
-
     if (!unitFrom.code || !unitTo.code) {
       throw new Error("unitFrom.code or unitTo.code is undefined")
     }
@@ -38,13 +36,10 @@ export const currency_converter = async (
     if (!unitFrom.code || !unitTo.code) {
       throw new Error("unitFrom.code or unitTo.code is undefined")
     }
-
     localStorage.setItem(cacheKey, JSON.stringify(jsonResponse))
     localStorage.setItem(cacheDateKey, date)
-
     const from2Euro = jsonResponse["eur"][unitFrom.code.toLowerCase()]
     const euro2To = jsonResponse["eur"][unitTo.code.toLowerCase()]
-
     return Number(((euro2To / from2Euro) * value).toFixed(precision))
   } else {
     const {errors} = jsonResponse
