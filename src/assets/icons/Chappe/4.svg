@@ -1,45 +1,18 @@
-<svg
-   viewBox="0 0 19.456963 22.860342"
-   xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.457 22.86">
    <defs>
-      <marker
-         id="start-44"
-         orient="auto"
-         style="overflow:visible">
-         <path
-            class="mk-se"
-            d="M 0,0 V -0.5 H 0.2 L 0,0 v 0.5 h 0.2 z"
-         />
+      <marker id="s1" orient="auto" style="overflow:visible">
+         <path d="M0 0v-.5h.2L0 0v.5h.2z" class="mk-se" />
       </marker>
-      <marker
-         id="joint-04"
-         orient="auto"
-         style="overflow:visible">
-         <circle
-            r="0.69999999"
-            class="c-blk"
-            style="stroke-width:0.1px"
-         />
+      <marker id="j1" style="overflow:visible">
+         <circle r=".7" class="c-blk" style="stroke-width:.1px" />
       </marker>
-      <marker
-         id="end-77"
-         orient="auto"
-         style="overflow:visible">
-         <path
-            class="mk-se"
-            d="M 0,0 V -0.5 H -0.2 L 0,0 v 0.5 h -0.2 z"
-         />
+      <marker id="e1" orient="auto" style="overflow:visible">
+         <path d="M0 0v-.5h-.2L0 0v.5h-.2z" class="mk-se" />
       </marker>
    </defs>
-   <g
-      transform="translate(-8.4652083,-6.7879736)">
-      <path
-         d="M 18.094873,29.648315 V 16.630151"
-         class="c-blue"
-         style="display:inline;fill:none;stroke-width:1.05401" />
-      <path
-         d="m 8.7657438,14.797601 3.7417622,-3.741764 5.61266,5.612659 5.612659,5.612659 -3.741764,-3.741764"
-         stroke="currentColor"
-         style="fill:none;stroke-width:1.05833;marker-start:url(#start-44);marker-mid:url(#joint-04);marker-end:url(#end-77)" />
-   </g>
+   <path d="M18.095 29.648V16.63" class="c-blue" style="fill:none;stroke-width:1.05401"
+      transform="translate(-8.465 -6.788)" />
+   <path stroke="currentColor" d="m8.766 14.798 3.742-3.742 5.612 5.612 5.613 5.613-3.742-3.742"
+      style="fill:none;stroke-width:1.05833;marker-start:url(#s1);marker-mid:url(#j1);marker-end:url(#e1)"
+      transform="translate(-8.465 -6.788)" />
 </svg>

@@ -1,45 +1,18 @@
-<svg
-   viewBox="0 0 19.456963 22.860342"
-   xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.457 22.86">
    <defs>
-      <marker
-         id="start-152"
-         orient="auto"
-         style="overflow:visible">
-         <path
-            class="mk-se"
-            d="M 0,0 V -0.5 H 0.2 L 0,0 v 0.5 h 0.2 z"
-         />
+      <marker id="s1" orient="auto" style="overflow:visible">
+         <path d="M0 0v-.5h.2L0 0v.5h.2z" class="mk-se" />
       </marker>
-      <marker
-         id="joint-46"
-         orient="auto"
-         style="overflow:visible">
-         <circle
-            r="0.69999999"
-            class="c-blk"
-            style="stroke-width:0.1px"
-         />
+      <marker id="j1" style="overflow:visible">
+         <circle r=".7" class="c-blk" style="stroke-width:.1px" />
       </marker>
-      <marker
-         id="end-29"
-         orient="auto"
-         style="overflow:visible">
-         <path
-            class="mk-se"
-            d="M 0,0 V -0.5 H -0.2 L 0,0 v 0.5 h -0.2 z"
-         />
+      <marker id="e1" orient="auto" style="overflow:visible">
+         <path d="M0 0v-.5h-.2L0 0v.5h-.2z" class="mk-se" />
       </marker>
    </defs>
-   <g
-      transform="translate(-8.4652083,-6.7879736)">
-      <path
-         d="M 18.094873,29.648315 V 16.630151"
-         class="c-blue"
-         style="display:inline;fill:none;stroke-width:1.05401" />
-      <path
-         d="m 18.091362,14.011137 v -5.2916673 7.9375003 7.9375 h 5.291667"
-         stroke="currentColor"
-         style="fill:none;stroke;stroke-width:1.05833;marker-start:url(#start-152);marker-mid:url(#joint-46);marker-end:url(#end-29)" />
-   </g>
+   <path d="M18.095 29.648V16.63" class="c-blue" style="fill:none;stroke-width:1.05401"
+      transform="translate(-8.465 -6.788)" />
+   <path stroke="currentColor" d="M18.091 14.011V8.72v7.938 7.937h5.292"
+      style="fill:none;stroke-width:1.05833;marker-start:url(#s1);marker-mid:url(#j1);marker-end:url(#e1)"
+      transform="translate(-8.465 -6.788)" />
 </svg>
