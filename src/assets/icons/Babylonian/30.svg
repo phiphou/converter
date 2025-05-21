@@ -1,1 +1,7 @@
-<svg width="1.7in" height="144" viewBox="-46 -46 1982 1793" xmlns="http://www.w3.org/2000/svg"><g fill="currentcolor" stroke="currentcolor" stroke-linejoin="bevel" stroke-width="63"><path d="M1133 0 0 850l1133 850-756-567V566"/><path d="M1511 0 377 850l1134 850-756-567V566"/><path d="M1889 0 755 850l1134 850-756-567V566"/></g></svg>
+<svg viewBox="-46 -46 1982 1793" xmlns="http://www.w3.org/2000/svg">
+    <g fill="currentcolor" stroke="currentcolor" stroke-linejoin="bevel" stroke-width="63">
+        <path d="M1133 0 0 850l1133 850-756-567V566" />
+        <path d="M1511 0 377 850l1134 850-756-567V566" />
+        <path d="M1889 0 755 850l1134 850-756-567V566" />
+    </g>
+</svg>

@@ -1,8 +1,5 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-    <defs>
-        <style>.cls-1{fill:#1f1b10;}</style>
-    </defs>
-    <circle class="cls-1" cx="92.85" cy="128" r="29.26" />
-    <path class="cls-1"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <circle cx="92.85" cy="128" r="29.26" />
+    <path
         d="M36.46,233a8.45,8.45,0,0,1-3.91-15.95l168.88-87.83-169-90.4a8.45,8.45,0,1,1,8-14.9l183.09,97.95a8.45,8.45,0,0,1-.08,15L40.35,232.09A8.37,8.37,0,0,1,36.46,233Z" />
 </svg>

@@ -1,1 +1,5 @@
-<svg height="0INVALID" viewBox="2217 894 1234 1801" xmlns="http://www.w3.org/2000/svg"><g fill="currentcolor" stroke="currentcolor" stroke-linejoin="bevel" stroke-width="63"><path d="m2834 944 284 284v1417-1417l283-284M2267 944l284 284v1417-1417l283-284"/></g></svg>
+<svg viewBox="2217 894 1234 1801" xmlns="http://www.w3.org/2000/svg">
+    <g fill="currentcolor" stroke="currentcolor" stroke-linejoin="bevel" stroke-width="63">
+        <path d="m2834 944 284 284v1417-1417l283-284M2267 944l284 284v1417-1417l283-284" />
+    </g>
+</svg>

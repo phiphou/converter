@@ -1,1 +1,4 @@
-<svg height="0INVALID" viewBox="2501 894 667 1801" xmlns="http://www.w3.org/2000/svg"><path d="m2551 944 283 284v1417-1417l284-284" fill="currentcolor" stroke="currentcolor" stroke-linejoin="bevel" stroke-width="63"/></svg>
+<svg viewBox="2501 894 667 1801" xmlns="http://www.w3.org/2000/svg">
+    <path d="m2551 944 283 284v1417-1417l284-284" fill="currentcolor" stroke="currentcolor"
+        stroke-linejoin="bevel" stroke-width="63" />
+</svg>
