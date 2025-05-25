@@ -62,7 +62,7 @@ export const pigpen_formater = (v: string): string => {
       if (c === " ") return `<span style="display:inline-block;width:16px"></span>`
       if (c === "\n") return "<br/>"
       if (MAP[c])
-        return `<img src="${MAP[c]}" alt="${c}" class="filter-dark-light inline h-5 text-black dark:text-white" />`
+        return `<img src="${MAP[c]}" alt="${c}" class="filter-dark-light inline h-6 text-black dark:text-white" />`
       return ""
     })
     .join("")}</div>`
