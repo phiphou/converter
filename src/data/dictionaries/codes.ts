@@ -83,6 +83,13 @@ const codes = {
     pluralize: true,
     noSwitch: true,
   },
+  hill: {
+    info: 'plus d\'information sur le chiffre de Hill sur <a href="https://fr.wikipedia.org/wiki/Chiffre_de_Hill" target="_blank">Wikipedia</a>.',
+    label: "chiffre de Hill",
+    converter: cypher_converter,
+    pluralize: true,
+    noSwitch: true,
+  },
 }
 
 export default codes

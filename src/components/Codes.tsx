@@ -80,7 +80,7 @@ function Codes({dictionary}: UnitSelectProps) {
     }
 
     if (unitTo != "") calculateResult()
-  }, [input, output, dictionary, unitTo, key, converter, decode])
+  }, [input, dictionary, unitTo, key, converter, decode])
 
   return (
     <>

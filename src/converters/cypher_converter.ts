@@ -192,7 +192,83 @@ const polybe_square = function (message: string) {
     .join(" ")
 }
 
-const conversionMap: Record<string, (t: string, k: string) => string> = {
+function gcd(a: number, b: number) {
+  while (b !== 0) {
+    ;[a, b] = [b, a % b]
+  }
+  return a
+}
+
+function isInvertibleMod26(n: number) {
+  return gcd(n, 26) === 1
+}
+
+export async function generateHillMatrix(): Promise<number[][]> {
+  let a: number, b: number, c: number, d: number, det: number
+  const maxAttempts = 1000 // Limite de tentatives
+  let attempts = 0
+
+  do {
+    a = Math.floor(Math.random() * 26)
+    b = Math.floor(Math.random() * 26)
+    c = Math.floor(Math.random() * 26)
+    d = Math.floor(Math.random() * 26)
+
+    det = (a * d - b * c) % 26
+    attempts++
+
+    if (attempts > maxAttempts) {
+      throw new Error("Impossible de générer une matrice inversible après plusieurs tentatives.")
+    }
+  } while (!isInvertibleMod26(det))
+
+  return [
+    [a, b],
+    [c, d],
+  ]
+}
+
+export async function hillEncrypt(plainText: string, matrix: number[][]): Promise<string> {
+  if (plainText.length % 2 !== 0) {
+    const randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26))
+    plainText += randomLetter
+  }
+
+  const charToNum = (char: string) => char.charCodeAt(0) - 65
+  const numToChar = (num: number) => String.fromCharCode((((num % 26) + 26) % 26) + 65)
+
+  let cipherText = ""
+
+  for (let i = 0; i < plainText.length; i += 2) {
+    const vector = [charToNum(plainText[i]), charToNum(plainText[i + 1])]
+    const x = (matrix[0][0] * vector[0] + matrix[0][1] * vector[1]) % 26
+    const y = (matrix[1][0] * vector[0] + matrix[1][1] * vector[1]) % 26
+    cipherText += numToChar(x) + numToChar(y)
+  }
+
+  return `Matrice utilisée : [${matrix[0].join(", ")}; ${matrix[1].join(", ")}]\n\nTexte chiffré : ${cipherText}`
+}
+
+const hillEncryptWorker = (message: string): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const worker = new Worker(new URL("../workers/Hill.worker.ts", import.meta.url), {type: "module"})
+
+    worker.postMessage({plainText: message})
+    worker.onmessage = (event) => {
+      if (event.data.error) {
+        reject(new Error(event.data.error))
+      } else {
+        resolve(event.data)
+      }
+      worker.terminate()
+    }
+    worker.onerror = (error) => {
+      reject(error)
+    }
+  })
+}
+
+const conversionMap: Record<string, (t: string, k: string) => string | Promise<string>> = {
   "text:rotation": (t, k) => ROT(t, false, parseInt(k)),
   "rotation:text": (t, k) => ROT(t, true, parseInt(k)),
   "text:chiffre de Vigenère": (t, k) => vigenere(t, false, k),
@@ -207,6 +283,7 @@ const conversionMap: Record<string, (t: string, k: string) => string> = {
   "text:code de Chappe": (t) => t.replace("J", "I"),
   "text:code de Beaufort": (t, k) => beaufort(t, false, k),
   "text:carré de Polybe": (t) => polybe_square(t),
+  "text:chiffre de Hill": (t) => hillEncryptWorker(t),
 }
 
 function cleanText(text: string): string {
@@ -217,7 +294,7 @@ function cleanText(text: string): string {
     .toUpperCase() // Supprime tout ce qui n'est pas alphanumérique
 }
 
-export const cypher_converter = (value: string, unitFrom: Unit, unitTo: Unit): string => {
+export const cypher_converter = async (value: string, unitFrom: Unit, unitTo: Unit): Promise<string> => {
   if (!unitFrom && !unitTo) return value
 
   const key = `${unitFrom.label}:${unitTo.label}`
@@ -225,7 +302,7 @@ export const cypher_converter = (value: string, unitFrom: Unit, unitTo: Unit): s
 
   if (!conversionFunction) throw new Error(`Conversion impossible de ${unitFrom.label} vers ${unitTo.label}`)
 
-  return conversionFunction(
+  return await conversionFunction(
     cleanText(value),
     unitTo.key === undefined || unitTo.key === ""
       ? (unitFrom.key ?? "").toString().toUpperCase()
