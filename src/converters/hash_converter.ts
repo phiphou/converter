@@ -20,7 +20,7 @@ import {
 
 import {Buffer} from "buffer"
 import {getHash} from "../utils/snefru.js"
-
+import {md6} from "../utils/md6.js"
 window.Buffer = Buffer
 
 const sha = async (text: string, type: string): Promise<string> => {
@@ -136,6 +136,10 @@ async function snefruHash(message: string): Promise<string> {
   }
 }
 
+async function md6Hash(message: string): Promise<string> {
+  return md6().hex(message)
+}
+
 async function aes(message: string) {
   try {
     const algorithm = {name: "AES-GCM", length: 256}
@@ -194,6 +198,7 @@ const conversionMap: Record<string, (t: string, k: string, k2: number) => Promis
   "text:SCRYPT": async (t, k) => scryptHash(t, k),
   "text:PBKDF2": async (t, k) => pbkdf2Hash(t, k),
   "text:SNEFRU": async (t) => snefruHash(t),
+  "text:MD6": async (t) => md6Hash(t),
 }
 
 export const hash_converter = async (value: string, unitFrom: Unit, unitTo: Unit): Promise<string> => {

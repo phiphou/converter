@@ -32,8 +32,8 @@ const hash = {
     converter: hash_converter,
     pluralize: true,
   },
-  TIGER128: {
-    label: "TIGER-128",
+  MD6: {
+    label: "MD6",
     converter: hash_converter,
     pluralize: true,
   },
