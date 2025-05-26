@@ -112,6 +112,23 @@ function vigenere(text: string, decode: boolean, key: string): string {
   return result.toUpperCase()
 }
 
+function beaufort(text: string, decode: boolean, key: string): string {
+  let result = ""
+
+  for (let i = 0, j = 0; i < text.length; i++) {
+    const c = text.charAt(i)
+
+    if (decode) {
+      result += String.fromCharCode(90 - ((25 - (c.charCodeAt(0) - key.toUpperCase().charCodeAt(j))) % 26))
+    } else {
+      result += String.fromCharCode(65 + ((key.toUpperCase().charCodeAt(j) - c.charCodeAt(0) + 26) % 26))
+    }
+
+    j = ++j % key.length
+  }
+  return result.toUpperCase()
+}
+
 const braille_encode = function (message: string) {
   const map: Record<string, string> = " A1B'K2L@CIF/MSP\"E3H9O6R^DJG>NTQ,*5<-U8V.%[$+X!&;:4\\0Z7(_?W]#Y)="
     .split("")
@@ -155,8 +172,8 @@ const bacon_encode = function (message: string) {
 const conversionMap: Record<string, (t: string, k: string) => string> = {
   "text:rotation": (t, k) => ROT(t, false, parseInt(k)),
   "rotation:text": (t, k) => ROT(t, true, parseInt(k)),
-  "text:vigenere": (t, k) => vigenere(t.toUpperCase(), false, k.toUpperCase()),
-  "vigenere:text": (t, k) => vigenere(t.toUpperCase(), true, k.toUpperCase()),
+  "text:Vigenère": (t, k) => vigenere(t.toUpperCase(), false, k.toUpperCase()),
+  "Vigenère:text": (t, k) => vigenere(t.toUpperCase(), true, k.toUpperCase()),
   "text:morse": (t) => morse(t, false),
   "morse:text": (t) => morse(t, true),
   "substitution:text": (t, k) => replace(t.toUpperCase(), true, k.toUpperCase()),
@@ -165,6 +182,7 @@ const conversionMap: Record<string, (t: string, k: string) => string> = {
   "text:braille": (t) => braille_encode(t),
   "text:Pigpen": (t) => t.toLocaleUpperCase(),
   "text:Chappe": (t) => t.toUpperCase().replace("J", "I"),
+  "text:Beaufort": (t, k) => beaufort(t.toUpperCase(), false, k.toUpperCase()),
 }
 
 export const cypher_converter = (value: string, unitFrom: Unit, unitTo: Unit): string => {

@@ -174,9 +174,7 @@ function Codes({dictionary}: UnitSelectProps) {
 
       <div className="mt-20 pb-6">
         {" "}
-        {typeof dictionary["infos"] === "object" && (dictionary["infos"] as {label: string})?.label && (
-          <InfosBlock label={""} info={(dictionary["infos"] as {label: string}).label} />
-        )}
+        {dictionary[unitTo]?.info && <InfosBlock label={dictionary[unitTo].label} info={dictionary[unitTo].info} />}
       </div>
     </>
   )
