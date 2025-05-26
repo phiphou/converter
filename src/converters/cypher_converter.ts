@@ -68,7 +68,7 @@ function morse(text: string, decode: boolean): string {
 }
 
 function ROT(text: string, decode: boolean, rotation: number): string {
-  return text.toUpperCase().replace(/[a-zA-Z]/g, function (chr: string) {
+  return text.replace(/[a-zA-Z]/g, function (chr: string) {
     const start = chr <= "Z" ? 65 : 97
     return String.fromCharCode(start + ((chr.charCodeAt(0) - start + (decode ? 26 - rotation : rotation)) % 26))
   })
@@ -109,7 +109,7 @@ function vigenere(text: string, decode: boolean, key: string): string {
 
     j = ++j % key.length
   }
-  return result.toUpperCase()
+  return result
 }
 
 function beaufort(text: string, decode: boolean, key: string): string {
@@ -126,7 +126,7 @@ function beaufort(text: string, decode: boolean, key: string): string {
 
     j = ++j % key.length
   }
-  return result.toUpperCase()
+  return result
 }
 
 const braille_encode = function (message: string) {
@@ -148,9 +148,7 @@ const braille_encode = function (message: string) {
 }
 
 const bacon_encode = function (message: string) {
-  message = message.toUpperCase()
   const alphabet: string = "ABCDEFGHIJKLMNOPQRSTUVW"
-
   let index = -1
   const length = message.length
   let alphabetIndex
@@ -169,20 +167,54 @@ const bacon_encode = function (message: string) {
   return result.replace(/(?<=^(?:.{5})+)(?!$)/g, " ")
 }
 
+const polybe_square = function (message: string) {
+  const alphabet: string = "ABCDEFGHIKLMNOPQRSTUVWXYZ"
+  const square: string[][] = []
+  let index = -1
+  const length = alphabet.length
+
+  while (++index < length) {
+    if (index % 5 === 0) square.push([])
+    square[square.length - 1].push(alphabet[index])
+  }
+
+  return message
+    .split("")
+    .map((c) => {
+      if (c === "J") c = "I"
+      const i = alphabet.indexOf(c)
+      if (i === -1) return c
+
+      const row = Math.floor(i / 5) + 1
+      const col = (i % 5) + 1
+      return `${row}${col}`
+    })
+    .join(" ")
+}
+
 const conversionMap: Record<string, (t: string, k: string) => string> = {
   "text:rotation": (t, k) => ROT(t, false, parseInt(k)),
   "rotation:text": (t, k) => ROT(t, true, parseInt(k)),
-  "text:Vigenère": (t, k) => vigenere(t.toUpperCase(), false, k.toUpperCase()),
-  "Vigenère:text": (t, k) => vigenere(t.toUpperCase(), true, k.toUpperCase()),
-  "text:morse": (t) => morse(t, false),
+  "text:chiffre de Vigenère": (t, k) => vigenere(t, false, k),
+  "Vigenère:text": (t, k) => vigenere(t, true, k),
+  "text:code Morse": (t) => morse(t, false),
   "morse:text": (t) => morse(t, true),
-  "substitution:text": (t, k) => replace(t.toUpperCase(), true, k.toUpperCase()),
-  "text:substitution": (t, k) => replace(t.toUpperCase(), false, k.toUpperCase()),
-  "text:bacon": (t) => bacon_encode(t),
-  "text:braille": (t) => braille_encode(t),
-  "text:Pigpen": (t) => t.toLocaleUpperCase(),
-  "text:Chappe": (t) => t.toUpperCase().replace("J", "I"),
-  "text:Beaufort": (t, k) => beaufort(t.toUpperCase(), false, k.toUpperCase()),
+  "substitution:text": (t, k) => replace(t, true, k),
+  "text:substitution": (t, k) => replace(t, false, k),
+  "text:code de Bacon": (t) => bacon_encode(t),
+  "text:code Braille": (t) => braille_encode(t),
+  "text:code Pigpen": (t) => t.toLocaleUpperCase(),
+  "text:code de Chappe": (t) => t.replace("J", "I"),
+  "text:code de Beaufort": (t, k) => beaufort(t, false, k),
+  "text:carré de Polybe": (t) => polybe_square(t),
+}
+
+function cleanText(text: string): string {
+  return text
+    .normalize("NFD") // Décompose les caractères accentués en caractères de base + diacritiques
+    .replace(/[\u0300-\u036f]/g, "") // Supprime les diacritiques
+    .replace(/[^a-zA-Z0-9]/g, "")
+    .toUpperCase() // Supprime tout ce qui n'est pas alphanumérique
 }
 
 export const cypher_converter = (value: string, unitFrom: Unit, unitTo: Unit): string => {
@@ -194,8 +226,10 @@ export const cypher_converter = (value: string, unitFrom: Unit, unitTo: Unit): s
   if (!conversionFunction) throw new Error(`Conversion impossible de ${unitFrom.label} vers ${unitTo.label}`)
 
   return conversionFunction(
-    value,
-    unitTo.key === undefined || unitTo.key === "" ? (unitFrom.key ?? "").toString() : unitTo.key.toString()
+    cleanText(value),
+    unitTo.key === undefined || unitTo.key === ""
+      ? (unitFrom.key ?? "").toString().toUpperCase()
+      : unitTo.key.toString().toUpperCase()
   )
 }
 

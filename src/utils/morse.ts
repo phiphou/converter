@@ -1,4 +1,4 @@
-const DOT_TIME = 45
+const DOT_TIME = 40
 const DASH_TIME = DOT_TIME * 3
 const SYMBOL_BREAK = DOT_TIME * 1.5
 const LETTER_BREAK = DOT_TIME * 1.5
