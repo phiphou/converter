@@ -19,6 +19,8 @@ import {
 } from "hash-wasm"
 
 import {Buffer} from "buffer"
+import {getHash} from "../utils/snefru.js"
+
 window.Buffer = Buffer
 
 const sha = async (text: string, type: string): Promise<string> => {
@@ -123,6 +125,17 @@ async function pbkdf2Hash(t: string, k: string): Promise<string> {
     .join("")
 }
 
+async function snefruHash(message: string): Promise<string> {
+  try {
+    const hash = await getHash(message)
+    console.log("Hash:", hash)
+    return hash
+  } catch (err) {
+    console.error("Error:", err)
+    throw err
+  }
+}
+
 async function aes(message: string) {
   try {
     const algorithm = {name: "AES-GCM", length: 256}
@@ -180,6 +193,7 @@ const conversionMap: Record<string, (t: string, k: string, k2: number) => Promis
   "text:CRC64": async (t) => await crc64(t),
   "text:SCRYPT": async (t, k) => scryptHash(t, k),
   "text:PBKDF2": async (t, k) => pbkdf2Hash(t, k),
+  "text:SNEFRU": async (t) => snefruHash(t),
 }
 
 export const hash_converter = async (value: string, unitFrom: Unit, unitTo: Unit): Promise<string> => {
