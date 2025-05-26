@@ -12,6 +12,7 @@ export default defineConfig({
   resolve: {
     alias: {
       buffer: "buffer",
+      "crypto-api": "crypto-api/src/crypto-api.js",
     },
   },
   plugins: [tailwindcss()],

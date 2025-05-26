@@ -52,6 +52,11 @@ const hash = {
     converter: hash_converter,
     pluralize: true,
   },
+  SNEFRU: {
+    label: "SNEFRU",
+    converter: hash_converter,
+    pluralize: true,
+  },
   SHA1: {
     label: "SHA-1",
     converter: hash_converter,

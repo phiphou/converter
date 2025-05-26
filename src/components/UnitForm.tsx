@@ -264,7 +264,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             {dictionary["input"] && <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />}
             {!dictionary["input"] && <UnitSelect unit={unitFrom} setUnit={setUnitFrom} dictionary={dictionary} />}
             {hasList && (
-              <div className="flex gap-1">
+              <div className="flex gap-1 text-gray-900 dark:text-white">
                 <span className="mt-4">{dictionary["of"] ? dictionary["of"].label + "\u00A0" : " "}</span>
                 <span className="mt-4 whitespace-nowrap">
                   {list[secondaryUnit]?.quote && list[secondaryUnit]?.quote}
@@ -274,7 +274,9 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             )}
             {hasList && <UnitSelect unit={secondaryUnit} setUnit={setSecondaryUnit} dictionary={list} />}
             {!dictionary[unitFrom]?.noSwitch && !dictionary["input"] && !dictionary["noSwitch"] && (
-              <SwitchUnitButton switchUnits={switchUnits} />
+              <div className="flex items-center">
+                <SwitchUnitButton switchUnits={switchUnits} />
+              </div>
             )}
           </div>
         </div>
@@ -285,7 +287,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
             {dictionary["no_precision"] === undefined && (
               <div className="flex items-center md:flex">
-                <label className="ml-3">Précision&nbsp;:</label>
+                <label className="ml-3 text-gray-900 dark:text-white">Précision&nbsp;:</label>
                 <input
                   type="number"
                   min={0}

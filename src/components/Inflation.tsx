@@ -125,7 +125,10 @@ function Inflation({dictionary}: UnitSelectProps) {
                   id="unitFrom"
                   className="mr-3 ml-3 block max-w-[25%] min-w-[25%] rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                 >
-                  {Array.from({length: 2024 - 1900 + 1}, (_, i) => 1900 + i).map((year) => (
+                  {Array.from(
+                    {length: 2024 - (unitFrom === "dollar" ? 1914 + 1 : 1900 + 1)},
+                    (_, i) => (unitFrom === "dollar" ? 1914 + 1 : 1900 + 1) + i
+                  ).map((year) => (
                     <option key={year} value={year}>
                       {year}
                     </option>
@@ -140,7 +143,10 @@ function Inflation({dictionary}: UnitSelectProps) {
                   value={unitTo}
                   className="mr-3 ml-3 block max-w-[25%] min-w-[25%] rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                 >
-                  {Array.from({length: 2024 - 1900 + 1}, (_, i) => 1900 + i).map((year) => (
+                  {Array.from(
+                    {length: 2024 - (unitFrom === "dollar" ? 1914 + 1 : 1900 + 1) + 1},
+                    (_, i) => (unitFrom === "dollar" ? 1914 + 1 : 1900 + 1) + i
+                  ).map((year) => (
                     <option key={year} value={year}>
                       {year}
                     </option>
