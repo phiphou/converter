@@ -179,7 +179,7 @@ function Planets({dictionary}: UnitSelectProps) {
           </table>
         </div>
       </div>
-      <div className="pt-1 pb-6">
+      <div className="mt-10 flex w-full flex-col items-center justify-center pb-6">
         {" "}
         {typeof dictionary["infos"] === "object" && (dictionary["infos"] as {label: string})?.label && (
           <InfosBlock label={"distances et diamètres"} info={(dictionary["infos"] as {label: string}).label} />

@@ -128,7 +128,7 @@ function Color_contrast({dictionary}: UnitSelectProps) {
 
       {error && <ErrorBlock info={error.message} />}
 
-      <div className="mt-20 pb-6">
+      <div className="mt-10 flex w-full flex-col items-center justify-center pb-6">
         {" "}
         {typeof dictionary["infos"] === "object" && (dictionary["infos"] as {label: string})?.label && (
           <InfosBlock label={""} info={(dictionary["infos"] as {label: string}).label} />

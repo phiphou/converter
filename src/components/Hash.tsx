@@ -151,10 +151,10 @@ function Hash({dictionary}: UnitSelectProps) {
         </div>
       </div>
 
-      <div className="mt-20 pb-6">
+      <div className="mt-10 flex w-full flex-col items-center justify-center pb-6">
         {" "}
         {typeof dictionary["infos"] === "object" && (dictionary["infos"] as {label: string})?.label && (
-          <InfosBlock label={"intérêts composés"} info={(dictionary["infos"] as {label: string}).label} />
+          <InfosBlock label={""} info={(dictionary["infos"] as {label: string}).label} />
         )}
       </div>
     </>

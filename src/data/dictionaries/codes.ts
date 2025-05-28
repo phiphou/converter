@@ -1,6 +1,7 @@
 import {pigpen_formater} from "../../formaters/pigpen_formater"
 import cypher_converter from "../../converters/cypher_converter"
 import {chappe_formater} from "../../formaters/chappe_formater"
+import {templars_formater} from "../../formaters/templars_formater"
 
 const codes = {
   custom: "codes",
@@ -72,6 +73,14 @@ const codes = {
     label: "code Pigpen",
     converter: cypher_converter,
     formater: pigpen_formater,
+    pluralize: true,
+    noSwitch: true,
+  },
+  templars: {
+    info: 'plus d\'information sur le code des templiers sur <a href="https://fr.m.wikipedia.org/wiki/Chiffre_de_Cornelius_Agrippa" target="_blank">Wikipedia</a>.',
+    label: "code des Templiers",
+    converter: cypher_converter,
+    formater: templars_formater,
     pluralize: true,
     noSwitch: true,
   },

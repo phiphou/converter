@@ -416,13 +416,17 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             </>
           )}
       </div>
-      {error && <ErrorBlock info={error.message} />}
-      {dictionary[unitFrom]?.info && <InfosBlock label={dictionary[unitFrom].label} info={dictionary[unitFrom].info} />}
-      {dictionary[unitTo]?.info && dictionary[unitTo]?.info !== dictionary[unitFrom]?.info && (
-        <InfosBlock label={dictionary[unitTo].label} info={dictionary[unitTo].info} />
-      )}
+      <div className="mt-6 flex w-full flex-col items-center justify-center pb-6">
+        {error && <ErrorBlock info={error.message} />}
+        {dictionary[unitFrom]?.info && (
+          <InfosBlock label={dictionary[unitFrom].label} info={dictionary[unitFrom].info} />
+        )}
+        {dictionary[unitTo]?.info && dictionary[unitTo]?.info !== dictionary[unitFrom]?.info && (
+          <InfosBlock label={dictionary[unitTo].label} info={dictionary[unitTo].info} />
+        )}
+      </div>
       {dictionary["infos"] && (
-        <div className="mx-auto">
+        <div className="mt-6 flex w-full flex-col items-center justify-center pb-6">
           <InfosBlock label="Infos" info={dictionary["infos"].label} />
         </div>
       )}

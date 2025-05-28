@@ -30,6 +30,43 @@ Vous pouvez contribuer de 3 manières différentes :
 
 Si votre contribution est acceptée, et si vous le souhaitez, vous serez mentionné sur le site.
 
+## Liste des catégories
+
+- angle
+- accelération
+- astronomie
+- charge électrique
+- chute libre
+- codes
+- CO2
+- couleurs
+- contraste de couleurs
+- consommation
+- date
+- débit
+- densité
+- devises
+- durée
+- éclairement
+- énergie
+- finance
+- hash et cryptographie
+- inflation
+- informatique
+- intensité sonore
+- longueur
+- masse
+- paradoxe de langevin
+- pression
+- puissance
+- radioactivité
+- radioactivité 2
+- surface
+- systèmes de numération
+- température
+- vitesse
+- volume
+
 ## Licence
 
 Cette œuvre est mise à disposition selon les termes de la [licence Creative Commons Attribution - Utilisation non commerciale - Partage dans les mêmes conditions 4.0 International][cc-by-nc-sa].

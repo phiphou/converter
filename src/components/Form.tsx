@@ -10,6 +10,7 @@ import Colors from "./Colors"
 import Inflation from "./Inflation"
 import Color_contrast from "./Color_contrast"
 import Planets from "./Planets"
+import Freefall from "./Freefall"
 
 const customComponentMap: Record<string, React.ComponentType<{dictionary: Record<string, Unit>}>> = {
   finance: Finance,
@@ -19,6 +20,7 @@ const customComponentMap: Record<string, React.ComponentType<{dictionary: Record
   colors: Colors,
   hash: Hash,
   planets: Planets,
+  freefall: Freefall,
 }
 
 function Form() {

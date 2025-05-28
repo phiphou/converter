@@ -279,7 +279,8 @@ const conversionMap: Record<string, (t: string, k: string) => string | Promise<s
   "text:substitution": (t, k) => replace(t, false, k),
   "text:code de Bacon": (t) => bacon_encode(t),
   "text:code Braille": (t) => braille_encode(t),
-  "text:code Pigpen": (t) => t.toLocaleUpperCase(),
+  "text:code Pigpen": (t) => cleanText(t),
+  "text:code des Templiers": (t) => cleanText(t),
   "text:code de Chappe": (t) => t.replace("J", "I"),
   "text:code de Beaufort": (t, k) => beaufort(t, false, k),
   "text:carré de Polybe": (t) => polybe_square(t),
@@ -288,10 +289,10 @@ const conversionMap: Record<string, (t: string, k: string) => string | Promise<s
 
 function cleanText(text: string): string {
   return text
-    .normalize("NFD") // Décompose les caractères accentués en caractères de base + diacritiques
-    .replace(/[\u0300-\u036f]/g, "") // Supprime les diacritiques
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-zA-Z0-9]/g, "")
-    .toUpperCase() // Supprime tout ce qui n'est pas alphanumérique
+    .toUpperCase()
 }
 
 export const cypher_converter = async (value: string, unitFrom: Unit, unitTo: Unit): Promise<string> => {

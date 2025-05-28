@@ -172,7 +172,7 @@ function Codes({dictionary}: UnitSelectProps) {
         </div>
       </div>
 
-      <div className="mt-20 pb-6">
+      <div className="mt-10 flex w-full flex-col items-center justify-center pb-6">
         {" "}
         {dictionary[unitTo]?.info && <InfosBlock label={dictionary[unitTo].label} info={dictionary[unitTo].info} />}
       </div>

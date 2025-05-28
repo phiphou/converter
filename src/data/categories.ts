@@ -11,6 +11,9 @@ export const categories = {
   electric_charge: {
     label: "charge électrique",
   },
+  freefall: {
+    label: "Chute libre",
+  },
   codes: {
     label: "Codes",
   },

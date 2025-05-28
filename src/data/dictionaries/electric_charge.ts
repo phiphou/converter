@@ -26,7 +26,7 @@ const electric_charge = {
     pluralize: false,
   },
   mAh: {
-    label: "milliAmpère-heure²",
+    label: "milliAmpère-heure",
     divisor: 0.001,
     pluralize: false,
   },

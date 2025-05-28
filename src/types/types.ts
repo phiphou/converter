@@ -34,4 +34,10 @@ export enum ConversionType {
   EF = "Euro vers Franc",
   EDF = "Euro vers Ancien Franc",
   DD = "Dollar vers Dollar",
+  DE = "Dollar vers Euro",
+  ED = "Euro vers Dollar",
+  DF = "Dollar vers Franc",
+  FD = "Franc vers Dollar",
+  DOF = "Dollar vers Ancien Franc",
+  OFD = "Ancien Franc vers Dollar",
 }
