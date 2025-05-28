@@ -677,7 +677,14 @@ export const inflation_converter = async (
   }
   const inflationFactor = getCumulativeInflationFactor(start, end, conversionType === ConversionType.DD)
   const cumulativeInflation = ((inflationFactor - 1) * 100).toFixed(2)
-  const graphDatas = getGraphDatas(start, end, conversionType === ConversionType.DD)
+  const graphDatas = getGraphDatas(
+    start,
+    end,
+    conversionType === ConversionType.DD ||
+      conversionType === ConversionType.DE ||
+      conversionType === ConversionType.DOF ||
+      conversionType === ConversionType.DF
+  )
   return {
     result: result.toString(),
     cumulativeInflation: cumulativeInflation,
