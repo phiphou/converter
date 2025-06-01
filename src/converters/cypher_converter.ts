@@ -269,16 +269,16 @@ const hillEncryptWorker = (message: string): Promise<string> => {
 }
 
 const conversionMap: Record<string, (t: string, k: string) => string | Promise<string>> = {
-  "text:rotation": (t, k) => ROT(t, false, parseInt(k)),
-  "rotation:text": (t, k) => ROT(t, true, parseInt(k)),
-  "text:chiffre de Vigenère": (t, k) => vigenere(t, false, k),
-  "Vigenère:text": (t, k) => vigenere(t, true, k),
-  "text:code Morse": (t) => morse(t, false),
-  "morse:text": (t) => morse(t, true),
-  "substitution:text": (t, k) => replace(t, true, k),
-  "text:substitution": (t, k) => replace(t, false, k),
-  "text:code de Bacon": (t) => bacon_encode(t),
-  "text:code Braille": (t) => braille_encode(t),
+  "text:rotation": (t, k) => ROT(cleanText(t), false, parseInt(k)),
+  "rotation:text": (t, k) => ROT(cleanText(t), true, parseInt(k)),
+  "text:chiffre de Vigenère": (t, k) => vigenere(cleanText(t), false, k),
+  "chiffre de Vigenère:text": (t, k) => vigenere(cleanText(t), true, k),
+  "text:code Morse": (t) => morse(cleanText(t), false),
+  "code Morse:text": (t) => morse(t, true),
+  "substitution:text": (t, k) => replace(cleanText(t), true, k),
+  "text:substitution": (t, k) => replace(cleanText(t), false, k),
+  "text:code de Bacon": (t) => bacon_encode(cleanText(t)),
+  "text:code Braille": (t) => braille_encode(cleanText(t)),
   "text:code Pigpen": (t) => cleanText(t),
   "text:code des Templiers": (t) => cleanText(t),
   "text:code de Chappe": (t) => t.replace("J", "I"),
@@ -291,20 +291,20 @@ function cleanText(text: string): string {
   return text
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-zA-Z0-9]/g, "")
+    .replace(/[^a-zA-Z0-9\s\n]/g, "")
     .toUpperCase()
 }
 
 export const cypher_converter = async (value: string, unitFrom: Unit, unitTo: Unit): Promise<string> => {
   if (!unitFrom && !unitTo) return value
-
+  if (unitFrom === unitTo) return value
   const key = `${unitFrom.label}:${unitTo.label}`
   const conversionFunction = conversionMap[key]
 
   if (!conversionFunction) throw new Error(`Conversion impossible de ${unitFrom.label} vers ${unitTo.label}`)
 
   return await conversionFunction(
-    cleanText(value),
+    value,
     unitTo.key === undefined || unitTo.key === ""
       ? (unitFrom.key ?? "").toString().toUpperCase()
       : unitTo.key.toString().toUpperCase()

@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-
+coverage
 node_modules
 .DS_Store
 Thumbs.db
@@ -34,12 +34,4 @@ tsconfig.node.tsbuildinfo
 Makefile
 
 # Cache files
-.eslintcache
-
-
-
-
-
-.eslintcache
-.eslintcache
 .eslintcache

@@ -1,33 +1,33 @@
 import {Unit} from "../types/types"
 
 type FreefallResult = {
-  "vitesse à l'impact": number
-  "hauteur de chute": number
-  "durée de la chute": number
+  speed: number
+  height: number
+  time: number
 }
 
 const fromHeight = (value: number): FreefallResult => {
   const result: FreefallResult = {
-    "vitesse à l'impact": Math.sqrt(2 * value * 9.81),
-    "hauteur de chute": value,
-    "durée de la chute": Math.sqrt((2 * value) / 9.81),
+    speed: Math.sqrt(2 * value * 9.81),
+    height: value,
+    time: Math.sqrt((2 * value) / 9.81),
   }
   return result
 }
 const fromTime = (value: number): FreefallResult => {
   const result: FreefallResult = {
-    "vitesse à l'impact": 9.81 * value,
-    "hauteur de chute": (1 / 2) * 9.81 * value * value,
-    "durée de la chute": value,
+    speed: 9.81 * value,
+    height: (1 / 2) * 9.81 * value * value,
+    time: value,
   }
   return result
 }
 
 const fromSpeed = (value: number): FreefallResult => {
   const result: FreefallResult = {
-    "vitesse à l'impact": value,
-    "hauteur de chute": (value * value) / (2 * 9.81),
-    "durée de la chute": (2 * ((value * value) / (2 * 9.81))) / value,
+    speed: value,
+    height: (value * value) / (2 * 9.81),
+    time: (2 * ((value * value) / (2 * 9.81))) / value,
   }
   return result
 }
@@ -38,7 +38,7 @@ const compute = async (value: number, unitTo: Unit): Promise<FreefallResult> => 
       return fromSpeed(value)
     case "hauteur de chute":
       return fromHeight(value)
-    case "durée de la chute":
+    case "temps de chute":
       return fromTime(value)
     default:
       throw new Error("Unit not supported")
@@ -46,7 +46,7 @@ const compute = async (value: number, unitTo: Unit): Promise<FreefallResult> => 
 }
 
 export const freefall_converter = async (value: string, unitTo: Unit): Promise<FreefallResult> => {
-  if (!unitTo) return {"vitesse à l'impact": 0, "hauteur de chute": 0, "durée de la chute": 0}
+  if (!unitTo) return {speed: 0, height: 0, time: 0}
 
   const numericValue = parseFloat(value)
   if (isNaN(numericValue)) throw new Error("Invalid value")

@@ -1,7 +1,7 @@
 export interface Unit {
   notUnit?: boolean
   label: string
-  divisor: number
+  divisor?: number | 1
   code?: string
   formater?: (value: number | string) => string
   pluralize?: boolean

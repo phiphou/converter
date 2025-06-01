@@ -60,6 +60,12 @@ jobs:
           cd $GITHUB_WORKSPACE
           pnpm run validate
 
+      - name: Run tests
+        run: |
+          echo "Running tests..."
+          cd $GITHUB_WORKSPACE
+          pnpm run test:ci
+
       - name: Run build
         run: |
           echo "Running build..."

@@ -100,7 +100,7 @@ function Codes({dictionary}: UnitSelectProps) {
 
             <div className="flex flex-col items-center gap-4 md:flex-row md:gap-3">
               <div className="mr-2 ml-3">
-                <UnitSelect unit={unitTo} setUnit={changeUnit} dictionary={dictionary} />
+                <UnitSelect type="to" unit={unitTo} setUnit={changeUnit} dictionary={dictionary} />
               </div>
               {dictionary[unitTo]?.withKey === true && (
                 <div className="ml-2 flex items-center gap-2">
@@ -138,7 +138,6 @@ function Codes({dictionary}: UnitSelectProps) {
               {dictionary[unitTo]?.formater && (
                 <div className="mt-5">
                   <div
-                    className="inline-block"
                     dangerouslySetInnerHTML={{
                       __html: `${output}`,
                     }}

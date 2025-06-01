@@ -20,7 +20,6 @@ const toCMYK = (t: string): [number, number, number, number] => {
 }
 
 const conversionMap: Record<string, (t: string) => Promise<object>> = {
-  "HEX:HEX": async (t) => ({result: t}),
   "HEX:RGB": async (t) => convert.hex.rgb(t),
   "HEX:HSL": async (t) => convert.hex.hsl(t),
   "HEX:CMYK": async (t) => convert.hex.cmyk(t),
@@ -28,7 +27,6 @@ const conversionMap: Record<string, (t: string) => Promise<object>> = {
   "HEX:LAB": async (t) => convert.hex.lab(t),
   "HEX:XYZ": async (t) => convert.hex.xyz(t),
 
-  "RGB:RGB": async (t) => ({result: t}),
   "RGB:HEX": async (t) => ({result: convert.rgb.hex(toRGB(t))}),
   "RGB:HSL": async (t) => convert.rgb.hsl(toRGB(t)),
   "RGB:CMYK": async (t) => convert.rgb.cmyk(toRGB(t)),
@@ -36,7 +34,6 @@ const conversionMap: Record<string, (t: string) => Promise<object>> = {
   "RGB:LAB": async (t) => convert.rgb.lab(toRGB(t)),
   "RGB:XYZ": async (t) => convert.rgb.xyz(toRGB(t)),
 
-  "HSL:HSL": async (t) => ({result: t}),
   "HSL:HEX": async (t) => ({result: convert.hsl.hex(toRGB(t))}),
   "HSL:RGB": async (t) => convert.hsl.rgb(toRGB(t)),
   "HSL:CMYK": async (t) => convert.hsl.cmyk(toRGB(t)),
@@ -44,7 +41,6 @@ const conversionMap: Record<string, (t: string) => Promise<object>> = {
   "HSL:LAB": async (t) => convert.hsl.lab(toRGB(t)),
   "HSL:XYZ": async (t) => convert.hsl.xyz(toRGB(t)),
 
-  "CMYK:CMYK": async (t) => ({result: t}),
   "CMYK:HEX": async (t) => ({result: convert.cmyk.hex(toCMYK(t))}),
   "CMYK:RGB": async (t) => convert.cmyk.rgb(toCMYK(t)),
   "CMYK:HSL": async (t) => convert.cmyk.hsl(toCMYK(t)),
@@ -52,7 +48,6 @@ const conversionMap: Record<string, (t: string) => Promise<object>> = {
   "CMYK:LAB": async (t) => convert.cmyk.lab(toCMYK(t)),
   "CMYK:XYZ": async (t) => convert.cmyk.xyz(toCMYK(t)),
 
-  "HSV:HSV": async (t) => ({result: t}),
   "HSV:HEX": async (t) => ({result: convert.hsv.hex(toRGB(t))}),
   "HSV:RGB": async (t) => convert.hsv.rgb(toRGB(t)),
   "HSV:HSL": async (t) => convert.hsv.hsl(toRGB(t)),
@@ -60,7 +55,6 @@ const conversionMap: Record<string, (t: string) => Promise<object>> = {
   "HSV:LAB": async (t) => convert.hsv.lab(toRGB(t)),
   "HSV:XYZ": async (t) => convert.hsv.xyz(toRGB(t)),
 
-  "LAB:LAB": async (t) => ({result: t}),
   "LAB:HEX": async (t) => ({result: convert.lab.hex(toRGB(t))}),
   "LAB:RGB": async (t) => convert.lab.rgb(toRGB(t)),
   "LAB:HSL": async (t) => convert.lab.hsl(toRGB(t)),
@@ -68,7 +62,6 @@ const conversionMap: Record<string, (t: string) => Promise<object>> = {
   "LAB:HSV": async (t) => convert.lab.hsv(toRGB(t)),
   "LAB:XYZ": async (t) => convert.lab.xyz(toRGB(t)),
 
-  "XYZ:XYZ": async (t) => ({result: t}),
   "XYZ:HEX": async (t) => ({result: convert.xyz.hex(toRGB(t))}),
   "XYZ:RGB": async (t) => convert.xyz.rgb(toRGB(t)),
   "XYZ:HSL": async (t) => convert.xyz.hsl(toRGB(t)),
@@ -78,7 +71,9 @@ const conversionMap: Record<string, (t: string) => Promise<object>> = {
 }
 
 export const color_converter = async (value: string | number, unitFrom: Unit, unitTo: Unit): Promise<string> => {
-  if (!unitFrom && !unitTo) return "" + value
+  if (unitTo === unitFrom) {
+    return value.toString()
+  }
 
   const key = `${unitFrom.label}:${unitTo.label}`
   const conversionFunction = conversionMap[key]

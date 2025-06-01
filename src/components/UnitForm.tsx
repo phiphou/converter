@@ -137,8 +137,8 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
       setResult(null)
       setError(null)
       if (unitFrom && unitTo) {
-        const fromDivisor = dictionary[unitFrom].divisor
-        const toDivisor = dictionary[unitTo].divisor
+        const fromDivisor = dictionary[unitFrom]?.divisor ?? 1
+        const toDivisor = dictionary[unitTo]?.divisor ?? 1
         let calculatedResult: number | string | null = null
 
         if (unitFrom === unitTo && !dictionary["input"] && !dictionary[unitTo].converter) {
@@ -170,7 +170,11 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             setError(error as Error)
           }
         } else if (hasList) {
-          if (toDivisor === fromDivisor && dictionary[unitFrom].group === dictionary[unitTo].group) {
+          if (
+            toDivisor === fromDivisor &&
+            dictionary[unitFrom].group === dictionary[unitTo].group &&
+            list[secondaryUnit].divisor
+          ) {
             if (!switched && !dictionary["noSwitch"]) {
               calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
             } else {
@@ -178,7 +182,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
             }
           } else {
             if (dictionary["materials"] && !dictionary["noSwitch"]) {
-              if (dictionary[unitFrom].group !== dictionary[unitTo].group) {
+              if (dictionary[unitFrom].group !== dictionary[unitTo].group && list[secondaryUnit].divisor) {
                 if (!switched && !dictionary["noSwitch"]) {
                   calculatedResult = ((value * list[secondaryUnit].divisor) / toDivisor) * fromDivisor
                 } else {
@@ -192,7 +196,7 @@ function UnitForm({label, dic}: {label: string; dic: Record<string, Unit>}) {
                       ? value / toDivisor
                       : value / toDivisor
               }
-            } else if (dictionary["materials"] && dictionary["noSwitch"]) {
+            } else if (dictionary["materials"] && dictionary["noSwitch"] && list[secondaryUnit].divisor) {
               calculatedResult = (value / list[secondaryUnit].divisor / toDivisor) * fromDivisor
             } else {
               calculatedResult = 222

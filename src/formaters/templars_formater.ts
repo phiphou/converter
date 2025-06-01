@@ -55,7 +55,7 @@ const MAP: Record<string, string> = {
 }
 export const templars_formater = (v: string): string => {
   if (!v) return ""
-  return `<div class="flex flex-wrap items-center gap-1 text-black dark:text-white">${v
+  return `<div text-black dark:text-white">${v
     .toUpperCase()
     .split("")
     .map((c) => {

@@ -82,12 +82,20 @@ function Freefall({dictionary}: UnitSelectProps) {
             <tbody>
               {Object.entries(result).map(([key, v]) => (
                 <tr key={key} className="border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
-                  <td className="px-6 py-3 text-gray-900 dark:text-white">{key || "N/A"}</td>
+                  <td className="px-6 py-3 text-gray-900 dark:text-white">
+                    {key === "speed"
+                      ? "vitesse à l'impact"
+                      : key === "height"
+                        ? "hauteur de chute"
+                        : key === "time"
+                          ? "durée de la chute"
+                          : "N/A"}
+                  </td>
                   <td className="px-6 py-3 text-gray-900 dark:text-white">
                     {v.toFixed(2) || "N/A"}
-                    {key === "vitesse à l'impact" && " m/s (" + (v * 3.6).toFixed(2) + " km/h)"}
-                    {key === "hauteur de chute" && " m"}
-                    {key === "durée de la chute" && " s"}
+                    {key === "speed" && " m/s (" + (v * 3.6).toFixed(2) + " km/h)"}
+                    {key === "height" && " m"}
+                    {key === "time" && " s"}
                   </td>
                 </tr>
               ))}

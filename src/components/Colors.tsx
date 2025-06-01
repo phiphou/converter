@@ -48,13 +48,14 @@ function Colors({dictionary}: UnitSelectProps) {
         <div className="flex w-full flex-col text-black dark:text-white">
           <div className="flex w-full items-center text-black dark:text-white">
             <input
+              data-testid="color-input"
               className="mr-3 ml-3 block max-w-[65%] min-w-[65%] rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               value={input}
               placeholder={dictionary[unitFrom]?.placeHolder}
               onChange={(e) => setInput(e.target.value)}
             />{" "}
             <div className="w-25">
-              <UnitSelect unit={unitFrom} setUnit={setUnitFrom} dictionary={dictionary} />
+              <UnitSelect type="from" unit={unitFrom} setUnit={setUnitFrom} dictionary={dictionary} />
             </div>
             <div className="ml-2 items-center gap-2">
               {!dictionary[unitTo]?.noSwitch && !dictionary["input"] && !dictionary["noSwitch"] && (
@@ -65,11 +66,12 @@ function Colors({dictionary}: UnitSelectProps) {
 
           <div className="mt-6 flex w-full items-center text-black dark:text-white">
             <input
+              data-testid="color-output"
               className="mr-3 ml-3 block max-w-[70%] min-w-[70%] rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus-within:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 md:w-40 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus-within:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               value={output}
               onChange={(e) => setOutput(e.target.value)}
             />
-            <UnitSelect unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
+            <UnitSelect type="to" unit={unitTo} setUnit={setUnitTo} dictionary={dictionary} />
           </div>
         </div>
       </div>

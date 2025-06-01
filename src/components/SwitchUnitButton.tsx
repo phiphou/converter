@@ -1,6 +1,7 @@
 function SwitchUnitButton({switchUnits}: {switchUnits: () => void}) {
   return (
     <button
+      data-testid="switch-button"
       onClick={switchUnits}
       type="button"
       className="m-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-blue-700 text-center text-sm font-medium text-sky-600 focus:ring-0 focus:ring-blue-300 focus:outline-none dark:border-gray-600 dark:bg-gray-200 dark:text-gray-700 dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
