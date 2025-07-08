@@ -53,6 +53,9 @@ export const categories = {
   finance: {
     label: "finance",
   },
+  jwt: {
+    label: "JSON Web Token",
+  },
   hash: {
     label: "hash et cryptographie",
   },

@@ -11,6 +11,7 @@ import Inflation from "./Inflation"
 import Color_contrast from "./Color_contrast"
 import Planets from "./Planets"
 import Freefall from "./Freefall"
+import JWT from "./JWT"
 
 const customComponentMap: Record<string, React.ComponentType<{dictionary: Record<string, Unit>}>> = {
   finance: Finance,
@@ -21,6 +22,7 @@ const customComponentMap: Record<string, React.ComponentType<{dictionary: Record
   hash: Hash,
   planets: Planets,
   freefall: Freefall,
+  jwt: JWT,
 }
 
 function Form() {

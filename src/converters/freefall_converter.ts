@@ -38,7 +38,7 @@ const compute = async (value: number, unitTo: Unit): Promise<FreefallResult> => 
       return fromSpeed(value)
     case "hauteur de chute":
       return fromHeight(value)
-    case "temps de chute":
+    case "durée de la chute":
       return fromTime(value)
     default:
       throw new Error("Unit not supported")

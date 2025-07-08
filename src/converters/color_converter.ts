@@ -2,7 +2,7 @@ import convert from "color-convert"
 import {Unit} from "../types/types"
 
 const toRGB = (t: string): [number, number, number] => {
-  const rgb = t.split(",").map((v: string) => parseInt(v.trim()))
+  const rgb = t.split(",").map((v: string) => parseFloat(v.trim()))
   if (rgb.length === 3) {
     return [rgb[0], rgb[1], rgb[2]]
   } else {
@@ -11,7 +11,7 @@ const toRGB = (t: string): [number, number, number] => {
 }
 
 const toCMYK = (t: string): [number, number, number, number] => {
-  const cmyk = t.split(",").map((v: string) => parseInt(v.trim()))
+  const cmyk = t.split(",").map((v: string) => parseFloat(v.trim()))
   if (cmyk.length === 4) {
     return [cmyk[0], cmyk[1], cmyk[2], cmyk[3]]
   } else {
